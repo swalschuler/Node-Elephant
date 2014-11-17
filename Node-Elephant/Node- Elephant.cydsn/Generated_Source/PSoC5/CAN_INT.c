@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: CAN_1_INT.c
+* File Name: CAN_INT.c
 * Version 2.30
 *
 * Description:
@@ -17,16 +17,16 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#include "CAN_1.h"
+#include "CAN.h"
 
 /* `#START CAN_INT_C_CODE_DEFINITION` */
 
 /* `#END` */
 
-#if (CAN_1_ARB_LOST)
+#if (CAN_ARB_LOST)
 
     /*******************************************************************************
-    * FUNCTION NAME:   CAN_1_ArbLost
+    * FUNCTION NAME:   CAN_ArbLost
     ********************************************************************************
     *
     * Summary:
@@ -44,22 +44,22 @@
     *  Depends on Customer code.
     *
     *******************************************************************************/
-    void CAN_1_ArbLostIsr(void) 
+    void CAN_ArbLostIsr(void) 
     {
         /* Clear Arbitration Lost flag */
-        CAN_1_INT_SR_REG.byte[0u] = CAN_1_ARBITRATION_LOST_MASK;
+        CAN_INT_SR_REG.byte[0u] = CAN_ARBITRATION_LOST_MASK;
     
         /* `#START ARBITRATION_LOST_ISR` */
 
         /* `#END` */
     }
     
-#endif /* CAN_1_ARB_LOST */
+#endif /* CAN_ARB_LOST */
 
-#if (CAN_1_OVERLOAD)
+#if (CAN_OVERLOAD)
 
     /*******************************************************************************
-    * FUNCTION NAME:   CAN_1_OvrLdErrror
+    * FUNCTION NAME:   CAN_OvrLdErrror
     ********************************************************************************
     *
     * Summary:
@@ -77,22 +77,22 @@
     *  Depends on Customer code.
     *
     *******************************************************************************/
-    void CAN_1_OvrLdErrorIsr(void) 
+    void CAN_OvrLdErrorIsr(void) 
     {
         /* Clear Overload Error flag */
-        CAN_1_INT_SR_REG.byte[0u] = CAN_1_OVERLOAD_ERROR_MASK;
+        CAN_INT_SR_REG.byte[0u] = CAN_OVERLOAD_ERROR_MASK;
     
         /* `#START OVER_LOAD_ERROR_ISR` */
 
         /* `#END` */
     }
     
-#endif /* CAN_1_OVERLOAD */
+#endif /* CAN_OVERLOAD */
 
-#if (CAN_1_BIT_ERR)
+#if (CAN_BIT_ERR)
 
     /*******************************************************************************
-    * FUNCTION NAME:   CAN_1_BitError
+    * FUNCTION NAME:   CAN_BitError
     ********************************************************************************
     *
     * Summary:
@@ -109,22 +109,22 @@
     *  Depends on Customer code.
     *
     *******************************************************************************/
-    void CAN_1_BitErrorIsr(void) 
+    void CAN_BitErrorIsr(void) 
     {
         /* Clear Bit Error flag */
-        CAN_1_INT_SR_REG.byte[0u] = CAN_1_BIT_ERROR_MASK;
+        CAN_INT_SR_REG.byte[0u] = CAN_BIT_ERROR_MASK;
     
         /* `#START BIT_ERROR_ISR` */
 
         /* `#END` */
     }
     
-#endif /* CAN_1_BIT_ERR */
+#endif /* CAN_BIT_ERR */
 
-#if (CAN_1_STUFF_ERR)
+#if (CAN_STUFF_ERR)
 
     /*******************************************************************************
-    * FUNCTION NAME:   CAN_1_BitStuffError
+    * FUNCTION NAME:   CAN_BitStuffError
     ********************************************************************************
     *
     * Summary:
@@ -142,22 +142,22 @@
     *  Depends on Customer code.
     *
     *******************************************************************************/
-    void CAN_1_BitStuffErrorIsr(void) 
+    void CAN_BitStuffErrorIsr(void) 
     {
         /* Clear Stuff Error flag */
-        CAN_1_INT_SR_REG.byte[0u] = CAN_1_STUFF_ERROR_MASK;
+        CAN_INT_SR_REG.byte[0u] = CAN_STUFF_ERROR_MASK;
     
         /* `#START BIT_STUFF_ERROR_ISR` */
 
         /* `#END` */
     }
     
-#endif /* CAN_1_STUFF_ERR */
+#endif /* CAN_STUFF_ERR */
 
-#if (CAN_1_ACK_ERR)
+#if (CAN_ACK_ERR)
 
     /*******************************************************************************
-    * FUNCTION NAME:   CAN_1_AckErrorIsr
+    * FUNCTION NAME:   CAN_AckErrorIsr
     ********************************************************************************
     *
     * Summary:
@@ -175,22 +175,22 @@
     *  Depends on Customer code.
     *
     *******************************************************************************/
-    void CAN_1_AckErrorIsr(void) 
+    void CAN_AckErrorIsr(void) 
     {
         /* Clear Acknoledge Error flag */
-        CAN_1_INT_SR_REG.byte[0u] = CAN_1_ACK_ERROR_MASK;
+        CAN_INT_SR_REG.byte[0u] = CAN_ACK_ERROR_MASK;
     
         /* `#START ACKNOWLEDGE_ERROR_ISR` */
 
         /* `#END` */
     }
     
-#endif /* CAN_1_ACK_ERR */
+#endif /* CAN_ACK_ERR */
 
-#if (CAN_1_FORM_ERR)
+#if (CAN_FORM_ERR)
 
     /*******************************************************************************
-    * FUNCTION NAME:   CAN_1_MsgError
+    * FUNCTION NAME:   CAN_MsgError
     ********************************************************************************
     *
     * Summary:
@@ -207,22 +207,22 @@
     *  Depends on Customer code.
     *
     *******************************************************************************/
-    void CAN_1_MsgErrorIsr(void) 
+    void CAN_MsgErrorIsr(void) 
     {
         /* Clear Form Error flag */
-        CAN_1_INT_SR_REG.byte[0u] = CAN_1_FORM_ERROR_MASK;
+        CAN_INT_SR_REG.byte[0u] = CAN_FORM_ERROR_MASK;
     
         /* `#START MESSAGE_ERROR_ISR` */
 
         /* `#END` */
     }
     
-#endif /* CAN_1_FORM_ERR */
+#endif /* CAN_FORM_ERR */
 
-#if (CAN_1_CRC_ERR)
+#if (CAN_CRC_ERR)
 
     /*******************************************************************************
-    * FUNCTION NAME:   CAN_1_CrcError
+    * FUNCTION NAME:   CAN_CrcError
     ********************************************************************************
     *
     * Summary:
@@ -239,22 +239,22 @@
     *  Depends on Customer code.
     *
     *******************************************************************************/
-    void CAN_1_CrcErrorIsr(void) 
+    void CAN_CrcErrorIsr(void) 
     {
         /* Clear CRC Error flag */
-        CAN_1_INT_SR_REG.byte[1u] = CAN_1_CRC_ERROR_MASK;
+        CAN_INT_SR_REG.byte[1u] = CAN_CRC_ERROR_MASK;
     
         /* `#START CRC_ERROR_ISR` */
 
         /* `#END` */
     }
     
-#endif /* CAN_1_CRC_ERR */
+#endif /* CAN_CRC_ERR */
 
-#if (CAN_1_BUS_OFF)
+#if (CAN_BUS_OFF)
 
     /*******************************************************************************
-    * FUNCTION NAME:   CAN_1_BusOff
+    * FUNCTION NAME:   CAN_BusOff
     ********************************************************************************
     *
     * Summary:
@@ -272,23 +272,23 @@
     *  Disable power to the CAN Core.
     *
     *******************************************************************************/
-    void CAN_1_BusOffIsr(void) 
+    void CAN_BusOffIsr(void) 
     {        
         /* Clear Bus Off flag */
-        CAN_1_INT_SR_REG.byte[1u] = CAN_1_BUS_OFF_MASK;
+        CAN_INT_SR_REG.byte[1u] = CAN_BUS_OFF_MASK;
     
         /* `#START BUS_OFF_ISR` */
 
         /* `#END` */
-        (void) CAN_1_Stop();
+        (void) CAN_Stop();
     }
     
-#endif /* CAN_1_BUS_OFF */
+#endif /* CAN_BUS_OFF */
 
-#if (CAN_1_RX_MSG_LOST)
+#if (CAN_RX_MSG_LOST)
 
     /*******************************************************************************
-    * FUNCTION NAME:   CAN_1_MsgLost
+    * FUNCTION NAME:   CAN_MsgLost
     ********************************************************************************
     *
     * Summary:
@@ -305,22 +305,22 @@
     *  Depends on Customer code.
     *
     *******************************************************************************/
-    void CAN_1_MsgLostIsr(void) 
+    void CAN_MsgLostIsr(void) 
     {
         /* Clear Receive Message Lost flag */
-        CAN_1_INT_SR_REG.byte[1u] = CAN_1_RX_MSG_LOST_MASK;
+        CAN_INT_SR_REG.byte[1u] = CAN_RX_MSG_LOST_MASK;
     
         /* `#START MESSAGE_LOST_ISR` */
 
         /* `#END` */
     }
     
-#endif /* CAN_1_RX_MSG_LOST */
+#endif /* CAN_RX_MSG_LOST */
 
-#if (CAN_1_TX_MESSAGE)
+#if (CAN_TX_MESSAGE)
 
     /*******************************************************************************
-    * FUNCTION NAME:   CAN_1_MsgTXIsr
+    * FUNCTION NAME:   CAN_MsgTXIsr
     ********************************************************************************
     *
     * Summary:
@@ -338,22 +338,22 @@
     *  Depends on Customer code.
     *
     *******************************************************************************/
-    void CAN_1_MsgTXIsr(void) 
+    void CAN_MsgTXIsr(void) 
     {
         /* Clear Transmit Message flag */
-        CAN_1_INT_SR_REG.byte[1u] = CAN_1_TX_MESSAGE_MASK;
+        CAN_INT_SR_REG.byte[1u] = CAN_TX_MESSAGE_MASK;
         
         /* `#START MESSAGE_TRANSMITTED_ISR` */
 
         /* `#END` */
     }
     
-#endif /* CAN_1_TX_MESSAGE */
+#endif /* CAN_TX_MESSAGE */
 
-#if (CAN_1_RX_MESSAGE)
+#if (CAN_RX_MESSAGE)
 
     /*******************************************************************************
-    * FUNCTION NAME:   CAN_1_MsgRXIsr
+    * FUNCTION NAME:   CAN_MsgRXIsr
     ********************************************************************************
     *
     * Summary:
@@ -369,31 +369,33 @@
     *  None.
     *
     *******************************************************************************/
-    void CAN_1_MsgRXIsr(void) 
+    void CAN_MsgRXIsr(void) 
     {
         uint8 i;
         uint16 shift = 0x01u;
     
         /* Clear Receive Message flag */
-        CAN_1_INT_SR_REG.byte[1u] = CAN_1_RX_MESSAGE_MASK;
+        CAN_INT_SR_REG.byte[1u] = CAN_RX_MESSAGE_MASK;
         
         /* `#START MESSAGE_RECEIVE_ISR` */
 
         /* `#END` */
     
-        for (i = 0u; i < CAN_1_NUMBER_OF_RX_MAILBOXES; i++)
+        for (i = 0u; i < CAN_NUMBER_OF_RX_MAILBOXES; i++)
         {
-            if ((CY_GET_REG16((reg16 *) &CAN_1_BUF_SR_REG.byte[0u]) & shift) == shift)
+            if ((CY_GET_REG16((reg16 *) &CAN_BUF_SR_REG.byte[0u]) & shift) == shift)
             {
-                if ((CAN_1_RX[i].rxcmd.byte[0u] & CAN_1_RX_INT_ENABLE_MASK) ==
-                    CAN_1_RX_INT_ENABLE_MASK)
+                if ((CAN_RX[i].rxcmd.byte[0u] & CAN_RX_INT_ENABLE_MASK) ==
+                    CAN_RX_INT_ENABLE_MASK)
                 {
-                    if ((CAN_1_RX_MAILBOX_TYPE & shift) == shift)
+                    if ((CAN_RX_MAILBOX_TYPE & shift) == shift)
                     {
                         /* RX Full mailboxes handler */
                         switch(i)
                         {
-							case 0u : CAN_1_ReceiveMsg0();
+							case 0u : CAN_ReceiveMsg0();
+							break;
+							case 1u : CAN_ReceiveMsg1();
 							break;
                             default:
                             break;
@@ -402,7 +404,7 @@
                     else
                     {
                         /* RX Basic mailbox handler */
-                        CAN_1_ReceiveMsg(i);
+                        CAN_ReceiveMsg(i);
                     }
                 }
             }
@@ -410,11 +412,11 @@
         }            
     }
     
-#endif /* CAN_1_RX_MESSAGE */
+#endif /* CAN_RX_MESSAGE */
 
 
 /*******************************************************************************
-* Function Name: CAN_1_ISR
+* Function Name: CAN_ISR
 ********************************************************************************
 *
 * Summary:
@@ -430,7 +432,7 @@
 *  None.
 *
 *******************************************************************************/
-CY_ISR(CAN_1_ISR)
+CY_ISR(CAN_ISR)
 {
     /* Place your Interrupt code here. */
     /* `#START CAN_ISR` */
@@ -438,111 +440,111 @@ CY_ISR(CAN_1_ISR)
     /* `#END` */    
     
     /* Arbitration */
-    #if (CAN_1_ARB_LOST && (CAN_1_ARB_LOST_USE_HELPER || \
-        (!CAN_1_ADVANCED_INTERRUPT_CFG)))
-        if ((CAN_1_INT_SR_REG.byte[0u] & CAN_1_ARBITRATION_LOST_MASK) ==
-             CAN_1_ARBITRATION_LOST_MASK)
+    #if (CAN_ARB_LOST && (CAN_ARB_LOST_USE_HELPER || \
+        (!CAN_ADVANCED_INTERRUPT_CFG)))
+        if ((CAN_INT_SR_REG.byte[0u] & CAN_ARBITRATION_LOST_MASK) ==
+             CAN_ARBITRATION_LOST_MASK)
         {
-            CAN_1_ArbLostIsr();
+            CAN_ArbLostIsr();
         } 
-    #endif /* CAN_1_ARB_LOST && CAN_1_ARB_LOST_USE_HELPER */
+    #endif /* CAN_ARB_LOST && CAN_ARB_LOST_USE_HELPER */
     
     /* Overload Error */
-    #if (CAN_1_OVERLOAD && (CAN_1_OVERLOAD_USE_HELPER || \
-        (!CAN_1_ADVANCED_INTERRUPT_CFG)))
-        if ((CAN_1_INT_SR_REG.byte[0u] & CAN_1_OVERLOAD_ERROR_MASK) ==
-             CAN_1_OVERLOAD_ERROR_MASK)
+    #if (CAN_OVERLOAD && (CAN_OVERLOAD_USE_HELPER || \
+        (!CAN_ADVANCED_INTERRUPT_CFG)))
+        if ((CAN_INT_SR_REG.byte[0u] & CAN_OVERLOAD_ERROR_MASK) ==
+             CAN_OVERLOAD_ERROR_MASK)
         {
-            CAN_1_OvrLdErrorIsr();
+            CAN_OvrLdErrorIsr();
         }
-    #endif /* CAN_1_OVERLOAD && CAN_1_OVERLOAD_USE_HELPER */
+    #endif /* CAN_OVERLOAD && CAN_OVERLOAD_USE_HELPER */
     
     /* Bit Error */
-    #if (CAN_1_BIT_ERR && (CAN_1_BIT_ERR_USE_HELPER || \
-        (!CAN_1_ADVANCED_INTERRUPT_CFG)))
-        if ((CAN_1_INT_SR_REG.byte[0u] & CAN_1_BIT_ERROR_MASK) == CAN_1_BIT_ERROR_MASK)
+    #if (CAN_BIT_ERR && (CAN_BIT_ERR_USE_HELPER || \
+        (!CAN_ADVANCED_INTERRUPT_CFG)))
+        if ((CAN_INT_SR_REG.byte[0u] & CAN_BIT_ERROR_MASK) == CAN_BIT_ERROR_MASK)
         {
-            CAN_1_BitErrorIsr();
+            CAN_BitErrorIsr();
         }
-    #endif /* CAN_1_BIT_ERR && CAN_1_BIT_ERR_USE_HELPER */
+    #endif /* CAN_BIT_ERR && CAN_BIT_ERR_USE_HELPER */
     
     /* Bit Staff Error */
-    #if (CAN_1_STUFF_ERR && (CAN_1_STUFF_ERR_USE_HELPER || \
-        (!CAN_1_ADVANCED_INTERRUPT_CFG)))
-        if ((CAN_1_INT_SR_REG.byte[0u] & CAN_1_STUFF_ERROR_MASK) ==
-             CAN_1_STUFF_ERROR_MASK)
+    #if (CAN_STUFF_ERR && (CAN_STUFF_ERR_USE_HELPER || \
+        (!CAN_ADVANCED_INTERRUPT_CFG)))
+        if ((CAN_INT_SR_REG.byte[0u] & CAN_STUFF_ERROR_MASK) ==
+             CAN_STUFF_ERROR_MASK)
         {
-            CAN_1_BitStuffErrorIsr();
+            CAN_BitStuffErrorIsr();
         }
-    #endif /* CAN_1_STUFF_ERR && CAN_1_STUFF_ERR_USE_HELPER */
+    #endif /* CAN_STUFF_ERR && CAN_STUFF_ERR_USE_HELPER */
     
     /* ACK Error */
-    #if (CAN_1_ACK_ERR && (CAN_1_ACK_ERR_USE_HELPER || \
-        (!CAN_1_ADVANCED_INTERRUPT_CFG)))
-        if ((CAN_1_INT_SR_REG.byte[0u] & CAN_1_ACK_ERROR_MASK) ==
-             CAN_1_ACK_ERROR_MASK)
+    #if (CAN_ACK_ERR && (CAN_ACK_ERR_USE_HELPER || \
+        (!CAN_ADVANCED_INTERRUPT_CFG)))
+        if ((CAN_INT_SR_REG.byte[0u] & CAN_ACK_ERROR_MASK) ==
+             CAN_ACK_ERROR_MASK)
         {
-            CAN_1_AckErrorIsr();
+            CAN_AckErrorIsr();
         }
-    #endif /* CAN_1_ACK_ERR && CAN_1_ACK_ERR_USE_HELPER */
+    #endif /* CAN_ACK_ERR && CAN_ACK_ERR_USE_HELPER */
     
     /* Form(msg) Error */
-    #if (CAN_1_FORM_ERR && (CAN_1_FORM_ERR_USE_HELPER || \
-        (!CAN_1_ADVANCED_INTERRUPT_CFG)))
-        if ((CAN_1_INT_SR_REG.byte[0u] & CAN_1_FORM_ERROR_MASK) ==
-             CAN_1_FORM_ERROR_MASK)
+    #if (CAN_FORM_ERR && (CAN_FORM_ERR_USE_HELPER || \
+        (!CAN_ADVANCED_INTERRUPT_CFG)))
+        if ((CAN_INT_SR_REG.byte[0u] & CAN_FORM_ERROR_MASK) ==
+             CAN_FORM_ERROR_MASK)
         {
-            CAN_1_MsgErrorIsr();
+            CAN_MsgErrorIsr();
         }
-    #endif /* CAN_1_FORM_ERR && CAN_1_FORM_ERR_USE_HELPER */
+    #endif /* CAN_FORM_ERR && CAN_FORM_ERR_USE_HELPER */
     
     /* CRC Error */
-    #if (CAN_1_CRC_ERR && (CAN_1_CRC_ERR_USE_HELPER || \
-        (!CAN_1_ADVANCED_INTERRUPT_CFG)))
-        if ((CAN_1_INT_SR_REG.byte[1u] & CAN_1_CRC_ERROR_MASK) == CAN_1_CRC_ERROR_MASK)
+    #if (CAN_CRC_ERR && (CAN_CRC_ERR_USE_HELPER || \
+        (!CAN_ADVANCED_INTERRUPT_CFG)))
+        if ((CAN_INT_SR_REG.byte[1u] & CAN_CRC_ERROR_MASK) == CAN_CRC_ERROR_MASK)
         {
-            CAN_1_CrcErrorIsr();
+            CAN_CrcErrorIsr();
         }
-    #endif /* CAN_1_CRC_ERR && CAN_1_CRC_ERR_USE_HELPER */
+    #endif /* CAN_CRC_ERR && CAN_CRC_ERR_USE_HELPER */
     
     /* Bus Off state */
-    #if (CAN_1_BUS_OFF && (CAN_1_BUS_OFF_USE_HELPER || \
-        (!CAN_1_ADVANCED_INTERRUPT_CFG)))
-        if ((CAN_1_INT_SR_REG.byte[1u] & CAN_1_BUS_OFF_MASK) == CAN_1_BUS_OFF_MASK)
+    #if (CAN_BUS_OFF && (CAN_BUS_OFF_USE_HELPER || \
+        (!CAN_ADVANCED_INTERRUPT_CFG)))
+        if ((CAN_INT_SR_REG.byte[1u] & CAN_BUS_OFF_MASK) == CAN_BUS_OFF_MASK)
         {
-            CAN_1_BusOffIsr();
+            CAN_BusOffIsr();
         }
-    #endif /* CAN_1_BUS_OFF && CAN_1_BUS_OFF_USE_HELPER */
+    #endif /* CAN_BUS_OFF && CAN_BUS_OFF_USE_HELPER */
     
     /* Message Lost */
-    #if (CAN_1_RX_MSG_LOST && (CAN_1_RX_MSG_LOST_USE_HELPER || \
-        (!CAN_1_ADVANCED_INTERRUPT_CFG)))
-        if ((CAN_1_INT_SR_REG.byte[1u] & CAN_1_RX_MSG_LOST_MASK) ==
-             CAN_1_RX_MSG_LOST_MASK)
+    #if (CAN_RX_MSG_LOST && (CAN_RX_MSG_LOST_USE_HELPER || \
+        (!CAN_ADVANCED_INTERRUPT_CFG)))
+        if ((CAN_INT_SR_REG.byte[1u] & CAN_RX_MSG_LOST_MASK) ==
+             CAN_RX_MSG_LOST_MASK)
         {
-            CAN_1_MsgLostIsr();
+            CAN_MsgLostIsr();
         }
-    #endif /* CAN_1_RX_MSG_LOST && CAN_1_RX_MSG_LOST_USE_HELPER */
+    #endif /* CAN_RX_MSG_LOST && CAN_RX_MSG_LOST_USE_HELPER */
     
     /* TX Message Send */
-    #if (CAN_1_TX_MESSAGE && (CAN_1_TX_MESSAGE_USE_HELPER || \
-        (!CAN_1_ADVANCED_INTERRUPT_CFG)))
-        if ((CAN_1_INT_SR_REG.byte[1u] & CAN_1_TX_MESSAGE_MASK) ==
-             CAN_1_TX_MESSAGE_MASK)
+    #if (CAN_TX_MESSAGE && (CAN_TX_MESSAGE_USE_HELPER || \
+        (!CAN_ADVANCED_INTERRUPT_CFG)))
+        if ((CAN_INT_SR_REG.byte[1u] & CAN_TX_MESSAGE_MASK) ==
+             CAN_TX_MESSAGE_MASK)
         {
-            CAN_1_MsgTXIsr();
+            CAN_MsgTXIsr();
         }
-    #endif /* CAN_1_TX_MESSAGE && CAN_1_TX_MESSAGE_USE_HELPER */
+    #endif /* CAN_TX_MESSAGE && CAN_TX_MESSAGE_USE_HELPER */
     
     /* RX Message Available */
-    #if (CAN_1_RX_MESSAGE && (CAN_1_RX_MESSAGE_USE_HELPER || \
-        (!CAN_1_ADVANCED_INTERRUPT_CFG)))
-        if ((CAN_1_INT_SR_REG.byte[1u] & CAN_1_RX_MESSAGE_MASK) ==
-             CAN_1_RX_MESSAGE_MASK)
+    #if (CAN_RX_MESSAGE && (CAN_RX_MESSAGE_USE_HELPER || \
+        (!CAN_ADVANCED_INTERRUPT_CFG)))
+        if ((CAN_INT_SR_REG.byte[1u] & CAN_RX_MESSAGE_MASK) ==
+             CAN_RX_MESSAGE_MASK)
         {
-            CAN_1_MsgRXIsr();
+            CAN_MsgRXIsr();
         }
-    #endif /* CAN_1_RX_MESSAGE && CAN_1_RX_MESSAGE_USE_HELPER */
+    #endif /* CAN_RX_MESSAGE && CAN_RX_MESSAGE_USE_HELPER */
 
 
 }

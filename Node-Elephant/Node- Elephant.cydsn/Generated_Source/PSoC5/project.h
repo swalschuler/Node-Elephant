@@ -24,6 +24,11 @@
 #include <Tx_1.h>
 #include <Rx_1_aliases.h>
 #include <Rx_1.h>
+#include <LCD.h>
+#include <Pin_1_aliases.h>
+#include <Pin_1.h>
+#include <LCD_LCDPort_aliases.h>
+#include <LCD_LCDPort.h>
 #include <core_cm3_psoc5.h>
 #include <core_cm3.h>
 #include <CyDmac.h>
