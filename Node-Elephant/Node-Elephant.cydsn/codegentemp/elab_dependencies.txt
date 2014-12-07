@@ -1,4 +1,4 @@
-C:\Users\Chai Yang\Documents\FSAE Pedal Node\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\TopDesign\TopDesign.cysch
+C:\Users\Chai Yang\Documents\GitHub\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\TopDesign\TopDesign.cysch
 C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\EEPROM_v2_10\EEPROM_v2_10.cysym
 C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\EEPROM_v2_10\EEPROM_v2_10.pdf
 C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\EEPROM_v2_10\EEPROM_v2_10.cystate
@@ -683,7 +683,7 @@ C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprim
 C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.cysym
 C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.pdf
 C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v
-C:\Users\Chai Yang\Documents\FSAE Pedal Node\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\Node-Elephant.cydwr
+C:\Users\Chai Yang\Documents\GitHub\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\Node-Elephant.cydwr
 C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\cy_boot_v4_11\PSoC5\API\cm3gcc.ld
 C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\cy_boot_v4_11\PSoC5\API\Cm3RealView.scat
 C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\cy_boot_v4_11\PSoC5\API\Cm3Start.c

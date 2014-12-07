@@ -1,5 +1,5 @@
 -- Project:   Node-Elephant
--- Generated: 12/06/2014 02:28:30
+-- Generated: 12/06/2014 21:50:56
 -- 
 
 ENTITY \Node-Elephant\ IS
@@ -45,13 +45,13 @@ ARCHITECTURE __DEFAULT__ OF \Node-Elephant\ IS
     ATTRIBUTE global_signal OF Net_10 : SIGNAL IS true;
     SIGNAL Net_10_local : bit;
     SIGNAL Net_11 : bit;
-    SIGNAL Net_488 : bit;
-    SIGNAL Net_489 : bit;
-    ATTRIBUTE placement_force OF Net_489 : SIGNAL IS "U(3,4,B)0";
     SIGNAL Net_684 : bit;
     SIGNAL Net_710 : bit;
     SIGNAL Net_714 : bit;
     SIGNAL Net_715 : bit;
+    SIGNAL Net_924 : bit;
+    SIGNAL Net_925 : bit;
+    ATTRIBUTE placement_force OF Net_925 : SIGNAL IS "U(3,4,B)0";
     SIGNAL Rx_1(0)__PA : bit;
     SIGNAL Steering(0)__PA : bit;
     SIGNAL Throttle_1(0)__PA : bit;
@@ -291,8 +291,8 @@ ARCHITECTURE __DEFAULT__ OF \Node-Elephant\ IS
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
     ATTRIBUTE lib_model OF LED(0) : LABEL IS "iocell4";
     ATTRIBUTE Location OF LED(0) : LABEL IS "P6[3]";
-    ATTRIBUTE lib_model OF Net_489 : LABEL IS "macrocell1";
-    ATTRIBUTE Location OF Net_489 : LABEL IS "U(3,4)";
+    ATTRIBUTE lib_model OF Net_925 : LABEL IS "macrocell1";
+    ATTRIBUTE Location OF Net_925 : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell5";
     ATTRIBUTE Location OF Rx_1(0) : LABEL IS "P0[0]";
     ATTRIBUTE lib_model OF Steering(0) : LABEL IS "iocell6";
@@ -1758,14 +1758,14 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    Net_489:macrocell
+    Net_925:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1) + (main_2)")
         PORT MAP(
-            q => Net_489,
+            q => Net_925,
             clock_0 => \ADC_SAR:clock\,
             main_0 => \ADC_SAR:bSAR_SEQ:bus_clk_reg\,
-            main_1 => Net_489,
+            main_1 => Net_925,
             main_2 => \ADC_SAR:nrq\);
 
     Rx_1:logicalport
@@ -3188,7 +3188,7 @@ BEGIN
         GENERIC MAP(
             int_type => "10")
         PORT MAP(
-            interrupt => Net_489,
+            interrupt => Net_925,
             clock => ClockBlock_BUS_CLK);
 
     \ADC_SAR:SAR:ADC_SAR\:sarcell
@@ -3206,7 +3206,7 @@ BEGIN
             vn_ctl_udb_1 => open,
             vn_ctl_udb_0 => open,
             irq => \ADC_SAR:SAR:Net_252\,
-            next => Net_488,
+            next => Net_924,
             data_out_udb_11 => \ADC_SAR:SAR:Net_207_11\,
             data_out_udb_10 => \ADC_SAR:SAR:Net_207_10\,
             data_out_udb_9 => \ADC_SAR:SAR:Net_207_9\,
@@ -3282,7 +3282,7 @@ BEGIN
             status_3 => open,
             status_2 => open,
             status_1 => open,
-            status_0 => Net_489);
+            status_0 => Net_925);
 
     \ADC_SAR:bSAR_SEQ:bus_clk_reg\:macrocell
         GENERIC MAP(
@@ -3291,7 +3291,7 @@ BEGIN
             q => \ADC_SAR:bSAR_SEQ:bus_clk_reg\,
             clock_0 => ClockBlock_BUS_CLK,
             main_0 => \ADC_SAR:bSAR_SEQ:bus_clk_reg\,
-            main_1 => Net_489,
+            main_1 => Net_925,
             main_2 => \ADC_SAR:nrq\);
 
     \ADC_SAR:bSAR_SEQ:cnt_enable\:macrocell
@@ -3299,7 +3299,7 @@ BEGIN
             eqn_main => "(main_0 * main_1) + (main_2)")
         PORT MAP(
             q => \ADC_SAR:bSAR_SEQ:cnt_enable\,
-            main_0 => Net_488,
+            main_0 => Net_924,
             main_1 => \ADC_SAR:bSAR_SEQ:enable\,
             main_2 => \ADC_SAR:bSAR_SEQ:load_period\);
 

@@ -1,5 +1,5 @@
 # Node-Elephant
-# 2014-12-06 10:28:30Z
+# 2014-12-07 05:50:56Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -12,7 +12,7 @@ set_io "Brake_2(0)" iocell 3 5
 set_io "Button(0)" iocell 6 1
 set_location "ClockBlock" clockblockcell -1 -1 0
 set_io "LED(0)" iocell 6 3
-set_location "Net_489" 3 4 1 0
+set_location "Net_925" 3 4 1 0
 set_io "Rx_1(0)" iocell 0 0
 set_io "Steering(0)" iocell 3 6
 set_io "Throttle_1(0)" iocell 3 2

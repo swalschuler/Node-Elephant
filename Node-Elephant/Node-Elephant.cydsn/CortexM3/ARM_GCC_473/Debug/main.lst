@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccuOfkuI.s 			page 1
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccm5HVqs.s 			page 1
 
 
    1              		.syntax unified
@@ -18,19 +18,15 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccuOfkuI.s 			page 1
   15              		.text
   16              	.Ltext0:
   17              		.cfi_sections	.debug_frame
-  18              		.global	__aeabi_ui2f
-  19              		.global	__aeabi_f2d
-  20              		.global	__aeabi_dadd
-  21              		.global	__aeabi_d2uiz
-  22              		.section	.text.main,"ax",%progbits
-  23              		.align	2
-  24              		.global	main
-  25              		.thumb
-  26              		.thumb_func
-  27              		.type	main, %function
-  28              	main:
-  29              	.LFB56:
-  30              		.file 1 ".\\main.c"
+  18              		.section	.text.main,"ax",%progbits
+  19              		.align	2
+  20              		.global	main
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	main, %function
+  24              	main:
+  25              	.LFB56:
+  26              		.file 1 ".\\main.c"
    1:.\main.c      **** /* ========================================
    2:.\main.c      ****  *
    3:.\main.c      ****  * Copyright YOUR COMPANY, THE YEAR
@@ -46,958 +42,617 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccuOfkuI.s 			page 1
   13:.\main.c      **** 
   14:.\main.c      **** #include <project.h>
   15:.\main.c      **** #include <stdio.h>
-  16:.\main.c      **** 
-  17:.\main.c      **** void calAll(void);          //calibrate all sensors
-  18:.\main.c      **** 
-  19:.\main.c      **** extern volatile uint8 toggle_flag;      //external variable declared in isr.c for triggering interr
-  20:.\main.c      **** 
-  21:.\main.c      **** int main()
-  22:.\main.c      **** {
-  31              		.loc 1 22 0
-  32              		.cfi_startproc
-  33              		@ args = 0, pretend = 0, frame = 32
-  34              		@ frame_needed = 1, uses_anonymous_args = 0
-  35 0000 80B5     		push	{r7, lr}
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccuOfkuI.s 			page 2
+  16:.\main.c      **** #include "calibrate.h"
+  17:.\main.c      **** 
+  18:.\main.c      **** void calAll(void);          //calibrate all sensors
+  19:.\main.c      **** 
+  20:.\main.c      **** extern volatile uint8 toggle_flag;      //external variable declared in isr.c for triggering interr
+  21:.\main.c      **** 
+  22:.\main.c      **** int main()
+  23:.\main.c      **** {
+  27              		.loc 1 23 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 24
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31 0000 80B5     		push	{r7, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccm5HVqs.s 			page 2
 
 
-  36              	.LCFI0:
-  37              		.cfi_def_cfa_offset 8
-  38              		.cfi_offset 7, -8
-  39              		.cfi_offset 14, -4
-  40 0002 88B0     		sub	sp, sp, #32
-  41              	.LCFI1:
-  42              		.cfi_def_cfa_offset 40
-  43 0004 00AF     		add	r7, sp, #0
-  44              	.LCFI2:
-  45              		.cfi_def_cfa_register 7
-  23:.\main.c      ****     LCD_Start();
-  46              		.loc 1 23 0
-  47 0006 FFF7FEFF 		bl	LCD_Start
-  24:.\main.c      ****     ADC_SAR_Start();
-  48              		.loc 1 24 0
-  49 000a FFF7FEFF 		bl	ADC_SAR_Start
-  25:.\main.c      ****     ADC_SAR_StartConvert();
-  50              		.loc 1 25 0
-  51 000e FFF7FEFF 		bl	ADC_SAR_StartConvert
-  26:.\main.c      ****     EEPROM_Start();
-  52              		.loc 1 26 0
-  53 0012 FFF7FEFF 		bl	EEPROM_Start
-  27:.\main.c      ****     isr_Start();
-  54              		.loc 1 27 0
-  55 0016 FFF7FEFF 		bl	isr_Start
-  28:.\main.c      ****     Timer_Start();
-  56              		.loc 1 28 0
-  57 001a FFF7FEFF 		bl	Timer_Start
-  29:.\main.c      ****     CyGlobalIntEnable;          //enable global interrupts 
-  58              		.loc 1 29 0
-  59              	@ 29 ".\main.c" 1
-  60 001e 62B6     		CPSIE   i
-  61              	@ 0 "" 2
-  30:.\main.c      ****     
-  31:.\main.c      ****     uint32 throttle = 0;            //declared 32 bits for calculation, will cast to 16 bit when pu
-  62              		.loc 1 31 0
-  63              		.thumb
-  64 0020 4FF00003 		mov	r3, #0
-  65 0024 7B60     		str	r3, [r7, #4]
-  32:.\main.c      ****     uint32 throttle1 = 0;
-  66              		.loc 1 32 0
-  67 0026 4FF00003 		mov	r3, #0
-  68 002a FB61     		str	r3, [r7, #28]
+  35              		.cfi_offset 14, -4
+  36 0002 86B0     		sub	sp, sp, #24
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 32
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  24:.\main.c      ****     LCD_Start();
+  42              		.loc 1 24 0
+  43 0006 FFF7FEFF 		bl	LCD_Start
+  25:.\main.c      ****     ADC_SAR_Start();
+  44              		.loc 1 25 0
+  45 000a FFF7FEFF 		bl	ADC_SAR_Start
+  26:.\main.c      ****     ADC_SAR_StartConvert();
+  46              		.loc 1 26 0
+  47 000e FFF7FEFF 		bl	ADC_SAR_StartConvert
+  27:.\main.c      ****     EEPROM_Start();
+  48              		.loc 1 27 0
+  49 0012 FFF7FEFF 		bl	EEPROM_Start
+  28:.\main.c      ****     isr_Start();
+  50              		.loc 1 28 0
+  51 0016 FFF7FEFF 		bl	isr_Start
+  29:.\main.c      ****     Timer_Start();
+  52              		.loc 1 29 0
+  53 001a FFF7FEFF 		bl	Timer_Start
+  30:.\main.c      ****     CyGlobalIntEnable;          //enable global interrupts 
+  54              		.loc 1 30 0
+  55              	@ 30 ".\main.c" 1
+  56 001e 62B6     		CPSIE   i
+  57              	@ 0 "" 2
+  31:.\main.c      ****     
+  32:.\main.c      ****     uint32 throttle1 = 0;            //declared 32 bits for calculation, will cast to 16 bit when p
+  58              		.loc 1 32 0
+  59              		.thumb
+  60 0020 4FF00003 		mov	r3, #0
+  61 0024 7B61     		str	r3, [r7, #20]
   33:.\main.c      ****     uint32 throttle2 = 0;
-  69              		.loc 1 33 0
-  70 002c 4FF00003 		mov	r3, #0
-  71 0030 BB61     		str	r3, [r7, #24]
+  62              		.loc 1 33 0
+  63 0026 4FF00003 		mov	r3, #0
+  64 002a 3B61     		str	r3, [r7, #16]
   34:.\main.c      ****     uint32 brake1 = 0;
-  72              		.loc 1 34 0
-  73 0032 4FF00003 		mov	r3, #0
-  74 0036 7B61     		str	r3, [r7, #20]
+  65              		.loc 1 34 0
+  66 002c 4FF00003 		mov	r3, #0
+  67 0030 FB60     		str	r3, [r7, #12]
   35:.\main.c      ****     uint32 brake2 = 0;
-  75              		.loc 1 35 0
-  76 0038 4FF00003 		mov	r3, #0
-  77 003c 3B61     		str	r3, [r7, #16]
+  68              		.loc 1 35 0
+  69 0032 4FF00003 		mov	r3, #0
+  70 0036 BB60     		str	r3, [r7, #8]
   36:.\main.c      ****     uint32 steering = 0;
-  78              		.loc 1 36 0
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccuOfkuI.s 			page 3
-
-
-  79 003e 4FF00003 		mov	r3, #0
-  80 0042 FB60     		str	r3, [r7, #12]
+  71              		.loc 1 36 0
+  72 0038 4FF00003 		mov	r3, #0
+  73 003c 7B60     		str	r3, [r7, #4]
   37:.\main.c      ****     uint32 averager = 0;         //counts number of times adc gets a result and used as divisor for
-  81              		.loc 1 37 0
-  82 0044 4FF00003 		mov	r3, #0
-  83 0048 BB60     		str	r3, [r7, #8]
-  84 004a 00E0     		b	.L4
-  85              	.L5:
+  74              		.loc 1 37 0
+  75 003e 4FF00003 		mov	r3, #0
+  76 0042 3B60     		str	r3, [r7, #0]
+  77              	.L2:
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccm5HVqs.s 			page 3
+
+
   38:.\main.c      ****     
-  39:.\main.c      ****     for(;;)
-  40:.\main.c      ****     {                  
-  41:.\main.c      ****         if(toggle_flag == 1)            //if interrupt fired
-  42:.\main.c      ****         {
-  43:.\main.c      ****             throttle = (float)(throttle1/averager) + 0.5;           //gets rounded average value ov
-  44:.\main.c      ****             throttle2 =(float)(throttle2/averager) + 0.5;
-  45:.\main.c      ****             brake1 = (float)(brake1/averager) + 0.5;
-  46:.\main.c      ****             brake2 = (float)(brake2/averager) + 0.5;
-  47:.\main.c      ****             steering = (float)(steering/averager) + 0.5;
-  48:.\main.c      ****             
-  49:.\main.c      ****             LED_Write(~LED_Read());             //visual check is interrupt is running
-  50:.\main.c      ****             
-  51:.\main.c      ****             LCD_ClearDisplay();
-  52:.\main.c      ****             LCD_Position(0,0);              //displaying number of times values were retrieved 
-  53:.\main.c      ****             LCD_PrintNumber(averager);
-  54:.\main.c      ****             LCD_Position(1,0);              //displaying number of times values were retrieved 
-  55:.\main.c      ****             LCD_PrintNumber(throttle1);
-  56:.\main.c      ****             //CyDelay(2000);
-  57:.\main.c      ****             LCD_Position(0,7);              //displaying number of times values were retrieved 
-  58:.\main.c      ****             LCD_PrintNumber(throttle);
-  59:.\main.c      ****             averager = 0;
-  60:.\main.c      ****             toggle_flag = 0;
-  61:.\main.c      ****             throttle = 0;
-  62:.\main.c      ****             throttle1 = 0;
-  63:.\main.c      ****             throttle2 = 0;
-  64:.\main.c      ****             brake1 = 0;
-  65:.\main.c      ****             brake2 = 0;
-  66:.\main.c      ****             steering = 0;
-  67:.\main.c      ****             averager = 0;
-  68:.\main.c      ****         }
-  69:.\main.c      ****         
-  70:.\main.c      ****         if(ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))
-  71:.\main.c      ****         {
-  72:.\main.c      ****             throttle1 = throttle1 + ADC_SAR_GetResult16(0);         //summing values over the time 
-  73:.\main.c      ****             throttle2 = throttle2 + ADC_SAR_GetResult16(1);
-  74:.\main.c      ****             brake1 = brake1 + ADC_SAR_GetResult16(2);
-  75:.\main.c      ****             brake2 = brake2 + ADC_SAR_GetResult16(3);
-  76:.\main.c      ****             steering = steering + ADC_SAR_GetResult16(4);
-  77:.\main.c      **** //            LCD_Position(1,5);              //displaying number of times values were retrieved 
-  78:.\main.c      **** //            LCD_PrintNumber(averager);
-  79:.\main.c      ****             averager++;
-  80:.\main.c      ****             //CyDelay(2000);
-  81:.\main.c      ****         }
-  82:.\main.c      ****     }
-  86              		.loc 1 82 0
-  87 004c 00BF     		nop
-  88              	.L4:
-  41:.\main.c      ****         if(toggle_flag == 1)            //if interrupt fired
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccuOfkuI.s 			page 4
+  39:.\main.c      **** //    for(;;)
+  40:.\main.c      **** //    {                  
+  41:.\main.c      **** //        if(toggle_flag == 1)            //if interrupt fired
+  42:.\main.c      **** //        {
+  43:.\main.c      **** //            throttle = (float)(throttle1/averager) + 0.5;           //gets rounded average value 
+  44:.\main.c      **** //            throttle2 =(float)(throttle2/averager) + 0.5;
+  45:.\main.c      **** //            brake1 = (float)(brake1/averager) + 0.5;
+  46:.\main.c      **** //            brake2 = (float)(brake2/averager) + 0.5;
+  47:.\main.c      **** //            steering = (float)(steering/averager) + 0.5;
+  48:.\main.c      **** //            
+  49:.\main.c      **** //            LED_Write(~LED_Read());             //visual check is interrupt is running
+  50:.\main.c      **** //            
+  51:.\main.c      **** //            LCD_ClearDisplay();
+  52:.\main.c      **** //            LCD_Position(0,0);              //displaying number of times values were retrieved 
+  53:.\main.c      **** //            LCD_PrintNumber(averager);
+  54:.\main.c      **** //            LCD_Position(1,0);              //displaying number of times values were retrieved 
+  55:.\main.c      **** //            LCD_PrintNumber(throttle1);
+  56:.\main.c      **** //            //CyDelay(2000);
+  57:.\main.c      **** //            LCD_Position(0,7);              //displaying number of times values were retrieved 
+  58:.\main.c      **** //            LCD_PrintNumber(throttle);
+  59:.\main.c      **** //            averager = 0;
+  60:.\main.c      **** //            toggle_flag = 0;
+  61:.\main.c      **** //            throttle = 0;
+  62:.\main.c      **** //            throttle1 = 0;
+  63:.\main.c      **** //            throttle2 = 0;
+  64:.\main.c      **** //            brake1 = 0;
+  65:.\main.c      **** //            brake2 = 0;
+  66:.\main.c      **** //            steering = 0;
+  67:.\main.c      **** //            averager = 0;
+  68:.\main.c      **** //        }
+  69:.\main.c      **** //        
+  70:.\main.c      **** //        if(ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))
+  71:.\main.c      **** //        {
+  72:.\main.c      **** //            throttle1 = throttle1 + ADC_SAR_GetResult16(0);         //summing values over the tim
+  73:.\main.c      **** //            throttle2 = throttle2 + ADC_SAR_GetResult16(1);
+  74:.\main.c      **** //            brake1 = brake1 + ADC_SAR_GetResult16(2);
+  75:.\main.c      **** //            brake2 = brake2 + ADC_SAR_GetResult16(3);
+  76:.\main.c      **** //            steering = steering + ADC_SAR_GetResult16(4);
+  77:.\main.c      **** ////            LCD_Position(1,5);              //displaying number of times values were retrieved 
+  78:.\main.c      **** ////            LCD_PrintNumber(averager);
+  79:.\main.c      **** //            averager++;
+  80:.\main.c      **** //            //CyDelay(2000);
+  81:.\main.c      **** //        }
+  82:.\main.c      **** //    }
+  83:.\main.c      ****     
+  84:.\main.c      ****     for(;;)
+  85:.\main.c      ****     {
+  86:.\main.c      ****         if(ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))
+  78              		.loc 1 86 0
+  79 0044 4FF00000 		mov	r0, #0
+  80 0048 FFF7FEFF 		bl	ADC_SAR_IsEndConversion
+  87:.\main.c      ****         {
+  88:.\main.c      ****                
+  89:.\main.c      ****         }
+  90:.\main.c      ****     }
+  81              		.loc 1 90 0
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccm5HVqs.s 			page 4
 
 
-  89              		.loc 1 41 0
-  90 004e 40F20003 		movw	r3, #:lower16:toggle_flag
-  91 0052 C0F20003 		movt	r3, #:upper16:toggle_flag
-  92 0056 1B78     		ldrb	r3, [r3, #0]
-  93 0058 DBB2     		uxtb	r3, r3
-  94 005a 012B     		cmp	r3, #1
-  95 005c 40F0E880 		bne	.L2
-  43:.\main.c      ****             throttle = (float)(throttle1/averager) + 0.5;           //gets rounded average value ov
-  96              		.loc 1 43 0
-  97 0060 FA69     		ldr	r2, [r7, #28]
-  98 0062 BB68     		ldr	r3, [r7, #8]
-  99 0064 B2FBF3F3 		udiv	r3, r2, r3
- 100 0068 1846     		mov	r0, r3
- 101 006a FFF7FEFF 		bl	__aeabi_ui2f
- 102 006e 0346     		mov	r3, r0
- 103 0070 1846     		mov	r0, r3
- 104 0072 FFF7FEFF 		bl	__aeabi_f2d
- 105 0076 0246     		mov	r2, r0
- 106 0078 0B46     		mov	r3, r1
- 107 007a 1046     		mov	r0, r2
- 108 007c 1946     		mov	r1, r3
- 109 007e 4FF00002 		mov	r2, #0
- 110 0082 4FF00003 		mov	r3, #0
- 111 0086 C3F6E073 		movt	r3, 16352
- 112 008a FFF7FEFF 		bl	__aeabi_dadd
- 113 008e 0246     		mov	r2, r0
- 114 0090 0B46     		mov	r3, r1
- 115 0092 1046     		mov	r0, r2
- 116 0094 1946     		mov	r1, r3
- 117 0096 FFF7FEFF 		bl	__aeabi_d2uiz
- 118 009a 0346     		mov	r3, r0
- 119 009c 7B60     		str	r3, [r7, #4]
-  44:.\main.c      ****             throttle2 =(float)(throttle2/averager) + 0.5;
- 120              		.loc 1 44 0
- 121 009e BA69     		ldr	r2, [r7, #24]
- 122 00a0 BB68     		ldr	r3, [r7, #8]
- 123 00a2 B2FBF3F3 		udiv	r3, r2, r3
- 124 00a6 1846     		mov	r0, r3
- 125 00a8 FFF7FEFF 		bl	__aeabi_ui2f
- 126 00ac 0346     		mov	r3, r0
- 127 00ae 1846     		mov	r0, r3
- 128 00b0 FFF7FEFF 		bl	__aeabi_f2d
- 129 00b4 0246     		mov	r2, r0
- 130 00b6 0B46     		mov	r3, r1
- 131 00b8 1046     		mov	r0, r2
- 132 00ba 1946     		mov	r1, r3
- 133 00bc 4FF00002 		mov	r2, #0
- 134 00c0 4FF00003 		mov	r3, #0
- 135 00c4 C3F6E073 		movt	r3, 16352
- 136 00c8 FFF7FEFF 		bl	__aeabi_dadd
- 137 00cc 0246     		mov	r2, r0
- 138 00ce 0B46     		mov	r3, r1
- 139 00d0 1046     		mov	r0, r2
- 140 00d2 1946     		mov	r1, r3
- 141 00d4 FFF7FEFF 		bl	__aeabi_d2uiz
- 142 00d8 0346     		mov	r3, r0
- 143 00da BB61     		str	r3, [r7, #24]
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccuOfkuI.s 			page 5
+  82 004c FAE7     		b	.L2
+  83              		.cfi_endproc
+  84              	.LFE56:
+  85              		.size	main, .-main
+  86 004e 00BF     		.text
+  87              	.Letext0:
+  88              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.0\\psoc creator\\import\\gnu_cs\\arm\\4
+  89              		.file 3 "./Generated_Source/PSoC5/cytypes.h"
+  90              		.file 4 "./Generated_Source/PSoC5/core_cm3.h"
+  91              		.section	.debug_info,"",%progbits
+  92              	.Ldebug_info0:
+  93 0000 23010000 		.4byte	0x123
+  94 0004 0200     		.2byte	0x2
+  95 0006 00000000 		.4byte	.Ldebug_abbrev0
+  96 000a 04       		.byte	0x4
+  97 000b 01       		.uleb128 0x1
+  98 000c 34000000 		.4byte	.LASF21
+  99 0010 01       		.byte	0x1
+ 100 0011 F5000000 		.4byte	.LASF22
+ 101 0015 19010000 		.4byte	.LASF23
+ 102 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 103 001d 00000000 		.4byte	0
+ 104 0021 00000000 		.4byte	0
+ 105 0025 00000000 		.4byte	.Ldebug_line0
+ 106 0029 02       		.uleb128 0x2
+ 107 002a 01       		.byte	0x1
+ 108 002b 06       		.byte	0x6
+ 109 002c 6D010000 		.4byte	.LASF0
+ 110 0030 02       		.uleb128 0x2
+ 111 0031 01       		.byte	0x1
+ 112 0032 08       		.byte	0x8
+ 113 0033 D9000000 		.4byte	.LASF1
+ 114 0037 02       		.uleb128 0x2
+ 115 0038 02       		.byte	0x2
+ 116 0039 05       		.byte	0x5
+ 117 003a 7F010000 		.4byte	.LASF2
+ 118 003e 02       		.uleb128 0x2
+ 119 003f 02       		.byte	0x2
+ 120 0040 07       		.byte	0x7
+ 121 0041 A6000000 		.4byte	.LASF3
+ 122 0045 03       		.uleb128 0x3
+ 123 0046 89010000 		.4byte	.LASF9
+ 124 004a 02       		.byte	0x2
+ 125 004b 4F       		.byte	0x4f
+ 126 004c 50000000 		.4byte	0x50
+ 127 0050 02       		.uleb128 0x2
+ 128 0051 04       		.byte	0x4
+ 129 0052 05       		.byte	0x5
+ 130 0053 EC000000 		.4byte	.LASF4
+ 131 0057 02       		.uleb128 0x2
+ 132 0058 04       		.byte	0x4
+ 133 0059 07       		.byte	0x7
+ 134 005a 7D000000 		.4byte	.LASF5
+ 135 005e 02       		.uleb128 0x2
+ 136 005f 08       		.byte	0x8
+ 137 0060 05       		.byte	0x5
+ 138 0061 00000000 		.4byte	.LASF6
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccm5HVqs.s 			page 5
 
 
-  45:.\main.c      ****             brake1 = (float)(brake1/averager) + 0.5;
- 144              		.loc 1 45 0
- 145 00dc 7A69     		ldr	r2, [r7, #20]
- 146 00de BB68     		ldr	r3, [r7, #8]
- 147 00e0 B2FBF3F3 		udiv	r3, r2, r3
- 148 00e4 1846     		mov	r0, r3
- 149 00e6 FFF7FEFF 		bl	__aeabi_ui2f
- 150 00ea 0346     		mov	r3, r0
- 151 00ec 1846     		mov	r0, r3
- 152 00ee FFF7FEFF 		bl	__aeabi_f2d
- 153 00f2 0246     		mov	r2, r0
- 154 00f4 0B46     		mov	r3, r1
- 155 00f6 1046     		mov	r0, r2
- 156 00f8 1946     		mov	r1, r3
- 157 00fa 4FF00002 		mov	r2, #0
- 158 00fe 4FF00003 		mov	r3, #0
- 159 0102 C3F6E073 		movt	r3, 16352
- 160 0106 FFF7FEFF 		bl	__aeabi_dadd
- 161 010a 0246     		mov	r2, r0
- 162 010c 0B46     		mov	r3, r1
- 163 010e 1046     		mov	r0, r2
- 164 0110 1946     		mov	r1, r3
- 165 0112 FFF7FEFF 		bl	__aeabi_d2uiz
- 166 0116 0346     		mov	r3, r0
- 167 0118 7B61     		str	r3, [r7, #20]
-  46:.\main.c      ****             brake2 = (float)(brake2/averager) + 0.5;
- 168              		.loc 1 46 0
- 169 011a 3A69     		ldr	r2, [r7, #16]
- 170 011c BB68     		ldr	r3, [r7, #8]
- 171 011e B2FBF3F3 		udiv	r3, r2, r3
- 172 0122 1846     		mov	r0, r3
- 173 0124 FFF7FEFF 		bl	__aeabi_ui2f
- 174 0128 0346     		mov	r3, r0
- 175 012a 1846     		mov	r0, r3
- 176 012c FFF7FEFF 		bl	__aeabi_f2d
- 177 0130 0246     		mov	r2, r0
- 178 0132 0B46     		mov	r3, r1
- 179 0134 1046     		mov	r0, r2
- 180 0136 1946     		mov	r1, r3
- 181 0138 4FF00002 		mov	r2, #0
- 182 013c 4FF00003 		mov	r3, #0
- 183 0140 C3F6E073 		movt	r3, 16352
- 184 0144 FFF7FEFF 		bl	__aeabi_dadd
- 185 0148 0246     		mov	r2, r0
- 186 014a 0B46     		mov	r3, r1
- 187 014c 1046     		mov	r0, r2
- 188 014e 1946     		mov	r1, r3
- 189 0150 FFF7FEFF 		bl	__aeabi_d2uiz
- 190 0154 0346     		mov	r3, r0
- 191 0156 3B61     		str	r3, [r7, #16]
-  47:.\main.c      ****             steering = (float)(steering/averager) + 0.5;
- 192              		.loc 1 47 0
- 193 0158 FA68     		ldr	r2, [r7, #12]
- 194 015a BB68     		ldr	r3, [r7, #8]
- 195 015c B2FBF3F3 		udiv	r3, r2, r3
- 196 0160 1846     		mov	r0, r3
- 197 0162 FFF7FEFF 		bl	__aeabi_ui2f
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccuOfkuI.s 			page 6
+ 139 0065 02       		.uleb128 0x2
+ 140 0066 08       		.byte	0x8
+ 141 0067 07       		.byte	0x7
+ 142 0068 8F000000 		.4byte	.LASF7
+ 143 006c 04       		.uleb128 0x4
+ 144 006d 04       		.byte	0x4
+ 145 006e 05       		.byte	0x5
+ 146 006f 696E7400 		.ascii	"int\000"
+ 147 0073 02       		.uleb128 0x2
+ 148 0074 04       		.byte	0x4
+ 149 0075 07       		.byte	0x7
+ 150 0076 22000000 		.4byte	.LASF8
+ 151 007a 03       		.uleb128 0x3
+ 152 007b 0E000000 		.4byte	.LASF10
+ 153 007f 03       		.byte	0x3
+ 154 0080 5D       		.byte	0x5d
+ 155 0081 57000000 		.4byte	0x57
+ 156 0085 02       		.uleb128 0x2
+ 157 0086 04       		.byte	0x4
+ 158 0087 04       		.byte	0x4
+ 159 0088 79010000 		.4byte	.LASF11
+ 160 008c 02       		.uleb128 0x2
+ 161 008d 08       		.byte	0x8
+ 162 008e 04       		.byte	0x4
+ 163 008f FE000000 		.4byte	.LASF12
+ 164 0093 02       		.uleb128 0x2
+ 165 0094 01       		.byte	0x1
+ 166 0095 08       		.byte	0x8
+ 167 0096 E7000000 		.4byte	.LASF13
+ 168 009a 02       		.uleb128 0x2
+ 169 009b 04       		.byte	0x4
+ 170 009c 07       		.byte	0x7
+ 171 009d 91010000 		.4byte	.LASF14
+ 172 00a1 05       		.uleb128 0x5
+ 173 00a2 01       		.byte	0x1
+ 174 00a3 2F000000 		.4byte	.LASF24
+ 175 00a7 01       		.byte	0x1
+ 176 00a8 16       		.byte	0x16
+ 177 00a9 6C000000 		.4byte	0x6c
+ 178 00ad 00000000 		.4byte	.LFB56
+ 179 00b1 4E000000 		.4byte	.LFE56
+ 180 00b5 00000000 		.4byte	.LLST0
+ 181 00b9 01       		.byte	0x1
+ 182 00ba 13010000 		.4byte	0x113
+ 183 00be 06       		.uleb128 0x6
+ 184 00bf 05010000 		.4byte	.LASF15
+ 185 00c3 01       		.byte	0x1
+ 186 00c4 20       		.byte	0x20
+ 187 00c5 7A000000 		.4byte	0x7a
+ 188 00c9 02       		.byte	0x2
+ 189 00ca 91       		.byte	0x91
+ 190 00cb 74       		.sleb128 -12
+ 191 00cc 06       		.uleb128 0x6
+ 192 00cd 0F010000 		.4byte	.LASF16
+ 193 00d1 01       		.byte	0x1
+ 194 00d2 21       		.byte	0x21
+ 195 00d3 7A000000 		.4byte	0x7a
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccm5HVqs.s 			page 6
 
 
- 198 0166 0346     		mov	r3, r0
- 199 0168 1846     		mov	r0, r3
- 200 016a FFF7FEFF 		bl	__aeabi_f2d
- 201 016e 0246     		mov	r2, r0
- 202 0170 0B46     		mov	r3, r1
- 203 0172 1046     		mov	r0, r2
- 204 0174 1946     		mov	r1, r3
- 205 0176 4FF00002 		mov	r2, #0
- 206 017a 4FF00003 		mov	r3, #0
- 207 017e C3F6E073 		movt	r3, 16352
- 208 0182 FFF7FEFF 		bl	__aeabi_dadd
- 209 0186 0246     		mov	r2, r0
- 210 0188 0B46     		mov	r3, r1
- 211 018a 1046     		mov	r0, r2
- 212 018c 1946     		mov	r1, r3
- 213 018e FFF7FEFF 		bl	__aeabi_d2uiz
- 214 0192 0346     		mov	r3, r0
- 215 0194 FB60     		str	r3, [r7, #12]
-  49:.\main.c      ****             LED_Write(~LED_Read());             //visual check is interrupt is running
- 216              		.loc 1 49 0
- 217 0196 FFF7FEFF 		bl	LED_Read
- 218 019a 0346     		mov	r3, r0
- 219 019c 6FEA0303 		mvn	r3, r3
- 220 01a0 DBB2     		uxtb	r3, r3
- 221 01a2 1846     		mov	r0, r3
- 222 01a4 FFF7FEFF 		bl	LED_Write
-  51:.\main.c      ****             LCD_ClearDisplay();
- 223              		.loc 1 51 0
- 224 01a8 4FF00100 		mov	r0, #1
- 225 01ac FFF7FEFF 		bl	LCD_WriteControl
-  52:.\main.c      ****             LCD_Position(0,0);              //displaying number of times values were retrieved 
- 226              		.loc 1 52 0
- 227 01b0 4FF00000 		mov	r0, #0
- 228 01b4 4FF00001 		mov	r1, #0
- 229 01b8 FFF7FEFF 		bl	LCD_Position
-  53:.\main.c      ****             LCD_PrintNumber(averager);
- 230              		.loc 1 53 0
- 231 01bc BB68     		ldr	r3, [r7, #8]
- 232 01be 9BB2     		uxth	r3, r3
- 233 01c0 1846     		mov	r0, r3
- 234 01c2 FFF7FEFF 		bl	LCD_PrintU32Number
-  54:.\main.c      ****             LCD_Position(1,0);              //displaying number of times values were retrieved 
- 235              		.loc 1 54 0
- 236 01c6 4FF00100 		mov	r0, #1
- 237 01ca 4FF00001 		mov	r1, #0
- 238 01ce FFF7FEFF 		bl	LCD_Position
-  55:.\main.c      ****             LCD_PrintNumber(throttle1);
- 239              		.loc 1 55 0
- 240 01d2 FB69     		ldr	r3, [r7, #28]
- 241 01d4 9BB2     		uxth	r3, r3
- 242 01d6 1846     		mov	r0, r3
- 243 01d8 FFF7FEFF 		bl	LCD_PrintU32Number
-  57:.\main.c      ****             LCD_Position(0,7);              //displaying number of times values were retrieved 
- 244              		.loc 1 57 0
- 245 01dc 4FF00000 		mov	r0, #0
- 246 01e0 4FF00701 		mov	r1, #7
- 247 01e4 FFF7FEFF 		bl	LCD_Position
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccuOfkuI.s 			page 7
+ 196 00d7 02       		.byte	0x2
+ 197 00d8 91       		.byte	0x91
+ 198 00d9 70       		.sleb128 -16
+ 199 00da 06       		.uleb128 0x6
+ 200 00db C2000000 		.4byte	.LASF17
+ 201 00df 01       		.byte	0x1
+ 202 00e0 22       		.byte	0x22
+ 203 00e1 7A000000 		.4byte	0x7a
+ 204 00e5 02       		.byte	0x2
+ 205 00e6 91       		.byte	0x91
+ 206 00e7 6C       		.sleb128 -20
+ 207 00e8 06       		.uleb128 0x6
+ 208 00e9 C9000000 		.4byte	.LASF18
+ 209 00ed 01       		.byte	0x1
+ 210 00ee 23       		.byte	0x23
+ 211 00ef 7A000000 		.4byte	0x7a
+ 212 00f3 02       		.byte	0x2
+ 213 00f4 91       		.byte	0x91
+ 214 00f5 68       		.sleb128 -24
+ 215 00f6 06       		.uleb128 0x6
+ 216 00f7 D0000000 		.4byte	.LASF19
+ 217 00fb 01       		.byte	0x1
+ 218 00fc 24       		.byte	0x24
+ 219 00fd 7A000000 		.4byte	0x7a
+ 220 0101 02       		.byte	0x2
+ 221 0102 91       		.byte	0x91
+ 222 0103 64       		.sleb128 -28
+ 223 0104 06       		.uleb128 0x6
+ 224 0105 B9000000 		.4byte	.LASF20
+ 225 0109 01       		.byte	0x1
+ 226 010a 25       		.byte	0x25
+ 227 010b 7A000000 		.4byte	0x7a
+ 228 010f 02       		.byte	0x2
+ 229 0110 91       		.byte	0x91
+ 230 0111 60       		.sleb128 -32
+ 231 0112 00       		.byte	0
+ 232 0113 07       		.uleb128 0x7
+ 233 0114 15000000 		.4byte	.LASF25
+ 234 0118 04       		.byte	0x4
+ 235 0119 1606     		.2byte	0x616
+ 236 011b 21010000 		.4byte	0x121
+ 237 011f 01       		.byte	0x1
+ 238 0120 01       		.byte	0x1
+ 239 0121 08       		.uleb128 0x8
+ 240 0122 45000000 		.4byte	0x45
+ 241 0126 00       		.byte	0
+ 242              		.section	.debug_abbrev,"",%progbits
+ 243              	.Ldebug_abbrev0:
+ 244 0000 01       		.uleb128 0x1
+ 245 0001 11       		.uleb128 0x11
+ 246 0002 01       		.byte	0x1
+ 247 0003 25       		.uleb128 0x25
+ 248 0004 0E       		.uleb128 0xe
+ 249 0005 13       		.uleb128 0x13
+ 250 0006 0B       		.uleb128 0xb
+ 251 0007 03       		.uleb128 0x3
+ 252 0008 0E       		.uleb128 0xe
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccm5HVqs.s 			page 7
 
 
-  58:.\main.c      ****             LCD_PrintNumber(throttle);
- 248              		.loc 1 58 0
- 249 01e8 7B68     		ldr	r3, [r7, #4]
- 250 01ea 9BB2     		uxth	r3, r3
- 251 01ec 1846     		mov	r0, r3
- 252 01ee FFF7FEFF 		bl	LCD_PrintU32Number
-  59:.\main.c      ****             averager = 0;
- 253              		.loc 1 59 0
- 254 01f2 4FF00003 		mov	r3, #0
- 255 01f6 BB60     		str	r3, [r7, #8]
-  60:.\main.c      ****             toggle_flag = 0;
- 256              		.loc 1 60 0
- 257 01f8 40F20003 		movw	r3, #:lower16:toggle_flag
- 258 01fc C0F20003 		movt	r3, #:upper16:toggle_flag
- 259 0200 4FF00002 		mov	r2, #0
- 260 0204 1A70     		strb	r2, [r3, #0]
-  61:.\main.c      ****             throttle = 0;
- 261              		.loc 1 61 0
- 262 0206 4FF00003 		mov	r3, #0
- 263 020a 7B60     		str	r3, [r7, #4]
-  62:.\main.c      ****             throttle1 = 0;
- 264              		.loc 1 62 0
- 265 020c 4FF00003 		mov	r3, #0
- 266 0210 FB61     		str	r3, [r7, #28]
-  63:.\main.c      ****             throttle2 = 0;
- 267              		.loc 1 63 0
- 268 0212 4FF00003 		mov	r3, #0
- 269 0216 BB61     		str	r3, [r7, #24]
-  64:.\main.c      ****             brake1 = 0;
- 270              		.loc 1 64 0
- 271 0218 4FF00003 		mov	r3, #0
- 272 021c 7B61     		str	r3, [r7, #20]
-  65:.\main.c      ****             brake2 = 0;
- 273              		.loc 1 65 0
- 274 021e 4FF00003 		mov	r3, #0
- 275 0222 3B61     		str	r3, [r7, #16]
-  66:.\main.c      ****             steering = 0;
- 276              		.loc 1 66 0
- 277 0224 4FF00003 		mov	r3, #0
- 278 0228 FB60     		str	r3, [r7, #12]
-  67:.\main.c      ****             averager = 0;
- 279              		.loc 1 67 0
- 280 022a 4FF00003 		mov	r3, #0
- 281 022e BB60     		str	r3, [r7, #8]
- 282              	.L2:
-  70:.\main.c      ****         if(ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))
- 283              		.loc 1 70 0
- 284 0230 4FF00000 		mov	r0, #0
- 285 0234 FFF7FEFF 		bl	ADC_SAR_IsEndConversion
- 286 0238 0346     		mov	r3, r0
- 287 023a 002B     		cmp	r3, #0
- 288 023c 3FF406AF 		beq	.L5
-  72:.\main.c      ****             throttle1 = throttle1 + ADC_SAR_GetResult16(0);         //summing values over the time 
- 289              		.loc 1 72 0
- 290 0240 4FF00000 		mov	r0, #0
- 291 0244 FFF7FEFF 		bl	ADC_SAR_GetResult16
- 292 0248 0346     		mov	r3, r0
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccuOfkuI.s 			page 8
+ 253 0009 1B       		.uleb128 0x1b
+ 254 000a 0E       		.uleb128 0xe
+ 255 000b 55       		.uleb128 0x55
+ 256 000c 06       		.uleb128 0x6
+ 257 000d 11       		.uleb128 0x11
+ 258 000e 01       		.uleb128 0x1
+ 259 000f 52       		.uleb128 0x52
+ 260 0010 01       		.uleb128 0x1
+ 261 0011 10       		.uleb128 0x10
+ 262 0012 06       		.uleb128 0x6
+ 263 0013 00       		.byte	0
+ 264 0014 00       		.byte	0
+ 265 0015 02       		.uleb128 0x2
+ 266 0016 24       		.uleb128 0x24
+ 267 0017 00       		.byte	0
+ 268 0018 0B       		.uleb128 0xb
+ 269 0019 0B       		.uleb128 0xb
+ 270 001a 3E       		.uleb128 0x3e
+ 271 001b 0B       		.uleb128 0xb
+ 272 001c 03       		.uleb128 0x3
+ 273 001d 0E       		.uleb128 0xe
+ 274 001e 00       		.byte	0
+ 275 001f 00       		.byte	0
+ 276 0020 03       		.uleb128 0x3
+ 277 0021 16       		.uleb128 0x16
+ 278 0022 00       		.byte	0
+ 279 0023 03       		.uleb128 0x3
+ 280 0024 0E       		.uleb128 0xe
+ 281 0025 3A       		.uleb128 0x3a
+ 282 0026 0B       		.uleb128 0xb
+ 283 0027 3B       		.uleb128 0x3b
+ 284 0028 0B       		.uleb128 0xb
+ 285 0029 49       		.uleb128 0x49
+ 286 002a 13       		.uleb128 0x13
+ 287 002b 00       		.byte	0
+ 288 002c 00       		.byte	0
+ 289 002d 04       		.uleb128 0x4
+ 290 002e 24       		.uleb128 0x24
+ 291 002f 00       		.byte	0
+ 292 0030 0B       		.uleb128 0xb
+ 293 0031 0B       		.uleb128 0xb
+ 294 0032 3E       		.uleb128 0x3e
+ 295 0033 0B       		.uleb128 0xb
+ 296 0034 03       		.uleb128 0x3
+ 297 0035 08       		.uleb128 0x8
+ 298 0036 00       		.byte	0
+ 299 0037 00       		.byte	0
+ 300 0038 05       		.uleb128 0x5
+ 301 0039 2E       		.uleb128 0x2e
+ 302 003a 01       		.byte	0x1
+ 303 003b 3F       		.uleb128 0x3f
+ 304 003c 0C       		.uleb128 0xc
+ 305 003d 03       		.uleb128 0x3
+ 306 003e 0E       		.uleb128 0xe
+ 307 003f 3A       		.uleb128 0x3a
+ 308 0040 0B       		.uleb128 0xb
+ 309 0041 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccm5HVqs.s 			page 8
 
 
- 293 024a FA69     		ldr	r2, [r7, #28]
- 294 024c D318     		adds	r3, r2, r3
- 295 024e FB61     		str	r3, [r7, #28]
-  73:.\main.c      ****             throttle2 = throttle2 + ADC_SAR_GetResult16(1);
- 296              		.loc 1 73 0
- 297 0250 4FF00100 		mov	r0, #1
- 298 0254 FFF7FEFF 		bl	ADC_SAR_GetResult16
- 299 0258 0346     		mov	r3, r0
- 300 025a BA69     		ldr	r2, [r7, #24]
- 301 025c D318     		adds	r3, r2, r3
- 302 025e BB61     		str	r3, [r7, #24]
-  74:.\main.c      ****             brake1 = brake1 + ADC_SAR_GetResult16(2);
- 303              		.loc 1 74 0
- 304 0260 4FF00200 		mov	r0, #2
- 305 0264 FFF7FEFF 		bl	ADC_SAR_GetResult16
- 306 0268 0346     		mov	r3, r0
- 307 026a 7A69     		ldr	r2, [r7, #20]
- 308 026c D318     		adds	r3, r2, r3
- 309 026e 7B61     		str	r3, [r7, #20]
-  75:.\main.c      ****             brake2 = brake2 + ADC_SAR_GetResult16(3);
- 310              		.loc 1 75 0
- 311 0270 4FF00300 		mov	r0, #3
- 312 0274 FFF7FEFF 		bl	ADC_SAR_GetResult16
- 313 0278 0346     		mov	r3, r0
- 314 027a 3A69     		ldr	r2, [r7, #16]
- 315 027c D318     		adds	r3, r2, r3
- 316 027e 3B61     		str	r3, [r7, #16]
-  76:.\main.c      ****             steering = steering + ADC_SAR_GetResult16(4);
- 317              		.loc 1 76 0
- 318 0280 4FF00400 		mov	r0, #4
- 319 0284 FFF7FEFF 		bl	ADC_SAR_GetResult16
- 320 0288 0346     		mov	r3, r0
- 321 028a FA68     		ldr	r2, [r7, #12]
- 322 028c D318     		adds	r3, r2, r3
- 323 028e FB60     		str	r3, [r7, #12]
-  79:.\main.c      ****             averager++;
- 324              		.loc 1 79 0
- 325 0290 BB68     		ldr	r3, [r7, #8]
- 326 0292 03F10103 		add	r3, r3, #1
- 327 0296 BB60     		str	r3, [r7, #8]
- 328              		.loc 1 82 0
- 329 0298 D8E6     		b	.L5
- 330              		.cfi_endproc
- 331              	.LFE56:
- 332              		.size	main, .-main
- 333 029a 00BF     		.text
- 334              	.Letext0:
- 335              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.0\\psoc creator\\import\\gnu_cs\\arm\\4
- 336              		.file 3 "./Generated_Source/PSoC5/cytypes.h"
- 337              		.file 4 "./Generated_Source/PSoC5/core_cm3.h"
- 338              		.section	.debug_info,"",%progbits
- 339              	.Ldebug_info0:
- 340 0000 59010000 		.4byte	0x159
- 341 0004 0200     		.2byte	0x2
- 342 0006 00000000 		.4byte	.Ldebug_abbrev0
- 343 000a 04       		.byte	0x4
- 344 000b 01       		.uleb128 0x1
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccuOfkuI.s 			page 9
+ 310 0042 0B       		.uleb128 0xb
+ 311 0043 49       		.uleb128 0x49
+ 312 0044 13       		.uleb128 0x13
+ 313 0045 11       		.uleb128 0x11
+ 314 0046 01       		.uleb128 0x1
+ 315 0047 12       		.uleb128 0x12
+ 316 0048 01       		.uleb128 0x1
+ 317 0049 40       		.uleb128 0x40
+ 318 004a 06       		.uleb128 0x6
+ 319 004b 9642     		.uleb128 0x2116
+ 320 004d 0C       		.uleb128 0xc
+ 321 004e 01       		.uleb128 0x1
+ 322 004f 13       		.uleb128 0x13
+ 323 0050 00       		.byte	0
+ 324 0051 00       		.byte	0
+ 325 0052 06       		.uleb128 0x6
+ 326 0053 34       		.uleb128 0x34
+ 327 0054 00       		.byte	0
+ 328 0055 03       		.uleb128 0x3
+ 329 0056 0E       		.uleb128 0xe
+ 330 0057 3A       		.uleb128 0x3a
+ 331 0058 0B       		.uleb128 0xb
+ 332 0059 3B       		.uleb128 0x3b
+ 333 005a 0B       		.uleb128 0xb
+ 334 005b 49       		.uleb128 0x49
+ 335 005c 13       		.uleb128 0x13
+ 336 005d 02       		.uleb128 0x2
+ 337 005e 0A       		.uleb128 0xa
+ 338 005f 00       		.byte	0
+ 339 0060 00       		.byte	0
+ 340 0061 07       		.uleb128 0x7
+ 341 0062 34       		.uleb128 0x34
+ 342 0063 00       		.byte	0
+ 343 0064 03       		.uleb128 0x3
+ 344 0065 0E       		.uleb128 0xe
+ 345 0066 3A       		.uleb128 0x3a
+ 346 0067 0B       		.uleb128 0xb
+ 347 0068 3B       		.uleb128 0x3b
+ 348 0069 05       		.uleb128 0x5
+ 349 006a 49       		.uleb128 0x49
+ 350 006b 13       		.uleb128 0x13
+ 351 006c 3F       		.uleb128 0x3f
+ 352 006d 0C       		.uleb128 0xc
+ 353 006e 3C       		.uleb128 0x3c
+ 354 006f 0C       		.uleb128 0xc
+ 355 0070 00       		.byte	0
+ 356 0071 00       		.byte	0
+ 357 0072 08       		.uleb128 0x8
+ 358 0073 35       		.uleb128 0x35
+ 359 0074 00       		.byte	0
+ 360 0075 49       		.uleb128 0x49
+ 361 0076 13       		.uleb128 0x13
+ 362 0077 00       		.byte	0
+ 363 0078 00       		.byte	0
+ 364 0079 00       		.byte	0
+ 365              		.section	.debug_loc,"",%progbits
+ 366              	.Ldebug_loc0:
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccm5HVqs.s 			page 9
 
 
- 345 000c 67010000 		.4byte	.LASF26
- 346 0010 01       		.byte	0x1
- 347 0011 A8000000 		.4byte	.LASF27
- 348 0015 00000000 		.4byte	.LASF28
- 349 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 350 001d 00000000 		.4byte	0
- 351 0021 00000000 		.4byte	0
- 352 0025 00000000 		.4byte	.Ldebug_line0
- 353 0029 02       		.uleb128 0x2
- 354 002a 01       		.byte	0x1
- 355 002b 06       		.byte	0x6
- 356 002c B9010000 		.4byte	.LASF0
- 357 0030 02       		.uleb128 0x2
- 358 0031 01       		.byte	0x1
- 359 0032 08       		.byte	0x8
- 360 0033 9A000000 		.4byte	.LASF1
- 361 0037 02       		.uleb128 0x2
- 362 0038 02       		.byte	0x2
- 363 0039 05       		.byte	0x5
- 364 003a F3000000 		.4byte	.LASF2
- 365 003e 02       		.uleb128 0x2
- 366 003f 02       		.byte	0x2
- 367 0040 07       		.byte	0x7
- 368 0041 C3000000 		.4byte	.LASF3
- 369 0045 03       		.uleb128 0x3
- 370 0046 34010000 		.4byte	.LASF9
- 371 004a 02       		.byte	0x2
- 372 004b 4F       		.byte	0x4f
- 373 004c 50000000 		.4byte	0x50
- 374 0050 02       		.uleb128 0x2
- 375 0051 04       		.byte	0x4
- 376 0052 05       		.byte	0x5
- 377 0053 B0010000 		.4byte	.LASF4
- 378 0057 02       		.uleb128 0x2
- 379 0058 04       		.byte	0x4
- 380 0059 07       		.byte	0x7
- 381 005a B1000000 		.4byte	.LASF5
- 382 005e 02       		.uleb128 0x2
- 383 005f 08       		.byte	0x8
- 384 0060 05       		.byte	0x5
- 385 0061 45010000 		.4byte	.LASF6
- 386 0065 02       		.uleb128 0x2
- 387 0066 08       		.byte	0x8
- 388 0067 07       		.byte	0x7
- 389 0068 1D010000 		.4byte	.LASF7
- 390 006c 04       		.uleb128 0x4
- 391 006d 04       		.byte	0x4
- 392 006e 05       		.byte	0x5
- 393 006f 696E7400 		.ascii	"int\000"
- 394 0073 02       		.uleb128 0x2
- 395 0074 04       		.byte	0x4
- 396 0075 07       		.byte	0x7
- 397 0076 10010000 		.4byte	.LASF8
- 398 007a 03       		.uleb128 0x3
- 399 007b 61010000 		.4byte	.LASF10
- 400 007f 03       		.byte	0x3
- 401 0080 5B       		.byte	0x5b
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccuOfkuI.s 			page 10
+ 367              	.LLST0:
+ 368 0000 00000000 		.4byte	.LFB56
+ 369 0004 02000000 		.4byte	.LCFI0
+ 370 0008 0200     		.2byte	0x2
+ 371 000a 7D       		.byte	0x7d
+ 372 000b 00       		.sleb128 0
+ 373 000c 02000000 		.4byte	.LCFI0
+ 374 0010 04000000 		.4byte	.LCFI1
+ 375 0014 0200     		.2byte	0x2
+ 376 0016 7D       		.byte	0x7d
+ 377 0017 08       		.sleb128 8
+ 378 0018 04000000 		.4byte	.LCFI1
+ 379 001c 06000000 		.4byte	.LCFI2
+ 380 0020 0200     		.2byte	0x2
+ 381 0022 7D       		.byte	0x7d
+ 382 0023 20       		.sleb128 32
+ 383 0024 06000000 		.4byte	.LCFI2
+ 384 0028 4E000000 		.4byte	.LFE56
+ 385 002c 0200     		.2byte	0x2
+ 386 002e 77       		.byte	0x77
+ 387 002f 20       		.sleb128 32
+ 388 0030 00000000 		.4byte	0
+ 389 0034 00000000 		.4byte	0
+ 390              		.section	.debug_aranges,"",%progbits
+ 391 0000 1C000000 		.4byte	0x1c
+ 392 0004 0200     		.2byte	0x2
+ 393 0006 00000000 		.4byte	.Ldebug_info0
+ 394 000a 04       		.byte	0x4
+ 395 000b 00       		.byte	0
+ 396 000c 0000     		.2byte	0
+ 397 000e 0000     		.2byte	0
+ 398 0010 00000000 		.4byte	.LFB56
+ 399 0014 4E000000 		.4byte	.LFE56-.LFB56
+ 400 0018 00000000 		.4byte	0
+ 401 001c 00000000 		.4byte	0
+ 402              		.section	.debug_ranges,"",%progbits
+ 403              	.Ldebug_ranges0:
+ 404 0000 00000000 		.4byte	.LFB56
+ 405 0004 4E000000 		.4byte	.LFE56
+ 406 0008 00000000 		.4byte	0
+ 407 000c 00000000 		.4byte	0
+ 408              		.section	.debug_line,"",%progbits
+ 409              	.Ldebug_line0:
+ 410 0000 1F010000 		.section	.debug_str,"MS",%progbits,1
+ 410      0200F900 
+ 410      00000201 
+ 410      FB0E0D00 
+ 410      01010101 
+ 411              	.LASF6:
+ 412 0000 6C6F6E67 		.ascii	"long long int\000"
+ 412      206C6F6E 
+ 412      6720696E 
+ 412      7400
+ 413              	.LASF10:
+ 414 000e 75696E74 		.ascii	"uint32\000"
+ 414      333200
+ 415              	.LASF25:
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccm5HVqs.s 			page 10
 
 
- 402 0081 30000000 		.4byte	0x30
- 403 0085 03       		.uleb128 0x3
- 404 0086 FD000000 		.4byte	.LASF11
- 405 008a 03       		.byte	0x3
- 406 008b 5C       		.byte	0x5c
- 407 008c 3E000000 		.4byte	0x3e
- 408 0090 03       		.uleb128 0x3
- 409 0091 04010000 		.4byte	.LASF12
- 410 0095 03       		.byte	0x3
- 411 0096 5D       		.byte	0x5d
- 412 0097 57000000 		.4byte	0x57
- 413 009b 02       		.uleb128 0x2
- 414 009c 04       		.byte	0x4
- 415 009d 04       		.byte	0x4
- 416 009e 88000000 		.4byte	.LASF13
- 417 00a2 02       		.uleb128 0x2
- 418 00a3 08       		.byte	0x8
- 419 00a4 04       		.byte	0x4
- 420 00a5 EC000000 		.4byte	.LASF14
- 421 00a9 02       		.uleb128 0x2
- 422 00aa 01       		.byte	0x1
- 423 00ab 08       		.byte	0x8
- 424 00ac 53010000 		.4byte	.LASF15
- 425 00b0 05       		.uleb128 0x5
- 426 00b1 7A000000 		.4byte	0x7a
- 427 00b5 02       		.uleb128 0x2
- 428 00b6 04       		.byte	0x4
- 429 00b7 07       		.byte	0x7
- 430 00b8 3C010000 		.4byte	.LASF16
- 431 00bc 06       		.uleb128 0x6
- 432 00bd 01       		.byte	0x1
- 433 00be 0B010000 		.4byte	.LASF29
- 434 00c2 01       		.byte	0x1
- 435 00c3 15       		.byte	0x15
- 436 00c4 6C000000 		.4byte	0x6c
- 437 00c8 00000000 		.4byte	.LFB56
- 438 00cc 9A020000 		.4byte	.LFE56
- 439 00d0 00000000 		.4byte	.LLST0
- 440 00d4 01       		.byte	0x1
- 441 00d5 3C010000 		.4byte	0x13c
- 442 00d9 07       		.uleb128 0x7
- 443 00da E3000000 		.4byte	.LASF17
- 444 00de 01       		.byte	0x1
- 445 00df 1F       		.byte	0x1f
- 446 00e0 90000000 		.4byte	0x90
- 447 00e4 02       		.byte	0x2
- 448 00e5 91       		.byte	0x91
- 449 00e6 5C       		.sleb128 -36
- 450 00e7 07       		.uleb128 0x7
- 451 00e8 66000000 		.4byte	.LASF18
- 452 00ec 01       		.byte	0x1
- 453 00ed 20       		.byte	0x20
- 454 00ee 90000000 		.4byte	0x90
- 455 00f2 02       		.byte	0x2
- 456 00f3 91       		.byte	0x91
- 457 00f4 74       		.sleb128 -12
- 458 00f5 07       		.uleb128 0x7
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccuOfkuI.s 			page 11
+ 416 0015 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 416      52784275 
+ 416      66666572 
+ 416      00
+ 417              	.LASF8:
+ 418 0022 756E7369 		.ascii	"unsigned int\000"
+ 418      676E6564 
+ 418      20696E74 
+ 418      00
+ 419              	.LASF24:
+ 420 002f 6D61696E 		.ascii	"main\000"
+ 420      00
+ 421              	.LASF21:
+ 422 0034 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 422      4320342E 
+ 422      372E3320 
+ 422      32303133 
+ 422      30333132 
+ 423 0067 616E6368 		.ascii	"anch revision 196615]\000"
+ 423      20726576 
+ 423      6973696F 
+ 423      6E203139 
+ 423      36363135 
+ 424              	.LASF5:
+ 425 007d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 425      20756E73 
+ 425      69676E65 
+ 425      6420696E 
+ 425      7400
+ 426              	.LASF7:
+ 427 008f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 427      206C6F6E 
+ 427      6720756E 
+ 427      7369676E 
+ 427      65642069 
+ 428              	.LASF3:
+ 429 00a6 73686F72 		.ascii	"short unsigned int\000"
+ 429      7420756E 
+ 429      7369676E 
+ 429      65642069 
+ 429      6E7400
+ 430              	.LASF20:
+ 431 00b9 61766572 		.ascii	"averager\000"
+ 431      61676572 
+ 431      00
+ 432              	.LASF17:
+ 433 00c2 6272616B 		.ascii	"brake1\000"
+ 433      653100
+ 434              	.LASF18:
+ 435 00c9 6272616B 		.ascii	"brake2\000"
+ 435      653200
+ 436              	.LASF19:
+ 437 00d0 73746565 		.ascii	"steering\000"
+ 437      72696E67 
+ 437      00
+ 438              	.LASF1:
+ 439 00d9 756E7369 		.ascii	"unsigned char\000"
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccm5HVqs.s 			page 11
 
 
- 459 00f6 70000000 		.4byte	.LASF19
- 460 00fa 01       		.byte	0x1
- 461 00fb 21       		.byte	0x21
- 462 00fc 90000000 		.4byte	0x90
- 463 0100 02       		.byte	0x2
- 464 0101 91       		.byte	0x91
- 465 0102 70       		.sleb128 -16
- 466 0103 07       		.uleb128 0x7
- 467 0104 7A000000 		.4byte	.LASF20
- 468 0108 01       		.byte	0x1
- 469 0109 22       		.byte	0x22
- 470 010a 90000000 		.4byte	0x90
- 471 010e 02       		.byte	0x2
- 472 010f 91       		.byte	0x91
- 473 0110 6C       		.sleb128 -20
- 474 0111 07       		.uleb128 0x7
- 475 0112 81000000 		.4byte	.LASF21
- 476 0116 01       		.byte	0x1
- 477 0117 23       		.byte	0x23
- 478 0118 90000000 		.4byte	0x90
- 479 011c 02       		.byte	0x2
- 480 011d 91       		.byte	0x91
- 481 011e 68       		.sleb128 -24
- 482 011f 07       		.uleb128 0x7
- 483 0120 5D000000 		.4byte	.LASF22
- 484 0124 01       		.byte	0x1
- 485 0125 24       		.byte	0x24
- 486 0126 90000000 		.4byte	0x90
- 487 012a 02       		.byte	0x2
- 488 012b 91       		.byte	0x91
- 489 012c 64       		.sleb128 -28
- 490 012d 07       		.uleb128 0x7
- 491 012e 58010000 		.4byte	.LASF23
- 492 0132 01       		.byte	0x1
- 493 0133 25       		.byte	0x25
- 494 0134 90000000 		.4byte	0x90
- 495 0138 02       		.byte	0x2
- 496 0139 91       		.byte	0x91
- 497 013a 60       		.sleb128 -32
- 498 013b 00       		.byte	0
- 499 013c 08       		.uleb128 0x8
- 500 013d D6000000 		.4byte	.LASF24
- 501 0141 04       		.byte	0x4
- 502 0142 1606     		.2byte	0x616
- 503 0144 4A010000 		.4byte	0x14a
- 504 0148 01       		.byte	0x1
- 505 0149 01       		.byte	0x1
- 506 014a 05       		.uleb128 0x5
- 507 014b 45000000 		.4byte	0x45
- 508 014f 09       		.uleb128 0x9
- 509 0150 8E000000 		.4byte	.LASF25
- 510 0154 01       		.byte	0x1
- 511 0155 13       		.byte	0x13
- 512 0156 B0000000 		.4byte	0xb0
- 513 015a 01       		.byte	0x1
- 514 015b 01       		.byte	0x1
- 515 015c 00       		.byte	0
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccuOfkuI.s 			page 12
-
-
- 516              		.section	.debug_abbrev,"",%progbits
- 517              	.Ldebug_abbrev0:
- 518 0000 01       		.uleb128 0x1
- 519 0001 11       		.uleb128 0x11
- 520 0002 01       		.byte	0x1
- 521 0003 25       		.uleb128 0x25
- 522 0004 0E       		.uleb128 0xe
- 523 0005 13       		.uleb128 0x13
- 524 0006 0B       		.uleb128 0xb
- 525 0007 03       		.uleb128 0x3
- 526 0008 0E       		.uleb128 0xe
- 527 0009 1B       		.uleb128 0x1b
- 528 000a 0E       		.uleb128 0xe
- 529 000b 55       		.uleb128 0x55
- 530 000c 06       		.uleb128 0x6
- 531 000d 11       		.uleb128 0x11
- 532 000e 01       		.uleb128 0x1
- 533 000f 52       		.uleb128 0x52
- 534 0010 01       		.uleb128 0x1
- 535 0011 10       		.uleb128 0x10
- 536 0012 06       		.uleb128 0x6
- 537 0013 00       		.byte	0
- 538 0014 00       		.byte	0
- 539 0015 02       		.uleb128 0x2
- 540 0016 24       		.uleb128 0x24
- 541 0017 00       		.byte	0
- 542 0018 0B       		.uleb128 0xb
- 543 0019 0B       		.uleb128 0xb
- 544 001a 3E       		.uleb128 0x3e
- 545 001b 0B       		.uleb128 0xb
- 546 001c 03       		.uleb128 0x3
- 547 001d 0E       		.uleb128 0xe
- 548 001e 00       		.byte	0
- 549 001f 00       		.byte	0
- 550 0020 03       		.uleb128 0x3
- 551 0021 16       		.uleb128 0x16
- 552 0022 00       		.byte	0
- 553 0023 03       		.uleb128 0x3
- 554 0024 0E       		.uleb128 0xe
- 555 0025 3A       		.uleb128 0x3a
- 556 0026 0B       		.uleb128 0xb
- 557 0027 3B       		.uleb128 0x3b
- 558 0028 0B       		.uleb128 0xb
- 559 0029 49       		.uleb128 0x49
- 560 002a 13       		.uleb128 0x13
- 561 002b 00       		.byte	0
- 562 002c 00       		.byte	0
- 563 002d 04       		.uleb128 0x4
- 564 002e 24       		.uleb128 0x24
- 565 002f 00       		.byte	0
- 566 0030 0B       		.uleb128 0xb
- 567 0031 0B       		.uleb128 0xb
- 568 0032 3E       		.uleb128 0x3e
- 569 0033 0B       		.uleb128 0xb
- 570 0034 03       		.uleb128 0x3
- 571 0035 08       		.uleb128 0x8
- 572 0036 00       		.byte	0
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccuOfkuI.s 			page 13
-
-
- 573 0037 00       		.byte	0
- 574 0038 05       		.uleb128 0x5
- 575 0039 35       		.uleb128 0x35
- 576 003a 00       		.byte	0
- 577 003b 49       		.uleb128 0x49
- 578 003c 13       		.uleb128 0x13
- 579 003d 00       		.byte	0
- 580 003e 00       		.byte	0
- 581 003f 06       		.uleb128 0x6
- 582 0040 2E       		.uleb128 0x2e
- 583 0041 01       		.byte	0x1
- 584 0042 3F       		.uleb128 0x3f
- 585 0043 0C       		.uleb128 0xc
- 586 0044 03       		.uleb128 0x3
- 587 0045 0E       		.uleb128 0xe
- 588 0046 3A       		.uleb128 0x3a
- 589 0047 0B       		.uleb128 0xb
- 590 0048 3B       		.uleb128 0x3b
- 591 0049 0B       		.uleb128 0xb
- 592 004a 49       		.uleb128 0x49
- 593 004b 13       		.uleb128 0x13
- 594 004c 11       		.uleb128 0x11
- 595 004d 01       		.uleb128 0x1
- 596 004e 12       		.uleb128 0x12
- 597 004f 01       		.uleb128 0x1
- 598 0050 40       		.uleb128 0x40
- 599 0051 06       		.uleb128 0x6
- 600 0052 9642     		.uleb128 0x2116
- 601 0054 0C       		.uleb128 0xc
- 602 0055 01       		.uleb128 0x1
- 603 0056 13       		.uleb128 0x13
- 604 0057 00       		.byte	0
- 605 0058 00       		.byte	0
- 606 0059 07       		.uleb128 0x7
- 607 005a 34       		.uleb128 0x34
- 608 005b 00       		.byte	0
- 609 005c 03       		.uleb128 0x3
- 610 005d 0E       		.uleb128 0xe
- 611 005e 3A       		.uleb128 0x3a
- 612 005f 0B       		.uleb128 0xb
- 613 0060 3B       		.uleb128 0x3b
- 614 0061 0B       		.uleb128 0xb
- 615 0062 49       		.uleb128 0x49
- 616 0063 13       		.uleb128 0x13
- 617 0064 02       		.uleb128 0x2
- 618 0065 0A       		.uleb128 0xa
- 619 0066 00       		.byte	0
- 620 0067 00       		.byte	0
- 621 0068 08       		.uleb128 0x8
- 622 0069 34       		.uleb128 0x34
- 623 006a 00       		.byte	0
- 624 006b 03       		.uleb128 0x3
- 625 006c 0E       		.uleb128 0xe
- 626 006d 3A       		.uleb128 0x3a
- 627 006e 0B       		.uleb128 0xb
- 628 006f 3B       		.uleb128 0x3b
- 629 0070 05       		.uleb128 0x5
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccuOfkuI.s 			page 14
-
-
- 630 0071 49       		.uleb128 0x49
- 631 0072 13       		.uleb128 0x13
- 632 0073 3F       		.uleb128 0x3f
- 633 0074 0C       		.uleb128 0xc
- 634 0075 3C       		.uleb128 0x3c
- 635 0076 0C       		.uleb128 0xc
- 636 0077 00       		.byte	0
- 637 0078 00       		.byte	0
- 638 0079 09       		.uleb128 0x9
- 639 007a 34       		.uleb128 0x34
- 640 007b 00       		.byte	0
- 641 007c 03       		.uleb128 0x3
- 642 007d 0E       		.uleb128 0xe
- 643 007e 3A       		.uleb128 0x3a
- 644 007f 0B       		.uleb128 0xb
- 645 0080 3B       		.uleb128 0x3b
- 646 0081 0B       		.uleb128 0xb
- 647 0082 49       		.uleb128 0x49
- 648 0083 13       		.uleb128 0x13
- 649 0084 3F       		.uleb128 0x3f
- 650 0085 0C       		.uleb128 0xc
- 651 0086 3C       		.uleb128 0x3c
- 652 0087 0C       		.uleb128 0xc
- 653 0088 00       		.byte	0
- 654 0089 00       		.byte	0
- 655 008a 00       		.byte	0
- 656              		.section	.debug_loc,"",%progbits
- 657              	.Ldebug_loc0:
- 658              	.LLST0:
- 659 0000 00000000 		.4byte	.LFB56
- 660 0004 02000000 		.4byte	.LCFI0
- 661 0008 0200     		.2byte	0x2
- 662 000a 7D       		.byte	0x7d
- 663 000b 00       		.sleb128 0
- 664 000c 02000000 		.4byte	.LCFI0
- 665 0010 04000000 		.4byte	.LCFI1
- 666 0014 0200     		.2byte	0x2
- 667 0016 7D       		.byte	0x7d
- 668 0017 08       		.sleb128 8
- 669 0018 04000000 		.4byte	.LCFI1
- 670 001c 06000000 		.4byte	.LCFI2
- 671 0020 0200     		.2byte	0x2
- 672 0022 7D       		.byte	0x7d
- 673 0023 28       		.sleb128 40
- 674 0024 06000000 		.4byte	.LCFI2
- 675 0028 9A020000 		.4byte	.LFE56
- 676 002c 0200     		.2byte	0x2
- 677 002e 77       		.byte	0x77
- 678 002f 28       		.sleb128 40
- 679 0030 00000000 		.4byte	0
- 680 0034 00000000 		.4byte	0
- 681              		.section	.debug_aranges,"",%progbits
- 682 0000 1C000000 		.4byte	0x1c
- 683 0004 0200     		.2byte	0x2
- 684 0006 00000000 		.4byte	.Ldebug_info0
- 685 000a 04       		.byte	0x4
- 686 000b 00       		.byte	0
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccuOfkuI.s 			page 15
-
-
- 687 000c 0000     		.2byte	0
- 688 000e 0000     		.2byte	0
- 689 0010 00000000 		.4byte	.LFB56
- 690 0014 9A020000 		.4byte	.LFE56-.LFB56
- 691 0018 00000000 		.4byte	0
- 692 001c 00000000 		.4byte	0
- 693              		.section	.debug_ranges,"",%progbits
- 694              	.Ldebug_ranges0:
- 695 0000 00000000 		.4byte	.LFB56
- 696 0004 9A020000 		.4byte	.LFE56
- 697 0008 00000000 		.4byte	0
- 698 000c 00000000 		.4byte	0
- 699              		.section	.debug_line,"",%progbits
- 700              	.Ldebug_line0:
- 701 0000 45010000 		.section	.debug_str,"MS",%progbits,1
- 701      0200F900 
- 701      00000201 
- 701      FB0E0D00 
- 701      01010101 
- 702              	.LASF28:
- 703 0000 433A5C55 		.ascii	"C:\\Users\\Chai Yang\\Documents\\FSAE Pedal Node\\N"
- 703      73657273 
- 703      5C436861 
- 703      69205961 
- 703      6E675C44 
- 704 002e 6F64652D 		.ascii	"ode-Elephant\\Node-Elephant\\Node-Elephant.cydsn\000"
- 704      456C6570 
- 704      68616E74 
- 704      5C4E6F64 
- 704      652D456C 
- 705              	.LASF22:
- 706 005d 73746565 		.ascii	"steering\000"
- 706      72696E67 
- 706      00
- 707              	.LASF18:
- 708 0066 7468726F 		.ascii	"throttle1\000"
- 708      74746C65 
- 708      3100
- 709              	.LASF19:
- 710 0070 7468726F 		.ascii	"throttle2\000"
- 710      74746C65 
- 710      3200
- 711              	.LASF20:
- 712 007a 6272616B 		.ascii	"brake1\000"
- 712      653100
- 713              	.LASF21:
- 714 0081 6272616B 		.ascii	"brake2\000"
- 714      653200
- 715              	.LASF13:
- 716 0088 666C6F61 		.ascii	"float\000"
- 716      7400
- 717              	.LASF25:
- 718 008e 746F6767 		.ascii	"toggle_flag\000"
- 718      6C655F66 
- 718      6C616700 
- 719              	.LASF1:
- 720 009a 756E7369 		.ascii	"unsigned char\000"
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccuOfkuI.s 			page 16
-
-
- 720      676E6564 
- 720      20636861 
- 720      7200
- 721              	.LASF27:
- 722 00a8 2E5C6D61 		.ascii	".\\main.c\000"
- 722      696E2E63 
- 722      00
- 723              	.LASF5:
- 724 00b1 6C6F6E67 		.ascii	"long unsigned int\000"
- 724      20756E73 
- 724      69676E65 
- 724      6420696E 
- 724      7400
- 725              	.LASF3:
- 726 00c3 73686F72 		.ascii	"short unsigned int\000"
- 726      7420756E 
- 726      7369676E 
- 726      65642069 
- 726      6E7400
- 727              	.LASF24:
- 728 00d6 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 728      52784275 
- 728      66666572 
- 728      00
- 729              	.LASF17:
- 730 00e3 7468726F 		.ascii	"throttle\000"
- 730      74746C65 
- 730      00
- 731              	.LASF14:
- 732 00ec 646F7562 		.ascii	"double\000"
- 732      6C6500
- 733              	.LASF2:
- 734 00f3 73686F72 		.ascii	"short int\000"
- 734      7420696E 
- 734      7400
- 735              	.LASF11:
- 736 00fd 75696E74 		.ascii	"uint16\000"
- 736      313600
- 737              	.LASF12:
- 738 0104 75696E74 		.ascii	"uint32\000"
- 738      333200
- 739              	.LASF29:
- 740 010b 6D61696E 		.ascii	"main\000"
- 740      00
- 741              	.LASF8:
- 742 0110 756E7369 		.ascii	"unsigned int\000"
- 742      676E6564 
- 742      20696E74 
- 742      00
- 743              	.LASF7:
- 744 011d 6C6F6E67 		.ascii	"long long unsigned int\000"
- 744      206C6F6E 
- 744      6720756E 
- 744      7369676E 
- 744      65642069 
- 745              	.LASF9:
- 746 0134 696E7433 		.ascii	"int32_t\000"
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccuOfkuI.s 			page 17
-
-
- 746      325F7400 
- 747              	.LASF16:
- 748 013c 73697A65 		.ascii	"sizetype\000"
- 748      74797065 
- 748      00
- 749              	.LASF6:
- 750 0145 6C6F6E67 		.ascii	"long long int\000"
- 750      206C6F6E 
- 750      6720696E 
- 750      7400
- 751              	.LASF15:
- 752 0153 63686172 		.ascii	"char\000"
- 752      00
- 753              	.LASF23:
- 754 0158 61766572 		.ascii	"averager\000"
- 754      61676572 
- 754      00
- 755              	.LASF10:
- 756 0161 75696E74 		.ascii	"uint8\000"
- 756      3800
- 757              	.LASF26:
- 758 0167 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
- 758      4320342E 
- 758      372E3320 
- 758      32303133 
- 758      30333132 
- 759 019a 616E6368 		.ascii	"anch revision 196615]\000"
- 759      20726576 
- 759      6973696F 
- 759      6E203139 
- 759      36363135 
- 760              	.LASF4:
- 761 01b0 6C6F6E67 		.ascii	"long int\000"
- 761      20696E74 
- 761      00
- 762              	.LASF0:
- 763 01b9 7369676E 		.ascii	"signed char\000"
- 763      65642063 
- 763      68617200 
- 764              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br
+ 439      676E6564 
+ 439      20636861 
+ 439      7200
+ 440              	.LASF13:
+ 441 00e7 63686172 		.ascii	"char\000"
+ 441      00
+ 442              	.LASF4:
+ 443 00ec 6C6F6E67 		.ascii	"long int\000"
+ 443      20696E74 
+ 443      00
+ 444              	.LASF22:
+ 445 00f5 2E5C6D61 		.ascii	".\\main.c\000"
+ 445      696E2E63 
+ 445      00
+ 446              	.LASF12:
+ 447 00fe 646F7562 		.ascii	"double\000"
+ 447      6C6500
+ 448              	.LASF15:
+ 449 0105 7468726F 		.ascii	"throttle1\000"
+ 449      74746C65 
+ 449      3100
+ 450              	.LASF16:
+ 451 010f 7468726F 		.ascii	"throttle2\000"
+ 451      74746C65 
+ 451      3200
+ 452              	.LASF23:
+ 453 0119 433A5C55 		.ascii	"C:\\Users\\Chai Yang\\Documents\\GitHub\\Node-Eleph"
+ 453      73657273 
+ 453      5C436861 
+ 453      69205961 
+ 453      6E675C44 
+ 454 0147 616E745C 		.ascii	"ant\\Node-Elephant\\Node-Elephant.cydsn\000"
+ 454      4E6F6465 
+ 454      2D456C65 
+ 454      7068616E 
+ 454      745C4E6F 
+ 455              	.LASF0:
+ 456 016d 7369676E 		.ascii	"signed char\000"
+ 456      65642063 
+ 456      68617200 
+ 457              	.LASF11:
+ 458 0179 666C6F61 		.ascii	"float\000"
+ 458      7400
+ 459              	.LASF2:
+ 460 017f 73686F72 		.ascii	"short int\000"
+ 460      7420696E 
+ 460      7400
+ 461              	.LASF9:
+ 462 0189 696E7433 		.ascii	"int32_t\000"
+ 462      325F7400 
+ 463              	.LASF14:
+ 464 0191 73697A65 		.ascii	"sizetype\000"
+ 464      74797065 
+ 464      00
+ 465              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

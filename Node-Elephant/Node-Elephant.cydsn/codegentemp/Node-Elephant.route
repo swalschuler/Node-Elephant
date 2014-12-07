@@ -25,7 +25,7 @@ net \ADC_SAR:nrq\
 	switch ":udb@[UDB=(3,4)]:pld0:input_permute.mc0_main_2==>:udb@[UDB=(3,4)]:pld0:mc0.main_2"
 	term   ":udb@[UDB=(3,4)]:pld0:mc0.main_2"
 end \ADC_SAR:nrq\
-net Net_489
+net Net_925
 	term   ":udb@[UDB=(3,4)]:pld1:mc0.q"
 	switch ":udb@[UDB=(3,4)]:pld1:mc0.q==>:udb@[UDB=(3,4)]:pld1:output_permute3.q_0"
 	switch ":udb@[UDB=(3,4)]:pld1:output_permute3.output_3==>Stub-:udbswitch@[UDB=(2,4)][side=top]:v33"
@@ -56,7 +56,7 @@ net Net_489
 	switch "Stub-:dsiswitch_bottom@[DSI=(1,5)][side=bottom]:dsihc_bottom:v48+:dsiswitch_bottom@[DSI=(1,5)][side=bottom]:dsihc_bottom:v50==>:interrupt_idmux_0.in_2"
 	switch ":interrupt_idmux_0.interrupt_idmux_0__out==>:interrupt_0.interrupt"
 	term   ":interrupt_0.interrupt"
-end Net_489
+end Net_925
 net \ADC_SAR:bSAR_SEQ:bus_clk_reg\
 	term   ":udb@[UDB=(3,4)]:pld0:mc0.q"
 	switch ":udb@[UDB=(3,4)]:pld0:mc0.q==>:udb@[UDB=(3,4)]:pld0:output_permute0.q_0"
@@ -2205,21 +2205,6 @@ net Net_11
 	switch "Stub-:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v122+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v124+:dsiswitch_top@[DSI=(0,0)][side=top]:dsihc_top:v126==>:cancell.can_rx"
 	term   ":cancell.can_rx"
 end Net_11
-net Net_488
-	term   ":sarcell_1.next"
-	switch ":sarcell_1.next==>Stub-:dsiswitch_top@[DSI=(0,4)][side=top]:dsihc_top:v36+:dsiswitch_top@[DSI=(0,4)][side=top]:dsihc_top:v38"
-	switch "OStub-:dsiswitch_top@[DSI=(0,4)][side=top]:dsihc_top:v36+:dsiswitch_top@[DSI=(0,4)][side=top]:dsihc_top:v38"
-	switch ":dsiswitch_top@[DSI=(0,4)][side=top]:dsihc_top:36,57"
-	switch ":hvswitch@[UDB=(0,4)][side=left]:8,57_f"
-	switch ":hvswitch@[UDB=(0,4)][side=left]:vseg_8_bot_b"
-	switch ":hvswitch@[UDB=(1,4)][side=left]:vseg_8_bot_b"
-	switch ":hvswitch@[UDB=(2,4)][side=left]:8,19_b"
-	switch ":udbswitch@[UDB=(2,4)][side=top]:15,19_f"
-	switch "IStub-:udbswitch@[UDB=(2,4)][side=top]:v15"
-	switch "Stub-:udbswitch@[UDB=(2,4)][side=top]:v15==>:udb@[UDB=(3,4)]:pld0:input_permute.input_7"
-	switch ":udb@[UDB=(3,4)]:pld0:input_permute.mc1_main_0==>:udb@[UDB=(3,4)]:pld0:mc1.main_0"
-	term   ":udb@[UDB=(3,4)]:pld0:mc1.main_0"
-end Net_488
 net Net_684
 	term   ":udb@[UDB=(2,1)]:statusicell.interrupt"
 	switch ":udb@[UDB=(2,1)]:statusicell.interrupt==>:udb@[UDB=(2,1)]:statuscell_status_7_permute.in_0"
@@ -2266,6 +2251,21 @@ net Net_715
 	switch ":interrupt_idmux_16.interrupt_idmux_16__out==>:interrupt_16.interrupt"
 	term   ":interrupt_16.interrupt"
 end Net_715
+net Net_924
+	term   ":sarcell_1.next"
+	switch ":sarcell_1.next==>Stub-:dsiswitch_top@[DSI=(0,4)][side=top]:dsihc_top:v36+:dsiswitch_top@[DSI=(0,4)][side=top]:dsihc_top:v38"
+	switch "OStub-:dsiswitch_top@[DSI=(0,4)][side=top]:dsihc_top:v36+:dsiswitch_top@[DSI=(0,4)][side=top]:dsihc_top:v38"
+	switch ":dsiswitch_top@[DSI=(0,4)][side=top]:dsihc_top:36,57"
+	switch ":hvswitch@[UDB=(0,4)][side=left]:8,57_f"
+	switch ":hvswitch@[UDB=(0,4)][side=left]:vseg_8_bot_b"
+	switch ":hvswitch@[UDB=(1,4)][side=left]:vseg_8_bot_b"
+	switch ":hvswitch@[UDB=(2,4)][side=left]:8,19_b"
+	switch ":udbswitch@[UDB=(2,4)][side=top]:15,19_f"
+	switch "IStub-:udbswitch@[UDB=(2,4)][side=top]:v15"
+	switch "Stub-:udbswitch@[UDB=(2,4)][side=top]:v15==>:udb@[UDB=(3,4)]:pld0:input_permute.input_7"
+	switch ":udb@[UDB=(3,4)]:pld0:input_permute.mc1_main_0==>:udb@[UDB=(3,4)]:pld0:mc1.main_0"
+	term   ":udb@[UDB=(3,4)]:pld0:mc1.main_0"
+end Net_924
 net \ADC_SAR:AMuxHw_2_Decoder_one_hot_0\
 	term   ":udb@[UDB=(3,0)]:pld0:mc1.q"
 	switch ":udb@[UDB=(3,0)]:pld0:mc1.q==>:udb@[UDB=(3,0)]:pld0:output_permute1.q_1"
