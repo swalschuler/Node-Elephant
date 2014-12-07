@@ -1,0 +1,204 @@
+--------------- Build Started: 12/06/2014 02:28:11 Project: Node-Elephant, Configuration: ARM GCC 4.7.3 Debug ---------------
+cydsfit.exe "-.appdatapath" "C:\Users\Chai Yang\AppData\Local\Cypress Semiconductor\PSoC Creator\3.0" "-.fdsnotice" "-.fdswarpdepfile=warp_dependencies.txt" "-.fdselabdepfile=elab_dependencies.txt" "-.fdsbldfile=generated_files.txt" "-p" "C:\Users\Chai Yang\Documents\FSAE Pedal Node\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\Node-Elephant.cyprj" "-d" "CY8C5868AXI-LP035" "-s" "C:\Users\Chai Yang\Documents\FSAE Pedal Node\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\Generated_Source\PSoC5" "--" "-yv2" "-v3" "-ygs" "-q10" "-o2" "-.fftcfgtype=LE"
+Elaborating Design...
+ADD: sdb.M0065: information: Analog terminal "vdac_ref" on ADC_SAR_SEQ_v1_10 is unconnected.
+ * C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v1_10\PSoC5\ADC_SAR_SEQ_v1_10.cysch (Signal: vdac_ref)
+ * C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v1_10\PSoC5\ADC_SAR_SEQ_v1_10.cysch (Shape_798)
+ * C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v1_10\PSoC5\ADC_SAR_SEQ_v1_10.cysch (Shape_885)
+ADD: sdb.M0065: information: Analog terminal "AMuxHw_1.BoutTerm" on ADC_SAR_SEQ_v1_10 is unconnected.
+ * C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v1_10\PSoC5\ADC_SAR_SEQ_v1_10.cysch (Signal: V_diff1)
+ * C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v1_10\PSoC5\ADC_SAR_SEQ_v1_10.cysch (Shape_302)
+ * C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v1_10\PSoC5\ADC_SAR_SEQ_v1_10.cysch (Shape_387)
+ * C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v1_10\PSoC5\ADC_SAR_SEQ_v1_10.cysch (Shape_458.136)
+ * C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v1_10\PSoC5\ADC_SAR_SEQ_v1_10.cysch (Shape_533)
+ * C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v1_10\PSoC5\ADC_SAR_SEQ_v1_10.cysch (Shape_598)
+HDL Generation ...
+Synthesis ...
+Place and Route ...
+Tech mapping ...
+ADD: pft.M0040: information: The following 2 pin(s) will be assigned a location by the fitter: Rx_1(0), Tx_1(0)
+Info: mpr.M0037: Unused pieces of the design have been optimized out. See the Tech mapping section of the report file for details. (App=cydsfit)
+Analog Placement ...
+Info: apr.M0002: Analog signal "Net_498" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_499" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_501" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_503" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_504" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_506" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_508" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_509" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_511" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_513" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_514" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_516" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_518" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_519" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_521" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_523" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_524" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_526" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_528" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_529" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_531" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_533" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_534" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_536" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_538" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_539" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_541" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_543" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_544" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_546" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_548" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_549" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_551" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_553" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_554" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_556" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_558" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_559" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_561" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_563" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_564" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_566" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_568" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_569" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_570" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_571" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_572" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_573" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_574" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_575" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_576" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_577" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_578" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_579" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_580" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_581" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_582" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_583" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_584" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_490' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_491' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_493' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_494' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_496' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_498' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_499' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_501' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_503' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_504' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_506' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_508' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_509' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_511' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_513' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_514' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_516' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_518' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_519' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_521' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_523' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_524' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_526' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_528' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_529' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_531' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_533' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_534' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_536' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_538' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_539' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_541' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_543' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_544' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_546' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_548' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_549' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_551' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_553' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_554' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_556' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_558' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_559' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_561' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_563' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_564' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_566' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_568' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_569' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_570' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_571' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_572' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_573' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_574' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_575' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_576' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_577' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_578' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_579' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_580' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_581' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_582' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_583' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Info: apr.M0064: The signal 'Net_584' is one of the input signals of an 'AmuxHw component'. It is a constraint for analog routing. (App=cydsfit)
+Log: apr.M0058: The analog placement iterative improvement is 46% done. (App=cydsfit)
+Analog Routing ...
+Analog Code Generation ...
+Digital Placement ...
+Digital Routing ...
+Bitstream Generation ...
+Static timing analysis ...
+API Generation ...
+Dependency Generation ...
+Clean Temporary Files ...
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\main.lst -ffunction-sections -c .\main.c -o .\CortexM3\ARM_GCC_473\Debug\main.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\cyfitter_cfg.lst -ffunction-sections -c .\Generated_Source\PSoC5\cyfitter_cfg.c -o .\CortexM3\ARM_GCC_473\Debug\cyfitter_cfg.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\cymetadata.lst -ffunction-sections -c .\Generated_Source\PSoC5\cymetadata.c -o .\CortexM3\ARM_GCC_473\Debug\cymetadata.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\EEPROM.lst -ffunction-sections -c .\Generated_Source\PSoC5\EEPROM.c -o .\CortexM3\ARM_GCC_473\Debug\EEPROM.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\LCD.lst -ffunction-sections -c .\Generated_Source\PSoC5\LCD.c -o .\CortexM3\ARM_GCC_473\Debug\LCD.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\LCD_PM.lst -ffunction-sections -c .\Generated_Source\PSoC5\LCD_PM.c -o .\CortexM3\ARM_GCC_473\Debug\LCD_PM.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\ADC_SAR.lst -ffunction-sections -c .\Generated_Source\PSoC5\ADC_SAR.c -o .\CortexM3\ARM_GCC_473\Debug\ADC_SAR.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\ADC_SAR_PM.lst -ffunction-sections -c .\Generated_Source\PSoC5\ADC_SAR_PM.c -o .\CortexM3\ARM_GCC_473\Debug\ADC_SAR_PM.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\ADC_SAR_INT.lst -ffunction-sections -c .\Generated_Source\PSoC5\ADC_SAR_INT.c -o .\CortexM3\ARM_GCC_473\Debug\ADC_SAR_INT.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\LCD_LCDPort.lst -ffunction-sections -c .\Generated_Source\PSoC5\LCD_LCDPort.c -o .\CortexM3\ARM_GCC_473\Debug\LCD_LCDPort.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\ADC_SAR_SAR.lst -ffunction-sections -c .\Generated_Source\PSoC5\ADC_SAR_SAR.c -o .\CortexM3\ARM_GCC_473\Debug\ADC_SAR_SAR.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\ADC_SAR_SAR_INT.lst -ffunction-sections -c .\Generated_Source\PSoC5\ADC_SAR_SAR_INT.c -o .\CortexM3\ARM_GCC_473\Debug\ADC_SAR_SAR_INT.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\ADC_SAR_SAR_PM.lst -ffunction-sections -c .\Generated_Source\PSoC5\ADC_SAR_SAR_PM.c -o .\CortexM3\ARM_GCC_473\Debug\ADC_SAR_SAR_PM.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\ADC_SAR_IntClock.lst -ffunction-sections -c .\Generated_Source\PSoC5\ADC_SAR_IntClock.c -o .\CortexM3\ARM_GCC_473\Debug\ADC_SAR_IntClock.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\ADC_SAR_TempBuf_dma.lst -ffunction-sections -c .\Generated_Source\PSoC5\ADC_SAR_TempBuf_dma.c -o .\CortexM3\ARM_GCC_473\Debug\ADC_SAR_TempBuf_dma.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\ADC_SAR_FinalBuf_dma.lst -ffunction-sections -c .\Generated_Source\PSoC5\ADC_SAR_FinalBuf_dma.c -o .\CortexM3\ARM_GCC_473\Debug\ADC_SAR_FinalBuf_dma.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\ADC_SAR_IRQ.lst -ffunction-sections -c .\Generated_Source\PSoC5\ADC_SAR_IRQ.c -o .\CortexM3\ARM_GCC_473\Debug\ADC_SAR_IRQ.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\Cm3Start.lst -ffunction-sections -c .\Generated_Source\PSoC5\Cm3Start.c -o .\CortexM3\ARM_GCC_473\Debug\Cm3Start.o
+arm-none-eabi-as.exe -I. -I./Generated_Source/PSoC5 -mcpu=cortex-m3 -mthumb -g -alh=.\CortexM3\ARM_GCC_473\Debug/CyBootAsmGnu.lst -o .\CortexM3\ARM_GCC_473\Debug\CyBootAsmGnu.o .\Generated_Source\PSoC5\CyBootAsmGnu.s
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\CyDmac.lst -ffunction-sections -c .\Generated_Source\PSoC5\CyDmac.c -o .\CortexM3\ARM_GCC_473\Debug\CyDmac.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\CyFlash.lst -ffunction-sections -c .\Generated_Source\PSoC5\CyFlash.c -o .\CortexM3\ARM_GCC_473\Debug\CyFlash.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\CyLib.lst -ffunction-sections -c .\Generated_Source\PSoC5\CyLib.c -o .\CortexM3\ARM_GCC_473\Debug\CyLib.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\cyPm.lst -ffunction-sections -c .\Generated_Source\PSoC5\cyPm.c -o .\CortexM3\ARM_GCC_473\Debug\cyPm.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\CySpc.lst -ffunction-sections -c .\Generated_Source\PSoC5\CySpc.c -o .\CortexM3\ARM_GCC_473\Debug\CySpc.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\cyutils.lst -ffunction-sections -c .\Generated_Source\PSoC5\cyutils.c -o .\CortexM3\ARM_GCC_473\Debug\cyutils.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\Brake_2.lst -ffunction-sections -c .\Generated_Source\PSoC5\Brake_2.c -o .\CortexM3\ARM_GCC_473\Debug\Brake_2.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\Brake_1.lst -ffunction-sections -c .\Generated_Source\PSoC5\Brake_1.c -o .\CortexM3\ARM_GCC_473\Debug\Brake_1.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\Throttle_2.lst -ffunction-sections -c .\Generated_Source\PSoC5\Throttle_2.c -o .\CortexM3\ARM_GCC_473\Debug\Throttle_2.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\Throttle_1.lst -ffunction-sections -c .\Generated_Source\PSoC5\Throttle_1.c -o .\CortexM3\ARM_GCC_473\Debug\Throttle_1.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\Steering.lst -ffunction-sections -c .\Generated_Source\PSoC5\Steering.c -o .\CortexM3\ARM_GCC_473\Debug\Steering.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\Button.lst -ffunction-sections -c .\Generated_Source\PSoC5\Button.c -o .\CortexM3\ARM_GCC_473\Debug\Button.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\Timer.lst -ffunction-sections -c .\Generated_Source\PSoC5\Timer.c -o .\CortexM3\ARM_GCC_473\Debug\Timer.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\Timer_PM.lst -ffunction-sections -c .\Generated_Source\PSoC5\Timer_PM.c -o .\CortexM3\ARM_GCC_473\Debug\Timer_PM.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\clock.lst -ffunction-sections -c .\Generated_Source\PSoC5\clock.c -o .\CortexM3\ARM_GCC_473\Debug\clock.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\isr.lst -ffunction-sections -c .\Generated_Source\PSoC5\isr.c -o .\CortexM3\ARM_GCC_473\Debug\isr.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\LED.lst -ffunction-sections -c .\Generated_Source\PSoC5\LED.c -o .\CortexM3\ARM_GCC_473\Debug\LED.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\Rx_1.lst -ffunction-sections -c .\Generated_Source\PSoC5\Rx_1.c -o .\CortexM3\ARM_GCC_473\Debug\Rx_1.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\Tx_1.lst -ffunction-sections -c .\Generated_Source\PSoC5\Tx_1.c -o .\CortexM3\ARM_GCC_473\Debug\Tx_1.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\CAN.lst -ffunction-sections -c .\Generated_Source\PSoC5\CAN.c -o .\CortexM3\ARM_GCC_473\Debug\CAN.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\CAN_INT.lst -ffunction-sections -c .\Generated_Source\PSoC5\CAN_INT.c -o .\CortexM3\ARM_GCC_473\Debug\CAN_INT.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\CAN_PM.lst -ffunction-sections -c .\Generated_Source\PSoC5\CAN_PM.c -o .\CortexM3\ARM_GCC_473\Debug\CAN_PM.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC5 -Wno-main -mcpu=cortex-m3 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM3\ARM_GCC_473\Debug\CAN_TX_RX_func.lst -ffunction-sections -c .\Generated_Source\PSoC5\CAN_TX_RX_func.c -o .\CortexM3\ARM_GCC_473\Debug\CAN_TX_RX_func.o
+arm-none-eabi-ar.exe -rs .\CortexM3\ARM_GCC_473\Debug\Node-Elephant.a .\CortexM3\ARM_GCC_473\Debug\cyfitter_cfg.o .\CortexM3\ARM_GCC_473\Debug\EEPROM.o .\CortexM3\ARM_GCC_473\Debug\LCD.o .\CortexM3\ARM_GCC_473\Debug\LCD_PM.o .\CortexM3\ARM_GCC_473\Debug\ADC_SAR.o .\CortexM3\ARM_GCC_473\Debug\ADC_SAR_PM.o .\CortexM3\ARM_GCC_473\Debug\ADC_SAR_INT.o .\CortexM3\ARM_GCC_473\Debug\LCD_LCDPort.o .\CortexM3\ARM_GCC_473\Debug\ADC_SAR_SAR.o .\CortexM3\ARM_GCC_473\Debug\ADC_SAR_SAR_INT.o .\CortexM3\ARM_GCC_473\Debug\ADC_SAR_SAR_PM.o .\CortexM3\ARM_GCC_473\Debug\ADC_SAR_IntClock.o .\CortexM3\ARM_GCC_473\Debug\ADC_SAR_TempBuf_dma.o .\CortexM3\ARM_GCC_473\Debug\ADC_SAR_FinalBuf_dma.o .\CortexM3\ARM_GCC_473\Debug\ADC_SAR_IRQ.o .\CortexM3\ARM_GCC_473\Debug\CyBootAsmGnu.o .\CortexM3\ARM_GCC_473\Debug\CyDmac.o .\CortexM3\ARM_GCC_473\Debug\CyFlash.o .\CortexM3\ARM_GCC_473\Debug\CyLib.o .\CortexM3\ARM_GCC_473\Debug\cyPm.o .\CortexM3\ARM_GCC_473\Debug\CySpc.o .\CortexM3\ARM_GCC_473\Debug\cyutils.o .\CortexM3\ARM_GCC_473\Debug\Brake_2.o .\CortexM3\ARM_GCC_473\Debug\Brake_1.o .\CortexM3\ARM_GCC_473\Debug\Throttle_2.o .\CortexM3\ARM_GCC_473\Debug\Throttle_1.o .\CortexM3\ARM_GCC_473\Debug\Steering.o .\CortexM3\ARM_GCC_473\Debug\Button.o .\CortexM3\ARM_GCC_473\Debug\Timer.o .\CortexM3\ARM_GCC_473\Debug\Timer_PM.o .\CortexM3\ARM_GCC_473\Debug\clock.o .\CortexM3\ARM_GCC_473\Debug\isr.o .\CortexM3\ARM_GCC_473\Debug\LED.o .\CortexM3\ARM_GCC_473\Debug\Rx_1.o .\CortexM3\ARM_GCC_473\Debug\Tx_1.o .\CortexM3\ARM_GCC_473\Debug\CAN.o .\CortexM3\ARM_GCC_473\Debug\CAN_INT.o .\CortexM3\ARM_GCC_473\Debug\CAN_PM.o .\CortexM3\ARM_GCC_473\Debug\CAN_TX_RX_func.o
+arm-none-eabi-ar.exe: creating .\CortexM3\ARM_GCC_473\Debug\Node-Elephant.a
+arm-none-eabi-gcc.exe -mthumb -march=armv7-m -mfix-cortex-m3-ldrd -T .\Generated_Source\PSoC5\cm3gcc.ld -g -Wl,-Map,.\CortexM3\ARM_GCC_473\Debug\Node-Elephant.map -Wl,--gc-sections -Wl,--start-group -o .\CortexM3\ARM_GCC_473\Debug\Node-Elephant.elf .\CortexM3\ARM_GCC_473\Debug\main.o .\CortexM3\ARM_GCC_473\Debug\cymetadata.o .\CortexM3\ARM_GCC_473\Debug\Cm3Start.o .\CortexM3\ARM_GCC_473\Debug\Node-Elephant.a "C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_473\Debug\CyComponentLibrary.a" -Wl,--end-group
+cyelftool.exe -C "C:\Users\Chai Yang\Documents\FSAE Pedal Node\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\CortexM3\ARM_GCC_473\Debug\Node-Elephant.elf" --flash_size 262144 --flash_row_size 256
+cyelftool.exe -S "C:\Users\Chai Yang\Documents\FSAE Pedal Node\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\CortexM3\ARM_GCC_473\Debug\Node-Elephant.elf"
+Flash used: 11552 of 262144 bytes (4.4 %).
+SRAM used: 21917 of 65536 bytes (33.4 %).
+--------------- Build Succeeded: 12/06/2014 02:28:49 ---------------
