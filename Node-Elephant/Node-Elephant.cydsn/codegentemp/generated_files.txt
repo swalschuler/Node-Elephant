@@ -68,6 +68,17 @@
   <file name="C:\Users\Chai Yang\Documents\GitHub\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\codegentemp\CAN_INT.c" value="ARM_C_FILE;CAN" />
   <file name="C:\Users\Chai Yang\Documents\GitHub\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\codegentemp\CAN_PM.c" value="ARM_C_FILE;CAN" />
   <file name="C:\Users\Chai Yang\Documents\GitHub\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\codegentemp\CAN_TX_RX_func.c" value="ARM_C_FILE;CAN" />
+  <file name="C:\Users\Chai Yang\Documents\GitHub\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\codegentemp\Filter.c" value="ARM_C_FILE;Filter" />
+  <file name="C:\Users\Chai Yang\Documents\GitHub\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\codegentemp\Filter.h" value="NONE;Filter" />
+  <file name="C:\Users\Chai Yang\Documents\GitHub\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\codegentemp\Filter_PM.c" value="ARM_C_FILE;Filter" />
+  <file name="C:\Users\Chai Yang\Documents\GitHub\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\codegentemp\Filter_PVT.c" value="ARM_C_FILE;Filter" />
+  <file name="C:\Users\Chai Yang\Documents\GitHub\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\codegentemp\Filter_PVT.h" value="NONE;Filter" />
+  <file name="C:\Users\Chai Yang\Documents\GitHub\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\codegentemp\Filter_RAM_Data.c" value="ARM_C_FILE;Filter" />
+  <file name="C:\Users\Chai Yang\Documents\GitHub\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\codegentemp\Filter_Coefficients.c" value="ARM_C_FILE;Filter" />
+  <file name="C:\Users\Chai Yang\Documents\GitHub\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\codegentemp\isr_filter.c" value="ARM_C_FILE;isr_filter" />
+  <file name="C:\Users\Chai Yang\Documents\GitHub\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\codegentemp\isr_filter.h" value="NONE;isr_filter" />
+  <file name="C:\Users\Chai Yang\Documents\GitHub\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\codegentemp\DMA_dma.c" value="ARM_C_FILE;DMA" />
+  <file name="C:\Users\Chai Yang\Documents\GitHub\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\codegentemp\DMA_dma.h" value="NONE;DMA" />
   <file name="C:\Users\Chai Yang\Documents\GitHub\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\codegentemp\LCD_LCDPort_aliases.h" value="NONE;LCD_LCDPort" />
   <file name="C:\Users\Chai Yang\Documents\GitHub\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\codegentemp\LCD_LCDPort.c" value="ARM_C_FILE;LCD_LCDPort" />
   <file name="C:\Users\Chai Yang\Documents\GitHub\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\codegentemp\LCD_LCDPort.h" value="NONE;LCD_LCDPort" />

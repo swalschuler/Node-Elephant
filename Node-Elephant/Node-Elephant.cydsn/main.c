@@ -15,9 +15,15 @@
 #include <stdio.h>
 #include "calibrate.h"
 
+#define DMA_BYTES_PER_BURST     12
+#define DMA_REQUEST_PER_BURST   1
+#define DMA_SRC_ADDRESS        CYDEV_PERIPH_BASE
+#define DMA_DEST_ADDRESS       CYDEV_PERIPH_BASE
+
 void calAll(void);          //calibrate all sensors
 
 extern volatile uint8 toggle_flag;      //external variable declared in isr.c for triggering interrupt code
+extern volatile uint8 toggle_flag2;
 
 int main()
 {
@@ -26,9 +32,12 @@ int main()
     ADC_SAR_StartConvert();
     EEPROM_Start();
     isr_Start();
+    isr_filter_Start();
     Timer_Start();
+    Filter_Start();
     CyGlobalIntEnable;          //enable global interrupts 
     
+    uint32 throttle = 0;
     uint32 throttle1 = 0;            //declared 32 bits for calculation, will cast to 16 bit when pushing to can
     uint32 throttle2 = 0;
     uint32 brake1 = 0;
@@ -81,14 +90,29 @@ int main()
 //        }
 //    }
     
+    uint8 tdChanA;
+    uint8 myChannel;
+    
+    LCD_ClearDisplay();
+    
+    myChannel = DMA_DmaInitialize(DMA_BYTES_PER_BURST, DMA_REQUEST_PER_BURST, HI16(ADC_SAR_COUNT_PTR), HI16(DMA_DEST_ADDRESS));
+    tdChanA = CyDmaTdAllocate();
+    CyDmaTdSetConfiguration(tdChanA, DMA_BYTES_PER_BURST, tdChanA, 0);
+    CyDmaTdSetAddress(tdChanA, LO16((uint32)ADC_SAR_COUNT_PTR), LO16((uint32)Filter_STAGEAH_PTR));
+//    CyDmaTdSetAddress(tdChanA, LO16(DMA_SRC_ADDRESS), LO16(DMA_DEST_ADDRESS));
+    CyDmaChSetInitialTd(myChannel, tdChanA);
+    CyDmaChEnable(myChannel, 1u);
+    
     for(;;)
     {
-        if(ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))
+        if(toggle_flag == 1)
         {
-               
+            throttle = Filter_Read16(Filter_CHANNEL_A );
+            
+            LCD_Position(0,0);
+            LCD_PrintNumber(throttle);
         }
     }
-    
     
     return 0;
 }

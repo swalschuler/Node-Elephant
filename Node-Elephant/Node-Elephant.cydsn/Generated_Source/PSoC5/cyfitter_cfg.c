@@ -121,7 +121,7 @@ static void CyClockStartupError(uint8 errorCode)
 }
 #endif
 
-#define CY_CFG_BASE_ADDR_COUNT 32u
+#define CY_CFG_BASE_ADDR_COUNT 34u
 CYPACKED typedef struct
 {
 	uint8 offset;
@@ -129,22 +129,25 @@ CYPACKED typedef struct
 } CYPACKED_ATTR cy_cfg_addrvalue_t;
 
 #define cy_cfg_addr_table ((const uint32 CYFAR *)0x48000000u)
-#define cy_cfg_data_table ((const cy_cfg_addrvalue_t CYFAR *)0x48000080u)
+#define cy_cfg_data_table ((const cy_cfg_addrvalue_t CYFAR *)0x48000088u)
 
 /* IOPINS0_0 Address: CYREG_PRT0_DM0 Size (bytes): 8 */
-#define BS_IOPINS0_0_VAL ((const uint8 CYFAR *)0x48000560u)
+#define BS_IOPINS0_0_VAL ((const uint8 CYFAR *)0x4800058Cu)
 
 /* IOPINS0_2 Address: CYREG_PRT2_DM0 Size (bytes): 8 */
-#define BS_IOPINS0_2_VAL ((const uint8 CYFAR *)0x48000568u)
+#define BS_IOPINS0_2_VAL ((const uint8 CYFAR *)0x48000594u)
 
 /* IOPINS0_3 Address: CYREG_PRT3_DM0 Size (bytes): 8 */
-#define BS_IOPINS0_3_VAL ((const uint8 CYFAR *)0x48000570u)
+#define BS_IOPINS0_3_VAL ((const uint8 CYFAR *)0x4800059Cu)
 
 /* IOPINS0_6 Address: CYREG_PRT6_DR Size (bytes): 10 */
-#define BS_IOPINS0_6_VAL ((const uint8 CYFAR *)0x48000578u)
+#define BS_IOPINS0_6_VAL ((const uint8 CYFAR *)0x480005A4u)
 
 /* PHUB_CFGMEM1 Address: CYREG_PHUB_CFGMEM1_CFG0 Size (bytes): 4 */
-#define BS_PHUB_CFGMEM1_VAL ((const uint8 CYFAR *)0x48000584u)
+#define BS_PHUB_CFGMEM1_VAL ((const uint8 CYFAR *)0x480005B0u)
+
+/* PHUB_CFGMEM2 Address: CYREG_PHUB_CFGMEM2_CFG0 Size (bytes): 4 */
+#define BS_PHUB_CFGMEM2_VAL ((const uint8 CYFAR *)0x480005B4u)
 
 
 /*******************************************************************************
@@ -380,6 +383,7 @@ void cyfitter_cfg(void)
 		/* Perform normal device configuration. Order is not critical for these items. */
 		CYMEMZERO((void CYFAR *)(CYREG_PHUB_CFGMEM0_CFG0), 4u);
 		CYCONFIGCPY((void CYFAR *)(CYREG_PHUB_CFGMEM1_CFG0), (const void CYFAR *)(BS_PHUB_CFGMEM1_VAL), 4u);
+		CYCONFIGCPY((void CYFAR *)(CYREG_PHUB_CFGMEM2_CFG0), (const void CYFAR *)(BS_PHUB_CFGMEM2_VAL), 4u);
 
 		/* Enable digital routing */
 		CY_SET_XTND_REG8((void CYFAR *)CYREG_BCTL0_BANK_CTL, CY_GET_XTND_REG8((void CYFAR *)CYREG_BCTL0_BANK_CTL) | 0x02u);
