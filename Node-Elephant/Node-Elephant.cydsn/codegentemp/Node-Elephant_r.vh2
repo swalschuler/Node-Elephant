@@ -1,5 +1,5 @@
 -- Project:   Node-Elephant
--- Generated: 12/10/2014 00:23:26
+-- Generated: 12/11/2014 03:53:09
 -- 
 
 ENTITY \Node-Elephant\ IS
@@ -43,10 +43,6 @@ ARCHITECTURE __DEFAULT__ OF \Node-Elephant\ IS
     SIGNAL LED(0)__PA : bit;
     SIGNAL Net_10 : bit;
     ATTRIBUTE global_signal OF Net_10 : SIGNAL IS true;
-    SIGNAL Net_1082 : bit;
-    SIGNAL Net_1083 : bit;
-    SIGNAL Net_1084 : bit;
-    SIGNAL Net_1085 : bit;
     SIGNAL Net_10_local : bit;
     SIGNAL Net_11 : bit;
     SIGNAL Net_684 : bit;
@@ -55,157 +51,157 @@ ARCHITECTURE __DEFAULT__ OF \Node-Elephant\ IS
     SIGNAL Net_715 : bit;
     SIGNAL Net_924 : bit;
     SIGNAL Net_925 : bit;
-    ATTRIBUTE placement_force OF Net_925 : SIGNAL IS "U(2,0,B)0";
+    ATTRIBUTE placement_force OF Net_925 : SIGNAL IS "U(3,4,B)0";
     SIGNAL Rx_1(0)__PA : bit;
     SIGNAL Steering(0)__PA : bit;
     SIGNAL Throttle_1(0)__PA : bit;
     SIGNAL Throttle_2(0)__PA : bit;
     SIGNAL Tx_1(0)__PA : bit;
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_is_active\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_is_active\ : SIGNAL IS "U(3,3,A)1";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_is_active\ : SIGNAL IS "U(3,3,B)0";
     ATTRIBUTE soft OF \ADC_SAR:AMuxHw_2_Decoder_is_active\ : SIGNAL IS 1;
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_is_active_split\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_is_active_split\ : SIGNAL IS "U(3,2,A)0";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_is_active_split\ : SIGNAL IS "U(3,3,A)0";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_old_id_0\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_old_id_0\ : SIGNAL IS "U(3,2,B)2";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_old_id_0\ : SIGNAL IS "U(3,4,B)2";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_old_id_1\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_old_id_1\ : SIGNAL IS "U(3,2,B)3";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_old_id_1\ : SIGNAL IS "U(2,3,A)0";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_old_id_2\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_old_id_2\ : SIGNAL IS "U(3,4,B)0";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_old_id_2\ : SIGNAL IS "U(3,2,A)0";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_old_id_3\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_old_id_3\ : SIGNAL IS "U(3,3,B)0";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_old_id_3\ : SIGNAL IS "U(3,2,B)0";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_old_id_4\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_old_id_4\ : SIGNAL IS "U(3,3,B)1";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_old_id_4\ : SIGNAL IS "U(3,2,B)1";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_old_id_5\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_old_id_5\ : SIGNAL IS "U(3,3,B)3";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_old_id_5\ : SIGNAL IS "U(3,4,B)1";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_0\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_0\ : SIGNAL IS "U(3,0,B)1";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_0\ : SIGNAL IS "U(3,0,A)1";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_10\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_10\ : SIGNAL IS "U(2,1,B)3";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_10\ : SIGNAL IS "U(0,2,B)2";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_11\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_11\ : SIGNAL IS "U(3,1,A)2";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_11\ : SIGNAL IS "U(2,1,B)1";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_12\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_12\ : SIGNAL IS "U(2,5,A)0";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_12\ : SIGNAL IS "U(1,2,A)3";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_13\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_13\ : SIGNAL IS "U(2,2,A)0";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_13\ : SIGNAL IS "U(3,1,B)0";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_14\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_14\ : SIGNAL IS "U(3,4,B)2";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_14\ : SIGNAL IS "U(3,3,B)1";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_15\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_15\ : SIGNAL IS "U(2,3,B)2";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_15\ : SIGNAL IS "U(2,1,A)3";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_16\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_16\ : SIGNAL IS "U(3,0,A)0";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_16\ : SIGNAL IS "U(3,4,B)3";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_17\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_17\ : SIGNAL IS "U(3,4,A)0";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_17\ : SIGNAL IS "U(3,1,A)1";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_18\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_18\ : SIGNAL IS "U(2,2,B)3";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_18\ : SIGNAL IS "U(2,1,A)2";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_19\ : bit;
     ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_19\ : SIGNAL IS "U(2,2,B)2";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_1\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_1\ : SIGNAL IS "U(3,0,B)3";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_1\ : SIGNAL IS "U(3,0,B)2";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_20\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_20\ : SIGNAL IS "U(0,2,A)3";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_20\ : SIGNAL IS "U(2,4,B)3";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_21\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_21\ : SIGNAL IS "U(3,4,A)1";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_21\ : SIGNAL IS "U(3,3,B)3";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_22\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_22\ : SIGNAL IS "U(2,1,A)1";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_22\ : SIGNAL IS "U(0,2,A)0";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_23\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_23\ : SIGNAL IS "U(3,3,B)2";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_23\ : SIGNAL IS "U(2,3,A)2";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_24\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_24\ : SIGNAL IS "U(2,1,A)3";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_24\ : SIGNAL IS "U(2,3,A)3";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_25\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_25\ : SIGNAL IS "U(2,5,A)1";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_25\ : SIGNAL IS "U(3,1,A)2";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_26\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_26\ : SIGNAL IS "U(3,2,B)0";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_26\ : SIGNAL IS "U(3,0,A)3";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_27\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_27\ : SIGNAL IS "U(3,5,A)3";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_27\ : SIGNAL IS "U(2,0,A)1";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_28\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_28\ : SIGNAL IS "U(2,5,B)2";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_28\ : SIGNAL IS "U(3,1,B)1";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_29\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_29\ : SIGNAL IS "U(2,4,A)3";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_29\ : SIGNAL IS "U(2,2,B)3";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_2\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_2\ : SIGNAL IS "U(3,0,A)3";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_2\ : SIGNAL IS "U(3,0,A)2";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_30\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_30\ : SIGNAL IS "U(2,3,B)3";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_30\ : SIGNAL IS "U(2,5,A)0";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_31\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_31\ : SIGNAL IS "U(2,4,A)0";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_31\ : SIGNAL IS "U(3,5,B)1";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_32\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_32\ : SIGNAL IS "U(0,2,A)0";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_32\ : SIGNAL IS "U(2,4,A)3";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_33\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_33\ : SIGNAL IS "U(3,3,A)3";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_33\ : SIGNAL IS "U(2,2,A)3";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_34\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_34\ : SIGNAL IS "U(3,4,B)3";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_34\ : SIGNAL IS "U(0,2,B)3";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_35\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_35\ : SIGNAL IS "U(3,3,A)0";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_35\ : SIGNAL IS "U(3,2,B)3";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_36\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_36\ : SIGNAL IS "U(2,2,B)1";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_36\ : SIGNAL IS "U(2,4,B)2";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_37\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_37\ : SIGNAL IS "U(3,1,A)1";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_37\ : SIGNAL IS "U(2,1,B)3";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_38\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_38\ : SIGNAL IS "U(3,5,A)2";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_38\ : SIGNAL IS "U(3,1,A)0";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_39\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_39\ : SIGNAL IS "U(3,4,A)3";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_39\ : SIGNAL IS "U(3,3,B)2";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_3\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_3\ : SIGNAL IS "U(3,0,B)2";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_3\ : SIGNAL IS "U(3,0,B)0";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_40\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_40\ : SIGNAL IS "U(3,4,B)1";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_40\ : SIGNAL IS "U(1,2,A)1";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_41\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_41\ : SIGNAL IS "U(2,0,B)1";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_41\ : SIGNAL IS "U(3,2,A)1";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_42\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_42\ : SIGNAL IS "U(3,4,A)2";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_42\ : SIGNAL IS "U(2,0,B)1";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_43\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_43\ : SIGNAL IS "U(2,5,A)3";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_43\ : SIGNAL IS "U(3,2,A)2";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_44\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_44\ : SIGNAL IS "U(2,2,A)2";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_44\ : SIGNAL IS "U(2,2,A)0";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_45\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_45\ : SIGNAL IS "U(3,5,B)3";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_45\ : SIGNAL IS "U(2,2,B)1";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_46\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_46\ : SIGNAL IS "U(3,2,B)1";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_46\ : SIGNAL IS "U(2,0,B)3";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_47\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_47\ : SIGNAL IS "U(1,2,A)2";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_47\ : SIGNAL IS "U(3,1,B)3";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_48\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_48\ : SIGNAL IS "U(2,3,A)0";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_48\ : SIGNAL IS "U(2,3,B)3";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_49\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_49\ : SIGNAL IS "U(3,3,A)2";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_49\ : SIGNAL IS "U(3,5,A)1";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_4\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_4\ : SIGNAL IS "U(3,0,A)1";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_4\ : SIGNAL IS "U(3,0,B)3";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_50\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_50\ : SIGNAL IS "U(3,1,B)3";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_50\ : SIGNAL IS "U(2,4,B)1";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_51\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_51\ : SIGNAL IS "U(2,4,B)1";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_51\ : SIGNAL IS "U(2,3,B)0";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_52\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_52\ : SIGNAL IS "U(2,4,A)2";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_52\ : SIGNAL IS "U(2,2,A)2";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_53\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_53\ : SIGNAL IS "U(1,2,B)2";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_53\ : SIGNAL IS "U(2,5,A)3";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_54\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_54\ : SIGNAL IS "U(3,5,A)1";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_54\ : SIGNAL IS "U(2,5,B)1";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_55\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_55\ : SIGNAL IS "U(2,4,B)2";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_55\ : SIGNAL IS "U(2,3,A)1";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_56\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_56\ : SIGNAL IS "U(2,3,A)3";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_56\ : SIGNAL IS "U(2,1,B)2";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_57\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_57\ : SIGNAL IS "U(3,5,B)2";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_57\ : SIGNAL IS "U(2,3,B)2";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_58\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_58\ : SIGNAL IS "U(2,0,B)2";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_58\ : SIGNAL IS "U(3,1,A)3";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_59\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_59\ : SIGNAL IS "U(3,1,B)1";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_59\ : SIGNAL IS "U(2,1,A)1";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_5\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_5\ : SIGNAL IS "U(2,3,B)1";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_5\ : SIGNAL IS "U(2,4,B)0";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_60\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_60\ : SIGNAL IS "U(0,2,B)0";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_60\ : SIGNAL IS "U(2,2,B)0";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_61\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_61\ : SIGNAL IS "U(2,3,A)1";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_61\ : SIGNAL IS "U(2,4,A)2";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_62\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_62\ : SIGNAL IS "U(2,2,A)1";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_62\ : SIGNAL IS "U(2,5,B)3";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_63\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_63\ : SIGNAL IS "U(2,2,B)0";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_63\ : SIGNAL IS "U(1,2,B)2";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_6\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_6\ : SIGNAL IS "U(2,3,A)2";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_6\ : SIGNAL IS "U(1,2,A)0";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_7\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_7\ : SIGNAL IS "U(2,1,A)2";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_7\ : SIGNAL IS "U(2,4,A)0";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_8\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_8\ : SIGNAL IS "U(2,3,B)0";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_8\ : SIGNAL IS "U(3,2,B)2";
     SIGNAL \ADC_SAR:AMuxHw_2_Decoder_one_hot_9\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_9\ : SIGNAL IS "U(0,2,B)3";
+    ATTRIBUTE placement_force OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_9\ : SIGNAL IS "U(2,4,A)1";
     SIGNAL \ADC_SAR:Net_3698\ : bit;
     SIGNAL \ADC_SAR:Net_3830\ : bit;
     SIGNAL \ADC_SAR:SAR:Net_207_0\ : bit;
@@ -222,9 +218,9 @@ ARCHITECTURE __DEFAULT__ OF \Node-Elephant\ IS
     SIGNAL \ADC_SAR:SAR:Net_207_9\ : bit;
     SIGNAL \ADC_SAR:SAR:Net_252\ : bit;
     SIGNAL \ADC_SAR:bSAR_SEQ:bus_clk_reg\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:bSAR_SEQ:bus_clk_reg\ : SIGNAL IS "U(2,0,A)0";
+    ATTRIBUTE placement_force OF \ADC_SAR:bSAR_SEQ:bus_clk_reg\ : SIGNAL IS "U(3,4,A)0";
     SIGNAL \ADC_SAR:bSAR_SEQ:cnt_enable\ : bit;
-    ATTRIBUTE placement_force OF \ADC_SAR:bSAR_SEQ:cnt_enable\ : SIGNAL IS "U(2,0,A)1";
+    ATTRIBUTE placement_force OF \ADC_SAR:bSAR_SEQ:cnt_enable\ : SIGNAL IS "U(3,4,A)1";
     SIGNAL \ADC_SAR:bSAR_SEQ:control_2\ : bit;
     SIGNAL \ADC_SAR:bSAR_SEQ:control_3\ : bit;
     SIGNAL \ADC_SAR:bSAR_SEQ:control_4\ : bit;
@@ -244,8 +240,6 @@ ARCHITECTURE __DEFAULT__ OF \Node-Elephant\ IS
     ATTRIBUTE global_signal OF \ADC_SAR:clock\ : SIGNAL IS true;
     SIGNAL \ADC_SAR:clock_local\ : bit;
     SIGNAL \ADC_SAR:nrq\ : bit;
-    SIGNAL \Filter:Net_8\ : bit;
-    SIGNAL \Filter:Net_9\ : bit;
     SIGNAL \\\LCD:LCDPort(0)\\__PA\ : bit;
     SIGNAL \\\LCD:LCDPort(1)\\__PA\ : bit;
     SIGNAL \\\LCD:LCDPort(2)\\__PA\ : bit;
@@ -295,12 +289,10 @@ ARCHITECTURE __DEFAULT__ OF \Node-Elephant\ IS
     ATTRIBUTE lib_model OF Button(0) : LABEL IS "iocell3";
     ATTRIBUTE Location OF Button(0) : LABEL IS "P6[1]";
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
-    ATTRIBUTE lib_model OF DMA : LABEL IS "drqcell1";
-    ATTRIBUTE Location OF DMA : LABEL IS "[DrqHod=(0)][DrqId=(0)]";
     ATTRIBUTE lib_model OF LED(0) : LABEL IS "iocell4";
     ATTRIBUTE Location OF LED(0) : LABEL IS "P6[3]";
     ATTRIBUTE lib_model OF Net_925 : LABEL IS "macrocell1";
-    ATTRIBUTE Location OF Net_925 : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF Net_925 : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell5";
     ATTRIBUTE Location OF Rx_1(0) : LABEL IS "P0[0]";
     ATTRIBUTE lib_model OF Steering(0) : LABEL IS "iocell6";
@@ -314,165 +306,164 @@ ARCHITECTURE __DEFAULT__ OF \Node-Elephant\ IS
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_is_active\ : LABEL IS "macrocell2";
     ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_is_active\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_is_active_split\ : LABEL IS "macrocell3";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_is_active_split\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_is_active_split\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_old_id_0\ : LABEL IS "macrocell4";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_old_id_0\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_old_id_0\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_old_id_1\ : LABEL IS "macrocell5";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_old_id_1\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_old_id_1\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_old_id_2\ : LABEL IS "macrocell6";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_old_id_2\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_old_id_2\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_old_id_3\ : LABEL IS "macrocell7";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_old_id_3\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_old_id_3\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_old_id_4\ : LABEL IS "macrocell8";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_old_id_4\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_old_id_4\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_old_id_5\ : LABEL IS "macrocell9";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_old_id_5\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_old_id_5\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_0\ : LABEL IS "macrocell10";
     ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_0\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_10\ : LABEL IS "macrocell11";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_10\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_10\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_11\ : LABEL IS "macrocell12";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_11\ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_11\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_12\ : LABEL IS "macrocell13";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_12\ : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_12\ : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_13\ : LABEL IS "macrocell14";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_13\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_13\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_14\ : LABEL IS "macrocell15";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_14\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_14\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_15\ : LABEL IS "macrocell16";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_15\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_15\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_16\ : LABEL IS "macrocell17";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_16\ : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_16\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_17\ : LABEL IS "macrocell18";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_17\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_17\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_18\ : LABEL IS "macrocell19";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_18\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_18\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_19\ : LABEL IS "macrocell20";
     ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_19\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_1\ : LABEL IS "macrocell21";
     ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_1\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_20\ : LABEL IS "macrocell22";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_20\ : LABEL IS "U(0,2)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_20\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_21\ : LABEL IS "macrocell23";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_21\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_21\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_22\ : LABEL IS "macrocell24";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_22\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_22\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_23\ : LABEL IS "macrocell25";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_23\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_23\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_24\ : LABEL IS "macrocell26";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_24\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_24\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_25\ : LABEL IS "macrocell27";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_25\ : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_25\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_26\ : LABEL IS "macrocell28";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_26\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_26\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_27\ : LABEL IS "macrocell29";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_27\ : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_27\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_28\ : LABEL IS "macrocell30";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_28\ : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_28\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_29\ : LABEL IS "macrocell31";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_29\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_29\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_2\ : LABEL IS "macrocell32";
     ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_2\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_30\ : LABEL IS "macrocell33";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_30\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_30\ : LABEL IS "U(2,5)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_31\ : LABEL IS "macrocell34";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_31\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_31\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_32\ : LABEL IS "macrocell35";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_32\ : LABEL IS "U(0,2)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_32\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_33\ : LABEL IS "macrocell36";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_33\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_33\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_34\ : LABEL IS "macrocell37";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_34\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_34\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_35\ : LABEL IS "macrocell38";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_35\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_35\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_36\ : LABEL IS "macrocell39";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_36\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_36\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_37\ : LABEL IS "macrocell40";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_37\ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_37\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_38\ : LABEL IS "macrocell41";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_38\ : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_38\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_39\ : LABEL IS "macrocell42";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_39\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_39\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_3\ : LABEL IS "macrocell43";
     ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_3\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_40\ : LABEL IS "macrocell44";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_40\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_40\ : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_41\ : LABEL IS "macrocell45";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_41\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_41\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_42\ : LABEL IS "macrocell46";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_42\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_42\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_43\ : LABEL IS "macrocell47";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_43\ : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_43\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_44\ : LABEL IS "macrocell48";
     ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_44\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_45\ : LABEL IS "macrocell49";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_45\ : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_45\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_46\ : LABEL IS "macrocell50";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_46\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_46\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_47\ : LABEL IS "macrocell51";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_47\ : LABEL IS "U(1,2)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_47\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_48\ : LABEL IS "macrocell52";
     ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_48\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_49\ : LABEL IS "macrocell53";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_49\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_49\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_4\ : LABEL IS "macrocell54";
     ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_4\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_50\ : LABEL IS "macrocell55";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_50\ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_50\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_51\ : LABEL IS "macrocell56";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_51\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_51\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_52\ : LABEL IS "macrocell57";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_52\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_52\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_53\ : LABEL IS "macrocell58";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_53\ : LABEL IS "U(1,2)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_53\ : LABEL IS "U(2,5)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_54\ : LABEL IS "macrocell59";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_54\ : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_54\ : LABEL IS "U(2,5)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_55\ : LABEL IS "macrocell60";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_55\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_55\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_56\ : LABEL IS "macrocell61";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_56\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_56\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_57\ : LABEL IS "macrocell62";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_57\ : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_57\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_58\ : LABEL IS "macrocell63";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_58\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_58\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_59\ : LABEL IS "macrocell64";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_59\ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_59\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_5\ : LABEL IS "macrocell65";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_5\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_5\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_60\ : LABEL IS "macrocell66";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_60\ : LABEL IS "U(0,2)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_60\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_61\ : LABEL IS "macrocell67";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_61\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_61\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_62\ : LABEL IS "macrocell68";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_62\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_62\ : LABEL IS "U(2,5)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_63\ : LABEL IS "macrocell69";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_63\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_63\ : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_6\ : LABEL IS "macrocell70";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_6\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_6\ : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_7\ : LABEL IS "macrocell71";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_7\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_7\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_8\ : LABEL IS "macrocell72";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_8\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_8\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_9\ : LABEL IS "macrocell73";
-    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_9\ : LABEL IS "U(0,2)";
-    ATTRIBUTE lib_model OF \ADC_SAR:FinalBuf\ : LABEL IS "drqcell2";
-    ATTRIBUTE Location OF \ADC_SAR:FinalBuf\ : LABEL IS "[DrqHod=(0)][DrqId=(1)]";
+    ATTRIBUTE Location OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_9\ : LABEL IS "U(2,4)";
+    ATTRIBUTE lib_model OF \ADC_SAR:FinalBuf\ : LABEL IS "drqcell1";
+    ATTRIBUTE Location OF \ADC_SAR:FinalBuf\ : LABEL IS "[DrqHod=(0)][DrqId=(0)]";
     ATTRIBUTE Location OF \ADC_SAR:IRQ\ : LABEL IS "[IntrHod=(0)][IntrId=(0)]";
     ATTRIBUTE Location OF \ADC_SAR:SAR:ADC_SAR\ : LABEL IS "F(SAR,1)";
-    ATTRIBUTE lib_model OF \ADC_SAR:TempBuf\ : LABEL IS "drqcell3";
-    ATTRIBUTE Location OF \ADC_SAR:TempBuf\ : LABEL IS "[DrqHod=(0)][DrqId=(2)]";
-    ATTRIBUTE Location OF \ADC_SAR:bSAR_SEQ:ChannelCounter\ : LABEL IS "U(3,2)";
+    ATTRIBUTE lib_model OF \ADC_SAR:TempBuf\ : LABEL IS "drqcell2";
+    ATTRIBUTE Location OF \ADC_SAR:TempBuf\ : LABEL IS "[DrqHod=(0)][DrqId=(1)]";
+    ATTRIBUTE Location OF \ADC_SAR:bSAR_SEQ:ChannelCounter\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \ADC_SAR:bSAR_SEQ:CtrlReg\ : LABEL IS "controlcell1";
-    ATTRIBUTE Location OF \ADC_SAR:bSAR_SEQ:CtrlReg\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \ADC_SAR:bSAR_SEQ:CtrlReg\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \ADC_SAR:bSAR_SEQ:EOCSts\ : LABEL IS "statuscell1";
-    ATTRIBUTE Location OF \ADC_SAR:bSAR_SEQ:EOCSts\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \ADC_SAR:bSAR_SEQ:EOCSts\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \ADC_SAR:bSAR_SEQ:bus_clk_reg\ : LABEL IS "macrocell74";
-    ATTRIBUTE Location OF \ADC_SAR:bSAR_SEQ:bus_clk_reg\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \ADC_SAR:bSAR_SEQ:bus_clk_reg\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \ADC_SAR:bSAR_SEQ:cnt_enable\ : LABEL IS "macrocell75";
-    ATTRIBUTE Location OF \ADC_SAR:bSAR_SEQ:cnt_enable\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \ADC_SAR:bSAR_SEQ:cnt_enable\ : LABEL IS "U(3,4)";
     ATTRIBUTE Location OF \CAN:CanIP\ : LABEL IS "F(CAN,0)";
     ATTRIBUTE Location OF \CAN:isr\ : LABEL IS "[IntrHod=(0)][IntrId=(16)]";
-    ATTRIBUTE Location OF \Filter:DFB\ : LABEL IS "F(DFB,0)";
     ATTRIBUTE lib_model OF \LCD:LCDPort(0)\ : LABEL IS "iocell10";
     ATTRIBUTE Location OF \LCD:LCDPort(0)\ : LABEL IS "P2[0]";
     ATTRIBUTE lib_model OF \LCD:LCDPort(1)\ : LABEL IS "iocell11";
@@ -498,7 +489,6 @@ ARCHITECTURE __DEFAULT__ OF \Node-Elephant\ IS
     ATTRIBUTE lib_model OF \Timer:TimerUDB:status_tc\ : LABEL IS "macrocell76";
     ATTRIBUTE Location OF \Timer:TimerUDB:status_tc\ : LABEL IS "U(2,1)";
     ATTRIBUTE Location OF isr : LABEL IS "[IntrHod=(0)][IntrId=(1)]";
-    ATTRIBUTE Location OF isr_filter : LABEL IS "[IntrHod=(0)][IntrId=(28)]";
     COMPONENT abufcell
     END COMPONENT;
     COMPONENT boostcell
@@ -1682,16 +1672,6 @@ BEGIN
             dclk_glb_1 => Net_10,
             dclk_1 => Net_10_local,
             clk_bus_glb_ff => \ClockBlock.clk_bus_glb_ff__sig\);
-
-    DMA:drqcell
-        GENERIC MAP(
-            drq_type => "10",
-            num_tds => 0)
-        PORT MAP(
-            dmareq => Net_925,
-            termin => '0',
-            termout => Net_1082,
-            clock => ClockBlock_BUS_CLK);
 
     LED:logicalport
         GENERIC MAP(
@@ -3340,18 +3320,6 @@ BEGIN
             interrupt => Net_715,
             clock => ClockBlock_BUS_CLK);
 
-    \Filter:DFB\:dfbcell
-        GENERIC MAP(
-            cy_registers => "")
-        PORT MAP(
-            in_1 => open,
-            in_2 => open,
-            out_1 => \Filter:Net_8\,
-            out_2 => \Filter:Net_9\,
-            dmareq_1 => Net_1083,
-            dmareq_2 => Net_1084,
-            interrupt => Net_1085);
-
     \LCD:LCDPort(0)\:iocell
         GENERIC MAP(
             in_sync_mode => 0,
@@ -3690,13 +3658,6 @@ BEGIN
             int_type => "10")
         PORT MAP(
             interrupt => Net_684,
-            clock => ClockBlock_BUS_CLK);
-
-    isr_filter:interrupt
-        GENERIC MAP(
-            int_type => "10")
-        PORT MAP(
-            interrupt => Net_1085,
             clock => ClockBlock_BUS_CLK);
 
 END __DEFAULT__;

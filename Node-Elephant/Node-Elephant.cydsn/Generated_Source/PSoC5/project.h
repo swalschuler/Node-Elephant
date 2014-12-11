@@ -44,10 +44,6 @@
 #include <Tx_1_aliases.h>
 #include <Tx_1.h>
 #include <CAN.h>
-#include <Filter.h>
-#include <Filter_PVT.h>
-#include <isr_filter.h>
-#include <DMA_dma.h>
 #include <LCD_LCDPort_aliases.h>
 #include <LCD_LCDPort.h>
 #include <ADC_SAR_SAR.h>

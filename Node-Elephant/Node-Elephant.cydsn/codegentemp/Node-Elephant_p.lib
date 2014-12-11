@@ -205,39 +205,6 @@ library (timing) {
             }
         }
     }
-    cell (drqcell1) {
-        pin (clock) {
-            direction : input;
-            clock : true;
-        }
-        pin (dmareq) {
-            direction : input;
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 7.100;
-                intrinsic_fall : 7.100;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.000;
-                intrinsic_fall : 0.000;
-            }
-        }
-        pin (termin) {
-            direction : input;
-        }
-        pin (termout) {
-            direction : output;
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 9.000;
-                intrinsic_fall : 9.000;
-            }
-        }
-    }
     cell (iocell4) {
         pin (in_clock) {
             direction : input;
@@ -7644,7 +7611,7 @@ library (timing) {
             }
         }
     }
-    cell (drqcell2) {
+    cell (drqcell1) {
         pin (clock) {
             direction : input;
             clock : true;
@@ -7677,7 +7644,7 @@ library (timing) {
             }
         }
     }
-    cell (drqcell3) {
+    cell (drqcell2) {
         pin (clock) {
             direction : input;
             clock : true;
