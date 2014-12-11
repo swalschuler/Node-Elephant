@@ -1,0 +1,1602 @@
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"calibrate.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.rodata
+  19              		.align	2
+  20              	.LC1:
+  21 0000 57616974 		.ascii	"Wait...\000"
+  21      2E2E2E00 
+  22              		.align	2
+  23              	.LC2:
+  24 0008 5468726F 		.ascii	"Throttle 1: Low\000"
+  24      74746C65 
+  24      20313A20 
+  24      4C6F7700 
+  25              		.align	2
+  26              	.LC3:
+  27 0018 5468726F 		.ascii	"Throttle 2: Low\000"
+  27      74746C65 
+  27      20323A20 
+  27      4C6F7700 
+  28              		.align	2
+  29              	.LC4:
+  30 0028 5468726F 		.ascii	"Throttle 1: High\000"
+  30      74746C65 
+  30      20313A20 
+  30      48696768 
+  30      00
+  31 0039 000000   		.align	2
+  32              	.LC5:
+  33 003c 5468726F 		.ascii	"Throttle 2: High\000"
+  33      74746C65 
+  33      20323A20 
+  33      48696768 
+  33      00
+  34 004d 000000   		.align	2
+  35              	.LC6:
+  36 0050 42726561 		.ascii	"Break 1: Low\000"
+  36      6B20313A 
+  36      204C6F77 
+  36      00
+  37 005d 000000   		.align	2
+  38              	.LC7:
+  39 0060 42726561 		.ascii	"Break 2: Low\000"
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 2
+
+
+  39      6B20323A 
+  39      204C6F77 
+  39      00
+  40 006d 000000   		.align	2
+  41              	.LC8:
+  42 0070 53746565 		.ascii	"Steering: Left\000"
+  42      72696E67 
+  42      3A204C65 
+  42      667400
+  43 007f 00       		.align	2
+  44              	.LC9:
+  45 0080 53746565 		.ascii	"Steering: Right\000"
+  45      72696E67 
+  45      3A205269 
+  45      67687400 
+  46              		.align	2
+  47              	.LC10:
+  48 0090 4572726F 		.ascii	"Error in loop\000"
+  48      7220696E 
+  48      206C6F6F 
+  48      7000
+  49              		.global	__aeabi_f2d
+  50 009e 0000     		.align	2
+  51              	.LC11:
+  52 00a0 25302E34 		.ascii	"%0.4fv, %d\000"
+  52      66762C20 
+  52      256400
+  53 00ab 00       		.align	2
+  54              	.LC12:
+  55 00ac 4552524F 		.ascii	"ERROR:\000"
+  55      523A00
+  56 00b3 00       		.align	2
+  57              	.LC13:
+  58 00b4 25642025 		.ascii	"%d %d %d\000"
+  58      64202564 
+  58      00
+  59 00bd 000000   		.align	2
+  60              	.LC14:
+  61 00c0 43616C69 		.ascii	"Calibration\000"
+  61      62726174 
+  61      696F6E00 
+  62              		.align	2
+  63              	.LC15:
+  64 00cc 436F6D70 		.ascii	"Complete\000"
+  64      6C657465 
+  64      00
+  65 00d5 000000   		.align	2
+  66              	.LC0:
+  67 00d8 00       		.byte	0
+  68 00d9 01       		.byte	1
+  69 00da 00       		.byte	0
+  70 00db 01       		.byte	1
+  71 00dc 02       		.byte	2
+  72 00dd 03       		.byte	3
+  73 00de 04       		.byte	4
+  74 00df 04       		.byte	4
+  75              		.section	.text.calAll,"ax",%progbits
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 3
+
+
+  76              		.align	2
+  77              		.global	calAll
+  78              		.thumb
+  79              		.thumb_func
+  80              		.type	calAll, %function
+  81              	calAll:
+  82              	.LFB56:
+  83              		.file 1 ".\\calibrate.c"
+   1:.\calibrate.c **** /* ========================================
+   2:.\calibrate.c ****  *
+   3:.\calibrate.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\calibrate.c ****  * All Rights Reserved
+   5:.\calibrate.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\calibrate.c ****  *
+   7:.\calibrate.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\calibrate.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\calibrate.c ****  *
+  10:.\calibrate.c ****  * ========================================
+  11:.\calibrate.c **** */
+  12:.\calibrate.c **** 
+  13:.\calibrate.c **** #include "calibrate.h"
+  14:.\calibrate.c **** 
+  15:.\calibrate.c **** /*******************************************************************************
+  16:.\calibrate.c **** * Function Name: ADC_SAR_TempBufDmaInit()
+  17:.\calibrate.c **** ********************************************************************************
+  18:.\calibrate.c **** *
+  19:.\calibrate.c **** * Summary:
+  20:.\calibrate.c **** *  Calibrates all and then writes the values to EEPROM 
+  21:.\calibrate.c **** *
+  22:.\calibrate.c **** * Parameters:
+  23:.\calibrate.c **** *  None.
+  24:.\calibrate.c **** *
+  25:.\calibrate.c **** * Return:
+  26:.\calibrate.c **** *  None.
+  27:.\calibrate.c **** *
+  28:.\calibrate.c **** *
+  29:.\calibrate.c **** *******************************************************************************/
+  30:.\calibrate.c **** void calAll(void)           //calibrate all sensors
+  31:.\calibrate.c **** {
+  84              		.loc 1 31 0
+  85              		.cfi_startproc
+  86              		@ args = 0, pretend = 0, frame = 88
+  87              		@ frame_needed = 1, uses_anonymous_args = 0
+  88 0000 B0B5     		push	{r4, r5, r7, lr}
+  89              	.LCFI0:
+  90              		.cfi_def_cfa_offset 16
+  91              		.cfi_offset 4, -16
+  92              		.cfi_offset 5, -12
+  93              		.cfi_offset 7, -8
+  94              		.cfi_offset 14, -4
+  95 0002 98B0     		sub	sp, sp, #96
+  96              	.LCFI1:
+  97              		.cfi_def_cfa_offset 112
+  98 0004 02AF     		add	r7, sp, #8
+  99              	.LCFI2:
+ 100              		.cfi_def_cfa 7, 104
+  32:.\calibrate.c ****     float volts;        //stores voltage conversion value in volts
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 4
+
+
+  33:.\calibrate.c ****     uint16 voltCounts;  //stores voltage conversion value in counts
+  34:.\calibrate.c ****     uint8 i = 0;        //counter for for loop 
+ 101              		.loc 1 34 0
+ 102 0006 4FF00003 		mov	r3, #0
+ 103 000a 87F85530 		strb	r3, [r7, #85]
+  35:.\calibrate.c ****     uint8 j = 0;        //counter for for loop
+ 104              		.loc 1 35 0
+ 105 000e 4FF00003 		mov	r3, #0
+ 106 0012 87F85430 		strb	r3, [r7, #84]
+  36:.\calibrate.c ****     char buff[50];
+  37:.\calibrate.c ****     uint8 channelNum[8] = {0,1,0,1,2,3,4,4};    //array of channel numbers
+ 107              		.loc 1 37 0
+ 108 0016 40F20002 		movw	r2, #:lower16:.LC0
+ 109 001a C0F20002 		movt	r2, #:upper16:.LC0
+ 110 001e 07F10803 		add	r3, r7, #8
+ 111 0022 1068     		ldr	r0, [r2, #0]	@ unaligned
+ 112 0024 5168     		ldr	r1, [r2, #4]	@ unaligned
+ 113 0026 03C3     		stmia	r3!, {r0, r1}
+  38:.\calibrate.c ****     uint8 getMod[4];     //temporary array to store mod values
+  39:.\calibrate.c ****     reg8* regPointer = (reg8*)CYDEV_EE_BASE;           //pointer pointing to base of EEPROM (row 1)
+ 114              		.loc 1 39 0
+ 115 0028 4FF40043 		mov	r3, #32768
+ 116 002c C4F20003 		movt	r3, 16384
+ 117 0030 3B65     		str	r3, [r7, #80]
+  40:.\calibrate.c ****     cystatus writeStatus = CYRET_SUCCESS;       //return status of EEPROM_ByteWrite
+ 118              		.loc 1 40 0
+ 119 0032 4FF00003 		mov	r3, #0
+ 120 0036 FB64     		str	r3, [r7, #76]
+  41:.\calibrate.c ****     uint8 row = 0;              //row of EEPROM to write to (0 = 1st row)
+ 121              		.loc 1 41 0
+ 122 0038 4FF00003 		mov	r3, #0
+ 123 003c 87F84B30 		strb	r3, [r7, #75]
+  42:.\calibrate.c ****     uint8 byteCount = 0;        //keeps track of which byte in row to write to (0 = 1st byte)
+ 124              		.loc 1 42 0
+ 125 0040 4FF00003 		mov	r3, #0
+ 126 0044 87F84A30 		strb	r3, [r7, #74]
+  43:.\calibrate.c ****     uint16 temp = 0;        //holds voltCounts value for printing      
+ 127              		.loc 1 43 0
+ 128 0048 4FF00003 		mov	r3, #0
+ 129 004c A7F84830 		strh	r3, [r7, #72]	@ movhi
+  44:.\calibrate.c ****     
+  45:.\calibrate.c ****     for(i = 0; i < 8; i++)
+ 130              		.loc 1 45 0
+ 131 0050 4FF00003 		mov	r3, #0
+ 132 0054 87F85530 		strb	r3, [r7, #85]
+ 133 0058 9EE1     		b	.L2
+ 134              	.L29:
+  46:.\calibrate.c ****     {
+  47:.\calibrate.c ****         LCD_ClearDisplay();
+ 135              		.loc 1 47 0
+ 136 005a 4FF00100 		mov	r0, #1
+ 137 005e FFF7FEFF 		bl	LCD_WriteControl
+  48:.\calibrate.c ****         LCD_Position(0,0);
+ 138              		.loc 1 48 0
+ 139 0062 4FF00000 		mov	r0, #0
+ 140 0066 4FF00001 		mov	r1, #0
+ 141 006a FFF7FEFF 		bl	LCD_Position
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 5
+
+
+  49:.\calibrate.c ****         LCD_PrintString("Wait...");
+ 142              		.loc 1 49 0
+ 143 006e 40F20000 		movw	r0, #:lower16:.LC1
+ 144 0072 C0F20000 		movt	r0, #:upper16:.LC1
+ 145 0076 FFF7FEFF 		bl	LCD_PrintString
+  50:.\calibrate.c ****         CyDelay(1000);              //Delay because button value resets slower than loop runs
+ 146              		.loc 1 50 0
+ 147 007a 4FF47A70 		mov	r0, #1000
+ 148 007e FFF7FEFF 		bl	CyDelay
+  51:.\calibrate.c ****         LCD_ClearDisplay();
+ 149              		.loc 1 51 0
+ 150 0082 4FF00100 		mov	r0, #1
+ 151 0086 FFF7FEFF 		bl	LCD_WriteControl
+  52:.\calibrate.c ****         
+  53:.\calibrate.c ****         for(j = 0; j < 4; j++)
+ 152              		.loc 1 53 0
+ 153 008a 4FF00003 		mov	r3, #0
+ 154 008e 87F85430 		strb	r3, [r7, #84]
+ 155 0092 0EE0     		b	.L3
+ 156              	.L4:
+  54:.\calibrate.c ****             getMod[j] = 0;     //reset temporary array to store mod values
+ 157              		.loc 1 54 0 discriminator 2
+ 158 0094 97F85430 		ldrb	r3, [r7, #84]	@ zero_extendqisi2
+ 159 0098 07F15801 		add	r1, r7, #88
+ 160 009c CB18     		adds	r3, r1, r3
+ 161 009e 4FF00002 		mov	r2, #0
+ 162 00a2 03F8542C 		strb	r2, [r3, #-84]
+  53:.\calibrate.c ****         for(j = 0; j < 4; j++)
+ 163              		.loc 1 53 0 discriminator 2
+ 164 00a6 97F85430 		ldrb	r3, [r7, #84]
+ 165 00aa 03F10103 		add	r3, r3, #1
+ 166 00ae 87F85430 		strb	r3, [r7, #84]
+ 167              	.L3:
+  53:.\calibrate.c ****         for(j = 0; j < 4; j++)
+ 168              		.loc 1 53 0 is_stmt 0 discriminator 1
+ 169 00b2 97F85430 		ldrb	r3, [r7, #84]	@ zero_extendqisi2
+ 170 00b6 032B     		cmp	r3, #3
+ 171 00b8 ECD9     		bls	.L4
+  55:.\calibrate.c ****         
+  56:.\calibrate.c ****         if(i == 4)
+ 172              		.loc 1 56 0 is_stmt 1
+ 173 00ba 97F85530 		ldrb	r3, [r7, #85]	@ zero_extendqisi2
+ 174 00be 042B     		cmp	r3, #4
+ 175 00c0 03D1     		bne	.L5
+  57:.\calibrate.c ****             row = 1;        //changes EEPROM row to write to row 2
+ 176              		.loc 1 57 0
+ 177 00c2 4FF00103 		mov	r3, #1
+ 178 00c6 87F84B30 		strb	r3, [r7, #75]
+ 179              	.L5:
+  58:.\calibrate.c ****         
+  59:.\calibrate.c ****         switch (i)
+ 180              		.loc 1 59 0
+ 181 00ca 97F85530 		ldrb	r3, [r7, #85]	@ zero_extendqisi2
+ 182 00ce 072B     		cmp	r3, #7
+ 183 00d0 4AD8     		bhi	.L6
+ 184 00d2 01A2     		adr	r2, .L15
+ 185 00d4 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 6
+
+
+ 186              		.align	2
+ 187              	.L15:
+ 188 00d8 F9000000 		.word	.L7+1
+ 189 00dc 07010000 		.word	.L8+1
+ 190 00e0 15010000 		.word	.L9+1
+ 191 00e4 23010000 		.word	.L10+1
+ 192 00e8 31010000 		.word	.L11+1
+ 193 00ec 3F010000 		.word	.L12+1
+ 194 00f0 4D010000 		.word	.L13+1
+ 195 00f4 5B010000 		.word	.L14+1
+ 196              	.L7:
+  60:.\calibrate.c ****         {
+  61:.\calibrate.c ****             case 0: LCD_PrintString("Throttle 1: Low");
+ 197              		.loc 1 61 0
+ 198 00f8 40F20000 		movw	r0, #:lower16:.LC2
+ 199 00fc C0F20000 		movt	r0, #:upper16:.LC2
+ 200 0100 FFF7FEFF 		bl	LCD_PrintString
+  62:.\calibrate.c ****                 break;
+ 201              		.loc 1 62 0
+ 202 0104 37E0     		b	.L16
+ 203              	.L8:
+  63:.\calibrate.c ****             case 1: LCD_PrintString("Throttle 2: Low");
+ 204              		.loc 1 63 0
+ 205 0106 40F20000 		movw	r0, #:lower16:.LC3
+ 206 010a C0F20000 		movt	r0, #:upper16:.LC3
+ 207 010e FFF7FEFF 		bl	LCD_PrintString
+  64:.\calibrate.c ****                 break;
+ 208              		.loc 1 64 0
+ 209 0112 30E0     		b	.L16
+ 210              	.L9:
+  65:.\calibrate.c ****             case 2: LCD_PrintString("Throttle 1: High");
+ 211              		.loc 1 65 0
+ 212 0114 40F20000 		movw	r0, #:lower16:.LC4
+ 213 0118 C0F20000 		movt	r0, #:upper16:.LC4
+ 214 011c FFF7FEFF 		bl	LCD_PrintString
+  66:.\calibrate.c ****                 break;
+ 215              		.loc 1 66 0
+ 216 0120 29E0     		b	.L16
+ 217              	.L10:
+  67:.\calibrate.c ****             case 3: LCD_PrintString("Throttle 2: High");
+ 218              		.loc 1 67 0
+ 219 0122 40F20000 		movw	r0, #:lower16:.LC5
+ 220 0126 C0F20000 		movt	r0, #:upper16:.LC5
+ 221 012a FFF7FEFF 		bl	LCD_PrintString
+  68:.\calibrate.c ****                 break;
+ 222              		.loc 1 68 0
+ 223 012e 22E0     		b	.L16
+ 224              	.L11:
+  69:.\calibrate.c ****             case 4: LCD_PrintString("Break 1: Low");
+ 225              		.loc 1 69 0
+ 226 0130 40F20000 		movw	r0, #:lower16:.LC6
+ 227 0134 C0F20000 		movt	r0, #:upper16:.LC6
+ 228 0138 FFF7FEFF 		bl	LCD_PrintString
+  70:.\calibrate.c ****                 break;
+ 229              		.loc 1 70 0
+ 230 013c 1BE0     		b	.L16
+ 231              	.L12:
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 7
+
+
+  71:.\calibrate.c ****             case 5: LCD_PrintString("Break 2: Low");
+ 232              		.loc 1 71 0
+ 233 013e 40F20000 		movw	r0, #:lower16:.LC7
+ 234 0142 C0F20000 		movt	r0, #:upper16:.LC7
+ 235 0146 FFF7FEFF 		bl	LCD_PrintString
+  72:.\calibrate.c ****                 break;
+ 236              		.loc 1 72 0
+ 237 014a 14E0     		b	.L16
+ 238              	.L13:
+  73:.\calibrate.c ****             case 6: LCD_PrintString("Steering: Left");
+ 239              		.loc 1 73 0
+ 240 014c 40F20000 		movw	r0, #:lower16:.LC8
+ 241 0150 C0F20000 		movt	r0, #:upper16:.LC8
+ 242 0154 FFF7FEFF 		bl	LCD_PrintString
+  74:.\calibrate.c ****                 break;
+ 243              		.loc 1 74 0
+ 244 0158 0DE0     		b	.L16
+ 245              	.L14:
+  75:.\calibrate.c ****             case 7: LCD_PrintString("Steering: Right");
+ 246              		.loc 1 75 0
+ 247 015a 40F20000 		movw	r0, #:lower16:.LC9
+ 248 015e C0F20000 		movt	r0, #:upper16:.LC9
+ 249 0162 FFF7FEFF 		bl	LCD_PrintString
+  76:.\calibrate.c ****                 break;
+ 250              		.loc 1 76 0
+ 251 0166 06E0     		b	.L16
+ 252              	.L6:
+  77:.\calibrate.c ****             default: LCD_PrintString("Error in loop");
+ 253              		.loc 1 77 0
+ 254 0168 40F20000 		movw	r0, #:lower16:.LC10
+ 255 016c C0F20000 		movt	r0, #:upper16:.LC10
+ 256 0170 FFF7FEFF 		bl	LCD_PrintString
+  78:.\calibrate.c ****                 break;
+ 257              		.loc 1 78 0
+ 258 0174 00BF     		nop
+ 259              	.L16:
+  79:.\calibrate.c ****         }
+  80:.\calibrate.c ****             
+  81:.\calibrate.c ****         while(i<8)          //while loops prints voltage value to LCD, button press gets conversion
+ 260              		.loc 1 81 0
+ 261 0176 04E1     		b	.L17
+ 262              	.L28:
+  82:.\calibrate.c ****         {
+  83:.\calibrate.c ****             if(ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))
+ 263              		.loc 1 83 0
+ 264 0178 4FF00000 		mov	r0, #0
+ 265 017c FFF7FEFF 		bl	ADC_SAR_IsEndConversion
+ 266 0180 0346     		mov	r3, r0
+ 267 0182 002B     		cmp	r3, #0
+ 268 0184 36D0     		beq	.L18
+  84:.\calibrate.c ****             {
+  85:.\calibrate.c ****                 volts = ADC_SAR_CountsTo_Volts(ADC_SAR_GetResult16(channelNum[i]));        //Conver
+ 269              		.loc 1 85 0
+ 270 0186 97F85530 		ldrb	r3, [r7, #85]	@ zero_extendqisi2
+ 271 018a 07F15801 		add	r1, r7, #88
+ 272 018e CB18     		adds	r3, r1, r3
+ 273 0190 13F8503C 		ldrb	r3, [r3, #-80]	@ zero_extendqisi2
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 8
+
+
+ 274 0194 1846     		mov	r0, r3
+ 275 0196 FFF7FEFF 		bl	ADC_SAR_GetResult16
+ 276 019a 0346     		mov	r3, r0
+ 277 019c 1846     		mov	r0, r3
+ 278 019e FFF7FEFF 		bl	ADC_SAR_CountsTo_Volts
+ 279 01a2 7864     		str	r0, [r7, #68]	@ float
+  86:.\calibrate.c ****                 LCD_Position(1u, 0u);
+ 280              		.loc 1 86 0
+ 281 01a4 4FF00100 		mov	r0, #1
+ 282 01a8 4FF00001 		mov	r1, #0
+ 283 01ac FFF7FEFF 		bl	LCD_Position
+  87:.\calibrate.c ****                 sprintf(buff, "%0.4fv, %d", volts, ADC_SAR_GetResult16(channelNum[i]));            
+ 284              		.loc 1 87 0
+ 285 01b0 786C     		ldr	r0, [r7, #68]	@ float
+ 286 01b2 FFF7FEFF 		bl	__aeabi_f2d
+ 287 01b6 0446     		mov	r4, r0
+ 288 01b8 0D46     		mov	r5, r1
+ 289 01ba 97F85530 		ldrb	r3, [r7, #85]	@ zero_extendqisi2
+ 290 01be 07F15802 		add	r2, r7, #88
+ 291 01c2 D318     		adds	r3, r2, r3
+ 292 01c4 13F8503C 		ldrb	r3, [r3, #-80]	@ zero_extendqisi2
+ 293 01c8 1846     		mov	r0, r3
+ 294 01ca FFF7FEFF 		bl	ADC_SAR_GetResult16
+ 295 01ce 0346     		mov	r3, r0
+ 296 01d0 1A46     		mov	r2, r3
+ 297 01d2 07F11003 		add	r3, r7, #16
+ 298 01d6 0092     		str	r2, [sp, #0]
+ 299 01d8 1846     		mov	r0, r3
+ 300 01da 40F20001 		movw	r1, #:lower16:.LC11
+ 301 01de C0F20001 		movt	r1, #:upper16:.LC11
+ 302 01e2 2246     		mov	r2, r4
+ 303 01e4 2B46     		mov	r3, r5
+ 304 01e6 FFF7FEFF 		bl	sprintf
+  88:.\calibrate.c ****                 LCD_PrintString(buff);             //Print ACII voltage value  
+ 305              		.loc 1 88 0
+ 306 01ea 07F11003 		add	r3, r7, #16
+ 307 01ee 1846     		mov	r0, r3
+ 308 01f0 FFF7FEFF 		bl	LCD_PrintString
+ 309              	.L18:
+  89:.\calibrate.c ****             }
+  90:.\calibrate.c ****             
+  91:.\calibrate.c ****             if(Button_Read() == 0)      //if button pressed, set to resistive pull up
+ 310              		.loc 1 91 0
+ 311 01f4 FFF7FEFF 		bl	Button_Read
+ 312 01f8 0346     		mov	r3, r0
+ 313 01fa 002B     		cmp	r3, #0
+ 314 01fc 40F0C180 		bne	.L17
+  92:.\calibrate.c ****             {
+  93:.\calibrate.c ****                 if(ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))        //if ADC conversion is 
+ 315              		.loc 1 93 0
+ 316 0200 4FF00000 		mov	r0, #0
+ 317 0204 FFF7FEFF 		bl	ADC_SAR_IsEndConversion
+ 318 0208 0346     		mov	r3, r0
+ 319 020a 002B     		cmp	r3, #0
+ 320 020c 00F0B980 		beq	.L17
+  94:.\calibrate.c ****                 {
+  95:.\calibrate.c ****                     voltCounts = ADC_SAR_GetResult16(channelNum[i]);
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 9
+
+
+ 321              		.loc 1 95 0
+ 322 0210 97F85530 		ldrb	r3, [r7, #85]	@ zero_extendqisi2
+ 323 0214 07F15801 		add	r1, r7, #88
+ 324 0218 CB18     		adds	r3, r1, r3
+ 325 021a 13F8503C 		ldrb	r3, [r3, #-80]	@ zero_extendqisi2
+ 326 021e 1846     		mov	r0, r3
+ 327 0220 FFF7FEFF 		bl	ADC_SAR_GetResult16
+ 328 0224 0346     		mov	r3, r0
+ 329 0226 A7F85630 		strh	r3, [r7, #86]	@ movhi
+  96:.\calibrate.c ****                     
+  97:.\calibrate.c ****                     for(j = 3; voltCounts != 0; j--)        //seperates voltCounts into individual 
+ 330              		.loc 1 97 0
+ 331 022a 4FF00303 		mov	r3, #3
+ 332 022e 87F85430 		strb	r3, [r7, #84]
+ 333 0232 2BE0     		b	.L19
+ 334              	.L20:
+  98:.\calibrate.c ****                     {
+  99:.\calibrate.c ****                         getMod[j] = voltCounts % 10;        //mod by 10 returns right most digit
+ 335              		.loc 1 99 0 discriminator 2
+ 336 0234 97F85400 		ldrb	r0, [r7, #84]	@ zero_extendqisi2
+ 337 0238 B7F85620 		ldrh	r2, [r7, #86]
+ 338 023c 4CF6CD43 		movw	r3, #52429
+ 339 0240 CCF6CC43 		movt	r3, 52428
+ 340 0244 A3FB0213 		umull	r1, r3, r3, r2
+ 341 0248 4FEAD301 		lsr	r1, r3, #3
+ 342 024c 0B46     		mov	r3, r1
+ 343 024e 4FEA8303 		lsl	r3, r3, #2
+ 344 0252 5B18     		adds	r3, r3, r1
+ 345 0254 4FEA4303 		lsl	r3, r3, #1
+ 346 0258 D31A     		subs	r3, r2, r3
+ 347 025a 9BB2     		uxth	r3, r3
+ 348 025c DAB2     		uxtb	r2, r3
+ 349 025e 07F15801 		add	r1, r7, #88
+ 350 0262 0B18     		adds	r3, r1, r0
+ 351 0264 03F8542C 		strb	r2, [r3, #-84]
+ 100:.\calibrate.c ****                         voltCounts = voltCounts / 10;             //division by 10 removes right mo
+ 352              		.loc 1 100 0 discriminator 2
+ 353 0268 B7F85620 		ldrh	r2, [r7, #86]
+ 354 026c 4CF6CD43 		movw	r3, #52429
+ 355 0270 CCF6CC43 		movt	r3, 52428
+ 356 0274 A3FB0213 		umull	r1, r3, r3, r2
+ 357 0278 4FEAD303 		lsr	r3, r3, #3
+ 358 027c A7F85630 		strh	r3, [r7, #86]	@ movhi
+  97:.\calibrate.c ****                     for(j = 3; voltCounts != 0; j--)        //seperates voltCounts into individual 
+ 359              		.loc 1 97 0 discriminator 2
+ 360 0280 97F85430 		ldrb	r3, [r7, #84]
+ 361 0284 03F1FF33 		add	r3, r3, #-1
+ 362 0288 87F85430 		strb	r3, [r7, #84]
+ 363              	.L19:
+  97:.\calibrate.c ****                     for(j = 3; voltCounts != 0; j--)        //seperates voltCounts into individual 
+ 364              		.loc 1 97 0 is_stmt 0 discriminator 1
+ 365 028c B7F85630 		ldrh	r3, [r7, #86]
+ 366 0290 002B     		cmp	r3, #0
+ 367 0292 CFD1     		bne	.L20
+ 101:.\calibrate.c ****                     }
+ 102:.\calibrate.c ****                     
+ 103:.\calibrate.c ****                     for(j = 0; j < 4; j++)          //write array getMod into EEPROM
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 10
+
+
+ 368              		.loc 1 103 0 is_stmt 1
+ 369 0294 4FF00003 		mov	r3, #0
+ 370 0298 87F85430 		strb	r3, [r7, #84]
+ 371 029c 6CE0     		b	.L21
+ 372              	.L26:
+ 104:.\calibrate.c ****                     {
+ 105:.\calibrate.c ****                         if(CySetTemp() == CYRET_SUCCESS)        //if EEPROM die temp okay
+ 373              		.loc 1 105 0
+ 374 029e FFF7FEFF 		bl	CySetTemp
+ 375 02a2 0346     		mov	r3, r0
+ 376 02a4 002B     		cmp	r3, #0
+ 377 02a6 61D1     		bne	.L22
+ 106:.\calibrate.c ****                         {
+ 107:.\calibrate.c ****                             if(byteCount == 16)         //reset byte count, only 16 bits allowed pe
+ 378              		.loc 1 107 0
+ 379 02a8 97F84A30 		ldrb	r3, [r7, #74]	@ zero_extendqisi2
+ 380 02ac 102B     		cmp	r3, #16
+ 381 02ae 03D1     		bne	.L23
+ 108:.\calibrate.c ****                                 byteCount = 0;
+ 382              		.loc 1 108 0
+ 383 02b0 4FF00003 		mov	r3, #0
+ 384 02b4 87F84A30 		strb	r3, [r7, #74]
+ 385              	.L23:
+ 109:.\calibrate.c ****                             
+ 110:.\calibrate.c ****                             if((regPointer+row*16)[byteCount] != getMod[j])       //checks if byte 
+ 386              		.loc 1 110 0
+ 387 02b8 97F84B30 		ldrb	r3, [r7, #75]	@ zero_extendqisi2
+ 388 02bc 4FEA0313 		lsl	r3, r3, #4
+ 389 02c0 1A46     		mov	r2, r3
+ 390 02c2 97F84A30 		ldrb	r3, [r7, #74]	@ zero_extendqisi2
+ 391 02c6 D318     		adds	r3, r2, r3
+ 392 02c8 3A6D     		ldr	r2, [r7, #80]
+ 393 02ca D318     		adds	r3, r2, r3
+ 394 02cc 1B78     		ldrb	r3, [r3, #0]
+ 395 02ce DAB2     		uxtb	r2, r3
+ 396 02d0 97F85430 		ldrb	r3, [r7, #84]	@ zero_extendqisi2
+ 397 02d4 07F15801 		add	r1, r7, #88
+ 398 02d8 CB18     		adds	r3, r1, r3
+ 399 02da 13F8543C 		ldrb	r3, [r3, #-84]	@ zero_extendqisi2
+ 400 02de 9A42     		cmp	r2, r3
+ 401 02e0 10D0     		beq	.L24
+ 111:.\calibrate.c ****                                 writeStatus = EEPROM_ByteWrite(getMod[j], row, byteCount);      //w
+ 402              		.loc 1 111 0
+ 403 02e2 97F85430 		ldrb	r3, [r7, #84]	@ zero_extendqisi2
+ 404 02e6 07F15802 		add	r2, r7, #88
+ 405 02ea D318     		adds	r3, r2, r3
+ 406 02ec 13F8541C 		ldrb	r1, [r3, #-84]	@ zero_extendqisi2
+ 407 02f0 97F84B20 		ldrb	r2, [r7, #75]	@ zero_extendqisi2
+ 408 02f4 97F84A30 		ldrb	r3, [r7, #74]	@ zero_extendqisi2
+ 409 02f8 0846     		mov	r0, r1
+ 410 02fa 1146     		mov	r1, r2
+ 411 02fc 1A46     		mov	r2, r3
+ 412 02fe FFF7FEFF 		bl	EEPROM_ByteWrite
+ 413 0302 F864     		str	r0, [r7, #76]
+ 414              	.L24:
+ 112:.\calibrate.c ****                             
+ 113:.\calibrate.c ****                             if(writeStatus != CYRET_SUCCESS)            //if error occured during w
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 11
+
+
+ 415              		.loc 1 113 0
+ 416 0304 FB6C     		ldr	r3, [r7, #76]
+ 417 0306 002B     		cmp	r3, #0
+ 418 0308 2AD0     		beq	.L25
+ 114:.\calibrate.c ****                             {
+ 115:.\calibrate.c ****                                 LCD_ClearDisplay();
+ 419              		.loc 1 115 0
+ 420 030a 4FF00100 		mov	r0, #1
+ 421 030e FFF7FEFF 		bl	LCD_WriteControl
+ 116:.\calibrate.c ****                                 LCD_Position(0,0);
+ 422              		.loc 1 116 0
+ 423 0312 4FF00000 		mov	r0, #0
+ 424 0316 4FF00001 		mov	r1, #0
+ 425 031a FFF7FEFF 		bl	LCD_Position
+ 117:.\calibrate.c ****                                 LCD_PrintString("ERROR:");
+ 426              		.loc 1 117 0
+ 427 031e 40F20000 		movw	r0, #:lower16:.LC12
+ 428 0322 C0F20000 		movt	r0, #:upper16:.LC12
+ 429 0326 FFF7FEFF 		bl	LCD_PrintString
+ 118:.\calibrate.c ****                                 sprintf(buff, "%d %d %d", getMod[j], row, byteCount);
+ 430              		.loc 1 118 0
+ 431 032a 97F85430 		ldrb	r3, [r7, #84]	@ zero_extendqisi2
+ 432 032e 07F15801 		add	r1, r7, #88
+ 433 0332 CB18     		adds	r3, r1, r3
+ 434 0334 13F8543C 		ldrb	r3, [r3, #-84]	@ zero_extendqisi2
+ 435 0338 1A46     		mov	r2, r3
+ 436 033a 97F84B30 		ldrb	r3, [r7, #75]	@ zero_extendqisi2
+ 437 033e 97F84A00 		ldrb	r0, [r7, #74]	@ zero_extendqisi2
+ 438 0342 07F11001 		add	r1, r7, #16
+ 439 0346 0090     		str	r0, [sp, #0]
+ 440 0348 0846     		mov	r0, r1
+ 441 034a 40F20001 		movw	r1, #:lower16:.LC13
+ 442 034e C0F20001 		movt	r1, #:upper16:.LC13
+ 443 0352 FFF7FEFF 		bl	sprintf
+ 119:.\calibrate.c ****                                 LCD_PrintString(buff);
+ 444              		.loc 1 119 0
+ 445 0356 07F11003 		add	r3, r7, #16
+ 446 035a 1846     		mov	r0, r3
+ 447 035c FFF7FEFF 		bl	LCD_PrintString
+ 448              	.L25:
+ 120:.\calibrate.c ****                             }
+ 121:.\calibrate.c ****                             
+ 122:.\calibrate.c ****                             byteCount++;
+ 449              		.loc 1 122 0
+ 450 0360 97F84A30 		ldrb	r3, [r7, #74]
+ 451 0364 03F10103 		add	r3, r3, #1
+ 452 0368 87F84A30 		strb	r3, [r7, #74]
+ 453              	.L22:
+ 103:.\calibrate.c ****                     for(j = 0; j < 4; j++)          //write array getMod into EEPROM
+ 454              		.loc 1 103 0
+ 455 036c 97F85430 		ldrb	r3, [r7, #84]
+ 456 0370 03F10103 		add	r3, r3, #1
+ 457 0374 87F85430 		strb	r3, [r7, #84]
+ 458              	.L21:
+ 103:.\calibrate.c ****                     for(j = 0; j < 4; j++)          //write array getMod into EEPROM
+ 459              		.loc 1 103 0 is_stmt 0 discriminator 1
+ 460 0378 97F85430 		ldrb	r3, [r7, #84]	@ zero_extendqisi2
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 12
+
+
+ 461 037c 032B     		cmp	r3, #3
+ 462 037e 8ED9     		bls	.L26
+ 123:.\calibrate.c ****                         }
+ 124:.\calibrate.c ****                     }
+ 125:.\calibrate.c ****                     
+ 126:.\calibrate.c ****                     break;      //break from while loop when write is done
+ 463              		.loc 1 126 0 is_stmt 1
+ 464 0380 04E0     		b	.L27
+ 465              	.L17:
+  81:.\calibrate.c ****         while(i<8)          //while loops prints voltage value to LCD, button press gets conversion
+ 466              		.loc 1 81 0 discriminator 1
+ 467 0382 97F85530 		ldrb	r3, [r7, #85]	@ zero_extendqisi2
+ 468 0386 072B     		cmp	r3, #7
+ 469 0388 7FF6F6AE 		bls	.L28
+ 470              	.L27:
+  45:.\calibrate.c ****     for(i = 0; i < 8; i++)
+ 471              		.loc 1 45 0
+ 472 038c 97F85530 		ldrb	r3, [r7, #85]
+ 473 0390 03F10103 		add	r3, r3, #1
+ 474 0394 87F85530 		strb	r3, [r7, #85]
+ 475              	.L2:
+  45:.\calibrate.c ****     for(i = 0; i < 8; i++)
+ 476              		.loc 1 45 0 is_stmt 0 discriminator 1
+ 477 0398 97F85530 		ldrb	r3, [r7, #85]	@ zero_extendqisi2
+ 478 039c 072B     		cmp	r3, #7
+ 479 039e 7FF65CAE 		bls	.L29
+ 127:.\calibrate.c ****                 }
+ 128:.\calibrate.c ****             }
+ 129:.\calibrate.c ****         }
+ 130:.\calibrate.c ****     }
+ 131:.\calibrate.c ****     
+ 132:.\calibrate.c ****     LCD_ClearDisplay();
+ 480              		.loc 1 132 0 is_stmt 1
+ 481 03a2 4FF00100 		mov	r0, #1
+ 482 03a6 FFF7FEFF 		bl	LCD_WriteControl
+ 133:.\calibrate.c ****     LCD_Position(0,0);
+ 483              		.loc 1 133 0
+ 484 03aa 4FF00000 		mov	r0, #0
+ 485 03ae 4FF00001 		mov	r1, #0
+ 486 03b2 FFF7FEFF 		bl	LCD_Position
+ 134:.\calibrate.c ****     LCD_PrintString("Calibration");
+ 487              		.loc 1 134 0
+ 488 03b6 40F20000 		movw	r0, #:lower16:.LC14
+ 489 03ba C0F20000 		movt	r0, #:upper16:.LC14
+ 490 03be FFF7FEFF 		bl	LCD_PrintString
+ 135:.\calibrate.c ****     LCD_Position(1,0);
+ 491              		.loc 1 135 0
+ 492 03c2 4FF00100 		mov	r0, #1
+ 493 03c6 4FF00001 		mov	r1, #0
+ 494 03ca FFF7FEFF 		bl	LCD_Position
+ 136:.\calibrate.c ****     LCD_PrintString("Complete");
+ 495              		.loc 1 136 0
+ 496 03ce 40F20000 		movw	r0, #:lower16:.LC15
+ 497 03d2 C0F20000 		movt	r0, #:upper16:.LC15
+ 498 03d6 FFF7FEFF 		bl	LCD_PrintString
+ 137:.\calibrate.c ****     CyDelay(2000);
+ 499              		.loc 1 137 0
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 13
+
+
+ 500 03da 4FF4FA60 		mov	r0, #2000
+ 501 03de FFF7FEFF 		bl	CyDelay
+ 138:.\calibrate.c ****     
+ 139:.\calibrate.c ****     byteCount = 0;
+ 502              		.loc 1 139 0
+ 503 03e2 4FF00003 		mov	r3, #0
+ 504 03e6 87F84A30 		strb	r3, [r7, #74]
+ 140:.\calibrate.c ****     row = 0;
+ 505              		.loc 1 140 0
+ 506 03ea 4FF00003 		mov	r3, #0
+ 507 03ee 87F84B30 		strb	r3, [r7, #75]
+ 141:.\calibrate.c ****  
+ 142:.\calibrate.c **** //Code below is used for print to LCD for debugging     
+ 143:.\calibrate.c ****         
+ 144:.\calibrate.c ****     for(i = 0; i < 8; i++)
+ 508              		.loc 1 144 0
+ 509 03f2 4FF00003 		mov	r3, #0
+ 510 03f6 87F85530 		strb	r3, [r7, #85]
+ 511 03fa B1E0     		b	.L30
+ 512              	.L45:
+ 145:.\calibrate.c ****     {     
+ 146:.\calibrate.c ****         LCD_ClearDisplay();
+ 513              		.loc 1 146 0
+ 514 03fc 4FF00100 		mov	r0, #1
+ 515 0400 FFF7FEFF 		bl	LCD_WriteControl
+ 147:.\calibrate.c ****         LCD_Position(0,0);
+ 516              		.loc 1 147 0
+ 517 0404 4FF00000 		mov	r0, #0
+ 518 0408 4FF00001 		mov	r1, #0
+ 519 040c FFF7FEFF 		bl	LCD_Position
+ 148:.\calibrate.c ****         
+ 149:.\calibrate.c ****         temp = 0;           //reset temp
+ 520              		.loc 1 149 0
+ 521 0410 4FF00003 		mov	r3, #0
+ 522 0414 A7F84830 		strh	r3, [r7, #72]	@ movhi
+ 150:.\calibrate.c ****         
+ 151:.\calibrate.c ****         switch (i)
+ 523              		.loc 1 151 0
+ 524 0418 97F85530 		ldrb	r3, [r7, #85]	@ zero_extendqisi2
+ 525 041c 072B     		cmp	r3, #7
+ 526 041e 4BD8     		bhi	.L31
+ 527 0420 01A2     		adr	r2, .L40
+ 528 0422 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 529 0426 00BF     		.align	2
+ 530              	.L40:
+ 531 0428 49040000 		.word	.L32+1
+ 532 042c 57040000 		.word	.L33+1
+ 533 0430 65040000 		.word	.L34+1
+ 534 0434 73040000 		.word	.L35+1
+ 535 0438 81040000 		.word	.L36+1
+ 536 043c 8F040000 		.word	.L37+1
+ 537 0440 9D040000 		.word	.L38+1
+ 538 0444 AB040000 		.word	.L39+1
+ 539              	.L32:
+ 152:.\calibrate.c ****         {
+ 153:.\calibrate.c ****             case 0: LCD_PrintString("Throttle 1: Low");
+ 540              		.loc 1 153 0
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 14
+
+
+ 541 0448 40F20000 		movw	r0, #:lower16:.LC2
+ 542 044c C0F20000 		movt	r0, #:upper16:.LC2
+ 543 0450 FFF7FEFF 		bl	LCD_PrintString
+ 154:.\calibrate.c ****                 break;
+ 544              		.loc 1 154 0
+ 545 0454 37E0     		b	.L41
+ 546              	.L33:
+ 155:.\calibrate.c ****             case 1: LCD_PrintString("Throttle 2: Low");
+ 547              		.loc 1 155 0
+ 548 0456 40F20000 		movw	r0, #:lower16:.LC3
+ 549 045a C0F20000 		movt	r0, #:upper16:.LC3
+ 550 045e FFF7FEFF 		bl	LCD_PrintString
+ 156:.\calibrate.c ****                 break;
+ 551              		.loc 1 156 0
+ 552 0462 30E0     		b	.L41
+ 553              	.L34:
+ 157:.\calibrate.c ****             case 2: LCD_PrintString("Throttle 1: High");
+ 554              		.loc 1 157 0
+ 555 0464 40F20000 		movw	r0, #:lower16:.LC4
+ 556 0468 C0F20000 		movt	r0, #:upper16:.LC4
+ 557 046c FFF7FEFF 		bl	LCD_PrintString
+ 158:.\calibrate.c ****                 break;
+ 558              		.loc 1 158 0
+ 559 0470 29E0     		b	.L41
+ 560              	.L35:
+ 159:.\calibrate.c ****             case 3: LCD_PrintString("Throttle 2: High");
+ 561              		.loc 1 159 0
+ 562 0472 40F20000 		movw	r0, #:lower16:.LC5
+ 563 0476 C0F20000 		movt	r0, #:upper16:.LC5
+ 564 047a FFF7FEFF 		bl	LCD_PrintString
+ 160:.\calibrate.c ****                 break;
+ 565              		.loc 1 160 0
+ 566 047e 22E0     		b	.L41
+ 567              	.L36:
+ 161:.\calibrate.c ****             case 4: LCD_PrintString("Break 1: Low");
+ 568              		.loc 1 161 0
+ 569 0480 40F20000 		movw	r0, #:lower16:.LC6
+ 570 0484 C0F20000 		movt	r0, #:upper16:.LC6
+ 571 0488 FFF7FEFF 		bl	LCD_PrintString
+ 162:.\calibrate.c ****                 break;
+ 572              		.loc 1 162 0
+ 573 048c 1BE0     		b	.L41
+ 574              	.L37:
+ 163:.\calibrate.c ****             case 5: LCD_PrintString("Break 2: Low");
+ 575              		.loc 1 163 0
+ 576 048e 40F20000 		movw	r0, #:lower16:.LC7
+ 577 0492 C0F20000 		movt	r0, #:upper16:.LC7
+ 578 0496 FFF7FEFF 		bl	LCD_PrintString
+ 164:.\calibrate.c ****                 break;
+ 579              		.loc 1 164 0
+ 580 049a 14E0     		b	.L41
+ 581              	.L38:
+ 165:.\calibrate.c ****             case 6: LCD_PrintString("Steering: Left");
+ 582              		.loc 1 165 0
+ 583 049c 40F20000 		movw	r0, #:lower16:.LC8
+ 584 04a0 C0F20000 		movt	r0, #:upper16:.LC8
+ 585 04a4 FFF7FEFF 		bl	LCD_PrintString
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 15
+
+
+ 166:.\calibrate.c ****                 break;
+ 586              		.loc 1 166 0
+ 587 04a8 0DE0     		b	.L41
+ 588              	.L39:
+ 167:.\calibrate.c ****             case 7: LCD_PrintString("Steering: Right");
+ 589              		.loc 1 167 0
+ 590 04aa 40F20000 		movw	r0, #:lower16:.LC9
+ 591 04ae C0F20000 		movt	r0, #:upper16:.LC9
+ 592 04b2 FFF7FEFF 		bl	LCD_PrintString
+ 168:.\calibrate.c ****                 break;
+ 593              		.loc 1 168 0
+ 594 04b6 06E0     		b	.L41
+ 595              	.L31:
+ 169:.\calibrate.c ****             default: LCD_PrintString("Error in loop");
+ 596              		.loc 1 169 0
+ 597 04b8 40F20000 		movw	r0, #:lower16:.LC10
+ 598 04bc C0F20000 		movt	r0, #:upper16:.LC10
+ 599 04c0 FFF7FEFF 		bl	LCD_PrintString
+ 170:.\calibrate.c ****                 break;
+ 600              		.loc 1 170 0
+ 601 04c4 00BF     		nop
+ 602              	.L41:
+ 171:.\calibrate.c ****         }
+ 172:.\calibrate.c ****         
+ 173:.\calibrate.c ****         if(byteCount == 16)             //if byteCount = 16 then row one is finished reading from
+ 603              		.loc 1 173 0
+ 604 04c6 97F84A30 		ldrb	r3, [r7, #74]	@ zero_extendqisi2
+ 605 04ca 102B     		cmp	r3, #16
+ 606 04cc 08D1     		bne	.L42
+ 174:.\calibrate.c ****         {
+ 175:.\calibrate.c ****             regPointer = regPointer + byteCount;        //add by 16 to move to next row for reading
+ 607              		.loc 1 175 0
+ 608 04ce 97F84A30 		ldrb	r3, [r7, #74]	@ zero_extendqisi2
+ 609 04d2 3A6D     		ldr	r2, [r7, #80]
+ 610 04d4 D318     		adds	r3, r2, r3
+ 611 04d6 3B65     		str	r3, [r7, #80]
+ 176:.\calibrate.c ****             byteCount = 0;          //reset byteCount
+ 612              		.loc 1 176 0
+ 613 04d8 4FF00003 		mov	r3, #0
+ 614 04dc 87F84A30 		strb	r3, [r7, #74]
+ 615              	.L42:
+ 177:.\calibrate.c ****         }
+ 178:.\calibrate.c ****         
+ 179:.\calibrate.c ****         for(j = 0; j < 4; j++)
+ 616              		.loc 1 179 0
+ 617 04e0 4FF00003 		mov	r3, #0
+ 618 04e4 87F85430 		strb	r3, [r7, #84]
+ 619 04e8 21E0     		b	.L43
+ 620              	.L44:
+ 180:.\calibrate.c ****         {   
+ 181:.\calibrate.c ****             temp = temp * 10;
+ 621              		.loc 1 181 0 discriminator 2
+ 622 04ea B7F84830 		ldrh	r3, [r7, #72]	@ movhi
+ 623 04ee 1A46     		mov	r2, r3	@ movhi
+ 624 04f0 4FEA8202 		lsl	r2, r2, #2
+ 625 04f4 D318     		adds	r3, r2, r3
+ 626 04f6 4FEA4303 		lsl	r3, r3, #1
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 16
+
+
+ 627 04fa A7F84830 		strh	r3, [r7, #72]	@ movhi
+ 182:.\calibrate.c ****             temp = temp + regPointer[byteCount];
+ 628              		.loc 1 182 0 discriminator 2
+ 629 04fe 97F84A30 		ldrb	r3, [r7, #74]	@ zero_extendqisi2
+ 630 0502 3A6D     		ldr	r2, [r7, #80]
+ 631 0504 D318     		adds	r3, r2, r3
+ 632 0506 1B78     		ldrb	r3, [r3, #0]
+ 633 0508 DBB2     		uxtb	r3, r3
+ 634 050a 1A46     		mov	r2, r3
+ 635 050c B7F84830 		ldrh	r3, [r7, #72]	@ movhi
+ 636 0510 D318     		adds	r3, r2, r3
+ 637 0512 A7F84830 		strh	r3, [r7, #72]	@ movhi
+ 183:.\calibrate.c ****             byteCount++;
+ 638              		.loc 1 183 0 discriminator 2
+ 639 0516 97F84A30 		ldrb	r3, [r7, #74]
+ 640 051a 03F10103 		add	r3, r3, #1
+ 641 051e 87F84A30 		strb	r3, [r7, #74]
+ 179:.\calibrate.c ****         for(j = 0; j < 4; j++)
+ 642              		.loc 1 179 0 discriminator 2
+ 643 0522 97F85430 		ldrb	r3, [r7, #84]
+ 644 0526 03F10103 		add	r3, r3, #1
+ 645 052a 87F85430 		strb	r3, [r7, #84]
+ 646              	.L43:
+ 179:.\calibrate.c ****         for(j = 0; j < 4; j++)
+ 647              		.loc 1 179 0 is_stmt 0 discriminator 1
+ 648 052e 97F85430 		ldrb	r3, [r7, #84]	@ zero_extendqisi2
+ 649 0532 032B     		cmp	r3, #3
+ 650 0534 D9D9     		bls	.L44
+ 184:.\calibrate.c ****         }
+ 185:.\calibrate.c ****         
+ 186:.\calibrate.c ****         LCD_Position(1,0);
+ 651              		.loc 1 186 0 is_stmt 1
+ 652 0536 4FF00100 		mov	r0, #1
+ 653 053a 4FF00001 		mov	r1, #0
+ 654 053e FFF7FEFF 		bl	LCD_Position
+ 187:.\calibrate.c ****         LCD_PrintNumber(temp);
+ 655              		.loc 1 187 0
+ 656 0542 B7F84830 		ldrh	r3, [r7, #72]
+ 657 0546 1846     		mov	r0, r3
+ 658 0548 FFF7FEFF 		bl	LCD_PrintU32Number
+ 188:.\calibrate.c ****         CyDelay(1000);
+ 659              		.loc 1 188 0
+ 660 054c 4FF47A70 		mov	r0, #1000
+ 661 0550 FFF7FEFF 		bl	CyDelay
+ 144:.\calibrate.c ****     for(i = 0; i < 8; i++)
+ 662              		.loc 1 144 0
+ 663 0554 97F85530 		ldrb	r3, [r7, #85]
+ 664 0558 03F10103 		add	r3, r3, #1
+ 665 055c 87F85530 		strb	r3, [r7, #85]
+ 666              	.L30:
+ 144:.\calibrate.c ****     for(i = 0; i < 8; i++)
+ 667              		.loc 1 144 0 is_stmt 0 discriminator 1
+ 668 0560 97F85530 		ldrb	r3, [r7, #85]	@ zero_extendqisi2
+ 669 0564 072B     		cmp	r3, #7
+ 670 0566 7FF649AF 		bls	.L45
+ 189:.\calibrate.c ****     }
+ 190:.\calibrate.c **** }
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 17
+
+
+ 671              		.loc 1 190 0 is_stmt 1
+ 672 056a 07F15807 		add	r7, r7, #88
+ 673 056e BD46     		mov	sp, r7
+ 674 0570 B0BD     		pop	{r4, r5, r7, pc}
+ 675              		.cfi_endproc
+ 676              	.LFE56:
+ 677              		.size	calAll, .-calAll
+ 678 0572 00BF     		.text
+ 679              	.Letext0:
+ 680              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.0\\psoc creator\\import\\gnu_cs\\arm\\4
+ 681              		.file 3 "./Generated_Source/PSoC5/cytypes.h"
+ 682              		.file 4 "./Generated_Source/PSoC5/core_cm3.h"
+ 683              		.section	.debug_info,"",%progbits
+ 684              	.Ldebug_info0:
+ 685 0000 CF010000 		.4byte	0x1cf
+ 686 0004 0200     		.2byte	0x2
+ 687 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 688 000a 04       		.byte	0x4
+ 689 000b 01       		.uleb128 0x1
+ 690 000c 71010000 		.4byte	.LASF27
+ 691 0010 01       		.byte	0x1
+ 692 0011 10000000 		.4byte	.LASF28
+ 693 0015 E6000000 		.4byte	.LASF29
+ 694 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 695 001d 00000000 		.4byte	0
+ 696 0021 00000000 		.4byte	0
+ 697 0025 00000000 		.4byte	.Ldebug_line0
+ 698 0029 02       		.uleb128 0x2
+ 699 002a 01       		.byte	0x1
+ 700 002b 06       		.byte	0x6
+ 701 002c C3010000 		.4byte	.LASF0
+ 702 0030 02       		.uleb128 0x2
+ 703 0031 01       		.byte	0x1
+ 704 0032 08       		.byte	0x8
+ 705 0033 37000000 		.4byte	.LASF1
+ 706 0037 02       		.uleb128 0x2
+ 707 0038 02       		.byte	0x2
+ 708 0039 05       		.byte	0x5
+ 709 003a 61010000 		.4byte	.LASF2
+ 710 003e 02       		.uleb128 0x2
+ 711 003f 02       		.byte	0x2
+ 712 0040 07       		.byte	0x7
+ 713 0041 61000000 		.4byte	.LASF3
+ 714 0045 03       		.uleb128 0x3
+ 715 0046 1E000000 		.4byte	.LASF9
+ 716 004a 02       		.byte	0x2
+ 717 004b 4F       		.byte	0x4f
+ 718 004c 50000000 		.4byte	0x50
+ 719 0050 02       		.uleb128 0x2
+ 720 0051 04       		.byte	0x4
+ 721 0052 05       		.byte	0x5
+ 722 0053 BA010000 		.4byte	.LASF4
+ 723 0057 02       		.uleb128 0x2
+ 724 0058 04       		.byte	0x4
+ 725 0059 07       		.byte	0x7
+ 726 005a 4A000000 		.4byte	.LASF5
+ 727 005e 02       		.uleb128 0x2
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 18
+
+
+ 728 005f 08       		.byte	0x8
+ 729 0060 05       		.byte	0x5
+ 730 0061 43010000 		.4byte	.LASF6
+ 731 0065 02       		.uleb128 0x2
+ 732 0066 08       		.byte	0x8
+ 733 0067 07       		.byte	0x7
+ 734 0068 C9000000 		.4byte	.LASF7
+ 735 006c 04       		.uleb128 0x4
+ 736 006d 04       		.byte	0x4
+ 737 006e 05       		.byte	0x5
+ 738 006f 696E7400 		.ascii	"int\000"
+ 739 0073 02       		.uleb128 0x2
+ 740 0074 04       		.byte	0x4
+ 741 0075 07       		.byte	0x7
+ 742 0076 BC000000 		.4byte	.LASF8
+ 743 007a 03       		.uleb128 0x3
+ 744 007b 6B010000 		.4byte	.LASF10
+ 745 007f 03       		.byte	0x3
+ 746 0080 5B       		.byte	0x5b
+ 747 0081 30000000 		.4byte	0x30
+ 748 0085 03       		.uleb128 0x3
+ 749 0086 A8000000 		.4byte	.LASF11
+ 750 008a 03       		.byte	0x3
+ 751 008b 5C       		.byte	0x5c
+ 752 008c 3E000000 		.4byte	0x3e
+ 753 0090 02       		.uleb128 0x2
+ 754 0091 04       		.byte	0x4
+ 755 0092 04       		.byte	0x4
+ 756 0093 31000000 		.4byte	.LASF12
+ 757 0097 02       		.uleb128 0x2
+ 758 0098 08       		.byte	0x8
+ 759 0099 04       		.byte	0x4
+ 760 009a 8A000000 		.4byte	.LASF13
+ 761 009e 02       		.uleb128 0x2
+ 762 009f 01       		.byte	0x1
+ 763 00a0 08       		.byte	0x8
+ 764 00a1 51010000 		.4byte	.LASF14
+ 765 00a5 03       		.uleb128 0x3
+ 766 00a6 00000000 		.4byte	.LASF15
+ 767 00aa 03       		.byte	0x3
+ 768 00ab E8       		.byte	0xe8
+ 769 00ac 57000000 		.4byte	0x57
+ 770 00b0 03       		.uleb128 0x3
+ 771 00b1 45000000 		.4byte	.LASF16
+ 772 00b5 03       		.byte	0x3
+ 773 00b6 F0       		.byte	0xf0
+ 774 00b7 BB000000 		.4byte	0xbb
+ 775 00bb 05       		.uleb128 0x5
+ 776 00bc 7A000000 		.4byte	0x7a
+ 777 00c0 02       		.uleb128 0x2
+ 778 00c1 04       		.byte	0x4
+ 779 00c2 07       		.byte	0x7
+ 780 00c3 3A010000 		.4byte	.LASF17
+ 781 00c7 06       		.uleb128 0x6
+ 782 00c8 7A000000 		.4byte	0x7a
+ 783 00cc D7000000 		.4byte	0xd7
+ 784 00d0 07       		.uleb128 0x7
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 19
+
+
+ 785 00d1 C0000000 		.4byte	0xc0
+ 786 00d5 03       		.byte	0x3
+ 787 00d6 00       		.byte	0
+ 788 00d7 06       		.uleb128 0x6
+ 789 00d8 7A000000 		.4byte	0x7a
+ 790 00dc E7000000 		.4byte	0xe7
+ 791 00e0 07       		.uleb128 0x7
+ 792 00e1 C0000000 		.4byte	0xc0
+ 793 00e5 07       		.byte	0x7
+ 794 00e6 00       		.byte	0
+ 795 00e7 08       		.uleb128 0x8
+ 796 00e8 01       		.byte	0x1
+ 797 00e9 74000000 		.4byte	.LASF30
+ 798 00ed 01       		.byte	0x1
+ 799 00ee 1E       		.byte	0x1e
+ 800 00ef 01       		.byte	0x1
+ 801 00f0 00000000 		.4byte	.LFB56
+ 802 00f4 72050000 		.4byte	.LFE56
+ 803 00f8 00000000 		.4byte	.LLST0
+ 804 00fc 01       		.byte	0x1
+ 805 00fd A9010000 		.4byte	0x1a9
+ 806 0101 09       		.uleb128 0x9
+ 807 0102 E0000000 		.4byte	.LASF18
+ 808 0106 01       		.byte	0x1
+ 809 0107 20       		.byte	0x20
+ 810 0108 90000000 		.4byte	0x90
+ 811 010c 02       		.byte	0x2
+ 812 010d 91       		.byte	0x91
+ 813 010e 5C       		.sleb128 -36
+ 814 010f 09       		.uleb128 0x9
+ 815 0110 91000000 		.4byte	.LASF19
+ 816 0114 01       		.byte	0x1
+ 817 0115 21       		.byte	0x21
+ 818 0116 85000000 		.4byte	0x85
+ 819 011a 02       		.byte	0x2
+ 820 011b 91       		.byte	0x91
+ 821 011c 6E       		.sleb128 -18
+ 822 011d 0A       		.uleb128 0xa
+ 823 011e 6900     		.ascii	"i\000"
+ 824 0120 01       		.byte	0x1
+ 825 0121 22       		.byte	0x22
+ 826 0122 7A000000 		.4byte	0x7a
+ 827 0126 02       		.byte	0x2
+ 828 0127 91       		.byte	0x91
+ 829 0128 6D       		.sleb128 -19
+ 830 0129 0A       		.uleb128 0xa
+ 831 012a 6A00     		.ascii	"j\000"
+ 832 012c 01       		.byte	0x1
+ 833 012d 23       		.byte	0x23
+ 834 012e 7A000000 		.4byte	0x7a
+ 835 0132 02       		.byte	0x2
+ 836 0133 91       		.byte	0x91
+ 837 0134 6C       		.sleb128 -20
+ 838 0135 09       		.uleb128 0x9
+ 839 0136 85000000 		.4byte	.LASF20
+ 840 013a 01       		.byte	0x1
+ 841 013b 24       		.byte	0x24
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 20
+
+
+ 842 013c A9010000 		.4byte	0x1a9
+ 843 0140 03       		.byte	0x3
+ 844 0141 91       		.byte	0x91
+ 845 0142 A87F     		.sleb128 -88
+ 846 0144 09       		.uleb128 0x9
+ 847 0145 26000000 		.4byte	.LASF21
+ 848 0149 01       		.byte	0x1
+ 849 014a 25       		.byte	0x25
+ 850 014b D7000000 		.4byte	0xd7
+ 851 014f 03       		.byte	0x3
+ 852 0150 91       		.byte	0x91
+ 853 0151 A07F     		.sleb128 -96
+ 854 0153 09       		.uleb128 0x9
+ 855 0154 09000000 		.4byte	.LASF22
+ 856 0158 01       		.byte	0x1
+ 857 0159 26       		.byte	0x26
+ 858 015a C7000000 		.4byte	0xc7
+ 859 015e 03       		.byte	0x3
+ 860 015f 91       		.byte	0x91
+ 861 0160 9C7F     		.sleb128 -100
+ 862 0162 09       		.uleb128 0x9
+ 863 0163 56010000 		.4byte	.LASF23
+ 864 0167 01       		.byte	0x1
+ 865 0168 27       		.byte	0x27
+ 866 0169 B9010000 		.4byte	0x1b9
+ 867 016d 02       		.byte	0x2
+ 868 016e 91       		.byte	0x91
+ 869 016f 68       		.sleb128 -24
+ 870 0170 09       		.uleb128 0x9
+ 871 0171 9C000000 		.4byte	.LASF24
+ 872 0175 01       		.byte	0x1
+ 873 0176 28       		.byte	0x28
+ 874 0177 A5000000 		.4byte	0xa5
+ 875 017b 02       		.byte	0x2
+ 876 017c 91       		.byte	0x91
+ 877 017d 64       		.sleb128 -28
+ 878 017e 0A       		.uleb128 0xa
+ 879 017f 726F7700 		.ascii	"row\000"
+ 880 0183 01       		.byte	0x1
+ 881 0184 29       		.byte	0x29
+ 882 0185 7A000000 		.4byte	0x7a
+ 883 0189 02       		.byte	0x2
+ 884 018a 91       		.byte	0x91
+ 885 018b 63       		.sleb128 -29
+ 886 018c 09       		.uleb128 0x9
+ 887 018d 7B000000 		.4byte	.LASF25
+ 888 0191 01       		.byte	0x1
+ 889 0192 2A       		.byte	0x2a
+ 890 0193 7A000000 		.4byte	0x7a
+ 891 0197 02       		.byte	0x2
+ 892 0198 91       		.byte	0x91
+ 893 0199 62       		.sleb128 -30
+ 894 019a 09       		.uleb128 0x9
+ 895 019b 5C000000 		.4byte	.LASF26
+ 896 019f 01       		.byte	0x1
+ 897 01a0 2B       		.byte	0x2b
+ 898 01a1 85000000 		.4byte	0x85
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 21
+
+
+ 899 01a5 02       		.byte	0x2
+ 900 01a6 91       		.byte	0x91
+ 901 01a7 60       		.sleb128 -32
+ 902 01a8 00       		.byte	0
+ 903 01a9 06       		.uleb128 0x6
+ 904 01aa 9E000000 		.4byte	0x9e
+ 905 01ae B9010000 		.4byte	0x1b9
+ 906 01b2 07       		.uleb128 0x7
+ 907 01b3 C0000000 		.4byte	0xc0
+ 908 01b7 31       		.byte	0x31
+ 909 01b8 00       		.byte	0
+ 910 01b9 0B       		.uleb128 0xb
+ 911 01ba 04       		.byte	0x4
+ 912 01bb B0000000 		.4byte	0xb0
+ 913 01bf 0C       		.uleb128 0xc
+ 914 01c0 AF000000 		.4byte	.LASF31
+ 915 01c4 04       		.byte	0x4
+ 916 01c5 1606     		.2byte	0x616
+ 917 01c7 CD010000 		.4byte	0x1cd
+ 918 01cb 01       		.byte	0x1
+ 919 01cc 01       		.byte	0x1
+ 920 01cd 05       		.uleb128 0x5
+ 921 01ce 45000000 		.4byte	0x45
+ 922 01d2 00       		.byte	0
+ 923              		.section	.debug_abbrev,"",%progbits
+ 924              	.Ldebug_abbrev0:
+ 925 0000 01       		.uleb128 0x1
+ 926 0001 11       		.uleb128 0x11
+ 927 0002 01       		.byte	0x1
+ 928 0003 25       		.uleb128 0x25
+ 929 0004 0E       		.uleb128 0xe
+ 930 0005 13       		.uleb128 0x13
+ 931 0006 0B       		.uleb128 0xb
+ 932 0007 03       		.uleb128 0x3
+ 933 0008 0E       		.uleb128 0xe
+ 934 0009 1B       		.uleb128 0x1b
+ 935 000a 0E       		.uleb128 0xe
+ 936 000b 55       		.uleb128 0x55
+ 937 000c 06       		.uleb128 0x6
+ 938 000d 11       		.uleb128 0x11
+ 939 000e 01       		.uleb128 0x1
+ 940 000f 52       		.uleb128 0x52
+ 941 0010 01       		.uleb128 0x1
+ 942 0011 10       		.uleb128 0x10
+ 943 0012 06       		.uleb128 0x6
+ 944 0013 00       		.byte	0
+ 945 0014 00       		.byte	0
+ 946 0015 02       		.uleb128 0x2
+ 947 0016 24       		.uleb128 0x24
+ 948 0017 00       		.byte	0
+ 949 0018 0B       		.uleb128 0xb
+ 950 0019 0B       		.uleb128 0xb
+ 951 001a 3E       		.uleb128 0x3e
+ 952 001b 0B       		.uleb128 0xb
+ 953 001c 03       		.uleb128 0x3
+ 954 001d 0E       		.uleb128 0xe
+ 955 001e 00       		.byte	0
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 22
+
+
+ 956 001f 00       		.byte	0
+ 957 0020 03       		.uleb128 0x3
+ 958 0021 16       		.uleb128 0x16
+ 959 0022 00       		.byte	0
+ 960 0023 03       		.uleb128 0x3
+ 961 0024 0E       		.uleb128 0xe
+ 962 0025 3A       		.uleb128 0x3a
+ 963 0026 0B       		.uleb128 0xb
+ 964 0027 3B       		.uleb128 0x3b
+ 965 0028 0B       		.uleb128 0xb
+ 966 0029 49       		.uleb128 0x49
+ 967 002a 13       		.uleb128 0x13
+ 968 002b 00       		.byte	0
+ 969 002c 00       		.byte	0
+ 970 002d 04       		.uleb128 0x4
+ 971 002e 24       		.uleb128 0x24
+ 972 002f 00       		.byte	0
+ 973 0030 0B       		.uleb128 0xb
+ 974 0031 0B       		.uleb128 0xb
+ 975 0032 3E       		.uleb128 0x3e
+ 976 0033 0B       		.uleb128 0xb
+ 977 0034 03       		.uleb128 0x3
+ 978 0035 08       		.uleb128 0x8
+ 979 0036 00       		.byte	0
+ 980 0037 00       		.byte	0
+ 981 0038 05       		.uleb128 0x5
+ 982 0039 35       		.uleb128 0x35
+ 983 003a 00       		.byte	0
+ 984 003b 49       		.uleb128 0x49
+ 985 003c 13       		.uleb128 0x13
+ 986 003d 00       		.byte	0
+ 987 003e 00       		.byte	0
+ 988 003f 06       		.uleb128 0x6
+ 989 0040 01       		.uleb128 0x1
+ 990 0041 01       		.byte	0x1
+ 991 0042 49       		.uleb128 0x49
+ 992 0043 13       		.uleb128 0x13
+ 993 0044 01       		.uleb128 0x1
+ 994 0045 13       		.uleb128 0x13
+ 995 0046 00       		.byte	0
+ 996 0047 00       		.byte	0
+ 997 0048 07       		.uleb128 0x7
+ 998 0049 21       		.uleb128 0x21
+ 999 004a 00       		.byte	0
+ 1000 004b 49       		.uleb128 0x49
+ 1001 004c 13       		.uleb128 0x13
+ 1002 004d 2F       		.uleb128 0x2f
+ 1003 004e 0B       		.uleb128 0xb
+ 1004 004f 00       		.byte	0
+ 1005 0050 00       		.byte	0
+ 1006 0051 08       		.uleb128 0x8
+ 1007 0052 2E       		.uleb128 0x2e
+ 1008 0053 01       		.byte	0x1
+ 1009 0054 3F       		.uleb128 0x3f
+ 1010 0055 0C       		.uleb128 0xc
+ 1011 0056 03       		.uleb128 0x3
+ 1012 0057 0E       		.uleb128 0xe
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 23
+
+
+ 1013 0058 3A       		.uleb128 0x3a
+ 1014 0059 0B       		.uleb128 0xb
+ 1015 005a 3B       		.uleb128 0x3b
+ 1016 005b 0B       		.uleb128 0xb
+ 1017 005c 27       		.uleb128 0x27
+ 1018 005d 0C       		.uleb128 0xc
+ 1019 005e 11       		.uleb128 0x11
+ 1020 005f 01       		.uleb128 0x1
+ 1021 0060 12       		.uleb128 0x12
+ 1022 0061 01       		.uleb128 0x1
+ 1023 0062 40       		.uleb128 0x40
+ 1024 0063 06       		.uleb128 0x6
+ 1025 0064 9642     		.uleb128 0x2116
+ 1026 0066 0C       		.uleb128 0xc
+ 1027 0067 01       		.uleb128 0x1
+ 1028 0068 13       		.uleb128 0x13
+ 1029 0069 00       		.byte	0
+ 1030 006a 00       		.byte	0
+ 1031 006b 09       		.uleb128 0x9
+ 1032 006c 34       		.uleb128 0x34
+ 1033 006d 00       		.byte	0
+ 1034 006e 03       		.uleb128 0x3
+ 1035 006f 0E       		.uleb128 0xe
+ 1036 0070 3A       		.uleb128 0x3a
+ 1037 0071 0B       		.uleb128 0xb
+ 1038 0072 3B       		.uleb128 0x3b
+ 1039 0073 0B       		.uleb128 0xb
+ 1040 0074 49       		.uleb128 0x49
+ 1041 0075 13       		.uleb128 0x13
+ 1042 0076 02       		.uleb128 0x2
+ 1043 0077 0A       		.uleb128 0xa
+ 1044 0078 00       		.byte	0
+ 1045 0079 00       		.byte	0
+ 1046 007a 0A       		.uleb128 0xa
+ 1047 007b 34       		.uleb128 0x34
+ 1048 007c 00       		.byte	0
+ 1049 007d 03       		.uleb128 0x3
+ 1050 007e 08       		.uleb128 0x8
+ 1051 007f 3A       		.uleb128 0x3a
+ 1052 0080 0B       		.uleb128 0xb
+ 1053 0081 3B       		.uleb128 0x3b
+ 1054 0082 0B       		.uleb128 0xb
+ 1055 0083 49       		.uleb128 0x49
+ 1056 0084 13       		.uleb128 0x13
+ 1057 0085 02       		.uleb128 0x2
+ 1058 0086 0A       		.uleb128 0xa
+ 1059 0087 00       		.byte	0
+ 1060 0088 00       		.byte	0
+ 1061 0089 0B       		.uleb128 0xb
+ 1062 008a 0F       		.uleb128 0xf
+ 1063 008b 00       		.byte	0
+ 1064 008c 0B       		.uleb128 0xb
+ 1065 008d 0B       		.uleb128 0xb
+ 1066 008e 49       		.uleb128 0x49
+ 1067 008f 13       		.uleb128 0x13
+ 1068 0090 00       		.byte	0
+ 1069 0091 00       		.byte	0
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 24
+
+
+ 1070 0092 0C       		.uleb128 0xc
+ 1071 0093 34       		.uleb128 0x34
+ 1072 0094 00       		.byte	0
+ 1073 0095 03       		.uleb128 0x3
+ 1074 0096 0E       		.uleb128 0xe
+ 1075 0097 3A       		.uleb128 0x3a
+ 1076 0098 0B       		.uleb128 0xb
+ 1077 0099 3B       		.uleb128 0x3b
+ 1078 009a 05       		.uleb128 0x5
+ 1079 009b 49       		.uleb128 0x49
+ 1080 009c 13       		.uleb128 0x13
+ 1081 009d 3F       		.uleb128 0x3f
+ 1082 009e 0C       		.uleb128 0xc
+ 1083 009f 3C       		.uleb128 0x3c
+ 1084 00a0 0C       		.uleb128 0xc
+ 1085 00a1 00       		.byte	0
+ 1086 00a2 00       		.byte	0
+ 1087 00a3 00       		.byte	0
+ 1088              		.section	.debug_loc,"",%progbits
+ 1089              	.Ldebug_loc0:
+ 1090              	.LLST0:
+ 1091 0000 00000000 		.4byte	.LFB56
+ 1092 0004 02000000 		.4byte	.LCFI0
+ 1093 0008 0200     		.2byte	0x2
+ 1094 000a 7D       		.byte	0x7d
+ 1095 000b 00       		.sleb128 0
+ 1096 000c 02000000 		.4byte	.LCFI0
+ 1097 0010 04000000 		.4byte	.LCFI1
+ 1098 0014 0200     		.2byte	0x2
+ 1099 0016 7D       		.byte	0x7d
+ 1100 0017 10       		.sleb128 16
+ 1101 0018 04000000 		.4byte	.LCFI1
+ 1102 001c 06000000 		.4byte	.LCFI2
+ 1103 0020 0300     		.2byte	0x3
+ 1104 0022 7D       		.byte	0x7d
+ 1105 0023 F000     		.sleb128 112
+ 1106 0025 06000000 		.4byte	.LCFI2
+ 1107 0029 72050000 		.4byte	.LFE56
+ 1108 002d 0300     		.2byte	0x3
+ 1109 002f 77       		.byte	0x77
+ 1110 0030 E800     		.sleb128 104
+ 1111 0032 00000000 		.4byte	0
+ 1112 0036 00000000 		.4byte	0
+ 1113              		.section	.debug_aranges,"",%progbits
+ 1114 0000 1C000000 		.4byte	0x1c
+ 1115 0004 0200     		.2byte	0x2
+ 1116 0006 00000000 		.4byte	.Ldebug_info0
+ 1117 000a 04       		.byte	0x4
+ 1118 000b 00       		.byte	0
+ 1119 000c 0000     		.2byte	0
+ 1120 000e 0000     		.2byte	0
+ 1121 0010 00000000 		.4byte	.LFB56
+ 1122 0014 72050000 		.4byte	.LFE56-.LFB56
+ 1123 0018 00000000 		.4byte	0
+ 1124 001c 00000000 		.4byte	0
+ 1125              		.section	.debug_ranges,"",%progbits
+ 1126              	.Ldebug_ranges0:
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 25
+
+
+ 1127 0000 00000000 		.4byte	.LFB56
+ 1128 0004 72050000 		.4byte	.LFE56
+ 1129 0008 00000000 		.4byte	0
+ 1130 000c 00000000 		.4byte	0
+ 1131              		.section	.debug_line,"",%progbits
+ 1132              	.Ldebug_line0:
+ 1133 0000 EB010000 		.section	.debug_str,"MS",%progbits,1
+ 1133      0200FE00 
+ 1133      00000201 
+ 1133      FB0E0D00 
+ 1133      01010101 
+ 1134              	.LASF15:
+ 1135 0000 63797374 		.ascii	"cystatus\000"
+ 1135      61747573 
+ 1135      00
+ 1136              	.LASF22:
+ 1137 0009 6765744D 		.ascii	"getMod\000"
+ 1137      6F6400
+ 1138              	.LASF28:
+ 1139 0010 2E5C6361 		.ascii	".\\calibrate.c\000"
+ 1139      6C696272 
+ 1139      6174652E 
+ 1139      6300
+ 1140              	.LASF9:
+ 1141 001e 696E7433 		.ascii	"int32_t\000"
+ 1141      325F7400 
+ 1142              	.LASF21:
+ 1143 0026 6368616E 		.ascii	"channelNum\000"
+ 1143      6E656C4E 
+ 1143      756D00
+ 1144              	.LASF12:
+ 1145 0031 666C6F61 		.ascii	"float\000"
+ 1145      7400
+ 1146              	.LASF1:
+ 1147 0037 756E7369 		.ascii	"unsigned char\000"
+ 1147      676E6564 
+ 1147      20636861 
+ 1147      7200
+ 1148              	.LASF16:
+ 1149 0045 72656738 		.ascii	"reg8\000"
+ 1149      00
+ 1150              	.LASF5:
+ 1151 004a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1151      20756E73 
+ 1151      69676E65 
+ 1151      6420696E 
+ 1151      7400
+ 1152              	.LASF26:
+ 1153 005c 74656D70 		.ascii	"temp\000"
+ 1153      00
+ 1154              	.LASF3:
+ 1155 0061 73686F72 		.ascii	"short unsigned int\000"
+ 1155      7420756E 
+ 1155      7369676E 
+ 1155      65642069 
+ 1155      6E7400
+ 1156              	.LASF30:
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 26
+
+
+ 1157 0074 63616C41 		.ascii	"calAll\000"
+ 1157      6C6C00
+ 1158              	.LASF25:
+ 1159 007b 62797465 		.ascii	"byteCount\000"
+ 1159      436F756E 
+ 1159      7400
+ 1160              	.LASF20:
+ 1161 0085 62756666 		.ascii	"buff\000"
+ 1161      00
+ 1162              	.LASF13:
+ 1163 008a 646F7562 		.ascii	"double\000"
+ 1163      6C6500
+ 1164              	.LASF19:
+ 1165 0091 766F6C74 		.ascii	"voltCounts\000"
+ 1165      436F756E 
+ 1165      747300
+ 1166              	.LASF24:
+ 1167 009c 77726974 		.ascii	"writeStatus\000"
+ 1167      65537461 
+ 1167      74757300 
+ 1168              	.LASF11:
+ 1169 00a8 75696E74 		.ascii	"uint16\000"
+ 1169      313600
+ 1170              	.LASF31:
+ 1171 00af 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1171      52784275 
+ 1171      66666572 
+ 1171      00
+ 1172              	.LASF8:
+ 1173 00bc 756E7369 		.ascii	"unsigned int\000"
+ 1173      676E6564 
+ 1173      20696E74 
+ 1173      00
+ 1174              	.LASF7:
+ 1175 00c9 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1175      206C6F6E 
+ 1175      6720756E 
+ 1175      7369676E 
+ 1175      65642069 
+ 1176              	.LASF18:
+ 1177 00e0 766F6C74 		.ascii	"volts\000"
+ 1177      7300
+ 1178              	.LASF29:
+ 1179 00e6 433A5C55 		.ascii	"C:\\Users\\Chai Yang\\Documents\\GitHub\\Node-Eleph"
+ 1179      73657273 
+ 1179      5C436861 
+ 1179      69205961 
+ 1179      6E675C44 
+ 1180 0114 616E745C 		.ascii	"ant\\Node-Elephant\\Node-Elephant.cydsn\000"
+ 1180      4E6F6465 
+ 1180      2D456C65 
+ 1180      7068616E 
+ 1180      745C4E6F 
+ 1181              	.LASF17:
+ 1182 013a 73697A65 		.ascii	"sizetype\000"
+ 1182      74797065 
+ 1182      00
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccHiMe49.s 			page 27
+
+
+ 1183              	.LASF6:
+ 1184 0143 6C6F6E67 		.ascii	"long long int\000"
+ 1184      206C6F6E 
+ 1184      6720696E 
+ 1184      7400
+ 1185              	.LASF14:
+ 1186 0151 63686172 		.ascii	"char\000"
+ 1186      00
+ 1187              	.LASF23:
+ 1188 0156 72656750 		.ascii	"regPointer\000"
+ 1188      6F696E74 
+ 1188      657200
+ 1189              	.LASF2:
+ 1190 0161 73686F72 		.ascii	"short int\000"
+ 1190      7420696E 
+ 1190      7400
+ 1191              	.LASF10:
+ 1192 016b 75696E74 		.ascii	"uint8\000"
+ 1192      3800
+ 1193              	.LASF27:
+ 1194 0171 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 1194      4320342E 
+ 1194      372E3320 
+ 1194      32303133 
+ 1194      30333132 
+ 1195 01a4 616E6368 		.ascii	"anch revision 196615]\000"
+ 1195      20726576 
+ 1195      6973696F 
+ 1195      6E203139 
+ 1195      36363135 
+ 1196              	.LASF4:
+ 1197 01ba 6C6F6E67 		.ascii	"long int\000"
+ 1197      20696E74 
+ 1197      00
+ 1198              	.LASF0:
+ 1199 01c3 7369676E 		.ascii	"signed char\000"
+ 1199      65642063 
+ 1199      68617200 
+ 1200              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

@@ -6,7 +6,7 @@ set_location "\ADC_SAR:AMuxHw_2_Decoder_old_id_4\" macrocell 3 2 1 1
 set_location "\ADC_SAR:AMuxHw_2_Decoder_one_hot_38\" macrocell 3 1 0 0
 set_location "\ADC_SAR:AMuxHw_2_Decoder_old_id_1\" macrocell 2 3 0 0
 set_location "\ADC_SAR:AMuxHw_2_Decoder_one_hot_40\" macrocell 1 2 0 1
-set_location "Net_489" macrocell 3 4 1 0
+set_location "Net_1094" macrocell 3 4 1 0
 set_location "\Timer:TimerUDB:status_tc\" macrocell 2 1 0 0
 set_location "\ADC_SAR:AMuxHw_2_Decoder_one_hot_59\" macrocell 2 1 0 1
 set_location "\ADC_SAR:AMuxHw_2_Decoder_one_hot_42\" macrocell 2 0 1 1

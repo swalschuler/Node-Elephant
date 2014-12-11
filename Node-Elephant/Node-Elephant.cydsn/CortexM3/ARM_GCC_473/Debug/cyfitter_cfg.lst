@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
   30:.\Generated_Source\PSoC5/cyfitter_cfg.c ****     #define CYALIGNED __attribute__ ((aligned))
   31:.\Generated_Source\PSoC5/cyfitter_cfg.c ****     #define CY_CFG_UNUSED __attribute__ ((unused))
   32:.\Generated_Source\PSoC5/cyfitter_cfg.c ****     #define CY_CFG_SECTION __attribute__ ((section(".psocinit")))
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 2
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 2
 
 
   33:.\Generated_Source\PSoC5/cyfitter_cfg.c ****     
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
   50 001a BD46     		mov	sp, r7
   51 001c 80BD     		pop	{r7, pc}
   52              		.cfi_endproc
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 3
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 3
 
 
   53              	.LFE0:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
   71:.\Generated_Source\PSoC5/cyfitter_cfg.c **** static void CYCONFIGCPYCODE(void *dest, const void *src, size_t n);
   72:.\Generated_Source\PSoC5/cyfitter_cfg.c **** CY_CFG_UNUSED
   73:.\Generated_Source\PSoC5/cyfitter_cfg.c **** static void CYCONFIGCPYCODE(void *dest, const void *src, size_t n)
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 4
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 4
 
 
   74:.\Generated_Source\PSoC5/cyfitter_cfg.c **** {
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
   91:.\Generated_Source\PSoC5/cyfitter_cfg.c **** *  If an error is encountered during clock configuration (crystal startup error,
   92:.\Generated_Source\PSoC5/cyfitter_cfg.c **** *  PLL lock error, etc.), the system will end up here.  Unless reimplemented by
   93:.\Generated_Source\PSoC5/cyfitter_cfg.c **** *  the customer, this function will stop in an infinite loop.
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 5
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 5
 
 
   94:.\Generated_Source\PSoC5/cyfitter_cfg.c **** *
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  163              		.type	cfg_write_bytes32, %function
  164              	cfg_write_bytes32:
  165              	.LFB4:
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 6
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 6
 
 
  121:.\Generated_Source\PSoC5/cyfitter_cfg.c **** }
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  174              		.cfi_offset 7, -4
  175 0002 87B0     		sub	sp, sp, #28
  176              	.LCFI13:
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 7
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 7
 
 
  177              		.cfi_def_cfa_offset 32
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  221 004e 8A18     		adds	r2, r1, r2
  222 0050 5278     		ldrb	r2, [r2, #1]	@ zero_extendqisi2
  223 0052 1A70     		strb	r2, [r3, #0]
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 8
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 8
 
 
  177:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 			j++;
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  190:.\Generated_Source\PSoC5/cyfitter_cfg.c **** *  clocks and setting the necessary dividers to produce the desired frequency. 
  191:.\Generated_Source\PSoC5/cyfitter_cfg.c **** *
  192:.\Generated_Source\PSoC5/cyfitter_cfg.c **** * Parameters:
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 9
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 9
 
 
  193:.\Generated_Source\PSoC5/cyfitter_cfg.c **** *  void
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  212:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	/* Configure ILO based on settings from Clock DWR */
  213:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_SLOWCLK_ILO_CR0), 0x02u);
  297              		.loc 1 213 0
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 10
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 10
 
 
  298 003e 4FF48643 		mov	r3, #17152
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  338 00a4 FB78     		ldrb	r3, [r7, #3]
  339 00a6 4FEA4303 		lsl	r3, r3, #1
  340 00aa DAB2     		uxtb	r2, r3
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 11
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 11
 
 
  341 00ac 44F22523 		movw	r3, #16933
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  382 0104 C4F20003 		movt	r3, 16384
  383 0108 4FF00702 		mov	r2, #7
  384 010c 1A70     		strb	r2, [r3, #0]
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 12
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 12
 
 
  239:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_CLKDIST_BCFG0), 0x00u);
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  249:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  250:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  251:.\Generated_Source\PSoC5/cyfitter_cfg.c **** /*******************************************************************************
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 13
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 13
 
 
  252:.\Generated_Source\PSoC5/cyfitter_cfg.c **** * Function Name: AnalogSetDefault
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  462 0032 FA79     		ldrb	r2, [r7, #7]
  463 0034 02F00702 		and	r2, r2, #7
  464 0038 D2B2     		uxtb	r2, r2
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 14
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 14
 
 
  465 003a 1A70     		strb	r2, [r3, #0]
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  510 00b2 4FF02002 		mov	r2, #32
  511 00b6 1A70     		strb	r2, [r3, #0]
  282:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_RESET_CR5), (cr5));
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 15
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 15
 
 
  512              		.loc 1 282 0
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  306:.\Generated_Source\PSoC5/cyfitter_cfg.c **** {
  543              		.loc 1 306 0
  544              		.cfi_startproc
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 16
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 16
 
 
  545              		@ args = 0, pretend = 0, frame = 16
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  588 0040 80BC     		pop	{r7}
  589 0042 7047     		bx	lr
  590              		.cfi_endproc
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 17
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 17
 
 
  591              	.LFE7:
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  619              	@ 0 "" 2
  344:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #endif
  345:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 18
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 18
 
 
  346:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	/* Enable/Disable Debug functionality based on settings from System DWR */
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  645 003e C0F20002 		movt	r2, #:upper16:cfg_memset_list.4810
  646 0042 9B18     		adds	r3, r3, r2
  647 0044 3B60     		str	r3, [r7, #0]
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 19
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 19
 
 
  375:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 			CYMEMZERO(ms->address, (uint32)(ms->size));
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  689 00ae 1278     		ldrb	r2, [r2, #0]
  690 00b0 D2B2     		uxtb	r2, r2
  691 00b2 42F00202 		orr	r2, r2, #2
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 20
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 20
 
 
  692 00b6 D2B2     		uxtb	r2, r2
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  736 0132 C4F60001 		movt	r1, 18432
  737 0136 4FF00802 		mov	r2, #8
  738 013a FFF7FEFF 		bl	CYCONFIGCPY
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 21
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 21
 
 
  396:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CYCONFIGCPY((void CYFAR *)(CYREG_PRT3_DM0), (const void CYFAR *)(BS_IOPINS0_3_VAL), 8u);
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  409:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  410:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	/* Perform basic analog initialization to defaults */
  411:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	AnalogSetDefault();
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 22
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 22
 
 
  780              		.loc 1 411 0
@@ -1315,13 +1315,13 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  827 0006 00000000 		.4byte	.Ldebug_abbrev0
  828 000a 04       		.byte	0x4
  829 000b 01       		.uleb128 0x1
- 830 000c 15020000 		.4byte	.LASF44
+ 830 000c BD010000 		.4byte	.LASF44
  831 0010 01       		.byte	0x1
- 832 0011 5E020000 		.4byte	.LASF45
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 23
+ 832 0011 06020000 		.4byte	.LASF45
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 23
 
 
- 833 0015 06000000 		.4byte	.LASF46
+ 833 0015 3F020000 		.4byte	.LASF46
  834 0019 00000000 		.4byte	.Ldebug_ranges0+0
  835 001d 00000000 		.4byte	0
  836 0021 00000000 		.4byte	0
@@ -1329,19 +1329,19 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  838 0029 02       		.uleb128 0x2
  839 002a 01       		.byte	0x1
  840 002b 06       		.byte	0x6
- 841 002c AE020000 		.4byte	.LASF0
+ 841 002c A5020000 		.4byte	.LASF0
  842 0030 02       		.uleb128 0x2
  843 0031 01       		.byte	0x1
  844 0032 08       		.byte	0x8
- 845 0033 2E010000 		.4byte	.LASF1
+ 845 0033 D9000000 		.4byte	.LASF1
  846 0037 02       		.uleb128 0x2
  847 0038 02       		.byte	0x2
  848 0039 05       		.byte	0x5
- 849 003a 0B020000 		.4byte	.LASF2
+ 849 003a B3010000 		.4byte	.LASF2
  850 003e 02       		.uleb128 0x2
  851 003f 02       		.byte	0x2
  852 0040 07       		.byte	0x7
- 853 0041 97000000 		.4byte	.LASF3
+ 853 0041 3A000000 		.4byte	.LASF3
  854 0045 03       		.uleb128 0x3
  855 0046 04       		.byte	0x4
  856 0047 05       		.byte	0x5
@@ -1349,66 +1349,66 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  858 004c 02       		.uleb128 0x2
  859 004d 04       		.byte	0x4
  860 004e 07       		.byte	0x7
- 861 004f 90010000 		.4byte	.LASF4
+ 861 004f 3B010000 		.4byte	.LASF4
  862 0053 02       		.uleb128 0x2
  863 0054 08       		.byte	0x8
  864 0055 05       		.byte	0x5
- 865 0056 DB010000 		.4byte	.LASF5
+ 865 0056 83010000 		.4byte	.LASF5
  866 005a 02       		.uleb128 0x2
  867 005b 08       		.byte	0x8
  868 005c 07       		.byte	0x7
- 869 005d A5010000 		.4byte	.LASF6
+ 869 005d 4D010000 		.4byte	.LASF6
  870 0061 02       		.uleb128 0x2
  871 0062 04       		.byte	0x4
  872 0063 05       		.byte	0x5
- 873 0064 8E020000 		.4byte	.LASF7
+ 873 0064 36020000 		.4byte	.LASF7
  874 0068 02       		.uleb128 0x2
  875 0069 04       		.byte	0x4
  876 006a 07       		.byte	0x7
- 877 006b D2010000 		.4byte	.LASF8
+ 877 006b 7A010000 		.4byte	.LASF8
  878 006f 04       		.uleb128 0x4
  879 0070 04       		.byte	0x4
  880 0071 02       		.uleb128 0x2
  881 0072 04       		.byte	0x4
  882 0073 07       		.byte	0x7
- 883 0074 F6000000 		.4byte	.LASF9
+ 883 0074 A1000000 		.4byte	.LASF9
  884 0078 02       		.uleb128 0x2
  885 0079 01       		.byte	0x1
  886 007a 08       		.byte	0x8
- 887 007b 97020000 		.4byte	.LASF10
+ 887 007b 48010000 		.4byte	.LASF10
  888 007f 05       		.uleb128 0x5
- 889 0080 68000000 		.4byte	.LASF11
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 24
+ 889 0080 0B000000 		.4byte	.LASF11
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 24
 
 
  890 0084 02       		.byte	0x2
  891 0085 D5       		.byte	0xd5
  892 0086 4C000000 		.4byte	0x4c
  893 008a 05       		.uleb128 0x5
- 894 008b 08010000 		.4byte	.LASF12
+ 894 008b B3000000 		.4byte	.LASF12
  895 008f 03       		.byte	0x3
  896 0090 5B       		.byte	0x5b
  897 0091 30000000 		.4byte	0x30
  898 0095 05       		.uleb128 0x5
- 899 0096 6D010000 		.4byte	.LASF13
+ 899 0096 18010000 		.4byte	.LASF13
  900 009a 03       		.byte	0x3
  901 009b 5C       		.byte	0x5c
  902 009c 3E000000 		.4byte	0x3e
  903 00a0 05       		.uleb128 0x5
- 904 00a1 89010000 		.4byte	.LASF14
+ 904 00a1 34010000 		.4byte	.LASF14
  905 00a5 03       		.byte	0x3
  906 00a6 5D       		.byte	0x5d
  907 00a7 71000000 		.4byte	0x71
  908 00ab 02       		.uleb128 0x2
  909 00ac 04       		.byte	0x4
  910 00ad 04       		.byte	0x4
- 911 00ae C2000000 		.4byte	.LASF15
+ 911 00ae 65000000 		.4byte	.LASF15
  912 00b2 02       		.uleb128 0x2
  913 00b3 08       		.byte	0x8
  914 00b4 04       		.byte	0x4
- 915 00b5 3C010000 		.4byte	.LASF16
+ 915 00b5 E7000000 		.4byte	.LASF16
  916 00b9 05       		.uleb128 0x5
- 917 00ba 63000000 		.4byte	.LASF17
+ 917 00ba 06000000 		.4byte	.LASF17
  918 00be 03       		.byte	0x3
  919 00bf F0       		.byte	0xf0
  920 00c0 C4000000 		.4byte	0xc4
@@ -1427,7 +1427,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  933 00dc 7D       		.byte	0x7d
  934 00dd FE000000 		.4byte	0xfe
  935 00e1 08       		.uleb128 0x8
- 936 00e2 04020000 		.4byte	.LASF19
+ 936 00e2 AC010000 		.4byte	.LASF19
  937 00e6 01       		.byte	0x1
  938 00e7 7F       		.byte	0x7f
  939 00e8 8A000000 		.4byte	0x8a
@@ -1435,10 +1435,10 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  941 00ed 23       		.byte	0x23
  942 00ee 00       		.uleb128 0
  943 00ef 08       		.uleb128 0x8
- 944 00f0 80000000 		.4byte	.LASF20
+ 944 00f0 23000000 		.4byte	.LASF20
  945 00f4 01       		.byte	0x1
  946 00f5 80       		.byte	0x80
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 25
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 25
 
 
  947 00f6 8A000000 		.4byte	0x8a
@@ -1447,12 +1447,12 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  950 00fc 01       		.uleb128 0x1
  951 00fd 00       		.byte	0
  952 00fe 05       		.uleb128 0x5
- 953 00ff F1010000 		.4byte	.LASF21
+ 953 00ff 99010000 		.4byte	.LASF21
  954 0103 01       		.byte	0x1
  955 0104 81       		.byte	0x81
  956 0105 D9000000 		.4byte	0xd9
  957 0109 09       		.uleb128 0x9
- 958 010a 0E010000 		.4byte	.LASF22
+ 958 010a B9000000 		.4byte	.LASF22
  959 010e 01       		.byte	0x1
  960 010f 3B       		.byte	0x3b
  961 0110 01       		.byte	0x1
@@ -1479,7 +1479,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  982 0139 70       		.sleb128 -16
  983 013a 00       		.byte	0
  984 013b 09       		.uleb128 0x9
- 985 013c C3020000 		.4byte	.LASF23
+ 985 013c BA020000 		.4byte	.LASF23
  986 0140 01       		.byte	0x1
  987 0141 42       		.byte	0x42
  988 0142 01       		.byte	0x1
@@ -1489,7 +1489,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  992 014f 01       		.byte	0x1
  993 0150 7D010000 		.4byte	0x17d
  994 0154 0B       		.uleb128 0xb
- 995 0155 DC000000 		.4byte	.LASF24
+ 995 0155 7F000000 		.4byte	.LASF24
  996 0159 01       		.byte	0x1
  997 015a 42       		.byte	0x42
  998 015b 6F000000 		.4byte	0x6f
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1001 0161 74       		.sleb128 -12
  1002 0162 0A       		.uleb128 0xa
  1003 0163 73726300 		.ascii	"src\000"
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 26
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 26
 
 
  1004 0167 01       		.byte	0x1
@@ -1521,7 +1521,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1021 017f 83010000 		.4byte	0x183
  1022 0183 0D       		.uleb128 0xd
  1023 0184 09       		.uleb128 0x9
- 1024 0185 AA000000 		.4byte	.LASF25
+ 1024 0185 4D000000 		.4byte	.LASF25
  1025 0189 01       		.byte	0x1
  1026 018a 49       		.byte	0x49
  1027 018b 01       		.byte	0x1
@@ -1531,7 +1531,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1031 0198 01       		.byte	0x1
  1032 0199 C6010000 		.4byte	0x1c6
  1033 019d 0B       		.uleb128 0xb
- 1034 019e DC000000 		.4byte	.LASF24
+ 1034 019e 7F000000 		.4byte	.LASF24
  1035 01a2 01       		.byte	0x1
  1036 01a3 49       		.byte	0x49
  1037 01a4 6F000000 		.4byte	0x6f
@@ -1556,9 +1556,9 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1056 01c4 6C       		.sleb128 -20
  1057 01c5 00       		.byte	0
  1058 01c6 0E       		.uleb128 0xe
- 1059 01c7 C8000000 		.4byte	.LASF26
+ 1059 01c7 6B000000 		.4byte	.LASF26
  1060 01cb 01       		.byte	0x1
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 27
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 27
 
 
  1061 01cc 69       		.byte	0x69
@@ -1569,7 +1569,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1066 01da 01       		.byte	0x1
  1067 01db EE010000 		.4byte	0x1ee
  1068 01df 0B       		.uleb128 0xb
- 1069 01e0 7F010000 		.4byte	.LASF27
+ 1069 01e0 2A010000 		.4byte	.LASF27
  1070 01e4 01       		.byte	0x1
  1071 01e5 69       		.byte	0x69
  1072 01e6 8A000000 		.4byte	0x8a
@@ -1578,7 +1578,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1075 01ec 77       		.sleb128 -9
  1076 01ed 00       		.byte	0
  1077 01ee 0E       		.uleb128 0xe
- 1078 01ef 43010000 		.4byte	.LASF28
+ 1078 01ef EE000000 		.4byte	.LASF28
  1079 01f3 01       		.byte	0x1
  1080 01f4 A5       		.byte	0xa5
  1081 01f5 01       		.byte	0x1
@@ -1588,7 +1588,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1085 0202 01       		.byte	0x1
  1086 0203 62020000 		.4byte	0x262
  1087 0207 0B       		.uleb128 0xb
- 1088 0208 62010000 		.4byte	.LASF29
+ 1088 0208 0D010000 		.4byte	.LASF29
  1089 020c 01       		.byte	0x1
  1090 020d A5       		.byte	0xa5
  1091 020e 62020000 		.4byte	0x262
@@ -1596,7 +1596,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1093 0213 91       		.byte	0x91
  1094 0214 64       		.sleb128 -28
  1095 0215 0B       		.uleb128 0xb
- 1096 0216 74010000 		.4byte	.LASF30
+ 1096 0216 1F010000 		.4byte	.LASF30
  1097 021a 01       		.byte	0x1
  1098 021b A5       		.byte	0xa5
  1099 021c 6D020000 		.4byte	0x26d
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1115 0234 A0000000 		.4byte	0xa0
  1116 0238 02       		.byte	0x2
  1117 0239 91       		.byte	0x91
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 28
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 28
 
 
  1118 023a 70       		.sleb128 -16
@@ -1626,7 +1626,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1120 023c 18000000 		.4byte	.LBB2
  1121 0240 6A000000 		.4byte	.LBE2
  1122 0244 11       		.uleb128 0x11
- 1123 0245 C9010000 		.4byte	.LASF31
+ 1123 0245 71010000 		.4byte	.LASF31
  1124 0249 01       		.byte	0x1
  1125 024a AB       		.byte	0xab
  1126 024b A0000000 		.4byte	0xa0
@@ -1634,7 +1634,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1128 0250 91       		.byte	0x91
  1129 0251 68       		.sleb128 -24
  1130 0252 11       		.uleb128 0x11
- 1131 0253 86000000 		.4byte	.LASF32
+ 1131 0253 29000000 		.4byte	.LASF32
  1132 0257 01       		.byte	0x1
  1133 0258 AC       		.byte	0xac
  1134 0259 8A000000 		.4byte	0x8a
@@ -1654,7 +1654,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1148 0273 12       		.uleb128 0x12
  1149 0274 FE000000 		.4byte	0xfe
  1150 0278 09       		.uleb128 0x9
- 1151 0279 8C000000 		.4byte	.LASF33
+ 1151 0279 2F000000 		.4byte	.LASF33
  1152 027d 01       		.byte	0x1
  1153 027e C8       		.byte	0xc8
  1154 027f 01       		.byte	0x1
@@ -1664,7 +1664,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1158 028c 01       		.byte	0x1
  1159 028d AE020000 		.4byte	0x2ae
  1160 0291 11       		.uleb128 0x11
- 1161 0292 E9010000 		.4byte	.LASF34
+ 1161 0292 91010000 		.4byte	.LASF34
  1162 0296 01       		.byte	0x1
  1163 0297 CA       		.byte	0xca
  1164 0298 A0000000 		.4byte	0xa0
@@ -1672,19 +1672,19 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1166 029d 91       		.byte	0x91
  1167 029e 74       		.sleb128 -12
  1168 029f 11       		.uleb128 0x11
- 1169 02a0 BA000000 		.4byte	.LASF35
+ 1169 02a0 5D000000 		.4byte	.LASF35
  1170 02a4 01       		.byte	0x1
  1171 02a5 CB       		.byte	0xcb
  1172 02a6 8A000000 		.4byte	0x8a
  1173 02aa 02       		.byte	0x2
  1174 02ab 91       		.byte	0x91
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 29
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 29
 
 
  1175 02ac 73       		.sleb128 -13
  1176 02ad 00       		.byte	0
  1177 02ae 13       		.uleb128 0x13
- 1178 02af 6F000000 		.4byte	.LASF36
+ 1178 02af 12000000 		.4byte	.LASF36
  1179 02b3 01       		.byte	0x1
  1180 02b4 0B01     		.2byte	0x10b
  1181 02b6 01       		.byte	0x1
@@ -1694,7 +1694,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1185 02c3 01       		.byte	0x1
  1186 02c4 F6020000 		.4byte	0x2f6
  1187 02c8 14       		.uleb128 0x14
- 1188 02c9 9C020000 		.4byte	.LASF37
+ 1188 02c9 93020000 		.4byte	.LASF37
  1189 02cd 01       		.byte	0x1
  1190 02ce 0D01     		.2byte	0x10d
  1191 02d0 8A000000 		.4byte	0x8a
@@ -1720,7 +1720,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1211 02f5 00       		.byte	0
  1212 02f6 16       		.uleb128 0x16
  1213 02f7 01       		.byte	0x1
- 1214 02f8 18010000 		.4byte	.LASF47
+ 1214 02f8 C3000000 		.4byte	.LASF47
  1215 02fc 01       		.byte	0x1
  1216 02fd 3101     		.2byte	0x131
  1217 02ff 01       		.byte	0x1
@@ -1730,7 +1730,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1221 030c 01       		.byte	0x1
  1222 030d 30030000 		.4byte	0x330
  1223 0311 17       		.uleb128 0x17
- 1224 0312 86020000 		.4byte	.LASF38
+ 1224 0312 2E020000 		.4byte	.LASF38
  1225 0316 01       		.byte	0x1
  1226 0317 3101     		.2byte	0x131
  1227 0319 8A000000 		.4byte	0x8a
@@ -1738,10 +1738,10 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1229 031e 91       		.byte	0x91
  1230 031f 6F       		.sleb128 -17
  1231 0320 14       		.uleb128 0x14
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 30
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 30
 
 
- 1232 0321 BA020000 		.4byte	.LASF39
+ 1232 0321 B1020000 		.4byte	.LASF39
  1233 0325 01       		.byte	0x1
  1234 0326 3301     		.2byte	0x133
  1235 0328 8A000000 		.4byte	0x8a
@@ -1751,7 +1751,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1239 032f 00       		.byte	0
  1240 0330 18       		.uleb128 0x18
  1241 0331 01       		.byte	0x1
- 1242 0332 55010000 		.4byte	.LASF48
+ 1242 0332 00010000 		.4byte	.LASF48
  1243 0336 01       		.byte	0x1
  1244 0337 5301     		.2byte	0x153
  1245 0339 01       		.byte	0x1
@@ -1768,7 +1768,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1256 0353 5F01     		.2byte	0x15f
  1257 0355 78030000 		.4byte	0x378
  1258 0359 1A       		.uleb128 0x1a
- 1259 035a 9D010000 		.4byte	.LASF40
+ 1259 035a 99000000 		.4byte	.LASF40
  1260 035e 01       		.byte	0x1
  1261 035f 6001     		.2byte	0x160
  1262 0361 6F000000 		.4byte	0x6f
@@ -1776,7 +1776,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1264 0366 23       		.byte	0x23
  1265 0367 00       		.uleb128 0
  1266 0368 1A       		.uleb128 0x1a
- 1267 0369 F1000000 		.4byte	.LASF41
+ 1267 0369 94000000 		.4byte	.LASF41
  1268 036d 01       		.byte	0x1
  1269 036e 6101     		.2byte	0x161
  1270 0370 95000000 		.4byte	0x95
@@ -1785,7 +1785,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1273 0376 04       		.uleb128 0x4
  1274 0377 00       		.byte	0
  1275 0378 1B       		.uleb128 0x1b
- 1276 0379 BC010000 		.4byte	.LASF42
+ 1276 0379 64010000 		.4byte	.LASF42
  1277 037d 01       		.byte	0x1
  1278 037e 6201     		.2byte	0x162
  1279 0380 50030000 		.4byte	0x350
@@ -1797,8 +1797,8 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1285 0392 08       		.byte	0x8
  1286 0393 00       		.byte	0
  1287 0394 14       		.uleb128 0x14
- 1288 0395 E1000000 		.4byte	.LASF43
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 31
+ 1288 0395 84000000 		.4byte	.LASF43
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 31
 
 
  1289 0399 01       		.byte	0x1
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1343 0010 01       		.uleb128 0x1
  1344 0011 10       		.uleb128 0x10
  1345 0012 06       		.uleb128 0x6
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 32
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 32
 
 
  1346 0013 00       		.byte	0
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1400 0049 0B       		.uleb128 0xb
  1401 004a 0B       		.uleb128 0xb
  1402 004b 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 33
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 33
 
 
  1403 004c 0B       		.uleb128 0xb
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1457 0083 49       		.uleb128 0x49
  1458 0084 13       		.uleb128 0x13
  1459 0085 02       		.uleb128 0x2
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 34
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 34
 
 
  1460 0086 0A       		.uleb128 0xa
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1514 00bd 00       		.byte	0
  1515 00be 0F       		.uleb128 0xf
  1516 00bf 34       		.uleb128 0x34
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 35
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 35
 
 
  1517 00c0 00       		.byte	0
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1571 00f6 0C       		.uleb128 0xc
  1572 00f7 11       		.uleb128 0x11
  1573 00f8 01       		.uleb128 0x1
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 36
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 36
 
 
  1574 00f9 12       		.uleb128 0x12
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1628 0130 01       		.uleb128 0x1
  1629 0131 12       		.uleb128 0x12
  1630 0132 01       		.uleb128 0x1
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 37
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 37
 
 
  1631 0133 40       		.uleb128 0x40
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1685 016b 05       		.uleb128 0x5
  1686 016c 01       		.uleb128 0x1
  1687 016d 13       		.uleb128 0x13
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 38
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 38
 
 
  1688 016e 00       		.byte	0
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1742 0008 0200     		.2byte	0x2
  1743 000a 7D       		.byte	0x7d
  1744 000b 00       		.sleb128 0
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 39
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 39
 
 
  1745 000c 02000000 		.4byte	.LCFI0
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1799 0092 7D       		.byte	0x7d
  1800 0093 18       		.sleb128 24
  1801 0094 06000000 		.4byte	.LCFI8
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 40
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 40
 
 
  1802 0098 1E000000 		.4byte	.LFE2
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1856 011c 02000000 		.4byte	.LCFI15
  1857 0120 0200     		.2byte	0x2
  1858 0122 7D       		.byte	0x7d
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 41
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 41
 
 
  1859 0123 00       		.sleb128 0
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1913 01a8 0200     		.2byte	0x2
  1914 01aa 7D       		.byte	0x7d
  1915 01ab 18       		.sleb128 24
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 42
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 42
 
 
  1916 01ac 06000000 		.4byte	.LCFI23
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1970 0050 00000000 		.4byte	.LFB8
  1971 0054 DC010000 		.4byte	.LFE8-.LFB8
  1972 0058 00000000 		.4byte	0
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 43
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 43
 
 
  1973 005c 00000000 		.4byte	0
@@ -2554,232 +2554,232 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 1
  1999              	.LASF18:
  2000 0000 72656731 		.ascii	"reg16\000"
  2000      3600
- 2001              	.LASF46:
- 2002 0006 433A5C55 		.ascii	"C:\\Users\\Chai Yang\\Documents\\FSAE Pedal Node\\N"
- 2002      73657273 
- 2002      5C436861 
- 2002      69205961 
- 2002      6E675C44 
- 2003 0034 6F64652D 		.ascii	"ode-Elephant\\Node-Elephant\\Node-Elephant.cydsn\000"
- 2003      456C6570 
- 2003      68616E74 
- 2003      5C4E6F64 
- 2003      652D456C 
- 2004              	.LASF17:
- 2005 0063 72656738 		.ascii	"reg8\000"
- 2005      00
- 2006              	.LASF11:
- 2007 0068 73697A65 		.ascii	"size_t\000"
- 2007      5F7400
- 2008              	.LASF36:
- 2009 006f 416E616C 		.ascii	"AnalogSetDefault\000"
- 2009      6F675365 
- 2009      74446566 
- 2009      61756C74 
- 2009      00
- 2010              	.LASF20:
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 44
+ 2001              	.LASF17:
+ 2002 0006 72656738 		.ascii	"reg8\000"
+ 2002      00
+ 2003              	.LASF11:
+ 2004 000b 73697A65 		.ascii	"size_t\000"
+ 2004      5F7400
+ 2005              	.LASF36:
+ 2006 0012 416E616C 		.ascii	"AnalogSetDefault\000"
+ 2006      6F675365 
+ 2006      74446566 
+ 2006      61756C74 
+ 2006      00
+ 2007              	.LASF20:
+ 2008 0023 76616C75 		.ascii	"value\000"
+ 2008      6500
+ 2009              	.LASF32:
+ 2010 0029 636F756E 		.ascii	"count\000"
+ 2010      7400
+ 2011              	.LASF33:
+ 2012 002f 436C6F63 		.ascii	"ClockSetup\000"
+ 2012      6B536574 
+ 2012      757000
+ 2013              	.LASF3:
+ 2014 003a 73686F72 		.ascii	"short unsigned int\000"
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 44
 
 
- 2011 0080 76616C75 		.ascii	"value\000"
- 2011      6500
- 2012              	.LASF32:
- 2013 0086 636F756E 		.ascii	"count\000"
- 2013      7400
- 2014              	.LASF33:
- 2015 008c 436C6F63 		.ascii	"ClockSetup\000"
- 2015      6B536574 
- 2015      757000
- 2016              	.LASF3:
- 2017 0097 73686F72 		.ascii	"short unsigned int\000"
- 2017      7420756E 
- 2017      7369676E 
- 2017      65642069 
- 2017      6E7400
- 2018              	.LASF25:
- 2019 00aa 4359434F 		.ascii	"CYCONFIGCPYCODE\000"
- 2019      4E464947 
- 2019      43505943 
- 2019      4F444500 
- 2020              	.LASF35:
- 2021 00ba 706C6C4C 		.ascii	"pllLock\000"
- 2021      6F636B00 
- 2022              	.LASF15:
- 2023 00c2 666C6F61 		.ascii	"float\000"
- 2023      7400
- 2024              	.LASF26:
- 2025 00c8 4379436C 		.ascii	"CyClockStartupError\000"
- 2025      6F636B53 
- 2025      74617274 
- 2025      75704572 
- 2025      726F7200 
- 2026              	.LASF24:
- 2027 00dc 64657374 		.ascii	"dest\000"
- 2027      00
- 2028              	.LASF43:
- 2029 00e1 6366675F 		.ascii	"cfg_memset_list\000"
- 2029      6D656D73 
- 2029      65745F6C 
- 2029      69737400 
- 2030              	.LASF41:
- 2031 00f1 73697A65 		.ascii	"size\000"
- 2031      00
- 2032              	.LASF9:
- 2033 00f6 6C6F6E67 		.ascii	"long unsigned int\000"
- 2033      20756E73 
- 2033      69676E65 
- 2033      6420696E 
- 2033      7400
- 2034              	.LASF12:
- 2035 0108 75696E74 		.ascii	"uint8\000"
- 2035      3800
- 2036              	.LASF22:
- 2037 010e 43594D45 		.ascii	"CYMEMZERO\000"
- 2037      4D5A4552 
- 2037      4F00
- 2038              	.LASF47:
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 45
+ 2014      7420756E 
+ 2014      7369676E 
+ 2014      65642069 
+ 2014      6E7400
+ 2015              	.LASF25:
+ 2016 004d 4359434F 		.ascii	"CYCONFIGCPYCODE\000"
+ 2016      4E464947 
+ 2016      43505943 
+ 2016      4F444500 
+ 2017              	.LASF35:
+ 2018 005d 706C6C4C 		.ascii	"pllLock\000"
+ 2018      6F636B00 
+ 2019              	.LASF15:
+ 2020 0065 666C6F61 		.ascii	"float\000"
+ 2020      7400
+ 2021              	.LASF26:
+ 2022 006b 4379436C 		.ascii	"CyClockStartupError\000"
+ 2022      6F636B53 
+ 2022      74617274 
+ 2022      75704572 
+ 2022      726F7200 
+ 2023              	.LASF24:
+ 2024 007f 64657374 		.ascii	"dest\000"
+ 2024      00
+ 2025              	.LASF43:
+ 2026 0084 6366675F 		.ascii	"cfg_memset_list\000"
+ 2026      6D656D73 
+ 2026      65745F6C 
+ 2026      69737400 
+ 2027              	.LASF41:
+ 2028 0094 73697A65 		.ascii	"size\000"
+ 2028      00
+ 2029              	.LASF40:
+ 2030 0099 61646472 		.ascii	"address\000"
+ 2030      65737300 
+ 2031              	.LASF9:
+ 2032 00a1 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2032      20756E73 
+ 2032      69676E65 
+ 2032      6420696E 
+ 2032      7400
+ 2033              	.LASF12:
+ 2034 00b3 75696E74 		.ascii	"uint8\000"
+ 2034      3800
+ 2035              	.LASF22:
+ 2036 00b9 43594D45 		.ascii	"CYMEMZERO\000"
+ 2036      4D5A4552 
+ 2036      4F00
+ 2037              	.LASF47:
+ 2038 00c3 53657441 		.ascii	"SetAnalogRoutingPumps\000"
+ 2038      6E616C6F 
+ 2038      67526F75 
+ 2038      74696E67 
+ 2038      50756D70 
+ 2039              	.LASF1:
+ 2040 00d9 756E7369 		.ascii	"unsigned char\000"
+ 2040      676E6564 
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 45
 
 
- 2039 0118 53657441 		.ascii	"SetAnalogRoutingPumps\000"
- 2039      6E616C6F 
- 2039      67526F75 
- 2039      74696E67 
- 2039      50756D70 
- 2040              	.LASF1:
- 2041 012e 756E7369 		.ascii	"unsigned char\000"
- 2041      676E6564 
- 2041      20636861 
- 2041      7200
- 2042              	.LASF16:
- 2043 013c 646F7562 		.ascii	"double\000"
- 2043      6C6500
- 2044              	.LASF28:
- 2045 0143 6366675F 		.ascii	"cfg_write_bytes32\000"
- 2045      77726974 
- 2045      655F6279 
- 2045      74657333 
- 2045      3200
- 2046              	.LASF48:
- 2047 0155 63796669 		.ascii	"cyfitter_cfg\000"
- 2047      74746572 
- 2047      5F636667 
- 2047      00
- 2048              	.LASF29:
- 2049 0162 61646472 		.ascii	"addr_table\000"
- 2049      5F746162 
- 2049      6C6500
- 2050              	.LASF13:
- 2051 016d 75696E74 		.ascii	"uint16\000"
- 2051      313600
- 2052              	.LASF30:
- 2053 0174 64617461 		.ascii	"data_table\000"
- 2053      5F746162 
- 2053      6C6500
- 2054              	.LASF27:
- 2055 017f 6572726F 		.ascii	"errorCode\000"
- 2055      72436F64 
- 2055      6500
- 2056              	.LASF14:
- 2057 0189 75696E74 		.ascii	"uint32\000"
- 2057      333200
- 2058              	.LASF4:
- 2059 0190 756E7369 		.ascii	"unsigned int\000"
- 2059      676E6564 
- 2059      20696E74 
- 2059      00
- 2060              	.LASF40:
- 2061 019d 61646472 		.ascii	"address\000"
- 2061      65737300 
- 2062              	.LASF6:
- 2063 01a5 6C6F6E67 		.ascii	"long long unsigned int\000"
- 2063      206C6F6E 
- 2063      6720756E 
- 2063      7369676E 
- 2063      65642069 
- 2064              	.LASF42:
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 46
+ 2040      20636861 
+ 2040      7200
+ 2041              	.LASF16:
+ 2042 00e7 646F7562 		.ascii	"double\000"
+ 2042      6C6500
+ 2043              	.LASF28:
+ 2044 00ee 6366675F 		.ascii	"cfg_write_bytes32\000"
+ 2044      77726974 
+ 2044      655F6279 
+ 2044      74657333 
+ 2044      3200
+ 2045              	.LASF48:
+ 2046 0100 63796669 		.ascii	"cyfitter_cfg\000"
+ 2046      74746572 
+ 2046      5F636667 
+ 2046      00
+ 2047              	.LASF29:
+ 2048 010d 61646472 		.ascii	"addr_table\000"
+ 2048      5F746162 
+ 2048      6C6500
+ 2049              	.LASF13:
+ 2050 0118 75696E74 		.ascii	"uint16\000"
+ 2050      313600
+ 2051              	.LASF30:
+ 2052 011f 64617461 		.ascii	"data_table\000"
+ 2052      5F746162 
+ 2052      6C6500
+ 2053              	.LASF27:
+ 2054 012a 6572726F 		.ascii	"errorCode\000"
+ 2054      72436F64 
+ 2054      6500
+ 2055              	.LASF14:
+ 2056 0134 75696E74 		.ascii	"uint32\000"
+ 2056      333200
+ 2057              	.LASF4:
+ 2058 013b 756E7369 		.ascii	"unsigned int\000"
+ 2058      676E6564 
+ 2058      20696E74 
+ 2058      00
+ 2059              	.LASF10:
+ 2060 0148 63686172 		.ascii	"char\000"
+ 2060      00
+ 2061              	.LASF6:
+ 2062 014d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2062      206C6F6E 
+ 2062      6720756E 
+ 2062      7369676E 
+ 2062      65642069 
+ 2063              	.LASF42:
+ 2064 0164 6366675F 		.ascii	"cfg_memset_t\000"
+ 2064      6D656D73 
+ 2064      65745F74 
+ 2064      00
+ 2065              	.LASF31:
+ 2066 0171 62617365 		.ascii	"baseAddr\000"
+ 2066      41646472 
+ 2066      00
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 46
 
 
- 2065 01bc 6366675F 		.ascii	"cfg_memset_t\000"
- 2065      6D656D73 
- 2065      65745F74 
- 2065      00
- 2066              	.LASF31:
- 2067 01c9 62617365 		.ascii	"baseAddr\000"
- 2067      41646472 
- 2067      00
- 2068              	.LASF8:
- 2069 01d2 73697A65 		.ascii	"sizetype\000"
- 2069      74797065 
- 2069      00
- 2070              	.LASF5:
- 2071 01db 6C6F6E67 		.ascii	"long long int\000"
- 2071      206C6F6E 
- 2071      6720696E 
- 2071      7400
- 2072              	.LASF34:
- 2073 01e9 74696D65 		.ascii	"timeout\000"
- 2073      6F757400 
- 2074              	.LASF21:
- 2075 01f1 63795F63 		.ascii	"cy_cfg_addrvalue_t\000"
- 2075      66675F61 
- 2075      64647276 
- 2075      616C7565 
- 2075      5F7400
- 2076              	.LASF19:
- 2077 0204 6F666673 		.ascii	"offset\000"
- 2077      657400
- 2078              	.LASF2:
- 2079 020b 73686F72 		.ascii	"short int\000"
- 2079      7420696E 
- 2079      7400
- 2080              	.LASF44:
- 2081 0215 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
- 2081      4320342E 
- 2081      372E3320 
- 2081      32303133 
- 2081      30333132 
- 2082 0248 616E6368 		.ascii	"anch revision 196615]\000"
- 2082      20726576 
- 2082      6973696F 
- 2082      6E203139 
- 2082      36363135 
- 2083              	.LASF45:
- 2084 025e 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\cyfitter_cfg.c\000"
- 2084      6E657261 
- 2084      7465645F 
- 2084      536F7572 
- 2084      63655C50 
- 2085              	.LASF38:
- 2086 0286 656E6162 		.ascii	"enabled\000"
- 2086      6C656400 
- 2087              	.LASF7:
- 2088 028e 6C6F6E67 		.ascii	"long int\000"
- 2088      20696E74 
- 2088      00
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccugu6NZ.s 			page 47
+ 2067              	.LASF8:
+ 2068 017a 73697A65 		.ascii	"sizetype\000"
+ 2068      74797065 
+ 2068      00
+ 2069              	.LASF5:
+ 2070 0183 6C6F6E67 		.ascii	"long long int\000"
+ 2070      206C6F6E 
+ 2070      6720696E 
+ 2070      7400
+ 2071              	.LASF34:
+ 2072 0191 74696D65 		.ascii	"timeout\000"
+ 2072      6F757400 
+ 2073              	.LASF21:
+ 2074 0199 63795F63 		.ascii	"cy_cfg_addrvalue_t\000"
+ 2074      66675F61 
+ 2074      64647276 
+ 2074      616C7565 
+ 2074      5F7400
+ 2075              	.LASF19:
+ 2076 01ac 6F666673 		.ascii	"offset\000"
+ 2076      657400
+ 2077              	.LASF2:
+ 2078 01b3 73686F72 		.ascii	"short int\000"
+ 2078      7420696E 
+ 2078      7400
+ 2079              	.LASF44:
+ 2080 01bd 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 2080      4320342E 
+ 2080      372E3320 
+ 2080      32303133 
+ 2080      30333132 
+ 2081 01f0 616E6368 		.ascii	"anch revision 196615]\000"
+ 2081      20726576 
+ 2081      6973696F 
+ 2081      6E203139 
+ 2081      36363135 
+ 2082              	.LASF45:
+ 2083 0206 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\cyfitter_cfg.c\000"
+ 2083      6E657261 
+ 2083      7465645F 
+ 2083      536F7572 
+ 2083      63655C50 
+ 2084              	.LASF38:
+ 2085 022e 656E6162 		.ascii	"enabled\000"
+ 2085      6C656400 
+ 2086              	.LASF7:
+ 2087 0236 6C6F6E67 		.ascii	"long int\000"
+ 2087      20696E74 
+ 2087      00
+ 2088              	.LASF46:
+ 2089 023f 433A5C55 		.ascii	"C:\\Users\\Chai Yang\\Documents\\GitHub\\Node-Eleph"
+ 2089      73657273 
+ 2089      5C436861 
+ 2089      69205961 
+ 2089      6E675C44 
+ 2090 026d 616E745C 		.ascii	"ant\\Node-Elephant\\Node-Elephant.cydsn\000"
+ 2090      4E6F6465 
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccswlkpk.s 			page 47
 
 
- 2089              	.LASF10:
- 2090 0297 63686172 		.ascii	"char\000"
- 2090      00
+ 2090      2D456C65 
+ 2090      7068616E 
+ 2090      745C4E6F 
  2091              	.LASF37:
- 2092 029c 62675F78 		.ascii	"bg_xover_inl_trim\000"
+ 2092 0293 62675F78 		.ascii	"bg_xover_inl_trim\000"
  2092      6F766572 
  2092      5F696E6C 
  2092      5F747269 
  2092      6D00
  2093              	.LASF0:
- 2094 02ae 7369676E 		.ascii	"signed char\000"
+ 2094 02a5 7369676E 		.ascii	"signed char\000"
  2094      65642063 
  2094      68617200 
  2095              	.LASF39:
- 2096 02ba 72656756 		.ascii	"regValue\000"
+ 2096 02b1 72656756 		.ascii	"regValue\000"
  2096      616C7565 
  2096      00
  2097              	.LASF23:
- 2098 02c3 4359434F 		.ascii	"CYCONFIGCPY\000"
+ 2098 02ba 4359434F 		.ascii	"CYCONFIGCPY\000"
  2098      4E464947 
  2098      43505900 
  2099              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

@@ -292,7 +292,7 @@ ClockBlock/dclk_glb_0                                      clockblockcell      0
 
 ++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin     : Net_489/q
+Path Begin     : Net_1094/q
 Path End       : \ADC_SAR:bSAR_SEQ:bus_clk_reg\/main_1
 Capture Clock  : \ADC_SAR:bSAR_SEQ:bus_clk_reg\/clock_0
 Path slack     : 31986p
@@ -314,12 +314,12 @@ Launch Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_0                                      clockblockcell      0      0  RISE       1
-Net_489/clock_0                                            macrocell1          0      0  RISE       1
+Net_1094/clock_0                                           macrocell1          0      0  RISE       1
 
 Data path
 pin name                               model name   delay     AT  slack  edge  Fanout
 -------------------------------------  -----------  -----  -----  -----  ----  ------
-Net_489/q                              macrocell1    1250   1250  31986  RISE       1
+Net_1094/q                             macrocell1    1250   1250  31986  RISE       1
 \ADC_SAR:bSAR_SEQ:bus_clk_reg\/main_1  macrocell74   4920   6170  31986  RISE       1
 
 Capture Clock Path
@@ -381,8 +381,8 @@ ClockBlock/dclk_glb_1                                      clockblockcell      0
 ++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
 Path Begin     : \ADC_SAR:FinalBuf\/termout
-Path End       : Net_489/main_2
-Capture Clock  : Net_489/clock_0
+Path End       : Net_1094/main_2
+Capture Clock  : Net_1094/clock_0
 Path slack     : 23426p
 
 Capture Clock Arrival Time                                     0
@@ -408,13 +408,13 @@ Data path
 pin name                    model name   delay     AT  slack  edge  Fanout
 --------------------------  -----------  -----  -----  -----  ----  ------
 \ADC_SAR:FinalBuf\/termout  drqcell1      9000   9000  23426  RISE       1
-Net_489/main_2              macrocell1    5731  14731  23426  RISE       1
+Net_1094/main_2             macrocell1    5731  14731  23426  RISE       1
 
 Capture Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_0                                      clockblockcell      0      0  RISE       1
-Net_489/clock_0                                            macrocell1          0      0  RISE       1
+Net_1094/clock_0                                           macrocell1          0      0  RISE       1
 
 
 5.5::Critical Path Report for (CyBUS_CLK:R vs. CyBUS_CLK:R)
@@ -511,8 +511,8 @@ ClockBlock/clk_bus_glb                                      clockblockcell      
 ++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
 Path Begin     : \ADC_SAR:FinalBuf\/termout
-Path End       : Net_489/main_2
-Capture Clock  : Net_489/clock_0
+Path End       : Net_1094/main_2
+Capture Clock  : Net_1094/clock_0
 Path slack     : 23426p
 
 Capture Clock Arrival Time                                     0
@@ -538,19 +538,19 @@ Data path
 pin name                    model name   delay     AT  slack  edge  Fanout
 --------------------------  -----------  -----  -----  -----  ----  ------
 \ADC_SAR:FinalBuf\/termout  drqcell1      9000   9000  23426  RISE       1
-Net_489/main_2              macrocell1    5731  14731  23426  RISE       1
+Net_1094/main_2             macrocell1    5731  14731  23426  RISE       1
 
 Capture Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_0                                      clockblockcell      0      0  RISE       1
-Net_489/clock_0                                            macrocell1          0      0  RISE       1
+Net_1094/clock_0                                           macrocell1          0      0  RISE       1
 
 
 
 ++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin     : Net_489/q
+Path Begin     : Net_1094/q
 Path End       : \ADC_SAR:bSAR_SEQ:bus_clk_reg\/main_1
 Capture Clock  : \ADC_SAR:bSAR_SEQ:bus_clk_reg\/clock_0
 Path slack     : 31986p
@@ -572,12 +572,12 @@ Launch Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_0                                      clockblockcell      0      0  RISE       1
-Net_489/clock_0                                            macrocell1          0      0  RISE       1
+Net_1094/clock_0                                           macrocell1          0      0  RISE       1
 
 Data path
 pin name                               model name   delay     AT  slack  edge  Fanout
 -------------------------------------  -----------  -----  -----  -----  ----  ------
-Net_489/q                              macrocell1    1250   1250  31986  RISE       1
+Net_1094/q                             macrocell1    1250   1250  31986  RISE       1
 \ADC_SAR:bSAR_SEQ:bus_clk_reg\/main_1  macrocell74   4920   6170  31986  RISE       1
 
 Capture Clock Path
@@ -591,8 +591,8 @@ ClockBlock/clk_bus_glb                                      clockblockcell      
 ++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
 Path Begin     : \ADC_SAR:bSAR_SEQ:bus_clk_reg\/q
-Path End       : Net_489/main_0
-Capture Clock  : Net_489/clock_0
+Path End       : Net_1094/main_0
+Capture Clock  : Net_1094/clock_0
 Path slack     : 34120p
 
 Capture Clock Arrival Time                                     0
@@ -618,13 +618,13 @@ Data path
 pin name                          model name   delay     AT  slack  edge  Fanout
 --------------------------------  -----------  -----  -----  -----  ----  ------
 \ADC_SAR:bSAR_SEQ:bus_clk_reg\/q  macrocell74   1250   1250  34120  RISE       1
-Net_489/main_0                    macrocell1    2786   4036  34120  RISE       1
+Net_1094/main_0                   macrocell1    2786   4036  34120  RISE       1
 
 Capture Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_0                                      clockblockcell      0      0  RISE       1
-Net_489/clock_0                                            macrocell1          0      0  RISE       1
+Net_1094/clock_0                                           macrocell1          0      0  RISE       1
 
 
 
@@ -15928,9 +15928,9 @@ ClockBlock/dclk_glb_0                                      clockblockcell      0
 
 ++++ Path 381 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin     : Net_489/q
-Path End       : Net_489/main_1
-Capture Clock  : Net_489/clock_0
+Path Begin     : Net_1094/q
+Path End       : Net_1094/main_1
+Capture Clock  : Net_1094/clock_0
 Path slack     : 531412p
 
 Capture Clock Arrival Time                                            0
@@ -15950,19 +15950,19 @@ Launch Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_0                                      clockblockcell      0      0  RISE       1
-Net_489/clock_0                                            macrocell1          0      0  RISE       1
+Net_1094/clock_0                                           macrocell1          0      0  RISE       1
 
 Data path
-pin name        model name   delay     AT   slack  edge  Fanout
---------------  -----------  -----  -----  ------  ----  ------
-Net_489/q       macrocell1    1250   1250  531412  RISE       1
-Net_489/main_1  macrocell1    5495   6745  531412  RISE       1
+pin name         model name   delay     AT   slack  edge  Fanout
+---------------  -----------  -----  -----  ------  ----  ------
+Net_1094/q       macrocell1    1250   1250  531412  RISE       1
+Net_1094/main_1  macrocell1    5495   6745  531412  RISE       1
 
 Capture Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_0                                      clockblockcell      0      0  RISE       1
-Net_489/clock_0                                            macrocell1          0      0  RISE       1
+Net_1094/clock_0                                           macrocell1          0      0  RISE       1
 
 
 
@@ -18088,7 +18088,7 @@ ClockBlock/dclk_glb_0                                      clockblockcell      0
 
 ++++ Path 435 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin     : Net_489/q
+Path Begin     : Net_1094/q
 Path End       : \ADC_SAR:bSAR_SEQ:EOCSts\/status_0
 Capture Clock  : \ADC_SAR:bSAR_SEQ:EOCSts\/clock
 Path slack     : 533336p
@@ -18110,12 +18110,12 @@ Launch Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_0                                      clockblockcell      0      0  RISE       1
-Net_489/clock_0                                            macrocell1          0      0  RISE       1
+Net_1094/clock_0                                           macrocell1          0      0  RISE       1
 
 Data path
 pin name                            model name   delay     AT   slack  edge  Fanout
 ----------------------------------  -----------  -----  -----  ------  ----  ------
-Net_489/q                           macrocell1    1250   1250  531412  RISE       1
+Net_1094/q                          macrocell1    1250   1250  531412  RISE       1
 \ADC_SAR:bSAR_SEQ:EOCSts\/status_0  statuscell1   5511   6761  533336  RISE       1
 
 Capture Clock Path

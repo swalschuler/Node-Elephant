@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 1
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctDvJ0z.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 1
   23:.\Generated_Source\PSoC5/ADC_SAR_TempBuf_dma.c **** 
   24:.\Generated_Source\PSoC5/ADC_SAR_TempBuf_dma.c **** 
   25:.\Generated_Source\PSoC5/ADC_SAR_TempBuf_dma.c **** 
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 2
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctDvJ0z.s 			page 2
 
 
   26:.\Generated_Source\PSoC5/ADC_SAR_TempBuf_dma.c **** /****************************************************************************
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 1
   80:.\Generated_Source\PSoC5/ADC_SAR_TempBuf_dma.c **** *       
   81:.\Generated_Source\PSoC5/ADC_SAR_TempBuf_dma.c **** *       
   82:.\Generated_Source\PSoC5/ADC_SAR_TempBuf_dma.c **** *   ReqestPerBurst.
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 3
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctDvJ0z.s 			page 3
 
 
   83:.\Generated_Source\PSoC5/ADC_SAR_TempBuf_dma.c **** *       
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 1
   65 0030 4FF00000 		mov	r0, #0
   66 0034 0190     		str	r0, [sp, #4]
   67 0036 0846     		mov	r0, r1
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 4
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctDvJ0z.s 			page 4
 
 
   68 0038 1146     		mov	r1, r2
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 1
  108              	.LFB1:
  119:.\Generated_Source\PSoC5/ADC_SAR_TempBuf_dma.c **** 
  120:.\Generated_Source\PSoC5/ADC_SAR_TempBuf_dma.c **** /*********************************************************************
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 5
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctDvJ0z.s 			page 5
 
 
  121:.\Generated_Source\PSoC5/ADC_SAR_TempBuf_dma.c **** * Function Name: void ADC_SAR_TempBuf_DmaRelease
@@ -294,11 +294,11 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 1
  139 0006 00000000 		.4byte	.Ldebug_abbrev0
  140 000a 04       		.byte	0x4
  141 000b 01       		.uleb128 0x1
- 142 000c D5000000 		.4byte	.LASF19
+ 142 000c 78000000 		.4byte	.LASF19
  143 0010 01       		.byte	0x1
  144 0011 2B000000 		.4byte	.LASF20
- 145 0015 5A000000 		.4byte	.LASF21
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 6
+ 145 0015 76010000 		.4byte	.LASF21
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctDvJ0z.s 			page 6
 
 
  146 0019 00000000 		.4byte	.Ldebug_ranges0+0
@@ -308,19 +308,19 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 1
  150 0029 02       		.uleb128 0x2
  151 002a 01       		.byte	0x1
  152 002b 06       		.byte	0x6
- 153 002c B2010000 		.4byte	.LASF0
+ 153 002c 5B010000 		.4byte	.LASF0
  154 0030 02       		.uleb128 0x2
  155 0031 01       		.byte	0x1
  156 0032 08       		.byte	0x8
- 157 0033 4D010000 		.4byte	.LASF1
+ 157 0033 F6000000 		.4byte	.LASF1
  158 0037 02       		.uleb128 0x2
  159 0038 02       		.byte	0x2
  160 0039 05       		.byte	0x5
- 161 003a 83010000 		.4byte	.LASF2
+ 161 003a 2C010000 		.4byte	.LASF2
  162 003e 02       		.uleb128 0x2
  163 003f 02       		.byte	0x2
  164 0040 07       		.byte	0x7
- 165 0041 9F010000 		.4byte	.LASF3
+ 165 0041 48010000 		.4byte	.LASF3
  166 0045 03       		.uleb128 0x3
  167 0046 04       		.byte	0x4
  168 0047 05       		.byte	0x5
@@ -336,47 +336,47 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 1
  178 005a 02       		.uleb128 0x2
  179 005b 08       		.byte	0x8
  180 005c 07       		.byte	0x7
- 181 005d 36010000 		.4byte	.LASF6
+ 181 005d D9000000 		.4byte	.LASF6
  182 0061 02       		.uleb128 0x2
  183 0062 04       		.byte	0x4
  184 0063 05       		.byte	0x5
- 185 0064 7A010000 		.4byte	.LASF7
+ 185 0064 23010000 		.4byte	.LASF7
  186 0068 02       		.uleb128 0x2
  187 0069 04       		.byte	0x4
  188 006a 07       		.byte	0x7
- 189 006b 06020000 		.4byte	.LASF8
+ 189 006b FD010000 		.4byte	.LASF8
  190 006f 02       		.uleb128 0x2
  191 0070 04       		.byte	0x4
  192 0071 07       		.byte	0x7
- 193 0072 24010000 		.4byte	.LASF9
+ 193 0072 C7000000 		.4byte	.LASF9
  194 0076 02       		.uleb128 0x2
  195 0077 01       		.byte	0x1
  196 0078 08       		.byte	0x8
- 197 0079 75010000 		.4byte	.LASF10
+ 197 0079 1E010000 		.4byte	.LASF10
  198 007d 04       		.uleb128 0x4
- 199 007e 1E010000 		.4byte	.LASF11
+ 199 007e C1000000 		.4byte	.LASF11
  200 0082 02       		.byte	0x2
  201 0083 5B       		.byte	0x5b
  202 0084 30000000 		.4byte	0x30
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 7
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctDvJ0z.s 			page 7
 
 
  203 0088 04       		.uleb128 0x4
- 204 0089 FF010000 		.4byte	.LASF12
+ 204 0089 F6010000 		.4byte	.LASF12
  205 008d 02       		.byte	0x2
  206 008e 5C       		.byte	0x5c
  207 008f 3E000000 		.4byte	0x3e
  208 0093 02       		.uleb128 0x2
  209 0094 04       		.byte	0x4
  210 0095 04       		.byte	0x4
- 211 0096 CD010000 		.4byte	.LASF13
+ 211 0096 F0000000 		.4byte	.LASF13
  212 009a 02       		.uleb128 0x2
  213 009b 08       		.byte	0x8
  214 009c 04       		.byte	0x4
- 215 009d 8D010000 		.4byte	.LASF14
+ 215 009d 36010000 		.4byte	.LASF14
  216 00a1 05       		.uleb128 0x5
  217 00a2 01       		.byte	0x1
- 218 00a3 B7000000 		.4byte	.LASF22
+ 218 00a3 5A000000 		.4byte	.LASF22
  219 00a7 01       		.byte	0x1
  220 00a8 61       		.byte	0x61
  221 00a9 01       		.byte	0x1
@@ -387,7 +387,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 1
  226 00ba 01       		.byte	0x1
  227 00bb F8000000 		.4byte	0xf8
  228 00bf 06       		.uleb128 0x6
- 229 00c0 94010000 		.4byte	.LASF15
+ 229 00c0 3D010000 		.4byte	.LASF15
  230 00c4 01       		.byte	0x1
  231 00c5 61       		.byte	0x61
  232 00c6 7D000000 		.4byte	0x7d
@@ -395,7 +395,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 1
  234 00cb 91       		.byte	0x91
  235 00cc 77       		.sleb128 -9
  236 00cd 06       		.uleb128 0x6
- 237 00ce BE010000 		.4byte	.LASF16
+ 237 00ce 67010000 		.4byte	.LASF16
  238 00d2 01       		.byte	0x1
  239 00d3 61       		.byte	0x61
  240 00d4 7D000000 		.4byte	0x7d
@@ -411,20 +411,20 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 1
  250 00e7 91       		.byte	0x91
  251 00e8 74       		.sleb128 -12
  252 00e9 06       		.uleb128 0x6
- 253 00ea D3010000 		.4byte	.LASF18
+ 253 00ea CA010000 		.4byte	.LASF18
  254 00ee 01       		.byte	0x1
  255 00ef 61       		.byte	0x61
  256 00f0 88000000 		.4byte	0x88
  257 00f4 02       		.byte	0x2
  258 00f5 91       		.byte	0x91
  259 00f6 72       		.sleb128 -14
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 8
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctDvJ0z.s 			page 8
 
 
  260 00f7 00       		.byte	0
  261 00f8 07       		.uleb128 0x7
  262 00f9 01       		.byte	0x1
- 263 00fa E4010000 		.4byte	.LASF23
+ 263 00fa DB010000 		.4byte	.LASF23
  264 00fe 01       		.byte	0x1
  265 00ff 88       		.byte	0x88
  266 0100 01       		.byte	0x1
@@ -433,7 +433,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 1
  269 0109 38000000 		.4byte	.LLST1
  270 010d 01       		.byte	0x1
  271 010e 08       		.uleb128 0x8
- 272 010f 5B010000 		.4byte	.LASF24
+ 272 010f 04010000 		.4byte	.LASF24
  273 0113 01       		.byte	0x1
  274 0114 45       		.byte	0x45
  275 0115 7D000000 		.4byte	0x7d
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 1
  314 001f 00       		.byte	0
  315 0020 03       		.uleb128 0x3
  316 0021 24       		.uleb128 0x24
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 9
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctDvJ0z.s 			page 9
 
 
  317 0022 00       		.byte	0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 1
  371 0059 3A       		.uleb128 0x3a
  372 005a 0B       		.uleb128 0xb
  373 005b 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 10
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctDvJ0z.s 			page 10
 
 
  374 005c 0B       		.uleb128 0xb
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 1
  428 000a 7D       		.byte	0x7d
  429 000b 00       		.sleb128 0
  430 000c 02000000 		.4byte	.LCFI0
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 11
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctDvJ0z.s 			page 11
 
 
  431 0010 04000000 		.4byte	.LCFI1
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 1
  485 0010 00000000 		.4byte	0
  486 0014 00000000 		.4byte	0
  487              		.section	.debug_line,"",%progbits
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 12
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctDvJ0z.s 			page 12
 
 
  488              	.Ldebug_line0:
@@ -688,119 +688,119 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 1
  497      7465645F 
  497      536F7572 
  497      63655C50 
- 498              	.LASF21:
- 499 005a 433A5C55 		.ascii	"C:\\Users\\Chai Yang\\Documents\\FSAE Pedal Node\\N"
- 499      73657273 
- 499      5C436861 
- 499      69205961 
- 499      6E675C44 
- 500 0088 6F64652D 		.ascii	"ode-Elephant\\Node-Elephant\\Node-Elephant.cydsn\000"
- 500      456C6570 
- 500      68616E74 
- 500      5C4E6F64 
- 500      652D456C 
- 501              	.LASF22:
- 502 00b7 4144435F 		.ascii	"ADC_SAR_TempBuf_DmaInitialize\000"
- 502      5341525F 
- 502      54656D70 
- 502      4275665F 
- 502      446D6149 
- 503              	.LASF19:
- 504 00d5 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
- 504      4320342E 
- 504      372E3320 
- 504      32303133 
- 504      30333132 
- 505 0108 616E6368 		.ascii	"anch revision 196615]\000"
- 505      20726576 
- 505      6973696F 
- 505      6E203139 
- 505      36363135 
- 506              	.LASF11:
- 507 011e 75696E74 		.ascii	"uint8\000"
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 13
+ 498              	.LASF22:
+ 499 005a 4144435F 		.ascii	"ADC_SAR_TempBuf_DmaInitialize\000"
+ 499      5341525F 
+ 499      54656D70 
+ 499      4275665F 
+ 499      446D6149 
+ 500              	.LASF19:
+ 501 0078 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 501      4320342E 
+ 501      372E3320 
+ 501      32303133 
+ 501      30333132 
+ 502 00ab 616E6368 		.ascii	"anch revision 196615]\000"
+ 502      20726576 
+ 502      6973696F 
+ 502      6E203139 
+ 502      36363135 
+ 503              	.LASF11:
+ 504 00c1 75696E74 		.ascii	"uint8\000"
+ 504      3800
+ 505              	.LASF9:
+ 506 00c7 6C6F6E67 		.ascii	"long unsigned int\000"
+ 506      20756E73 
+ 506      69676E65 
+ 506      6420696E 
+ 506      7400
+ 507              	.LASF6:
+ 508 00d9 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 508      206C6F6E 
+ 508      6720756E 
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctDvJ0z.s 			page 13
 
 
- 507      3800
- 508              	.LASF9:
- 509 0124 6C6F6E67 		.ascii	"long unsigned int\000"
- 509      20756E73 
- 509      69676E65 
- 509      6420696E 
- 509      7400
- 510              	.LASF6:
- 511 0136 6C6F6E67 		.ascii	"long long unsigned int\000"
- 511      206C6F6E 
- 511      6720756E 
- 511      7369676E 
- 511      65642069 
- 512              	.LASF1:
- 513 014d 756E7369 		.ascii	"unsigned char\000"
- 513      676E6564 
- 513      20636861 
- 513      7200
- 514              	.LASF24:
- 515 015b 4144435F 		.ascii	"ADC_SAR_TempBuf_DmaHandle\000"
- 515      5341525F 
- 515      54656D70 
- 515      4275665F 
- 515      446D6148 
- 516              	.LASF10:
- 517 0175 63686172 		.ascii	"char\000"
- 517      00
- 518              	.LASF7:
- 519 017a 6C6F6E67 		.ascii	"long int\000"
- 519      20696E74 
- 519      00
- 520              	.LASF2:
- 521 0183 73686F72 		.ascii	"short int\000"
- 521      7420696E 
- 521      7400
- 522              	.LASF14:
- 523 018d 646F7562 		.ascii	"double\000"
- 523      6C6500
- 524              	.LASF15:
- 525 0194 42757273 		.ascii	"BurstCount\000"
- 525      74436F75 
- 525      6E7400
- 526              	.LASF3:
- 527 019f 73686F72 		.ascii	"short unsigned int\000"
- 527      7420756E 
- 527      7369676E 
- 527      65642069 
- 527      6E7400
- 528              	.LASF0:
- 529 01b2 7369676E 		.ascii	"signed char\000"
- 529      65642063 
- 529      68617200 
- 530              	.LASF16:
- 531 01be 52657165 		.ascii	"ReqestPerBurst\000"
- 531      73745065 
- 531      72427572 
- 531      737400
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccu80j2g.s 			page 14
+ 508      7369676E 
+ 508      65642069 
+ 509              	.LASF13:
+ 510 00f0 666C6F61 		.ascii	"float\000"
+ 510      7400
+ 511              	.LASF1:
+ 512 00f6 756E7369 		.ascii	"unsigned char\000"
+ 512      676E6564 
+ 512      20636861 
+ 512      7200
+ 513              	.LASF24:
+ 514 0104 4144435F 		.ascii	"ADC_SAR_TempBuf_DmaHandle\000"
+ 514      5341525F 
+ 514      54656D70 
+ 514      4275665F 
+ 514      446D6148 
+ 515              	.LASF10:
+ 516 011e 63686172 		.ascii	"char\000"
+ 516      00
+ 517              	.LASF7:
+ 518 0123 6C6F6E67 		.ascii	"long int\000"
+ 518      20696E74 
+ 518      00
+ 519              	.LASF2:
+ 520 012c 73686F72 		.ascii	"short int\000"
+ 520      7420696E 
+ 520      7400
+ 521              	.LASF14:
+ 522 0136 646F7562 		.ascii	"double\000"
+ 522      6C6500
+ 523              	.LASF15:
+ 524 013d 42757273 		.ascii	"BurstCount\000"
+ 524      74436F75 
+ 524      6E7400
+ 525              	.LASF3:
+ 526 0148 73686F72 		.ascii	"short unsigned int\000"
+ 526      7420756E 
+ 526      7369676E 
+ 526      65642069 
+ 526      6E7400
+ 527              	.LASF0:
+ 528 015b 7369676E 		.ascii	"signed char\000"
+ 528      65642063 
+ 528      68617200 
+ 529              	.LASF16:
+ 530 0167 52657165 		.ascii	"ReqestPerBurst\000"
+ 530      73745065 
+ 530      72427572 
+ 530      737400
+ 531              	.LASF21:
+ 532 0176 433A5C55 		.ascii	"C:\\Users\\Chai Yang\\Documents\\GitHub\\Node-Eleph"
+ 532      73657273 
+ 532      5C436861 
+ 532      69205961 
+ 532      6E675C44 
+ 533 01a4 616E745C 		.ascii	"ant\\Node-Elephant\\Node-Elephant.cydsn\000"
+ 533      4E6F6465 
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctDvJ0z.s 			page 14
 
 
- 532              	.LASF13:
- 533 01cd 666C6F61 		.ascii	"float\000"
- 533      7400
+ 533      2D456C65 
+ 533      7068616E 
+ 533      745C4E6F 
  534              	.LASF18:
- 535 01d3 55707065 		.ascii	"UpperDestAddress\000"
+ 535 01ca 55707065 		.ascii	"UpperDestAddress\000"
  535      72446573 
  535      74416464 
  535      72657373 
  535      00
  536              	.LASF23:
- 537 01e4 4144435F 		.ascii	"ADC_SAR_TempBuf_DmaRelease\000"
+ 537 01db 4144435F 		.ascii	"ADC_SAR_TempBuf_DmaRelease\000"
  537      5341525F 
  537      54656D70 
  537      4275665F 
  537      446D6152 
  538              	.LASF12:
- 539 01ff 75696E74 		.ascii	"uint16\000"
+ 539 01f6 75696E74 		.ascii	"uint16\000"
  539      313600
  540              	.LASF8:
- 541 0206 73697A65 		.ascii	"sizetype\000"
+ 541 01fd 73697A65 		.ascii	"sizetype\000"
  541      74797065 
  541      00
  542              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br
