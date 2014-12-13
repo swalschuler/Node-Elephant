@@ -47,7 +47,7 @@ extern uint8 CAN_initVar;
 #define CAN_CRC_ERR                (0u)
 #define CAN_BUS_OFF                (1u)
 #define CAN_RX_MSG_LOST            (0u)
-#define CAN_TX_MESSAGE             (0u)
+#define CAN_TX_MESSAGE             (1u)
 #define CAN_RX_MESSAGE             (1u)
 #define CAN_ARB_LOST_USE_HELPER    (1u)
 #define CAN_OVERLOAD_USE_HELPER    (1u)
@@ -60,18 +60,18 @@ extern uint8 CAN_initVar;
 #define CAN_RX_MSG_LOST_USE_HELPER (1u)
 #define CAN_TX_MESSAGE_USE_HELPER  (1u)
 #define CAN_RX_MESSAGE_USE_HELPER  (1u)
-#define CAN_ADVANCED_INTERRUPT_CFG (0u)
+#define CAN_ADVANCED_INTERRUPT_CFG (1u)
 
 /* TX/RX Function Enable */
-#define CAN_TX0_FUNC_ENABLE 0u
-#define CAN_TX1_FUNC_ENABLE 0u
-#define CAN_TX2_FUNC_ENABLE 0u
+#define CAN_TX0_FUNC_ENABLE 1u
+#define CAN_TX1_FUNC_ENABLE 1u
+#define CAN_TX2_FUNC_ENABLE 1u
 #define CAN_TX3_FUNC_ENABLE 0u
 #define CAN_TX4_FUNC_ENABLE 0u
 #define CAN_TX5_FUNC_ENABLE 0u
 #define CAN_TX6_FUNC_ENABLE 0u
 #define CAN_TX7_FUNC_ENABLE 0u
-#define CAN_RX0_FUNC_ENABLE 0u
+#define CAN_RX0_FUNC_ENABLE 1u
 #define CAN_RX1_FUNC_ENABLE 0u
 #define CAN_RX2_FUNC_ENABLE 0u
 #define CAN_RX3_FUNC_ENABLE 0u
@@ -87,8 +87,8 @@ extern uint8 CAN_initVar;
 #define CAN_RX13_FUNC_ENABLE 0u
 #define CAN_RX14_FUNC_ENABLE 0u
 #define CAN_RX15_FUNC_ENABLE 0u
-#define CAN_RX_MAILBOX_TYPE	0x0u
-#define CAN_TX_MAILBOX_TYPE	0x0u
+#define CAN_RX_MAILBOX_TYPE	0x1u
+#define CAN_TX_MAILBOX_TYPE	0x7u
 
 
 /***************************************
@@ -359,14 +359,14 @@ void  CAN_ReceiveMsg(uint8 rxMailbox) ;
 ***************************************/
 
 /* General */
-#define CAN_BITRATE             (0u)
-#define CAN_CFG_REG_TSEG1       (13u - 1u)
-#define CAN_CFG_REG_TSEG2       (2u - 1u)
+#define CAN_BITRATE             (2u)
+#define CAN_CFG_REG_TSEG1       (11u - 1u)
+#define CAN_CFG_REG_TSEG2       (4u - 1u)
 #define CAN_CFG_REG_SJW         (1u - 1u)
 #define CAN_SAMPLING_MODE       (0u)
 
-#define CAN_ARBITER             (0u)
-#define CAN_RESET_TYPE          (0u)
+#define CAN_ARBITER             (1u)
+#define CAN_RESET_TYPE          (1u)
 #define CAN_SYNC_EDGE           (0u)
 
 /* Interrupts */

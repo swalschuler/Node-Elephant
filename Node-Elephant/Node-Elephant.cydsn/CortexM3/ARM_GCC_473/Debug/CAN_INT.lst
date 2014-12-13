@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 1
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 1
   29:.\Generated_Source\PSoC5/CAN_INT.c ****     * FUNCTION NAME:   CAN_ArbLost
   30:.\Generated_Source\PSoC5/CAN_INT.c ****     ********************************************************************************
   31:.\Generated_Source\PSoC5/CAN_INT.c ****     *
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 2
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/CAN_INT.c ****     * Summary:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 1
   86:.\Generated_Source\PSoC5/CAN_INT.c **** 
   87:.\Generated_Source\PSoC5/CAN_INT.c ****         /* `#END` */
   88:.\Generated_Source\PSoC5/CAN_INT.c ****     }
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 3
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 3
 
 
   89:.\Generated_Source\PSoC5/CAN_INT.c ****     
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 1
  143:.\Generated_Source\PSoC5/CAN_INT.c ****     *
  144:.\Generated_Source\PSoC5/CAN_INT.c ****     *******************************************************************************/
  145:.\Generated_Source\PSoC5/CAN_INT.c ****     void CAN_BitStuffErrorIsr(void) 
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 4
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 4
 
 
  146:.\Generated_Source\PSoC5/CAN_INT.c ****     {
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 1
  200:.\Generated_Source\PSoC5/CAN_INT.c ****     * Parameters:
  201:.\Generated_Source\PSoC5/CAN_INT.c ****     *  None.
  202:.\Generated_Source\PSoC5/CAN_INT.c ****     *
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 5
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 5
 
 
  203:.\Generated_Source\PSoC5/CAN_INT.c ****     * Return:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 1
  257:.\Generated_Source\PSoC5/CAN_INT.c ****     * FUNCTION NAME:   CAN_BusOff
  258:.\Generated_Source\PSoC5/CAN_INT.c ****     ********************************************************************************
  259:.\Generated_Source\PSoC5/CAN_INT.c ****     *
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 6
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 6
 
 
  260:.\Generated_Source\PSoC5/CAN_INT.c ****     * Summary:
@@ -350,15 +350,15 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 1
   48              		.cfi_endproc
   49              	.LFE0:
   50              		.size	CAN_BusOffIsr, .-CAN_BusOffIsr
-  51              		.section	.text.CAN_MsgRXIsr,"ax",%progbits
+  51              		.section	.text.CAN_MsgTXIsr,"ax",%progbits
   52              		.align	2
-  53              		.global	CAN_MsgRXIsr
+  53              		.global	CAN_MsgTXIsr
   54              		.thumb
   55              		.thumb_func
-  56              		.type	CAN_MsgRXIsr, %function
-  57              	CAN_MsgRXIsr:
+  56              		.type	CAN_MsgTXIsr, %function
+  57              	CAN_MsgTXIsr:
   58              	.LFB1:
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 7
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 7
 
 
  285:.\Generated_Source\PSoC5/CAN_INT.c ****     
@@ -418,17 +418,49 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 1
  339:.\Generated_Source\PSoC5/CAN_INT.c ****     *
  340:.\Generated_Source\PSoC5/CAN_INT.c ****     *******************************************************************************/
  341:.\Generated_Source\PSoC5/CAN_INT.c ****     void CAN_MsgTXIsr(void) 
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 8
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 8
 
 
  342:.\Generated_Source\PSoC5/CAN_INT.c ****     {
+  59              		.loc 1 342 0
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 1, uses_anonymous_args = 0
+  63              		@ link register save eliminated.
+  64 0000 80B4     		push	{r7}
+  65              	.LCFI2:
+  66              		.cfi_def_cfa_offset 4
+  67              		.cfi_offset 7, -4
+  68 0002 00AF     		add	r7, sp, #0
+  69              	.LCFI3:
+  70              		.cfi_def_cfa_register 7
  343:.\Generated_Source\PSoC5/CAN_INT.c ****         /* Clear Transmit Message flag */
  344:.\Generated_Source\PSoC5/CAN_INT.c ****         CAN_INT_SR_REG.byte[1u] = CAN_TX_MESSAGE_MASK;
+  71              		.loc 1 344 0
+  72 0004 4FF42043 		mov	r3, #40960
+  73 0008 C4F20003 		movt	r3, 16384
+  74 000c 4FF00802 		mov	r2, #8
+  75 0010 5A70     		strb	r2, [r3, #1]
  345:.\Generated_Source\PSoC5/CAN_INT.c ****         
  346:.\Generated_Source\PSoC5/CAN_INT.c ****         /* `#START MESSAGE_TRANSMITTED_ISR` */
  347:.\Generated_Source\PSoC5/CAN_INT.c **** 
  348:.\Generated_Source\PSoC5/CAN_INT.c ****         /* `#END` */
  349:.\Generated_Source\PSoC5/CAN_INT.c ****     }
+  76              		.loc 1 349 0
+  77 0012 BD46     		mov	sp, r7
+  78 0014 80BC     		pop	{r7}
+  79 0016 7047     		bx	lr
+  80              		.cfi_endproc
+  81              	.LFE1:
+  82              		.size	CAN_MsgTXIsr, .-CAN_MsgTXIsr
+  83              		.section	.text.CAN_MsgRXIsr,"ax",%progbits
+  84              		.align	2
+  85              		.global	CAN_MsgRXIsr
+  86              		.thumb
+  87              		.thumb_func
+  88              		.type	CAN_MsgRXIsr, %function
+  89              	CAN_MsgRXIsr:
+  90              	.LFB2:
  350:.\Generated_Source\PSoC5/CAN_INT.c ****     
  351:.\Generated_Source\PSoC5/CAN_INT.c **** #endif /* CAN_TX_MESSAGE */
  352:.\Generated_Source\PSoC5/CAN_INT.c **** 
@@ -446,6 +478,9 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 1
  364:.\Generated_Source\PSoC5/CAN_INT.c ****     *
  365:.\Generated_Source\PSoC5/CAN_INT.c ****     * Parameters:
  366:.\Generated_Source\PSoC5/CAN_INT.c ****     *  None.
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 9
+
+
  367:.\Generated_Source\PSoC5/CAN_INT.c ****     *
  368:.\Generated_Source\PSoC5/CAN_INT.c ****     * Return:
  369:.\Generated_Source\PSoC5/CAN_INT.c ****     *  None.
@@ -453,1072 +488,1159 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 1
  371:.\Generated_Source\PSoC5/CAN_INT.c ****     *******************************************************************************/
  372:.\Generated_Source\PSoC5/CAN_INT.c ****     void CAN_MsgRXIsr(void) 
  373:.\Generated_Source\PSoC5/CAN_INT.c ****     {
-  59              		.loc 1 373 0
-  60              		.cfi_startproc
-  61              		@ args = 0, pretend = 0, frame = 8
-  62              		@ frame_needed = 1, uses_anonymous_args = 0
-  63 0000 80B5     		push	{r7, lr}
-  64              	.LCFI2:
-  65              		.cfi_def_cfa_offset 8
-  66              		.cfi_offset 7, -8
-  67              		.cfi_offset 14, -4
-  68 0002 82B0     		sub	sp, sp, #8
-  69              	.LCFI3:
-  70              		.cfi_def_cfa_offset 16
-  71 0004 00AF     		add	r7, sp, #0
-  72              	.LCFI4:
-  73              		.cfi_def_cfa_register 7
+  91              		.loc 1 373 0
+  92              		.cfi_startproc
+  93              		@ args = 0, pretend = 0, frame = 8
+  94              		@ frame_needed = 1, uses_anonymous_args = 0
+  95 0000 80B5     		push	{r7, lr}
+  96              	.LCFI4:
+  97              		.cfi_def_cfa_offset 8
+  98              		.cfi_offset 7, -8
+  99              		.cfi_offset 14, -4
+ 100 0002 82B0     		sub	sp, sp, #8
+ 101              	.LCFI5:
+ 102              		.cfi_def_cfa_offset 16
+ 103 0004 00AF     		add	r7, sp, #0
+ 104              	.LCFI6:
+ 105              		.cfi_def_cfa_register 7
  374:.\Generated_Source\PSoC5/CAN_INT.c ****         uint8 i;
  375:.\Generated_Source\PSoC5/CAN_INT.c ****         uint16 shift = 0x01u;
-  74              		.loc 1 375 0
-  75 0006 4FF00103 		mov	r3, #1
-  76 000a BB80     		strh	r3, [r7, #4]	@ movhi
+ 106              		.loc 1 375 0
+ 107 0006 4FF00103 		mov	r3, #1
+ 108 000a BB80     		strh	r3, [r7, #4]	@ movhi
  376:.\Generated_Source\PSoC5/CAN_INT.c ****     
  377:.\Generated_Source\PSoC5/CAN_INT.c ****         /* Clear Receive Message flag */
  378:.\Generated_Source\PSoC5/CAN_INT.c ****         CAN_INT_SR_REG.byte[1u] = CAN_RX_MESSAGE_MASK;
-  77              		.loc 1 378 0
-  78 000c 4FF42043 		mov	r3, #40960
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 9
-
-
-  79 0010 C4F20003 		movt	r3, 16384
-  80 0014 4FF01002 		mov	r2, #16
-  81 0018 5A70     		strb	r2, [r3, #1]
+ 109              		.loc 1 378 0
+ 110 000c 4FF42043 		mov	r3, #40960
+ 111 0010 C4F20003 		movt	r3, 16384
+ 112 0014 4FF01002 		mov	r2, #16
+ 113 0018 5A70     		strb	r2, [r3, #1]
  379:.\Generated_Source\PSoC5/CAN_INT.c ****         
  380:.\Generated_Source\PSoC5/CAN_INT.c ****         /* `#START MESSAGE_RECEIVE_ISR` */
  381:.\Generated_Source\PSoC5/CAN_INT.c **** 
  382:.\Generated_Source\PSoC5/CAN_INT.c ****         /* `#END` */
  383:.\Generated_Source\PSoC5/CAN_INT.c ****     
  384:.\Generated_Source\PSoC5/CAN_INT.c ****         for (i = 0u; i < CAN_NUMBER_OF_RX_MAILBOXES; i++)
-  82              		.loc 1 384 0
-  83 001a 4FF00003 		mov	r3, #0
-  84 001e FB71     		strb	r3, [r7, #7]
-  85 0020 2AE0     		b	.L3
-  86              	.L6:
+ 114              		.loc 1 384 0
+ 115 001a 4FF00003 		mov	r3, #0
+ 116 001e FB71     		strb	r3, [r7, #7]
+ 117 0020 34E0     		b	.L4
+ 118              	.L10:
  385:.\Generated_Source\PSoC5/CAN_INT.c ****         {
  386:.\Generated_Source\PSoC5/CAN_INT.c ****             if ((CY_GET_REG16((reg16 *) &CAN_BUF_SR_REG.byte[0u]) & shift) == shift)
-  87              		.loc 1 386 0
-  88 0022 4AF20803 		movw	r3, #40968
-  89 0026 C4F20003 		movt	r3, 16384
-  90 002a 1B88     		ldrh	r3, [r3, #0]	@ movhi
-  91 002c 9AB2     		uxth	r2, r3
-  92 002e BB88     		ldrh	r3, [r7, #4]	@ movhi
-  93 0030 1340     		ands	r3, r3, r2
-  94 0032 9BB2     		uxth	r3, r3
-  95 0034 BA88     		ldrh	r2, [r7, #4]
-  96 0036 9A42     		cmp	r2, r3
-  97 0038 16D1     		bne	.L4
+ 119              		.loc 1 386 0
+ 120 0022 4AF20803 		movw	r3, #40968
+ 121 0026 C4F20003 		movt	r3, 16384
+ 122 002a 1B88     		ldrh	r3, [r3, #0]	@ movhi
+ 123 002c 9AB2     		uxth	r2, r3
+ 124 002e BB88     		ldrh	r3, [r7, #4]	@ movhi
+ 125 0030 1340     		ands	r3, r3, r2
+ 126 0032 9BB2     		uxth	r3, r3
+ 127 0034 BA88     		ldrh	r2, [r7, #4]
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 10
+
+
+ 128 0036 9A42     		cmp	r2, r3
+ 129 0038 20D1     		bne	.L5
  387:.\Generated_Source\PSoC5/CAN_INT.c ****             {
  388:.\Generated_Source\PSoC5/CAN_INT.c ****                 if ((CAN_RX[i].rxcmd.byte[0u] & CAN_RX_INT_ENABLE_MASK) ==
-  98              		.loc 1 388 0
-  99 003a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 100 003c 4FEA4312 		lsl	r2, r3, #5
- 101 0040 4AF2A003 		movw	r3, #41120
- 102 0044 C4F20003 		movt	r3, 16384
- 103 0048 D318     		adds	r3, r2, r3
- 104 004a 1B78     		ldrb	r3, [r3, #0]
- 105 004c DBB2     		uxtb	r3, r3
- 106 004e 03F02003 		and	r3, r3, #32
- 107 0052 002B     		cmp	r3, #0
- 108 0054 08D0     		beq	.L4
+ 130              		.loc 1 388 0
+ 131 003a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 132 003c 4FEA4312 		lsl	r2, r3, #5
+ 133 0040 4AF2A003 		movw	r3, #41120
+ 134 0044 C4F20003 		movt	r3, 16384
+ 135 0048 D318     		adds	r3, r2, r3
+ 136 004a 1B78     		ldrb	r3, [r3, #0]
+ 137 004c DBB2     		uxtb	r3, r3
+ 138 004e 03F02003 		and	r3, r3, #32
+ 139 0052 002B     		cmp	r3, #0
+ 140 0054 12D0     		beq	.L5
  389:.\Generated_Source\PSoC5/CAN_INT.c ****                     CAN_RX_INT_ENABLE_MASK)
  390:.\Generated_Source\PSoC5/CAN_INT.c ****                 {
  391:.\Generated_Source\PSoC5/CAN_INT.c ****                     if ((CAN_RX_MAILBOX_TYPE & shift) == shift)
- 109              		.loc 1 391 0
- 110 0056 BB88     		ldrh	r3, [r7, #4]
- 111 0058 002B     		cmp	r3, #0
- 112 005a 04D0     		beq	.L7
- 113              	.L5:
+ 141              		.loc 1 391 0
+ 142 0056 BB88     		ldrh	r3, [r7, #4]	@ movhi
+ 143 0058 03F00103 		and	r3, r3, #1
+ 144 005c 9BB2     		uxth	r3, r3
+ 145 005e BA88     		ldrh	r2, [r7, #4]
+ 146 0060 9A42     		cmp	r2, r3
+ 147 0062 07D1     		bne	.L6
  392:.\Generated_Source\PSoC5/CAN_INT.c ****                     {
  393:.\Generated_Source\PSoC5/CAN_INT.c ****                         /* RX Full mailboxes handler */
  394:.\Generated_Source\PSoC5/CAN_INT.c ****                         switch(i)
+ 148              		.loc 1 394 0
+ 149 0064 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 150 0066 002B     		cmp	r3, #0
+ 151 0068 03D1     		bne	.L11
+ 152              	.L8:
  395:.\Generated_Source\PSoC5/CAN_INT.c ****                         {
- 396:.\Generated_Source\PSoC5/CAN_INT.c ****                             default:
- 397:.\Generated_Source\PSoC5/CAN_INT.c ****                             break;
- 398:.\Generated_Source\PSoC5/CAN_INT.c ****                         }
- 399:.\Generated_Source\PSoC5/CAN_INT.c ****                     }
- 400:.\Generated_Source\PSoC5/CAN_INT.c ****                     else
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 10
+ 396:.\Generated_Source\PSoC5/CAN_INT.c **** 							case 0u : CAN_ReceiveMsg0();
+ 153              		.loc 1 396 0
+ 154 006a FFF7FEFF 		bl	CAN_ReceiveMsg0
+ 397:.\Generated_Source\PSoC5/CAN_INT.c **** 							break;
+ 155              		.loc 1 397 0
+ 156 006e 00BF     		nop
+ 157 0070 04E0     		b	.L5
+ 158              	.L11:
+ 398:.\Generated_Source\PSoC5/CAN_INT.c ****                             default:
+ 399:.\Generated_Source\PSoC5/CAN_INT.c ****                             break;
+ 159              		.loc 1 399 0
+ 160 0072 03E0     		b	.L5
+ 161              	.L6:
+ 400:.\Generated_Source\PSoC5/CAN_INT.c ****                         }
+ 401:.\Generated_Source\PSoC5/CAN_INT.c ****                     }
+ 402:.\Generated_Source\PSoC5/CAN_INT.c ****                     else
+ 403:.\Generated_Source\PSoC5/CAN_INT.c ****                     {
+ 404:.\Generated_Source\PSoC5/CAN_INT.c ****                         /* RX Basic mailbox handler */
+ 405:.\Generated_Source\PSoC5/CAN_INT.c ****                         CAN_ReceiveMsg(i);
+ 162              		.loc 1 405 0
+ 163 0074 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 164 0076 1846     		mov	r0, r3
+ 165 0078 FFF7FEFF 		bl	CAN_ReceiveMsg
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 11
 
 
- 401:.\Generated_Source\PSoC5/CAN_INT.c ****                     {
- 402:.\Generated_Source\PSoC5/CAN_INT.c ****                         /* RX Basic mailbox handler */
- 403:.\Generated_Source\PSoC5/CAN_INT.c ****                         CAN_ReceiveMsg(i);
- 114              		.loc 1 403 0
- 115 005c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 116 005e 1846     		mov	r0, r3
- 117 0060 FFF7FEFF 		bl	CAN_ReceiveMsg
- 118 0064 00E0     		b	.L4
- 119              	.L7:
- 397:.\Generated_Source\PSoC5/CAN_INT.c ****                             break;
- 120              		.loc 1 397 0
- 121 0066 00BF     		nop
- 122              	.L4:
- 404:.\Generated_Source\PSoC5/CAN_INT.c ****                     }
- 405:.\Generated_Source\PSoC5/CAN_INT.c ****                 }
- 406:.\Generated_Source\PSoC5/CAN_INT.c ****             }
- 407:.\Generated_Source\PSoC5/CAN_INT.c ****             shift <<= 1u;
- 123              		.loc 1 407 0
- 124 0068 BB88     		ldrh	r3, [r7, #4]	@ movhi
- 125 006a 4FEA4303 		lsl	r3, r3, #1
- 126 006e BB80     		strh	r3, [r7, #4]	@ movhi
+ 166              	.L5:
+ 406:.\Generated_Source\PSoC5/CAN_INT.c ****                     }
+ 407:.\Generated_Source\PSoC5/CAN_INT.c ****                 }
+ 408:.\Generated_Source\PSoC5/CAN_INT.c ****             }
+ 409:.\Generated_Source\PSoC5/CAN_INT.c ****             shift <<= 1u;
+ 167              		.loc 1 409 0
+ 168 007c BB88     		ldrh	r3, [r7, #4]	@ movhi
+ 169 007e 4FEA4303 		lsl	r3, r3, #1
+ 170 0082 BB80     		strh	r3, [r7, #4]	@ movhi
  384:.\Generated_Source\PSoC5/CAN_INT.c ****         for (i = 0u; i < CAN_NUMBER_OF_RX_MAILBOXES; i++)
- 127              		.loc 1 384 0
- 128 0070 FB79     		ldrb	r3, [r7, #7]
- 129 0072 03F10103 		add	r3, r3, #1
- 130 0076 FB71     		strb	r3, [r7, #7]
- 131              	.L3:
+ 171              		.loc 1 384 0
+ 172 0084 FB79     		ldrb	r3, [r7, #7]
+ 173 0086 03F10103 		add	r3, r3, #1
+ 174 008a FB71     		strb	r3, [r7, #7]
+ 175              	.L4:
  384:.\Generated_Source\PSoC5/CAN_INT.c ****         for (i = 0u; i < CAN_NUMBER_OF_RX_MAILBOXES; i++)
- 132              		.loc 1 384 0 is_stmt 0 discriminator 1
- 133 0078 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 134 007a 0F2B     		cmp	r3, #15
- 135 007c D1D9     		bls	.L6
- 408:.\Generated_Source\PSoC5/CAN_INT.c ****         }            
- 409:.\Generated_Source\PSoC5/CAN_INT.c ****     }
- 136              		.loc 1 409 0 is_stmt 1
- 137 007e 07F10807 		add	r7, r7, #8
- 138 0082 BD46     		mov	sp, r7
- 139 0084 80BD     		pop	{r7, pc}
- 140              		.cfi_endproc
- 141              	.LFE1:
- 142              		.size	CAN_MsgRXIsr, .-CAN_MsgRXIsr
- 143 0086 00BF     		.section	.text.CAN_ISR,"ax",%progbits
- 144              		.align	2
- 145              		.global	CAN_ISR
- 146              		.thumb
- 147              		.thumb_func
- 148              		.type	CAN_ISR, %function
- 149              	CAN_ISR:
- 150              	.LFB2:
- 410:.\Generated_Source\PSoC5/CAN_INT.c ****     
- 411:.\Generated_Source\PSoC5/CAN_INT.c **** #endif /* CAN_RX_MESSAGE */
- 412:.\Generated_Source\PSoC5/CAN_INT.c **** 
- 413:.\Generated_Source\PSoC5/CAN_INT.c **** 
- 414:.\Generated_Source\PSoC5/CAN_INT.c **** /*******************************************************************************
- 415:.\Generated_Source\PSoC5/CAN_INT.c **** * Function Name: CAN_ISR
- 416:.\Generated_Source\PSoC5/CAN_INT.c **** ********************************************************************************
- 417:.\Generated_Source\PSoC5/CAN_INT.c **** *
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 11
+ 176              		.loc 1 384 0 is_stmt 0 discriminator 1
+ 177 008c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 178 008e 0F2B     		cmp	r3, #15
+ 179 0090 C7D9     		bls	.L10
+ 410:.\Generated_Source\PSoC5/CAN_INT.c ****         }            
+ 411:.\Generated_Source\PSoC5/CAN_INT.c ****     }
+ 180              		.loc 1 411 0 is_stmt 1
+ 181 0092 07F10807 		add	r7, r7, #8
+ 182 0096 BD46     		mov	sp, r7
+ 183 0098 80BD     		pop	{r7, pc}
+ 184              		.cfi_endproc
+ 185              	.LFE2:
+ 186              		.size	CAN_MsgRXIsr, .-CAN_MsgRXIsr
+ 187 009a 00BF     		.section	.text.CAN_ISR,"ax",%progbits
+ 188              		.align	2
+ 189              		.global	CAN_ISR
+ 190              		.thumb
+ 191              		.thumb_func
+ 192              		.type	CAN_ISR, %function
+ 193              	CAN_ISR:
+ 194              	.LFB3:
+ 412:.\Generated_Source\PSoC5/CAN_INT.c ****     
+ 413:.\Generated_Source\PSoC5/CAN_INT.c **** #endif /* CAN_RX_MESSAGE */
+ 414:.\Generated_Source\PSoC5/CAN_INT.c **** 
+ 415:.\Generated_Source\PSoC5/CAN_INT.c **** 
+ 416:.\Generated_Source\PSoC5/CAN_INT.c **** /*******************************************************************************
+ 417:.\Generated_Source\PSoC5/CAN_INT.c **** * Function Name: CAN_ISR
+ 418:.\Generated_Source\PSoC5/CAN_INT.c **** ********************************************************************************
+ 419:.\Generated_Source\PSoC5/CAN_INT.c **** *
+ 420:.\Generated_Source\PSoC5/CAN_INT.c **** * Summary:
+ 421:.\Generated_Source\PSoC5/CAN_INT.c **** *  This ISR is executed when CAN core generate interrupt on one of events:
+ 422:.\Generated_Source\PSoC5/CAN_INT.c **** *  Arb_lost, Overload, Bit_err, Stuff_err, Ack_err, Form_err, Crc_err,
+ 423:.\Generated_Source\PSoC5/CAN_INT.c **** *  Buss_off, Rx_msg_lost, Tx_msg or Rx_msg. The interrupt sources depends
+ 424:.\Generated_Source\PSoC5/CAN_INT.c **** *  on Customizer inputs.
+ 425:.\Generated_Source\PSoC5/CAN_INT.c **** *
+ 426:.\Generated_Source\PSoC5/CAN_INT.c **** * Parameters:
+ 427:.\Generated_Source\PSoC5/CAN_INT.c **** *  None.
+ 428:.\Generated_Source\PSoC5/CAN_INT.c **** *
+ 429:.\Generated_Source\PSoC5/CAN_INT.c **** * Return:
+ 430:.\Generated_Source\PSoC5/CAN_INT.c **** *  None.
+ 431:.\Generated_Source\PSoC5/CAN_INT.c **** *
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 12
 
 
- 418:.\Generated_Source\PSoC5/CAN_INT.c **** * Summary:
- 419:.\Generated_Source\PSoC5/CAN_INT.c **** *  This ISR is executed when CAN core generate interrupt on one of events:
- 420:.\Generated_Source\PSoC5/CAN_INT.c **** *  Arb_lost, Overload, Bit_err, Stuff_err, Ack_err, Form_err, Crc_err,
- 421:.\Generated_Source\PSoC5/CAN_INT.c **** *  Buss_off, Rx_msg_lost, Tx_msg or Rx_msg. The interrupt sources depends
- 422:.\Generated_Source\PSoC5/CAN_INT.c **** *  on Customizer inputs.
- 423:.\Generated_Source\PSoC5/CAN_INT.c **** *
- 424:.\Generated_Source\PSoC5/CAN_INT.c **** * Parameters:
- 425:.\Generated_Source\PSoC5/CAN_INT.c **** *  None.
- 426:.\Generated_Source\PSoC5/CAN_INT.c **** *
- 427:.\Generated_Source\PSoC5/CAN_INT.c **** * Return:
- 428:.\Generated_Source\PSoC5/CAN_INT.c **** *  None.
- 429:.\Generated_Source\PSoC5/CAN_INT.c **** *
- 430:.\Generated_Source\PSoC5/CAN_INT.c **** *******************************************************************************/
- 431:.\Generated_Source\PSoC5/CAN_INT.c **** CY_ISR(CAN_ISR)
- 432:.\Generated_Source\PSoC5/CAN_INT.c **** {
- 151              		.loc 1 432 0
- 152              		.cfi_startproc
- 153              		@ args = 0, pretend = 0, frame = 0
- 154              		@ frame_needed = 1, uses_anonymous_args = 0
- 155 0000 80B5     		push	{r7, lr}
- 156              	.LCFI5:
- 157              		.cfi_def_cfa_offset 8
- 158              		.cfi_offset 7, -8
- 159              		.cfi_offset 14, -4
- 160 0002 00AF     		add	r7, sp, #0
- 161              	.LCFI6:
- 162              		.cfi_def_cfa_register 7
- 433:.\Generated_Source\PSoC5/CAN_INT.c ****     /* Place your Interrupt code here. */
- 434:.\Generated_Source\PSoC5/CAN_INT.c ****     /* `#START CAN_ISR` */
- 435:.\Generated_Source\PSoC5/CAN_INT.c **** 
- 436:.\Generated_Source\PSoC5/CAN_INT.c ****     /* `#END` */    
- 437:.\Generated_Source\PSoC5/CAN_INT.c ****     
- 438:.\Generated_Source\PSoC5/CAN_INT.c ****     /* Arbitration */
- 439:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_ARB_LOST && (CAN_ARB_LOST_USE_HELPER || \
- 440:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
- 441:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[0u] & CAN_ARBITRATION_LOST_MASK) ==
- 442:.\Generated_Source\PSoC5/CAN_INT.c ****              CAN_ARBITRATION_LOST_MASK)
- 443:.\Generated_Source\PSoC5/CAN_INT.c ****         {
- 444:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_ArbLostIsr();
- 445:.\Generated_Source\PSoC5/CAN_INT.c ****         } 
- 446:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_ARB_LOST && CAN_ARB_LOST_USE_HELPER */
- 447:.\Generated_Source\PSoC5/CAN_INT.c ****     
- 448:.\Generated_Source\PSoC5/CAN_INT.c ****     /* Overload Error */
- 449:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_OVERLOAD && (CAN_OVERLOAD_USE_HELPER || \
- 450:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
- 451:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[0u] & CAN_OVERLOAD_ERROR_MASK) ==
- 452:.\Generated_Source\PSoC5/CAN_INT.c ****              CAN_OVERLOAD_ERROR_MASK)
- 453:.\Generated_Source\PSoC5/CAN_INT.c ****         {
- 454:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_OvrLdErrorIsr();
- 455:.\Generated_Source\PSoC5/CAN_INT.c ****         }
- 456:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_OVERLOAD && CAN_OVERLOAD_USE_HELPER */
- 457:.\Generated_Source\PSoC5/CAN_INT.c ****     
- 458:.\Generated_Source\PSoC5/CAN_INT.c ****     /* Bit Error */
- 459:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_BIT_ERR && (CAN_BIT_ERR_USE_HELPER || \
- 460:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
- 461:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[0u] & CAN_BIT_ERROR_MASK) == CAN_BIT_ERROR_MASK)
- 462:.\Generated_Source\PSoC5/CAN_INT.c ****         {
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 12
+ 432:.\Generated_Source\PSoC5/CAN_INT.c **** *******************************************************************************/
+ 433:.\Generated_Source\PSoC5/CAN_INT.c **** CY_ISR(CAN_ISR)
+ 434:.\Generated_Source\PSoC5/CAN_INT.c **** {
+ 195              		.loc 1 434 0
+ 196              		.cfi_startproc
+ 197              		@ args = 0, pretend = 0, frame = 0
+ 198              		@ frame_needed = 1, uses_anonymous_args = 0
+ 199 0000 80B5     		push	{r7, lr}
+ 200              	.LCFI7:
+ 201              		.cfi_def_cfa_offset 8
+ 202              		.cfi_offset 7, -8
+ 203              		.cfi_offset 14, -4
+ 204 0002 00AF     		add	r7, sp, #0
+ 205              	.LCFI8:
+ 206              		.cfi_def_cfa_register 7
+ 435:.\Generated_Source\PSoC5/CAN_INT.c ****     /* Place your Interrupt code here. */
+ 436:.\Generated_Source\PSoC5/CAN_INT.c ****     /* `#START CAN_ISR` */
+ 437:.\Generated_Source\PSoC5/CAN_INT.c **** 
+ 438:.\Generated_Source\PSoC5/CAN_INT.c ****     /* `#END` */    
+ 439:.\Generated_Source\PSoC5/CAN_INT.c ****     
+ 440:.\Generated_Source\PSoC5/CAN_INT.c ****     /* Arbitration */
+ 441:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_ARB_LOST && (CAN_ARB_LOST_USE_HELPER || \
+ 442:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
+ 443:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[0u] & CAN_ARBITRATION_LOST_MASK) ==
+ 444:.\Generated_Source\PSoC5/CAN_INT.c ****              CAN_ARBITRATION_LOST_MASK)
+ 445:.\Generated_Source\PSoC5/CAN_INT.c ****         {
+ 446:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_ArbLostIsr();
+ 447:.\Generated_Source\PSoC5/CAN_INT.c ****         } 
+ 448:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_ARB_LOST && CAN_ARB_LOST_USE_HELPER */
+ 449:.\Generated_Source\PSoC5/CAN_INT.c ****     
+ 450:.\Generated_Source\PSoC5/CAN_INT.c ****     /* Overload Error */
+ 451:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_OVERLOAD && (CAN_OVERLOAD_USE_HELPER || \
+ 452:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
+ 453:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[0u] & CAN_OVERLOAD_ERROR_MASK) ==
+ 454:.\Generated_Source\PSoC5/CAN_INT.c ****              CAN_OVERLOAD_ERROR_MASK)
+ 455:.\Generated_Source\PSoC5/CAN_INT.c ****         {
+ 456:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_OvrLdErrorIsr();
+ 457:.\Generated_Source\PSoC5/CAN_INT.c ****         }
+ 458:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_OVERLOAD && CAN_OVERLOAD_USE_HELPER */
+ 459:.\Generated_Source\PSoC5/CAN_INT.c ****     
+ 460:.\Generated_Source\PSoC5/CAN_INT.c ****     /* Bit Error */
+ 461:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_BIT_ERR && (CAN_BIT_ERR_USE_HELPER || \
+ 462:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
+ 463:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[0u] & CAN_BIT_ERROR_MASK) == CAN_BIT_ERROR_MASK)
+ 464:.\Generated_Source\PSoC5/CAN_INT.c ****         {
+ 465:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_BitErrorIsr();
+ 466:.\Generated_Source\PSoC5/CAN_INT.c ****         }
+ 467:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_BIT_ERR && CAN_BIT_ERR_USE_HELPER */
+ 468:.\Generated_Source\PSoC5/CAN_INT.c ****     
+ 469:.\Generated_Source\PSoC5/CAN_INT.c ****     /* Bit Staff Error */
+ 470:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_STUFF_ERR && (CAN_STUFF_ERR_USE_HELPER || \
+ 471:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
+ 472:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[0u] & CAN_STUFF_ERROR_MASK) ==
+ 473:.\Generated_Source\PSoC5/CAN_INT.c ****              CAN_STUFF_ERROR_MASK)
+ 474:.\Generated_Source\PSoC5/CAN_INT.c ****         {
+ 475:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_BitStuffErrorIsr();
+ 476:.\Generated_Source\PSoC5/CAN_INT.c ****         }
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 13
 
 
- 463:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_BitErrorIsr();
- 464:.\Generated_Source\PSoC5/CAN_INT.c ****         }
- 465:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_BIT_ERR && CAN_BIT_ERR_USE_HELPER */
- 466:.\Generated_Source\PSoC5/CAN_INT.c ****     
- 467:.\Generated_Source\PSoC5/CAN_INT.c ****     /* Bit Staff Error */
- 468:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_STUFF_ERR && (CAN_STUFF_ERR_USE_HELPER || \
- 469:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
- 470:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[0u] & CAN_STUFF_ERROR_MASK) ==
- 471:.\Generated_Source\PSoC5/CAN_INT.c ****              CAN_STUFF_ERROR_MASK)
- 472:.\Generated_Source\PSoC5/CAN_INT.c ****         {
- 473:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_BitStuffErrorIsr();
- 474:.\Generated_Source\PSoC5/CAN_INT.c ****         }
- 475:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_STUFF_ERR && CAN_STUFF_ERR_USE_HELPER */
- 476:.\Generated_Source\PSoC5/CAN_INT.c ****     
- 477:.\Generated_Source\PSoC5/CAN_INT.c ****     /* ACK Error */
- 478:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_ACK_ERR && (CAN_ACK_ERR_USE_HELPER || \
- 479:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
- 480:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[0u] & CAN_ACK_ERROR_MASK) ==
- 481:.\Generated_Source\PSoC5/CAN_INT.c ****              CAN_ACK_ERROR_MASK)
- 482:.\Generated_Source\PSoC5/CAN_INT.c ****         {
- 483:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_AckErrorIsr();
- 484:.\Generated_Source\PSoC5/CAN_INT.c ****         }
- 485:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_ACK_ERR && CAN_ACK_ERR_USE_HELPER */
- 486:.\Generated_Source\PSoC5/CAN_INT.c ****     
- 487:.\Generated_Source\PSoC5/CAN_INT.c ****     /* Form(msg) Error */
- 488:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_FORM_ERR && (CAN_FORM_ERR_USE_HELPER || \
- 489:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
- 490:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[0u] & CAN_FORM_ERROR_MASK) ==
- 491:.\Generated_Source\PSoC5/CAN_INT.c ****              CAN_FORM_ERROR_MASK)
- 492:.\Generated_Source\PSoC5/CAN_INT.c ****         {
- 493:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_MsgErrorIsr();
- 494:.\Generated_Source\PSoC5/CAN_INT.c ****         }
- 495:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_FORM_ERR && CAN_FORM_ERR_USE_HELPER */
- 496:.\Generated_Source\PSoC5/CAN_INT.c ****     
- 497:.\Generated_Source\PSoC5/CAN_INT.c ****     /* CRC Error */
- 498:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_CRC_ERR && (CAN_CRC_ERR_USE_HELPER || \
- 499:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
- 500:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[1u] & CAN_CRC_ERROR_MASK) == CAN_CRC_ERROR_MASK)
- 501:.\Generated_Source\PSoC5/CAN_INT.c ****         {
- 502:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_CrcErrorIsr();
- 503:.\Generated_Source\PSoC5/CAN_INT.c ****         }
- 504:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_CRC_ERR && CAN_CRC_ERR_USE_HELPER */
- 505:.\Generated_Source\PSoC5/CAN_INT.c ****     
- 506:.\Generated_Source\PSoC5/CAN_INT.c ****     /* Bus Off state */
- 507:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_BUS_OFF && (CAN_BUS_OFF_USE_HELPER || \
- 508:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
- 509:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[1u] & CAN_BUS_OFF_MASK) == CAN_BUS_OFF_MASK)
- 163              		.loc 1 509 0
- 164 0004 4FF42043 		mov	r3, #40960
- 165 0008 C4F20003 		movt	r3, 16384
- 166 000c 5B78     		ldrb	r3, [r3, #1]
- 167 000e DBB2     		uxtb	r3, r3
- 168 0010 03F00203 		and	r3, r3, #2
- 169 0014 002B     		cmp	r3, #0
- 170 0016 01D0     		beq	.L9
- 510:.\Generated_Source\PSoC5/CAN_INT.c ****         {
- 511:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_BusOffIsr();
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 13
+ 477:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_STUFF_ERR && CAN_STUFF_ERR_USE_HELPER */
+ 478:.\Generated_Source\PSoC5/CAN_INT.c ****     
+ 479:.\Generated_Source\PSoC5/CAN_INT.c ****     /* ACK Error */
+ 480:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_ACK_ERR && (CAN_ACK_ERR_USE_HELPER || \
+ 481:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
+ 482:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[0u] & CAN_ACK_ERROR_MASK) ==
+ 483:.\Generated_Source\PSoC5/CAN_INT.c ****              CAN_ACK_ERROR_MASK)
+ 484:.\Generated_Source\PSoC5/CAN_INT.c ****         {
+ 485:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_AckErrorIsr();
+ 486:.\Generated_Source\PSoC5/CAN_INT.c ****         }
+ 487:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_ACK_ERR && CAN_ACK_ERR_USE_HELPER */
+ 488:.\Generated_Source\PSoC5/CAN_INT.c ****     
+ 489:.\Generated_Source\PSoC5/CAN_INT.c ****     /* Form(msg) Error */
+ 490:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_FORM_ERR && (CAN_FORM_ERR_USE_HELPER || \
+ 491:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
+ 492:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[0u] & CAN_FORM_ERROR_MASK) ==
+ 493:.\Generated_Source\PSoC5/CAN_INT.c ****              CAN_FORM_ERROR_MASK)
+ 494:.\Generated_Source\PSoC5/CAN_INT.c ****         {
+ 495:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_MsgErrorIsr();
+ 496:.\Generated_Source\PSoC5/CAN_INT.c ****         }
+ 497:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_FORM_ERR && CAN_FORM_ERR_USE_HELPER */
+ 498:.\Generated_Source\PSoC5/CAN_INT.c ****     
+ 499:.\Generated_Source\PSoC5/CAN_INT.c ****     /* CRC Error */
+ 500:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_CRC_ERR && (CAN_CRC_ERR_USE_HELPER || \
+ 501:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
+ 502:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[1u] & CAN_CRC_ERROR_MASK) == CAN_CRC_ERROR_MASK)
+ 503:.\Generated_Source\PSoC5/CAN_INT.c ****         {
+ 504:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_CrcErrorIsr();
+ 505:.\Generated_Source\PSoC5/CAN_INT.c ****         }
+ 506:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_CRC_ERR && CAN_CRC_ERR_USE_HELPER */
+ 507:.\Generated_Source\PSoC5/CAN_INT.c ****     
+ 508:.\Generated_Source\PSoC5/CAN_INT.c ****     /* Bus Off state */
+ 509:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_BUS_OFF && (CAN_BUS_OFF_USE_HELPER || \
+ 510:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
+ 511:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[1u] & CAN_BUS_OFF_MASK) == CAN_BUS_OFF_MASK)
+ 207              		.loc 1 511 0
+ 208 0004 4FF42043 		mov	r3, #40960
+ 209 0008 C4F20003 		movt	r3, 16384
+ 210 000c 5B78     		ldrb	r3, [r3, #1]
+ 211 000e DBB2     		uxtb	r3, r3
+ 212 0010 03F00203 		and	r3, r3, #2
+ 213 0014 002B     		cmp	r3, #0
+ 214 0016 01D0     		beq	.L13
+ 512:.\Generated_Source\PSoC5/CAN_INT.c ****         {
+ 513:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_BusOffIsr();
+ 215              		.loc 1 513 0
+ 216 0018 FFF7FEFF 		bl	CAN_BusOffIsr
+ 217              	.L13:
+ 514:.\Generated_Source\PSoC5/CAN_INT.c ****         }
+ 515:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_BUS_OFF && CAN_BUS_OFF_USE_HELPER */
+ 516:.\Generated_Source\PSoC5/CAN_INT.c ****     
+ 517:.\Generated_Source\PSoC5/CAN_INT.c ****     /* Message Lost */
+ 518:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_RX_MSG_LOST && (CAN_RX_MSG_LOST_USE_HELPER || \
+ 519:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
+ 520:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[1u] & CAN_RX_MSG_LOST_MASK) ==
+ 521:.\Generated_Source\PSoC5/CAN_INT.c ****              CAN_RX_MSG_LOST_MASK)
+ 522:.\Generated_Source\PSoC5/CAN_INT.c ****         {
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 14
 
 
- 171              		.loc 1 511 0
- 172 0018 FFF7FEFF 		bl	CAN_BusOffIsr
- 173              	.L9:
- 512:.\Generated_Source\PSoC5/CAN_INT.c ****         }
- 513:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_BUS_OFF && CAN_BUS_OFF_USE_HELPER */
- 514:.\Generated_Source\PSoC5/CAN_INT.c ****     
- 515:.\Generated_Source\PSoC5/CAN_INT.c ****     /* Message Lost */
- 516:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_RX_MSG_LOST && (CAN_RX_MSG_LOST_USE_HELPER || \
- 517:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
- 518:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[1u] & CAN_RX_MSG_LOST_MASK) ==
- 519:.\Generated_Source\PSoC5/CAN_INT.c ****              CAN_RX_MSG_LOST_MASK)
- 520:.\Generated_Source\PSoC5/CAN_INT.c ****         {
- 521:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_MsgLostIsr();
- 522:.\Generated_Source\PSoC5/CAN_INT.c ****         }
- 523:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_RX_MSG_LOST && CAN_RX_MSG_LOST_USE_HELPER */
- 524:.\Generated_Source\PSoC5/CAN_INT.c ****     
- 525:.\Generated_Source\PSoC5/CAN_INT.c ****     /* TX Message Send */
- 526:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_TX_MESSAGE && (CAN_TX_MESSAGE_USE_HELPER || \
- 527:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
- 528:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[1u] & CAN_TX_MESSAGE_MASK) ==
- 529:.\Generated_Source\PSoC5/CAN_INT.c ****              CAN_TX_MESSAGE_MASK)
- 530:.\Generated_Source\PSoC5/CAN_INT.c ****         {
- 531:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_MsgTXIsr();
- 532:.\Generated_Source\PSoC5/CAN_INT.c ****         }
- 533:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_TX_MESSAGE && CAN_TX_MESSAGE_USE_HELPER */
- 534:.\Generated_Source\PSoC5/CAN_INT.c ****     
- 535:.\Generated_Source\PSoC5/CAN_INT.c ****     /* RX Message Available */
- 536:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_RX_MESSAGE && (CAN_RX_MESSAGE_USE_HELPER || \
- 537:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
- 538:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[1u] & CAN_RX_MESSAGE_MASK) ==
- 174              		.loc 1 538 0
- 175 001c 4FF42043 		mov	r3, #40960
- 176 0020 C4F20003 		movt	r3, 16384
- 177 0024 5B78     		ldrb	r3, [r3, #1]
- 178 0026 DBB2     		uxtb	r3, r3
- 179 0028 03F01003 		and	r3, r3, #16
- 180 002c 002B     		cmp	r3, #0
- 181 002e 01D0     		beq	.L8
- 539:.\Generated_Source\PSoC5/CAN_INT.c ****              CAN_RX_MESSAGE_MASK)
- 540:.\Generated_Source\PSoC5/CAN_INT.c ****         {
- 541:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_MsgRXIsr();
- 182              		.loc 1 541 0
- 183 0030 FFF7FEFF 		bl	CAN_MsgRXIsr
- 184              	.L8:
- 542:.\Generated_Source\PSoC5/CAN_INT.c ****         }
- 543:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_RX_MESSAGE && CAN_RX_MESSAGE_USE_HELPER */
- 544:.\Generated_Source\PSoC5/CAN_INT.c **** 
- 545:.\Generated_Source\PSoC5/CAN_INT.c **** 
- 546:.\Generated_Source\PSoC5/CAN_INT.c **** }
- 185              		.loc 1 546 0
- 186 0034 80BD     		pop	{r7, pc}
- 187              		.cfi_endproc
- 188              	.LFE2:
- 189              		.size	CAN_ISR, .-CAN_ISR
- 190 0036 00BF     		.text
- 191              	.Letext0:
- 192              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 14
+ 523:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_MsgLostIsr();
+ 524:.\Generated_Source\PSoC5/CAN_INT.c ****         }
+ 525:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_RX_MSG_LOST && CAN_RX_MSG_LOST_USE_HELPER */
+ 526:.\Generated_Source\PSoC5/CAN_INT.c ****     
+ 527:.\Generated_Source\PSoC5/CAN_INT.c ****     /* TX Message Send */
+ 528:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_TX_MESSAGE && (CAN_TX_MESSAGE_USE_HELPER || \
+ 529:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
+ 530:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[1u] & CAN_TX_MESSAGE_MASK) ==
+ 218              		.loc 1 530 0
+ 219 001c 4FF42043 		mov	r3, #40960
+ 220 0020 C4F20003 		movt	r3, 16384
+ 221 0024 5B78     		ldrb	r3, [r3, #1]
+ 222 0026 DBB2     		uxtb	r3, r3
+ 223 0028 03F00803 		and	r3, r3, #8
+ 224 002c 002B     		cmp	r3, #0
+ 225 002e 01D0     		beq	.L14
+ 531:.\Generated_Source\PSoC5/CAN_INT.c ****              CAN_TX_MESSAGE_MASK)
+ 532:.\Generated_Source\PSoC5/CAN_INT.c ****         {
+ 533:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_MsgTXIsr();
+ 226              		.loc 1 533 0
+ 227 0030 FFF7FEFF 		bl	CAN_MsgTXIsr
+ 228              	.L14:
+ 534:.\Generated_Source\PSoC5/CAN_INT.c ****         }
+ 535:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_TX_MESSAGE && CAN_TX_MESSAGE_USE_HELPER */
+ 536:.\Generated_Source\PSoC5/CAN_INT.c ****     
+ 537:.\Generated_Source\PSoC5/CAN_INT.c ****     /* RX Message Available */
+ 538:.\Generated_Source\PSoC5/CAN_INT.c ****     #if (CAN_RX_MESSAGE && (CAN_RX_MESSAGE_USE_HELPER || \
+ 539:.\Generated_Source\PSoC5/CAN_INT.c ****         (!CAN_ADVANCED_INTERRUPT_CFG)))
+ 540:.\Generated_Source\PSoC5/CAN_INT.c ****         if ((CAN_INT_SR_REG.byte[1u] & CAN_RX_MESSAGE_MASK) ==
+ 229              		.loc 1 540 0
+ 230 0034 4FF42043 		mov	r3, #40960
+ 231 0038 C4F20003 		movt	r3, 16384
+ 232 003c 5B78     		ldrb	r3, [r3, #1]
+ 233 003e DBB2     		uxtb	r3, r3
+ 234 0040 03F01003 		and	r3, r3, #16
+ 235 0044 002B     		cmp	r3, #0
+ 236 0046 01D0     		beq	.L12
+ 541:.\Generated_Source\PSoC5/CAN_INT.c ****              CAN_RX_MESSAGE_MASK)
+ 542:.\Generated_Source\PSoC5/CAN_INT.c ****         {
+ 543:.\Generated_Source\PSoC5/CAN_INT.c ****             CAN_MsgRXIsr();
+ 237              		.loc 1 543 0
+ 238 0048 FFF7FEFF 		bl	CAN_MsgRXIsr
+ 239              	.L12:
+ 544:.\Generated_Source\PSoC5/CAN_INT.c ****         }
+ 545:.\Generated_Source\PSoC5/CAN_INT.c ****     #endif /* CAN_RX_MESSAGE && CAN_RX_MESSAGE_USE_HELPER */
+ 546:.\Generated_Source\PSoC5/CAN_INT.c **** 
+ 547:.\Generated_Source\PSoC5/CAN_INT.c **** 
+ 548:.\Generated_Source\PSoC5/CAN_INT.c **** }
+ 240              		.loc 1 548 0
+ 241 004c 80BD     		pop	{r7, pc}
+ 242              		.cfi_endproc
+ 243              	.LFE3:
+ 244              		.size	CAN_ISR, .-CAN_ISR
+ 245 004e 00BF     		.text
+ 246              	.Letext0:
+ 247              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 248              		.file 3 ".\\Generated_Source\\PSoC5\\CAN.h"
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 15
 
 
- 193              		.file 3 ".\\Generated_Source\\PSoC5\\CAN.h"
- 194              		.section	.debug_info,"",%progbits
- 195              	.Ldebug_info0:
- 196 0000 08020000 		.4byte	0x208
- 197 0004 0200     		.2byte	0x2
- 198 0006 00000000 		.4byte	.Ldebug_abbrev0
- 199 000a 04       		.byte	0x4
- 200 000b 01       		.uleb128 0x1
- 201 000c 78010000 		.4byte	.LASF31
- 202 0010 01       		.byte	0x1
- 203 0011 C1010000 		.4byte	.LASF32
- 204 0015 F1000000 		.4byte	.LASF33
- 205 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 206 001d 00000000 		.4byte	0
- 207 0021 00000000 		.4byte	0
- 208 0025 00000000 		.4byte	.Ldebug_line0
- 209 0029 02       		.uleb128 0x2
- 210 002a 01       		.byte	0x1
- 211 002b 06       		.byte	0x6
- 212 002c ED010000 		.4byte	.LASF0
- 213 0030 02       		.uleb128 0x2
- 214 0031 01       		.byte	0x1
- 215 0032 08       		.byte	0x8
- 216 0033 58000000 		.4byte	.LASF1
- 217 0037 02       		.uleb128 0x2
- 218 0038 02       		.byte	0x2
- 219 0039 05       		.byte	0x5
- 220 003a 68010000 		.4byte	.LASF2
- 221 003e 02       		.uleb128 0x2
- 222 003f 02       		.byte	0x2
- 223 0040 07       		.byte	0x7
- 224 0041 2C000000 		.4byte	.LASF3
- 225 0045 02       		.uleb128 0x2
- 226 0046 04       		.byte	0x4
- 227 0047 05       		.byte	0x5
- 228 0048 E4010000 		.4byte	.LASF4
- 229 004c 02       		.uleb128 0x2
- 230 004d 04       		.byte	0x4
- 231 004e 07       		.byte	0x7
- 232 004f 70000000 		.4byte	.LASF5
- 233 0053 02       		.uleb128 0x2
- 234 0054 08       		.byte	0x8
- 235 0055 05       		.byte	0x5
- 236 0056 55010000 		.4byte	.LASF6
- 237 005a 02       		.uleb128 0x2
- 238 005b 08       		.byte	0x8
- 239 005c 07       		.byte	0x7
- 240 005d C6000000 		.4byte	.LASF7
- 241 0061 03       		.uleb128 0x3
- 242 0062 04       		.byte	0x4
- 243 0063 05       		.byte	0x5
- 244 0064 696E7400 		.ascii	"int\000"
- 245 0068 02       		.uleb128 0x2
- 246 0069 04       		.byte	0x4
- 247 006a 07       		.byte	0x7
- 248 006b B9000000 		.4byte	.LASF8
- 249 006f 04       		.uleb128 0x4
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 15
+ 249              		.section	.debug_info,"",%progbits
+ 250              	.Ldebug_info0:
+ 251 0000 1F020000 		.4byte	0x21f
+ 252 0004 0200     		.2byte	0x2
+ 253 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 254 000a 04       		.byte	0x4
+ 255 000b 01       		.uleb128 0x1
+ 256 000c 78010000 		.4byte	.LASF32
+ 257 0010 01       		.byte	0x1
+ 258 0011 C1010000 		.4byte	.LASF33
+ 259 0015 F1000000 		.4byte	.LASF34
+ 260 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 261 001d 00000000 		.4byte	0
+ 262 0021 00000000 		.4byte	0
+ 263 0025 00000000 		.4byte	.Ldebug_line0
+ 264 0029 02       		.uleb128 0x2
+ 265 002a 01       		.byte	0x1
+ 266 002b 06       		.byte	0x6
+ 267 002c FA010000 		.4byte	.LASF0
+ 268 0030 02       		.uleb128 0x2
+ 269 0031 01       		.byte	0x1
+ 270 0032 08       		.byte	0x8
+ 271 0033 58000000 		.4byte	.LASF1
+ 272 0037 02       		.uleb128 0x2
+ 273 0038 02       		.byte	0x2
+ 274 0039 05       		.byte	0x5
+ 275 003a 68010000 		.4byte	.LASF2
+ 276 003e 02       		.uleb128 0x2
+ 277 003f 02       		.byte	0x2
+ 278 0040 07       		.byte	0x7
+ 279 0041 2C000000 		.4byte	.LASF3
+ 280 0045 02       		.uleb128 0x2
+ 281 0046 04       		.byte	0x4
+ 282 0047 05       		.byte	0x5
+ 283 0048 E4010000 		.4byte	.LASF4
+ 284 004c 02       		.uleb128 0x2
+ 285 004d 04       		.byte	0x4
+ 286 004e 07       		.byte	0x7
+ 287 004f 70000000 		.4byte	.LASF5
+ 288 0053 02       		.uleb128 0x2
+ 289 0054 08       		.byte	0x8
+ 290 0055 05       		.byte	0x5
+ 291 0056 55010000 		.4byte	.LASF6
+ 292 005a 02       		.uleb128 0x2
+ 293 005b 08       		.byte	0x8
+ 294 005c 07       		.byte	0x7
+ 295 005d C6000000 		.4byte	.LASF7
+ 296 0061 03       		.uleb128 0x3
+ 297 0062 04       		.byte	0x4
+ 298 0063 05       		.byte	0x5
+ 299 0064 696E7400 		.ascii	"int\000"
+ 300 0068 02       		.uleb128 0x2
+ 301 0069 04       		.byte	0x4
+ 302 006a 07       		.byte	0x7
+ 303 006b B9000000 		.4byte	.LASF8
+ 304 006f 04       		.uleb128 0x4
+ 305 0070 82000000 		.4byte	.LASF9
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 16
 
 
- 250 0070 82000000 		.4byte	.LASF9
- 251 0074 02       		.byte	0x2
- 252 0075 5B       		.byte	0x5b
- 253 0076 30000000 		.4byte	0x30
- 254 007a 04       		.uleb128 0x4
- 255 007b A5000000 		.4byte	.LASF10
- 256 007f 02       		.byte	0x2
- 257 0080 5C       		.byte	0x5c
- 258 0081 3E000000 		.4byte	0x3e
- 259 0085 02       		.uleb128 0x2
- 260 0086 04       		.byte	0x4
- 261 0087 04       		.byte	0x4
- 262 0088 52000000 		.4byte	.LASF11
- 263 008c 02       		.uleb128 0x2
- 264 008d 08       		.byte	0x8
- 265 008e 04       		.byte	0x4
- 266 008f 90000000 		.4byte	.LASF12
- 267 0093 02       		.uleb128 0x2
- 268 0094 01       		.byte	0x1
- 269 0095 08       		.byte	0x8
- 270 0096 63010000 		.4byte	.LASF13
- 271 009a 04       		.uleb128 0x4
- 272 009b 6B000000 		.4byte	.LASF14
- 273 009f 02       		.byte	0x2
- 274 00a0 F0       		.byte	0xf0
- 275 00a1 A5000000 		.4byte	0xa5
- 276 00a5 05       		.uleb128 0x5
- 277 00a6 6F000000 		.4byte	0x6f
- 278 00aa 04       		.uleb128 0x4
- 279 00ab 00000000 		.4byte	.LASF15
- 280 00af 02       		.byte	0x2
- 281 00b0 F1       		.byte	0xf1
- 282 00b1 B5000000 		.4byte	0xb5
- 283 00b5 05       		.uleb128 0x5
- 284 00b6 7A000000 		.4byte	0x7a
- 285 00ba 02       		.uleb128 0x2
- 286 00bb 04       		.byte	0x4
- 287 00bc 07       		.byte	0x7
- 288 00bd 45010000 		.4byte	.LASF16
- 289 00c1 06       		.uleb128 0x6
- 290 00c2 08       		.byte	0x8
- 291 00c3 03       		.byte	0x3
- 292 00c4 69       		.byte	0x69
- 293 00c5 D8000000 		.4byte	0xd8
- 294 00c9 07       		.uleb128 0x7
- 295 00ca 3F000000 		.4byte	.LASF18
- 296 00ce 03       		.byte	0x3
- 297 00cf 6B       		.byte	0x6b
- 298 00d0 E8000000 		.4byte	0xe8
- 299 00d4 02       		.byte	0x2
- 300 00d5 23       		.byte	0x23
- 301 00d6 00       		.uleb128 0
- 302 00d7 00       		.byte	0
- 303 00d8 08       		.uleb128 0x8
- 304 00d9 9A000000 		.4byte	0x9a
- 305 00dd E8000000 		.4byte	0xe8
- 306 00e1 09       		.uleb128 0x9
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 16
+ 306 0074 02       		.byte	0x2
+ 307 0075 5B       		.byte	0x5b
+ 308 0076 30000000 		.4byte	0x30
+ 309 007a 04       		.uleb128 0x4
+ 310 007b A5000000 		.4byte	.LASF10
+ 311 007f 02       		.byte	0x2
+ 312 0080 5C       		.byte	0x5c
+ 313 0081 3E000000 		.4byte	0x3e
+ 314 0085 02       		.uleb128 0x2
+ 315 0086 04       		.byte	0x4
+ 316 0087 04       		.byte	0x4
+ 317 0088 52000000 		.4byte	.LASF11
+ 318 008c 02       		.uleb128 0x2
+ 319 008d 08       		.byte	0x8
+ 320 008e 04       		.byte	0x4
+ 321 008f 90000000 		.4byte	.LASF12
+ 322 0093 02       		.uleb128 0x2
+ 323 0094 01       		.byte	0x1
+ 324 0095 08       		.byte	0x8
+ 325 0096 63010000 		.4byte	.LASF13
+ 326 009a 04       		.uleb128 0x4
+ 327 009b 6B000000 		.4byte	.LASF14
+ 328 009f 02       		.byte	0x2
+ 329 00a0 F0       		.byte	0xf0
+ 330 00a1 A5000000 		.4byte	0xa5
+ 331 00a5 05       		.uleb128 0x5
+ 332 00a6 6F000000 		.4byte	0x6f
+ 333 00aa 04       		.uleb128 0x4
+ 334 00ab 00000000 		.4byte	.LASF15
+ 335 00af 02       		.byte	0x2
+ 336 00b0 F1       		.byte	0xf1
+ 337 00b1 B5000000 		.4byte	0xb5
+ 338 00b5 05       		.uleb128 0x5
+ 339 00b6 7A000000 		.4byte	0x7a
+ 340 00ba 02       		.uleb128 0x2
+ 341 00bb 04       		.byte	0x4
+ 342 00bc 07       		.byte	0x7
+ 343 00bd 45010000 		.4byte	.LASF16
+ 344 00c1 06       		.uleb128 0x6
+ 345 00c2 08       		.byte	0x8
+ 346 00c3 03       		.byte	0x3
+ 347 00c4 69       		.byte	0x69
+ 348 00c5 D8000000 		.4byte	0xd8
+ 349 00c9 07       		.uleb128 0x7
+ 350 00ca 3F000000 		.4byte	.LASF18
+ 351 00ce 03       		.byte	0x3
+ 352 00cf 6B       		.byte	0x6b
+ 353 00d0 E8000000 		.4byte	0xe8
+ 354 00d4 02       		.byte	0x2
+ 355 00d5 23       		.byte	0x23
+ 356 00d6 00       		.uleb128 0
+ 357 00d7 00       		.byte	0
+ 358 00d8 08       		.uleb128 0x8
+ 359 00d9 9A000000 		.4byte	0x9a
+ 360 00dd E8000000 		.4byte	0xe8
+ 361 00e1 09       		.uleb128 0x9
+ 362 00e2 BA000000 		.4byte	0xba
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 17
 
 
- 307 00e2 BA000000 		.4byte	0xba
- 308 00e6 07       		.byte	0x7
- 309 00e7 00       		.byte	0
- 310 00e8 05       		.uleb128 0x5
- 311 00e9 D8000000 		.4byte	0xd8
- 312 00ed 04       		.uleb128 0x4
- 313 00ee 0C000000 		.4byte	.LASF17
- 314 00f2 03       		.byte	0x3
- 315 00f3 6C       		.byte	0x6c
- 316 00f4 C1000000 		.4byte	0xc1
- 317 00f8 06       		.uleb128 0x6
- 318 00f9 04       		.byte	0x4
- 319 00fa 03       		.byte	0x3
- 320 00fb 6F       		.byte	0x6f
- 321 00fc 0F010000 		.4byte	0x10f
- 322 0100 07       		.uleb128 0x7
- 323 0101 3F000000 		.4byte	.LASF18
- 324 0105 03       		.byte	0x3
- 325 0106 71       		.byte	0x71
- 326 0107 1F010000 		.4byte	0x11f
- 327 010b 02       		.byte	0x2
- 328 010c 23       		.byte	0x23
- 329 010d 00       		.uleb128 0
- 330 010e 00       		.byte	0
- 331 010f 08       		.uleb128 0x8
- 332 0110 9A000000 		.4byte	0x9a
- 333 0114 1F010000 		.4byte	0x11f
- 334 0118 09       		.uleb128 0x9
- 335 0119 BA000000 		.4byte	0xba
- 336 011d 03       		.byte	0x3
- 337 011e 00       		.byte	0
- 338 011f 05       		.uleb128 0x5
- 339 0120 0F010000 		.4byte	0x10f
- 340 0124 04       		.uleb128 0x4
- 341 0125 21000000 		.4byte	.LASF19
- 342 0129 03       		.byte	0x3
- 343 012a 72       		.byte	0x72
- 344 012b F8000000 		.4byte	0xf8
- 345 012f 06       		.uleb128 0x6
- 346 0130 20       		.byte	0x20
- 347 0131 03       		.byte	0x3
- 348 0132 91       		.byte	0x91
- 349 0133 9A010000 		.4byte	0x19a
- 350 0137 07       		.uleb128 0x7
- 351 0138 EB000000 		.4byte	.LASF20
- 352 013c 03       		.byte	0x3
- 353 013d 93       		.byte	0x93
- 354 013e 24010000 		.4byte	0x124
- 355 0142 02       		.byte	0x2
- 356 0143 23       		.byte	0x23
- 357 0144 00       		.uleb128 0
- 358 0145 07       		.uleb128 0x7
- 359 0146 66000000 		.4byte	.LASF21
- 360 014a 03       		.byte	0x3
- 361 014b 94       		.byte	0x94
- 362 014c 24010000 		.4byte	0x124
- 363 0150 02       		.byte	0x2
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 17
+ 363 00e6 07       		.byte	0x7
+ 364 00e7 00       		.byte	0
+ 365 00e8 05       		.uleb128 0x5
+ 366 00e9 D8000000 		.4byte	0xd8
+ 367 00ed 04       		.uleb128 0x4
+ 368 00ee 0C000000 		.4byte	.LASF17
+ 369 00f2 03       		.byte	0x3
+ 370 00f3 6C       		.byte	0x6c
+ 371 00f4 C1000000 		.4byte	0xc1
+ 372 00f8 06       		.uleb128 0x6
+ 373 00f9 04       		.byte	0x4
+ 374 00fa 03       		.byte	0x3
+ 375 00fb 6F       		.byte	0x6f
+ 376 00fc 0F010000 		.4byte	0x10f
+ 377 0100 07       		.uleb128 0x7
+ 378 0101 3F000000 		.4byte	.LASF18
+ 379 0105 03       		.byte	0x3
+ 380 0106 71       		.byte	0x71
+ 381 0107 1F010000 		.4byte	0x11f
+ 382 010b 02       		.byte	0x2
+ 383 010c 23       		.byte	0x23
+ 384 010d 00       		.uleb128 0
+ 385 010e 00       		.byte	0
+ 386 010f 08       		.uleb128 0x8
+ 387 0110 9A000000 		.4byte	0x9a
+ 388 0114 1F010000 		.4byte	0x11f
+ 389 0118 09       		.uleb128 0x9
+ 390 0119 BA000000 		.4byte	0xba
+ 391 011d 03       		.byte	0x3
+ 392 011e 00       		.byte	0
+ 393 011f 05       		.uleb128 0x5
+ 394 0120 0F010000 		.4byte	0x10f
+ 395 0124 04       		.uleb128 0x4
+ 396 0125 21000000 		.4byte	.LASF19
+ 397 0129 03       		.byte	0x3
+ 398 012a 72       		.byte	0x72
+ 399 012b F8000000 		.4byte	0xf8
+ 400 012f 06       		.uleb128 0x6
+ 401 0130 20       		.byte	0x20
+ 402 0131 03       		.byte	0x3
+ 403 0132 91       		.byte	0x91
+ 404 0133 9A010000 		.4byte	0x19a
+ 405 0137 07       		.uleb128 0x7
+ 406 0138 EB000000 		.4byte	.LASF20
+ 407 013c 03       		.byte	0x3
+ 408 013d 93       		.byte	0x93
+ 409 013e 24010000 		.4byte	0x124
+ 410 0142 02       		.byte	0x2
+ 411 0143 23       		.byte	0x23
+ 412 0144 00       		.uleb128 0
+ 413 0145 07       		.uleb128 0x7
+ 414 0146 66000000 		.4byte	.LASF21
+ 415 014a 03       		.byte	0x3
+ 416 014b 94       		.byte	0x94
+ 417 014c 24010000 		.4byte	0x124
+ 418 0150 02       		.byte	0x2
+ 419 0151 23       		.byte	0x23
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 18
 
 
- 364 0151 23       		.byte	0x23
- 365 0152 04       		.uleb128 0x4
- 366 0153 07       		.uleb128 0x7
- 367 0154 44000000 		.4byte	.LASF22
- 368 0158 03       		.byte	0x3
- 369 0159 95       		.byte	0x95
- 370 015a ED000000 		.4byte	0xed
- 371 015e 02       		.byte	0x2
- 372 015f 23       		.byte	0x23
- 373 0160 08       		.uleb128 0x8
- 374 0161 07       		.uleb128 0x7
- 375 0162 1B000000 		.4byte	.LASF23
- 376 0166 03       		.byte	0x3
- 377 0167 96       		.byte	0x96
- 378 0168 24010000 		.4byte	0x124
- 379 016c 02       		.byte	0x2
- 380 016d 23       		.byte	0x23
- 381 016e 10       		.uleb128 0x10
- 382 016f 07       		.uleb128 0x7
- 383 0170 72010000 		.4byte	.LASF24
- 384 0174 03       		.byte	0x3
- 385 0175 97       		.byte	0x97
- 386 0176 24010000 		.4byte	0x124
- 387 017a 02       		.byte	0x2
- 388 017b 23       		.byte	0x23
- 389 017c 14       		.uleb128 0x14
- 390 017d 07       		.uleb128 0x7
- 391 017e 4E010000 		.4byte	.LASF25
- 392 0182 03       		.byte	0x3
- 393 0183 98       		.byte	0x98
- 394 0184 24010000 		.4byte	0x124
- 395 0188 02       		.byte	0x2
- 396 0189 23       		.byte	0x23
- 397 018a 18       		.uleb128 0x18
- 398 018b 07       		.uleb128 0x7
- 399 018c 4B000000 		.4byte	.LASF26
- 400 0190 03       		.byte	0x3
- 401 0191 99       		.byte	0x99
- 402 0192 24010000 		.4byte	0x124
- 403 0196 02       		.byte	0x2
- 404 0197 23       		.byte	0x23
- 405 0198 1C       		.uleb128 0x1c
- 406 0199 00       		.byte	0
- 407 019a 04       		.uleb128 0x4
- 408 019b DD000000 		.4byte	.LASF27
- 409 019f 03       		.byte	0x3
- 410 01a0 9A       		.byte	0x9a
- 411 01a1 2F010000 		.4byte	0x12f
- 412 01a5 0A       		.uleb128 0xa
- 413 01a6 01       		.byte	0x1
- 414 01a7 97000000 		.4byte	.LASF29
- 415 01ab 01       		.byte	0x1
- 416 01ac 1301     		.2byte	0x113
- 417 01ae 01       		.byte	0x1
- 418 01af 00000000 		.4byte	.LFB0
- 419 01b3 18000000 		.4byte	.LFE0
- 420 01b7 00000000 		.4byte	.LLST0
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 18
+ 420 0152 04       		.uleb128 0x4
+ 421 0153 07       		.uleb128 0x7
+ 422 0154 44000000 		.4byte	.LASF22
+ 423 0158 03       		.byte	0x3
+ 424 0159 95       		.byte	0x95
+ 425 015a ED000000 		.4byte	0xed
+ 426 015e 02       		.byte	0x2
+ 427 015f 23       		.byte	0x23
+ 428 0160 08       		.uleb128 0x8
+ 429 0161 07       		.uleb128 0x7
+ 430 0162 1B000000 		.4byte	.LASF23
+ 431 0166 03       		.byte	0x3
+ 432 0167 96       		.byte	0x96
+ 433 0168 24010000 		.4byte	0x124
+ 434 016c 02       		.byte	0x2
+ 435 016d 23       		.byte	0x23
+ 436 016e 10       		.uleb128 0x10
+ 437 016f 07       		.uleb128 0x7
+ 438 0170 72010000 		.4byte	.LASF24
+ 439 0174 03       		.byte	0x3
+ 440 0175 97       		.byte	0x97
+ 441 0176 24010000 		.4byte	0x124
+ 442 017a 02       		.byte	0x2
+ 443 017b 23       		.byte	0x23
+ 444 017c 14       		.uleb128 0x14
+ 445 017d 07       		.uleb128 0x7
+ 446 017e 4E010000 		.4byte	.LASF25
+ 447 0182 03       		.byte	0x3
+ 448 0183 98       		.byte	0x98
+ 449 0184 24010000 		.4byte	0x124
+ 450 0188 02       		.byte	0x2
+ 451 0189 23       		.byte	0x23
+ 452 018a 18       		.uleb128 0x18
+ 453 018b 07       		.uleb128 0x7
+ 454 018c 4B000000 		.4byte	.LASF26
+ 455 0190 03       		.byte	0x3
+ 456 0191 99       		.byte	0x99
+ 457 0192 24010000 		.4byte	0x124
+ 458 0196 02       		.byte	0x2
+ 459 0197 23       		.byte	0x23
+ 460 0198 1C       		.uleb128 0x1c
+ 461 0199 00       		.byte	0
+ 462 019a 04       		.uleb128 0x4
+ 463 019b DD000000 		.4byte	.LASF27
+ 464 019f 03       		.byte	0x3
+ 465 01a0 9A       		.byte	0x9a
+ 466 01a1 2F010000 		.4byte	0x12f
+ 467 01a5 0A       		.uleb128 0xa
+ 468 01a6 01       		.byte	0x1
+ 469 01a7 97000000 		.4byte	.LASF28
+ 470 01ab 01       		.byte	0x1
+ 471 01ac 1301     		.2byte	0x113
+ 472 01ae 01       		.byte	0x1
+ 473 01af 00000000 		.4byte	.LFB0
+ 474 01b3 18000000 		.4byte	.LFE0
+ 475 01b7 00000000 		.4byte	.LLST0
+ 476 01bb 01       		.byte	0x1
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 19
 
 
- 421 01bb 01       		.byte	0x1
- 422 01bc 0B       		.uleb128 0xb
- 423 01bd 01       		.byte	0x1
- 424 01be AC000000 		.4byte	.LASF34
- 425 01c2 01       		.byte	0x1
- 426 01c3 7401     		.2byte	0x174
- 427 01c5 01       		.byte	0x1
- 428 01c6 00000000 		.4byte	.LFB1
- 429 01ca 86000000 		.4byte	.LFE1
- 430 01ce 2C000000 		.4byte	.LLST1
- 431 01d2 01       		.byte	0x1
- 432 01d3 F4010000 		.4byte	0x1f4
- 433 01d7 0C       		.uleb128 0xc
- 434 01d8 6900     		.ascii	"i\000"
- 435 01da 01       		.byte	0x1
- 436 01db 7601     		.2byte	0x176
- 437 01dd 6F000000 		.4byte	0x6f
- 438 01e1 02       		.byte	0x2
- 439 01e2 91       		.byte	0x91
- 440 01e3 77       		.sleb128 -9
- 441 01e4 0D       		.uleb128 0xd
- 442 01e5 06000000 		.4byte	.LASF28
- 443 01e9 01       		.byte	0x1
- 444 01ea 7701     		.2byte	0x177
- 445 01ec 7A000000 		.4byte	0x7a
- 446 01f0 02       		.byte	0x2
- 447 01f1 91       		.byte	0x91
- 448 01f2 74       		.sleb128 -12
- 449 01f3 00       		.byte	0
- 450 01f4 0A       		.uleb128 0xa
- 451 01f5 01       		.byte	0x1
- 452 01f6 88000000 		.4byte	.LASF30
- 453 01fa 01       		.byte	0x1
- 454 01fb AF01     		.2byte	0x1af
- 455 01fd 01       		.byte	0x1
- 456 01fe 00000000 		.4byte	.LFB2
- 457 0202 36000000 		.4byte	.LFE2
- 458 0206 64000000 		.4byte	.LLST2
- 459 020a 01       		.byte	0x1
- 460 020b 00       		.byte	0
- 461              		.section	.debug_abbrev,"",%progbits
- 462              	.Ldebug_abbrev0:
- 463 0000 01       		.uleb128 0x1
- 464 0001 11       		.uleb128 0x11
- 465 0002 01       		.byte	0x1
- 466 0003 25       		.uleb128 0x25
- 467 0004 0E       		.uleb128 0xe
- 468 0005 13       		.uleb128 0x13
- 469 0006 0B       		.uleb128 0xb
- 470 0007 03       		.uleb128 0x3
- 471 0008 0E       		.uleb128 0xe
- 472 0009 1B       		.uleb128 0x1b
- 473 000a 0E       		.uleb128 0xe
- 474 000b 55       		.uleb128 0x55
- 475 000c 06       		.uleb128 0x6
- 476 000d 11       		.uleb128 0x11
- 477 000e 01       		.uleb128 0x1
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 19
+ 477 01bc 0B       		.uleb128 0xb
+ 478 01bd 01       		.byte	0x1
+ 479 01be ED010000 		.4byte	.LASF29
+ 480 01c2 01       		.byte	0x1
+ 481 01c3 5501     		.2byte	0x155
+ 482 01c5 01       		.byte	0x1
+ 483 01c6 00000000 		.4byte	.LFB1
+ 484 01ca 18000000 		.4byte	.LFE1
+ 485 01ce 2C000000 		.4byte	.LLST1
+ 486 01d2 01       		.byte	0x1
+ 487 01d3 0C       		.uleb128 0xc
+ 488 01d4 01       		.byte	0x1
+ 489 01d5 AC000000 		.4byte	.LASF35
+ 490 01d9 01       		.byte	0x1
+ 491 01da 7401     		.2byte	0x174
+ 492 01dc 01       		.byte	0x1
+ 493 01dd 00000000 		.4byte	.LFB2
+ 494 01e1 9A000000 		.4byte	.LFE2
+ 495 01e5 58000000 		.4byte	.LLST2
+ 496 01e9 01       		.byte	0x1
+ 497 01ea 0B020000 		.4byte	0x20b
+ 498 01ee 0D       		.uleb128 0xd
+ 499 01ef 6900     		.ascii	"i\000"
+ 500 01f1 01       		.byte	0x1
+ 501 01f2 7601     		.2byte	0x176
+ 502 01f4 6F000000 		.4byte	0x6f
+ 503 01f8 02       		.byte	0x2
+ 504 01f9 91       		.byte	0x91
+ 505 01fa 77       		.sleb128 -9
+ 506 01fb 0E       		.uleb128 0xe
+ 507 01fc 06000000 		.4byte	.LASF30
+ 508 0200 01       		.byte	0x1
+ 509 0201 7701     		.2byte	0x177
+ 510 0203 7A000000 		.4byte	0x7a
+ 511 0207 02       		.byte	0x2
+ 512 0208 91       		.byte	0x91
+ 513 0209 74       		.sleb128 -12
+ 514 020a 00       		.byte	0
+ 515 020b 0A       		.uleb128 0xa
+ 516 020c 01       		.byte	0x1
+ 517 020d 88000000 		.4byte	.LASF31
+ 518 0211 01       		.byte	0x1
+ 519 0212 B101     		.2byte	0x1b1
+ 520 0214 01       		.byte	0x1
+ 521 0215 00000000 		.4byte	.LFB3
+ 522 0219 4E000000 		.4byte	.LFE3
+ 523 021d 90000000 		.4byte	.LLST3
+ 524 0221 01       		.byte	0x1
+ 525 0222 00       		.byte	0
+ 526              		.section	.debug_abbrev,"",%progbits
+ 527              	.Ldebug_abbrev0:
+ 528 0000 01       		.uleb128 0x1
+ 529 0001 11       		.uleb128 0x11
+ 530 0002 01       		.byte	0x1
+ 531 0003 25       		.uleb128 0x25
+ 532 0004 0E       		.uleb128 0xe
+ 533 0005 13       		.uleb128 0x13
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 20
 
 
- 478 000f 52       		.uleb128 0x52
- 479 0010 01       		.uleb128 0x1
- 480 0011 10       		.uleb128 0x10
- 481 0012 06       		.uleb128 0x6
- 482 0013 00       		.byte	0
- 483 0014 00       		.byte	0
- 484 0015 02       		.uleb128 0x2
- 485 0016 24       		.uleb128 0x24
- 486 0017 00       		.byte	0
- 487 0018 0B       		.uleb128 0xb
- 488 0019 0B       		.uleb128 0xb
- 489 001a 3E       		.uleb128 0x3e
- 490 001b 0B       		.uleb128 0xb
- 491 001c 03       		.uleb128 0x3
- 492 001d 0E       		.uleb128 0xe
- 493 001e 00       		.byte	0
- 494 001f 00       		.byte	0
- 495 0020 03       		.uleb128 0x3
- 496 0021 24       		.uleb128 0x24
- 497 0022 00       		.byte	0
- 498 0023 0B       		.uleb128 0xb
- 499 0024 0B       		.uleb128 0xb
- 500 0025 3E       		.uleb128 0x3e
- 501 0026 0B       		.uleb128 0xb
- 502 0027 03       		.uleb128 0x3
- 503 0028 08       		.uleb128 0x8
- 504 0029 00       		.byte	0
- 505 002a 00       		.byte	0
- 506 002b 04       		.uleb128 0x4
- 507 002c 16       		.uleb128 0x16
- 508 002d 00       		.byte	0
- 509 002e 03       		.uleb128 0x3
- 510 002f 0E       		.uleb128 0xe
- 511 0030 3A       		.uleb128 0x3a
- 512 0031 0B       		.uleb128 0xb
- 513 0032 3B       		.uleb128 0x3b
- 514 0033 0B       		.uleb128 0xb
- 515 0034 49       		.uleb128 0x49
- 516 0035 13       		.uleb128 0x13
- 517 0036 00       		.byte	0
- 518 0037 00       		.byte	0
- 519 0038 05       		.uleb128 0x5
- 520 0039 35       		.uleb128 0x35
- 521 003a 00       		.byte	0
- 522 003b 49       		.uleb128 0x49
- 523 003c 13       		.uleb128 0x13
- 524 003d 00       		.byte	0
- 525 003e 00       		.byte	0
- 526 003f 06       		.uleb128 0x6
- 527 0040 13       		.uleb128 0x13
- 528 0041 01       		.byte	0x1
- 529 0042 0B       		.uleb128 0xb
- 530 0043 0B       		.uleb128 0xb
- 531 0044 3A       		.uleb128 0x3a
- 532 0045 0B       		.uleb128 0xb
- 533 0046 3B       		.uleb128 0x3b
- 534 0047 0B       		.uleb128 0xb
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 20
+ 534 0006 0B       		.uleb128 0xb
+ 535 0007 03       		.uleb128 0x3
+ 536 0008 0E       		.uleb128 0xe
+ 537 0009 1B       		.uleb128 0x1b
+ 538 000a 0E       		.uleb128 0xe
+ 539 000b 55       		.uleb128 0x55
+ 540 000c 06       		.uleb128 0x6
+ 541 000d 11       		.uleb128 0x11
+ 542 000e 01       		.uleb128 0x1
+ 543 000f 52       		.uleb128 0x52
+ 544 0010 01       		.uleb128 0x1
+ 545 0011 10       		.uleb128 0x10
+ 546 0012 06       		.uleb128 0x6
+ 547 0013 00       		.byte	0
+ 548 0014 00       		.byte	0
+ 549 0015 02       		.uleb128 0x2
+ 550 0016 24       		.uleb128 0x24
+ 551 0017 00       		.byte	0
+ 552 0018 0B       		.uleb128 0xb
+ 553 0019 0B       		.uleb128 0xb
+ 554 001a 3E       		.uleb128 0x3e
+ 555 001b 0B       		.uleb128 0xb
+ 556 001c 03       		.uleb128 0x3
+ 557 001d 0E       		.uleb128 0xe
+ 558 001e 00       		.byte	0
+ 559 001f 00       		.byte	0
+ 560 0020 03       		.uleb128 0x3
+ 561 0021 24       		.uleb128 0x24
+ 562 0022 00       		.byte	0
+ 563 0023 0B       		.uleb128 0xb
+ 564 0024 0B       		.uleb128 0xb
+ 565 0025 3E       		.uleb128 0x3e
+ 566 0026 0B       		.uleb128 0xb
+ 567 0027 03       		.uleb128 0x3
+ 568 0028 08       		.uleb128 0x8
+ 569 0029 00       		.byte	0
+ 570 002a 00       		.byte	0
+ 571 002b 04       		.uleb128 0x4
+ 572 002c 16       		.uleb128 0x16
+ 573 002d 00       		.byte	0
+ 574 002e 03       		.uleb128 0x3
+ 575 002f 0E       		.uleb128 0xe
+ 576 0030 3A       		.uleb128 0x3a
+ 577 0031 0B       		.uleb128 0xb
+ 578 0032 3B       		.uleb128 0x3b
+ 579 0033 0B       		.uleb128 0xb
+ 580 0034 49       		.uleb128 0x49
+ 581 0035 13       		.uleb128 0x13
+ 582 0036 00       		.byte	0
+ 583 0037 00       		.byte	0
+ 584 0038 05       		.uleb128 0x5
+ 585 0039 35       		.uleb128 0x35
+ 586 003a 00       		.byte	0
+ 587 003b 49       		.uleb128 0x49
+ 588 003c 13       		.uleb128 0x13
+ 589 003d 00       		.byte	0
+ 590 003e 00       		.byte	0
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 21
 
 
- 535 0048 01       		.uleb128 0x1
- 536 0049 13       		.uleb128 0x13
- 537 004a 00       		.byte	0
- 538 004b 00       		.byte	0
- 539 004c 07       		.uleb128 0x7
- 540 004d 0D       		.uleb128 0xd
- 541 004e 00       		.byte	0
- 542 004f 03       		.uleb128 0x3
- 543 0050 0E       		.uleb128 0xe
- 544 0051 3A       		.uleb128 0x3a
- 545 0052 0B       		.uleb128 0xb
- 546 0053 3B       		.uleb128 0x3b
- 547 0054 0B       		.uleb128 0xb
- 548 0055 49       		.uleb128 0x49
- 549 0056 13       		.uleb128 0x13
- 550 0057 38       		.uleb128 0x38
- 551 0058 0A       		.uleb128 0xa
- 552 0059 00       		.byte	0
- 553 005a 00       		.byte	0
- 554 005b 08       		.uleb128 0x8
- 555 005c 01       		.uleb128 0x1
- 556 005d 01       		.byte	0x1
- 557 005e 49       		.uleb128 0x49
- 558 005f 13       		.uleb128 0x13
- 559 0060 01       		.uleb128 0x1
- 560 0061 13       		.uleb128 0x13
- 561 0062 00       		.byte	0
- 562 0063 00       		.byte	0
- 563 0064 09       		.uleb128 0x9
- 564 0065 21       		.uleb128 0x21
- 565 0066 00       		.byte	0
- 566 0067 49       		.uleb128 0x49
- 567 0068 13       		.uleb128 0x13
- 568 0069 2F       		.uleb128 0x2f
- 569 006a 0B       		.uleb128 0xb
- 570 006b 00       		.byte	0
- 571 006c 00       		.byte	0
- 572 006d 0A       		.uleb128 0xa
- 573 006e 2E       		.uleb128 0x2e
- 574 006f 00       		.byte	0
- 575 0070 3F       		.uleb128 0x3f
- 576 0071 0C       		.uleb128 0xc
- 577 0072 03       		.uleb128 0x3
- 578 0073 0E       		.uleb128 0xe
- 579 0074 3A       		.uleb128 0x3a
- 580 0075 0B       		.uleb128 0xb
- 581 0076 3B       		.uleb128 0x3b
- 582 0077 05       		.uleb128 0x5
- 583 0078 27       		.uleb128 0x27
- 584 0079 0C       		.uleb128 0xc
- 585 007a 11       		.uleb128 0x11
- 586 007b 01       		.uleb128 0x1
- 587 007c 12       		.uleb128 0x12
- 588 007d 01       		.uleb128 0x1
- 589 007e 40       		.uleb128 0x40
- 590 007f 06       		.uleb128 0x6
- 591 0080 9642     		.uleb128 0x2116
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 21
+ 591 003f 06       		.uleb128 0x6
+ 592 0040 13       		.uleb128 0x13
+ 593 0041 01       		.byte	0x1
+ 594 0042 0B       		.uleb128 0xb
+ 595 0043 0B       		.uleb128 0xb
+ 596 0044 3A       		.uleb128 0x3a
+ 597 0045 0B       		.uleb128 0xb
+ 598 0046 3B       		.uleb128 0x3b
+ 599 0047 0B       		.uleb128 0xb
+ 600 0048 01       		.uleb128 0x1
+ 601 0049 13       		.uleb128 0x13
+ 602 004a 00       		.byte	0
+ 603 004b 00       		.byte	0
+ 604 004c 07       		.uleb128 0x7
+ 605 004d 0D       		.uleb128 0xd
+ 606 004e 00       		.byte	0
+ 607 004f 03       		.uleb128 0x3
+ 608 0050 0E       		.uleb128 0xe
+ 609 0051 3A       		.uleb128 0x3a
+ 610 0052 0B       		.uleb128 0xb
+ 611 0053 3B       		.uleb128 0x3b
+ 612 0054 0B       		.uleb128 0xb
+ 613 0055 49       		.uleb128 0x49
+ 614 0056 13       		.uleb128 0x13
+ 615 0057 38       		.uleb128 0x38
+ 616 0058 0A       		.uleb128 0xa
+ 617 0059 00       		.byte	0
+ 618 005a 00       		.byte	0
+ 619 005b 08       		.uleb128 0x8
+ 620 005c 01       		.uleb128 0x1
+ 621 005d 01       		.byte	0x1
+ 622 005e 49       		.uleb128 0x49
+ 623 005f 13       		.uleb128 0x13
+ 624 0060 01       		.uleb128 0x1
+ 625 0061 13       		.uleb128 0x13
+ 626 0062 00       		.byte	0
+ 627 0063 00       		.byte	0
+ 628 0064 09       		.uleb128 0x9
+ 629 0065 21       		.uleb128 0x21
+ 630 0066 00       		.byte	0
+ 631 0067 49       		.uleb128 0x49
+ 632 0068 13       		.uleb128 0x13
+ 633 0069 2F       		.uleb128 0x2f
+ 634 006a 0B       		.uleb128 0xb
+ 635 006b 00       		.byte	0
+ 636 006c 00       		.byte	0
+ 637 006d 0A       		.uleb128 0xa
+ 638 006e 2E       		.uleb128 0x2e
+ 639 006f 00       		.byte	0
+ 640 0070 3F       		.uleb128 0x3f
+ 641 0071 0C       		.uleb128 0xc
+ 642 0072 03       		.uleb128 0x3
+ 643 0073 0E       		.uleb128 0xe
+ 644 0074 3A       		.uleb128 0x3a
+ 645 0075 0B       		.uleb128 0xb
+ 646 0076 3B       		.uleb128 0x3b
+ 647 0077 05       		.uleb128 0x5
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 22
 
 
- 592 0082 0C       		.uleb128 0xc
- 593 0083 00       		.byte	0
- 594 0084 00       		.byte	0
- 595 0085 0B       		.uleb128 0xb
- 596 0086 2E       		.uleb128 0x2e
- 597 0087 01       		.byte	0x1
- 598 0088 3F       		.uleb128 0x3f
- 599 0089 0C       		.uleb128 0xc
- 600 008a 03       		.uleb128 0x3
- 601 008b 0E       		.uleb128 0xe
- 602 008c 3A       		.uleb128 0x3a
- 603 008d 0B       		.uleb128 0xb
- 604 008e 3B       		.uleb128 0x3b
- 605 008f 05       		.uleb128 0x5
- 606 0090 27       		.uleb128 0x27
- 607 0091 0C       		.uleb128 0xc
- 608 0092 11       		.uleb128 0x11
- 609 0093 01       		.uleb128 0x1
- 610 0094 12       		.uleb128 0x12
- 611 0095 01       		.uleb128 0x1
- 612 0096 40       		.uleb128 0x40
- 613 0097 06       		.uleb128 0x6
- 614 0098 9642     		.uleb128 0x2116
- 615 009a 0C       		.uleb128 0xc
- 616 009b 01       		.uleb128 0x1
- 617 009c 13       		.uleb128 0x13
- 618 009d 00       		.byte	0
- 619 009e 00       		.byte	0
- 620 009f 0C       		.uleb128 0xc
- 621 00a0 34       		.uleb128 0x34
- 622 00a1 00       		.byte	0
- 623 00a2 03       		.uleb128 0x3
- 624 00a3 08       		.uleb128 0x8
- 625 00a4 3A       		.uleb128 0x3a
- 626 00a5 0B       		.uleb128 0xb
- 627 00a6 3B       		.uleb128 0x3b
- 628 00a7 05       		.uleb128 0x5
- 629 00a8 49       		.uleb128 0x49
- 630 00a9 13       		.uleb128 0x13
- 631 00aa 02       		.uleb128 0x2
- 632 00ab 0A       		.uleb128 0xa
- 633 00ac 00       		.byte	0
- 634 00ad 00       		.byte	0
- 635 00ae 0D       		.uleb128 0xd
- 636 00af 34       		.uleb128 0x34
- 637 00b0 00       		.byte	0
- 638 00b1 03       		.uleb128 0x3
- 639 00b2 0E       		.uleb128 0xe
- 640 00b3 3A       		.uleb128 0x3a
- 641 00b4 0B       		.uleb128 0xb
- 642 00b5 3B       		.uleb128 0x3b
- 643 00b6 05       		.uleb128 0x5
- 644 00b7 49       		.uleb128 0x49
- 645 00b8 13       		.uleb128 0x13
- 646 00b9 02       		.uleb128 0x2
- 647 00ba 0A       		.uleb128 0xa
- 648 00bb 00       		.byte	0
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 22
+ 648 0078 27       		.uleb128 0x27
+ 649 0079 0C       		.uleb128 0xc
+ 650 007a 11       		.uleb128 0x11
+ 651 007b 01       		.uleb128 0x1
+ 652 007c 12       		.uleb128 0x12
+ 653 007d 01       		.uleb128 0x1
+ 654 007e 40       		.uleb128 0x40
+ 655 007f 06       		.uleb128 0x6
+ 656 0080 9642     		.uleb128 0x2116
+ 657 0082 0C       		.uleb128 0xc
+ 658 0083 00       		.byte	0
+ 659 0084 00       		.byte	0
+ 660 0085 0B       		.uleb128 0xb
+ 661 0086 2E       		.uleb128 0x2e
+ 662 0087 00       		.byte	0
+ 663 0088 3F       		.uleb128 0x3f
+ 664 0089 0C       		.uleb128 0xc
+ 665 008a 03       		.uleb128 0x3
+ 666 008b 0E       		.uleb128 0xe
+ 667 008c 3A       		.uleb128 0x3a
+ 668 008d 0B       		.uleb128 0xb
+ 669 008e 3B       		.uleb128 0x3b
+ 670 008f 05       		.uleb128 0x5
+ 671 0090 27       		.uleb128 0x27
+ 672 0091 0C       		.uleb128 0xc
+ 673 0092 11       		.uleb128 0x11
+ 674 0093 01       		.uleb128 0x1
+ 675 0094 12       		.uleb128 0x12
+ 676 0095 01       		.uleb128 0x1
+ 677 0096 40       		.uleb128 0x40
+ 678 0097 06       		.uleb128 0x6
+ 679 0098 9742     		.uleb128 0x2117
+ 680 009a 0C       		.uleb128 0xc
+ 681 009b 00       		.byte	0
+ 682 009c 00       		.byte	0
+ 683 009d 0C       		.uleb128 0xc
+ 684 009e 2E       		.uleb128 0x2e
+ 685 009f 01       		.byte	0x1
+ 686 00a0 3F       		.uleb128 0x3f
+ 687 00a1 0C       		.uleb128 0xc
+ 688 00a2 03       		.uleb128 0x3
+ 689 00a3 0E       		.uleb128 0xe
+ 690 00a4 3A       		.uleb128 0x3a
+ 691 00a5 0B       		.uleb128 0xb
+ 692 00a6 3B       		.uleb128 0x3b
+ 693 00a7 05       		.uleb128 0x5
+ 694 00a8 27       		.uleb128 0x27
+ 695 00a9 0C       		.uleb128 0xc
+ 696 00aa 11       		.uleb128 0x11
+ 697 00ab 01       		.uleb128 0x1
+ 698 00ac 12       		.uleb128 0x12
+ 699 00ad 01       		.uleb128 0x1
+ 700 00ae 40       		.uleb128 0x40
+ 701 00af 06       		.uleb128 0x6
+ 702 00b0 9642     		.uleb128 0x2116
+ 703 00b2 0C       		.uleb128 0xc
+ 704 00b3 01       		.uleb128 0x1
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 23
 
 
- 649 00bc 00       		.byte	0
- 650 00bd 00       		.byte	0
- 651              		.section	.debug_loc,"",%progbits
- 652              	.Ldebug_loc0:
- 653              	.LLST0:
- 654 0000 00000000 		.4byte	.LFB0
- 655 0004 02000000 		.4byte	.LCFI0
- 656 0008 0200     		.2byte	0x2
- 657 000a 7D       		.byte	0x7d
- 658 000b 00       		.sleb128 0
- 659 000c 02000000 		.4byte	.LCFI0
- 660 0010 04000000 		.4byte	.LCFI1
- 661 0014 0200     		.2byte	0x2
- 662 0016 7D       		.byte	0x7d
- 663 0017 08       		.sleb128 8
- 664 0018 04000000 		.4byte	.LCFI1
- 665 001c 18000000 		.4byte	.LFE0
- 666 0020 0200     		.2byte	0x2
- 667 0022 77       		.byte	0x77
- 668 0023 08       		.sleb128 8
- 669 0024 00000000 		.4byte	0
- 670 0028 00000000 		.4byte	0
- 671              	.LLST1:
- 672 002c 00000000 		.4byte	.LFB1
- 673 0030 02000000 		.4byte	.LCFI2
- 674 0034 0200     		.2byte	0x2
- 675 0036 7D       		.byte	0x7d
- 676 0037 00       		.sleb128 0
- 677 0038 02000000 		.4byte	.LCFI2
- 678 003c 04000000 		.4byte	.LCFI3
- 679 0040 0200     		.2byte	0x2
- 680 0042 7D       		.byte	0x7d
- 681 0043 08       		.sleb128 8
- 682 0044 04000000 		.4byte	.LCFI3
- 683 0048 06000000 		.4byte	.LCFI4
- 684 004c 0200     		.2byte	0x2
- 685 004e 7D       		.byte	0x7d
- 686 004f 10       		.sleb128 16
- 687 0050 06000000 		.4byte	.LCFI4
- 688 0054 86000000 		.4byte	.LFE1
- 689 0058 0200     		.2byte	0x2
- 690 005a 77       		.byte	0x77
- 691 005b 10       		.sleb128 16
- 692 005c 00000000 		.4byte	0
- 693 0060 00000000 		.4byte	0
- 694              	.LLST2:
- 695 0064 00000000 		.4byte	.LFB2
- 696 0068 02000000 		.4byte	.LCFI5
- 697 006c 0200     		.2byte	0x2
- 698 006e 7D       		.byte	0x7d
- 699 006f 00       		.sleb128 0
- 700 0070 02000000 		.4byte	.LCFI5
- 701 0074 04000000 		.4byte	.LCFI6
- 702 0078 0200     		.2byte	0x2
- 703 007a 7D       		.byte	0x7d
- 704 007b 08       		.sleb128 8
- 705 007c 04000000 		.4byte	.LCFI6
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 23
+ 705 00b4 13       		.uleb128 0x13
+ 706 00b5 00       		.byte	0
+ 707 00b6 00       		.byte	0
+ 708 00b7 0D       		.uleb128 0xd
+ 709 00b8 34       		.uleb128 0x34
+ 710 00b9 00       		.byte	0
+ 711 00ba 03       		.uleb128 0x3
+ 712 00bb 08       		.uleb128 0x8
+ 713 00bc 3A       		.uleb128 0x3a
+ 714 00bd 0B       		.uleb128 0xb
+ 715 00be 3B       		.uleb128 0x3b
+ 716 00bf 05       		.uleb128 0x5
+ 717 00c0 49       		.uleb128 0x49
+ 718 00c1 13       		.uleb128 0x13
+ 719 00c2 02       		.uleb128 0x2
+ 720 00c3 0A       		.uleb128 0xa
+ 721 00c4 00       		.byte	0
+ 722 00c5 00       		.byte	0
+ 723 00c6 0E       		.uleb128 0xe
+ 724 00c7 34       		.uleb128 0x34
+ 725 00c8 00       		.byte	0
+ 726 00c9 03       		.uleb128 0x3
+ 727 00ca 0E       		.uleb128 0xe
+ 728 00cb 3A       		.uleb128 0x3a
+ 729 00cc 0B       		.uleb128 0xb
+ 730 00cd 3B       		.uleb128 0x3b
+ 731 00ce 05       		.uleb128 0x5
+ 732 00cf 49       		.uleb128 0x49
+ 733 00d0 13       		.uleb128 0x13
+ 734 00d1 02       		.uleb128 0x2
+ 735 00d2 0A       		.uleb128 0xa
+ 736 00d3 00       		.byte	0
+ 737 00d4 00       		.byte	0
+ 738 00d5 00       		.byte	0
+ 739              		.section	.debug_loc,"",%progbits
+ 740              	.Ldebug_loc0:
+ 741              	.LLST0:
+ 742 0000 00000000 		.4byte	.LFB0
+ 743 0004 02000000 		.4byte	.LCFI0
+ 744 0008 0200     		.2byte	0x2
+ 745 000a 7D       		.byte	0x7d
+ 746 000b 00       		.sleb128 0
+ 747 000c 02000000 		.4byte	.LCFI0
+ 748 0010 04000000 		.4byte	.LCFI1
+ 749 0014 0200     		.2byte	0x2
+ 750 0016 7D       		.byte	0x7d
+ 751 0017 08       		.sleb128 8
+ 752 0018 04000000 		.4byte	.LCFI1
+ 753 001c 18000000 		.4byte	.LFE0
+ 754 0020 0200     		.2byte	0x2
+ 755 0022 77       		.byte	0x77
+ 756 0023 08       		.sleb128 8
+ 757 0024 00000000 		.4byte	0
+ 758 0028 00000000 		.4byte	0
+ 759              	.LLST1:
+ 760 002c 00000000 		.4byte	.LFB1
+ 761 0030 02000000 		.4byte	.LCFI2
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 24
 
 
- 706 0080 36000000 		.4byte	.LFE2
- 707 0084 0200     		.2byte	0x2
- 708 0086 77       		.byte	0x77
- 709 0087 08       		.sleb128 8
- 710 0088 00000000 		.4byte	0
- 711 008c 00000000 		.4byte	0
- 712              		.section	.debug_aranges,"",%progbits
- 713 0000 2C000000 		.4byte	0x2c
- 714 0004 0200     		.2byte	0x2
- 715 0006 00000000 		.4byte	.Ldebug_info0
- 716 000a 04       		.byte	0x4
- 717 000b 00       		.byte	0
- 718 000c 0000     		.2byte	0
- 719 000e 0000     		.2byte	0
- 720 0010 00000000 		.4byte	.LFB0
- 721 0014 18000000 		.4byte	.LFE0-.LFB0
- 722 0018 00000000 		.4byte	.LFB1
- 723 001c 86000000 		.4byte	.LFE1-.LFB1
- 724 0020 00000000 		.4byte	.LFB2
- 725 0024 36000000 		.4byte	.LFE2-.LFB2
- 726 0028 00000000 		.4byte	0
- 727 002c 00000000 		.4byte	0
- 728              		.section	.debug_ranges,"",%progbits
- 729              	.Ldebug_ranges0:
- 730 0000 00000000 		.4byte	.LFB0
- 731 0004 18000000 		.4byte	.LFE0
- 732 0008 00000000 		.4byte	.LFB1
- 733 000c 86000000 		.4byte	.LFE1
- 734 0010 00000000 		.4byte	.LFB2
- 735 0014 36000000 		.4byte	.LFE2
- 736 0018 00000000 		.4byte	0
- 737 001c 00000000 		.4byte	0
- 738              		.section	.debug_line,"",%progbits
- 739              	.Ldebug_line0:
- 740 0000 AE000000 		.section	.debug_str,"MS",%progbits,1
- 740      02004F00 
- 740      00000201 
- 740      FB0E0D00 
- 740      01010101 
- 741              	.LASF15:
- 742 0000 72656731 		.ascii	"reg16\000"
- 742      3600
- 743              	.LASF28:
- 744 0006 73686966 		.ascii	"shift\000"
- 744      7400
- 745              	.LASF17:
- 746 000c 43414E5F 		.ascii	"CAN_DATA_BYTES\000"
- 746      44415441 
- 746      5F425954 
- 746      455300
- 747              	.LASF23:
- 748 001b 7278616D 		.ascii	"rxamr\000"
- 748      7200
- 749              	.LASF19:
- 750 0021 43414E5F 		.ascii	"CAN_REG_32\000"
- 750      5245475F 
- 750      333200
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 24
+ 762 0034 0200     		.2byte	0x2
+ 763 0036 7D       		.byte	0x7d
+ 764 0037 00       		.sleb128 0
+ 765 0038 02000000 		.4byte	.LCFI2
+ 766 003c 04000000 		.4byte	.LCFI3
+ 767 0040 0200     		.2byte	0x2
+ 768 0042 7D       		.byte	0x7d
+ 769 0043 04       		.sleb128 4
+ 770 0044 04000000 		.4byte	.LCFI3
+ 771 0048 18000000 		.4byte	.LFE1
+ 772 004c 0200     		.2byte	0x2
+ 773 004e 77       		.byte	0x77
+ 774 004f 04       		.sleb128 4
+ 775 0050 00000000 		.4byte	0
+ 776 0054 00000000 		.4byte	0
+ 777              	.LLST2:
+ 778 0058 00000000 		.4byte	.LFB2
+ 779 005c 02000000 		.4byte	.LCFI4
+ 780 0060 0200     		.2byte	0x2
+ 781 0062 7D       		.byte	0x7d
+ 782 0063 00       		.sleb128 0
+ 783 0064 02000000 		.4byte	.LCFI4
+ 784 0068 04000000 		.4byte	.LCFI5
+ 785 006c 0200     		.2byte	0x2
+ 786 006e 7D       		.byte	0x7d
+ 787 006f 08       		.sleb128 8
+ 788 0070 04000000 		.4byte	.LCFI5
+ 789 0074 06000000 		.4byte	.LCFI6
+ 790 0078 0200     		.2byte	0x2
+ 791 007a 7D       		.byte	0x7d
+ 792 007b 10       		.sleb128 16
+ 793 007c 06000000 		.4byte	.LCFI6
+ 794 0080 9A000000 		.4byte	.LFE2
+ 795 0084 0200     		.2byte	0x2
+ 796 0086 77       		.byte	0x77
+ 797 0087 10       		.sleb128 16
+ 798 0088 00000000 		.4byte	0
+ 799 008c 00000000 		.4byte	0
+ 800              	.LLST3:
+ 801 0090 00000000 		.4byte	.LFB3
+ 802 0094 02000000 		.4byte	.LCFI7
+ 803 0098 0200     		.2byte	0x2
+ 804 009a 7D       		.byte	0x7d
+ 805 009b 00       		.sleb128 0
+ 806 009c 02000000 		.4byte	.LCFI7
+ 807 00a0 04000000 		.4byte	.LCFI8
+ 808 00a4 0200     		.2byte	0x2
+ 809 00a6 7D       		.byte	0x7d
+ 810 00a7 08       		.sleb128 8
+ 811 00a8 04000000 		.4byte	.LCFI8
+ 812 00ac 4E000000 		.4byte	.LFE3
+ 813 00b0 0200     		.2byte	0x2
+ 814 00b2 77       		.byte	0x77
+ 815 00b3 08       		.sleb128 8
+ 816 00b4 00000000 		.4byte	0
+ 817 00b8 00000000 		.4byte	0
+ 818              		.section	.debug_aranges,"",%progbits
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 25
 
 
- 751              	.LASF3:
- 752 002c 73686F72 		.ascii	"short unsigned int\000"
- 752      7420756E 
- 752      7369676E 
- 752      65642069 
- 752      6E7400
- 753              	.LASF18:
- 754 003f 62797465 		.ascii	"byte\000"
- 754      00
- 755              	.LASF22:
- 756 0044 72786461 		.ascii	"rxdata\000"
- 756      746100
- 757              	.LASF26:
- 758 004b 72786163 		.ascii	"rxacrd\000"
- 758      726400
- 759              	.LASF11:
- 760 0052 666C6F61 		.ascii	"float\000"
- 760      7400
- 761              	.LASF1:
- 762 0058 756E7369 		.ascii	"unsigned char\000"
- 762      676E6564 
- 762      20636861 
- 762      7200
- 763              	.LASF21:
- 764 0066 72786964 		.ascii	"rxid\000"
- 764      00
- 765              	.LASF14:
- 766 006b 72656738 		.ascii	"reg8\000"
- 766      00
- 767              	.LASF5:
- 768 0070 6C6F6E67 		.ascii	"long unsigned int\000"
- 768      20756E73 
- 768      69676E65 
- 768      6420696E 
- 768      7400
- 769              	.LASF9:
- 770 0082 75696E74 		.ascii	"uint8\000"
- 770      3800
- 771              	.LASF30:
- 772 0088 43414E5F 		.ascii	"CAN_ISR\000"
- 772      49535200 
- 773              	.LASF12:
- 774 0090 646F7562 		.ascii	"double\000"
- 774      6C6500
- 775              	.LASF29:
- 776 0097 43414E5F 		.ascii	"CAN_BusOffIsr\000"
- 776      4275734F 
- 776      66664973 
- 776      7200
- 777              	.LASF10:
- 778 00a5 75696E74 		.ascii	"uint16\000"
- 778      313600
- 779              	.LASF34:
- 780 00ac 43414E5F 		.ascii	"CAN_MsgRXIsr\000"
- 780      4D736752 
- 780      58497372 
- 780      00
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 25
+ 819 0000 34000000 		.4byte	0x34
+ 820 0004 0200     		.2byte	0x2
+ 821 0006 00000000 		.4byte	.Ldebug_info0
+ 822 000a 04       		.byte	0x4
+ 823 000b 00       		.byte	0
+ 824 000c 0000     		.2byte	0
+ 825 000e 0000     		.2byte	0
+ 826 0010 00000000 		.4byte	.LFB0
+ 827 0014 18000000 		.4byte	.LFE0-.LFB0
+ 828 0018 00000000 		.4byte	.LFB1
+ 829 001c 18000000 		.4byte	.LFE1-.LFB1
+ 830 0020 00000000 		.4byte	.LFB2
+ 831 0024 9A000000 		.4byte	.LFE2-.LFB2
+ 832 0028 00000000 		.4byte	.LFB3
+ 833 002c 4E000000 		.4byte	.LFE3-.LFB3
+ 834 0030 00000000 		.4byte	0
+ 835 0034 00000000 		.4byte	0
+ 836              		.section	.debug_ranges,"",%progbits
+ 837              	.Ldebug_ranges0:
+ 838 0000 00000000 		.4byte	.LFB0
+ 839 0004 18000000 		.4byte	.LFE0
+ 840 0008 00000000 		.4byte	.LFB1
+ 841 000c 18000000 		.4byte	.LFE1
+ 842 0010 00000000 		.4byte	.LFB2
+ 843 0014 9A000000 		.4byte	.LFE2
+ 844 0018 00000000 		.4byte	.LFB3
+ 845 001c 4E000000 		.4byte	.LFE3
+ 846 0020 00000000 		.4byte	0
+ 847 0024 00000000 		.4byte	0
+ 848              		.section	.debug_line,"",%progbits
+ 849              	.Ldebug_line0:
+ 850 0000 BF000000 		.section	.debug_str,"MS",%progbits,1
+ 850      02004F00 
+ 850      00000201 
+ 850      FB0E0D00 
+ 850      01010101 
+ 851              	.LASF15:
+ 852 0000 72656731 		.ascii	"reg16\000"
+ 852      3600
+ 853              	.LASF30:
+ 854 0006 73686966 		.ascii	"shift\000"
+ 854      7400
+ 855              	.LASF17:
+ 856 000c 43414E5F 		.ascii	"CAN_DATA_BYTES\000"
+ 856      44415441 
+ 856      5F425954 
+ 856      455300
+ 857              	.LASF23:
+ 858 001b 7278616D 		.ascii	"rxamr\000"
+ 858      7200
+ 859              	.LASF19:
+ 860 0021 43414E5F 		.ascii	"CAN_REG_32\000"
+ 860      5245475F 
+ 860      333200
+ 861              	.LASF3:
+ 862 002c 73686F72 		.ascii	"short unsigned int\000"
+ 862      7420756E 
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 26
 
 
- 781              	.LASF8:
- 782 00b9 756E7369 		.ascii	"unsigned int\000"
- 782      676E6564 
- 782      20696E74 
- 782      00
- 783              	.LASF7:
- 784 00c6 6C6F6E67 		.ascii	"long long unsigned int\000"
- 784      206C6F6E 
- 784      6720756E 
- 784      7369676E 
- 784      65642069 
- 785              	.LASF27:
- 786 00dd 43414E5F 		.ascii	"CAN_RX_STRUCT\000"
- 786      52585F53 
- 786      54525543 
- 786      5400
- 787              	.LASF20:
- 788 00eb 7278636D 		.ascii	"rxcmd\000"
- 788      6400
- 789              	.LASF33:
- 790 00f1 433A5C55 		.ascii	"C:\\Users\\Chai Yang\\Documents\\GitHub\\Node-Eleph"
- 790      73657273 
- 790      5C436861 
- 790      69205961 
- 790      6E675C44 
- 791 011f 616E745C 		.ascii	"ant\\Node-Elephant\\Node-Elephant.cydsn\000"
- 791      4E6F6465 
- 791      2D456C65 
- 791      7068616E 
- 791      745C4E6F 
- 792              	.LASF16:
- 793 0145 73697A65 		.ascii	"sizetype\000"
- 793      74797065 
- 793      00
- 794              	.LASF25:
- 795 014e 7278616D 		.ascii	"rxamrd\000"
- 795      726400
- 796              	.LASF6:
- 797 0155 6C6F6E67 		.ascii	"long long int\000"
- 797      206C6F6E 
- 797      6720696E 
- 797      7400
- 798              	.LASF13:
- 799 0163 63686172 		.ascii	"char\000"
- 799      00
- 800              	.LASF2:
- 801 0168 73686F72 		.ascii	"short int\000"
- 801      7420696E 
- 801      7400
- 802              	.LASF24:
- 803 0172 72786163 		.ascii	"rxacr\000"
- 803      7200
- 804              	.LASF31:
- 805 0178 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
- 805      4320342E 
- 805      372E3320 
- 805      32303133 
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccmcwaso.s 			page 26
+ 862      7369676E 
+ 862      65642069 
+ 862      6E7400
+ 863              	.LASF18:
+ 864 003f 62797465 		.ascii	"byte\000"
+ 864      00
+ 865              	.LASF22:
+ 866 0044 72786461 		.ascii	"rxdata\000"
+ 866      746100
+ 867              	.LASF26:
+ 868 004b 72786163 		.ascii	"rxacrd\000"
+ 868      726400
+ 869              	.LASF11:
+ 870 0052 666C6F61 		.ascii	"float\000"
+ 870      7400
+ 871              	.LASF1:
+ 872 0058 756E7369 		.ascii	"unsigned char\000"
+ 872      676E6564 
+ 872      20636861 
+ 872      7200
+ 873              	.LASF21:
+ 874 0066 72786964 		.ascii	"rxid\000"
+ 874      00
+ 875              	.LASF14:
+ 876 006b 72656738 		.ascii	"reg8\000"
+ 876      00
+ 877              	.LASF5:
+ 878 0070 6C6F6E67 		.ascii	"long unsigned int\000"
+ 878      20756E73 
+ 878      69676E65 
+ 878      6420696E 
+ 878      7400
+ 879              	.LASF9:
+ 880 0082 75696E74 		.ascii	"uint8\000"
+ 880      3800
+ 881              	.LASF31:
+ 882 0088 43414E5F 		.ascii	"CAN_ISR\000"
+ 882      49535200 
+ 883              	.LASF12:
+ 884 0090 646F7562 		.ascii	"double\000"
+ 884      6C6500
+ 885              	.LASF28:
+ 886 0097 43414E5F 		.ascii	"CAN_BusOffIsr\000"
+ 886      4275734F 
+ 886      66664973 
+ 886      7200
+ 887              	.LASF10:
+ 888 00a5 75696E74 		.ascii	"uint16\000"
+ 888      313600
+ 889              	.LASF35:
+ 890 00ac 43414E5F 		.ascii	"CAN_MsgRXIsr\000"
+ 890      4D736752 
+ 890      58497372 
+ 890      00
+ 891              	.LASF8:
+ 892 00b9 756E7369 		.ascii	"unsigned int\000"
+ 892      676E6564 
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 27
 
 
- 805      30333132 
- 806 01ab 616E6368 		.ascii	"anch revision 196615]\000"
- 806      20726576 
- 806      6973696F 
- 806      6E203139 
- 806      36363135 
- 807              	.LASF32:
- 808 01c1 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\CAN_INT.c\000"
- 808      6E657261 
- 808      7465645F 
- 808      536F7572 
- 808      63655C50 
- 809              	.LASF4:
- 810 01e4 6C6F6E67 		.ascii	"long int\000"
- 810      20696E74 
- 810      00
- 811              	.LASF0:
- 812 01ed 7369676E 		.ascii	"signed char\000"
- 812      65642063 
- 812      68617200 
- 813              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br
+ 892      20696E74 
+ 892      00
+ 893              	.LASF7:
+ 894 00c6 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 894      206C6F6E 
+ 894      6720756E 
+ 894      7369676E 
+ 894      65642069 
+ 895              	.LASF27:
+ 896 00dd 43414E5F 		.ascii	"CAN_RX_STRUCT\000"
+ 896      52585F53 
+ 896      54525543 
+ 896      5400
+ 897              	.LASF20:
+ 898 00eb 7278636D 		.ascii	"rxcmd\000"
+ 898      6400
+ 899              	.LASF34:
+ 900 00f1 433A5C55 		.ascii	"C:\\Users\\Chai Yang\\Documents\\GitHub\\Node-Eleph"
+ 900      73657273 
+ 900      5C436861 
+ 900      69205961 
+ 900      6E675C44 
+ 901 011f 616E745C 		.ascii	"ant\\Node-Elephant\\Node-Elephant.cydsn\000"
+ 901      4E6F6465 
+ 901      2D456C65 
+ 901      7068616E 
+ 901      745C4E6F 
+ 902              	.LASF16:
+ 903 0145 73697A65 		.ascii	"sizetype\000"
+ 903      74797065 
+ 903      00
+ 904              	.LASF25:
+ 905 014e 7278616D 		.ascii	"rxamrd\000"
+ 905      726400
+ 906              	.LASF6:
+ 907 0155 6C6F6E67 		.ascii	"long long int\000"
+ 907      206C6F6E 
+ 907      6720696E 
+ 907      7400
+ 908              	.LASF13:
+ 909 0163 63686172 		.ascii	"char\000"
+ 909      00
+ 910              	.LASF2:
+ 911 0168 73686F72 		.ascii	"short int\000"
+ 911      7420696E 
+ 911      7400
+ 912              	.LASF24:
+ 913 0172 72786163 		.ascii	"rxacr\000"
+ 913      7200
+ 914              	.LASF32:
+ 915 0178 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 915      4320342E 
+ 915      372E3320 
+ 915      32303133 
+ 915      30333132 
+ 916 01ab 616E6368 		.ascii	"anch revision 196615]\000"
+ 916      20726576 
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cctnodOs.s 			page 28
+
+
+ 916      6973696F 
+ 916      6E203139 
+ 916      36363135 
+ 917              	.LASF33:
+ 918 01c1 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\CAN_INT.c\000"
+ 918      6E657261 
+ 918      7465645F 
+ 918      536F7572 
+ 918      63655C50 
+ 919              	.LASF4:
+ 920 01e4 6C6F6E67 		.ascii	"long int\000"
+ 920      20696E74 
+ 920      00
+ 921              	.LASF29:
+ 922 01ed 43414E5F 		.ascii	"CAN_MsgTXIsr\000"
+ 922      4D736754 
+ 922      58497372 
+ 922      00
+ 923              	.LASF0:
+ 924 01fa 7369676E 		.ascii	"signed char\000"
+ 924      65642063 
+ 924      68617200 
+ 925              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

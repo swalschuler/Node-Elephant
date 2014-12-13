@@ -13,11 +13,12 @@
 #include "calibrate.h"
 
 /*******************************************************************************
-* Function Name: ADC_SAR_TempBufDmaInit()
+* Function Name: calAll()
 ********************************************************************************
 *
 * Summary:
-*  Calibrates all and then writes the values to EEPROM 
+*  Calibrates all sensors and then writes the values to EEPROM. Values
+*  are saved in counts not volts. Do (counts/4096)*vref to get voltage. 
 *
 * Parameters:
 *  None.
@@ -25,6 +26,9 @@
 * Return:
 *  None.
 *
+* Note: 
+*  There is code that prints to the LCD. This will evntually be removed 
+*  and code for printing to a terminal will be implemeted
 *
 *******************************************************************************/
 void calAll(void)           //calibrate all sensors

@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Node-Elephant\Node-Elephant\Header Files\calibrate.h">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Node-Elephant\Node-Elephant\Source Files\calibrate.c">
 <ExpandedNodeIds>
 <v>Node-Elephant</v>
 <v>Node-Elephant\Node-Elephant</v>
@@ -154,6 +154,9 @@
 <v>Node-Elephant\Node-Elephant\Generated_Source\PSoC5\project.h</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
+<v>Node-Elephant</v>
+<v>Node-Elephant\Node-Elephant</v>
+<v>Node-Elephant\Node-Elephant\TopDesign.cysch</v>
 <v>Node-Elephant\Node-Elephant\Node-Elephant.cydwr</v>
 <v>Node-Elephant\Node-Elephant\Header Files</v>
 <v>Node-Elephant\Node-Elephant\Header Files\calibrate.h</v>
@@ -199,9 +202,6 @@
 <v>Node-Elephant\Node-Elephant\Generated_Source\PSoC5\CAN</v>
 <v>Node-Elephant\Node-Elephant\Generated_Source\PSoC5\CAN\CAN.c</v>
 <v>Node-Elephant\Node-Elephant\Generated_Source\PSoC5\CAN\CAN.h</v>
-<v>Node-Elephant\Node-Elephant\Generated_Source\PSoC5\CAN\CAN_INT.c</v>
-<v>Node-Elephant\Node-Elephant\Generated_Source\PSoC5\CAN\CAN_PM.c</v>
-<v>Node-Elephant\Node-Elephant\Generated_Source\PSoC5\CAN\CAN_TX_RX_func.c</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">

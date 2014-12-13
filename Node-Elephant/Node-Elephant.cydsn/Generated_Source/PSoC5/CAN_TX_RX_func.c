@@ -24,7 +24,11 @@
 #include "CAN.h"
 
 /* `#START TX_RX_FUNCTION` */
-
+extern uint8_t Tx0_Throttle[4];       //transmission data for throttle one and two
+extern uint8_t Tx1_BrakeSteer[6];     //transmission data for brake 1 and 2 and steering
+extern uint8_t Tx2_Error;          //transmission data for error/okay code
+extern uint8_t Rx_0;   
+uint8 i;        //for loop 
 /* `#END` */
 
 
@@ -185,7 +189,10 @@ void CAN_TxCancel(uint8 bufferId)
         else
         {
             /* `#START MESSAGE_0_TRASMITTED` */
-
+            for(i = 0; i < 4; i++)
+            {
+                CAN_TX_DATA_BYTE(0,i) = Tx0_Throttle[i];        //transmit each byte for throttle, mailbox 0
+            }
             /* `#END` */
             
             CY_SET_REG32((reg32 *) &CAN_TX[0u].txcmd, CAN_SEND_MESSAGE);
@@ -229,7 +236,10 @@ void CAN_TxCancel(uint8 bufferId)
         else
         {
             /* `#START MESSAGE_1_TRASMITTED` */
-
+            for(i = 0; i < 6; i++)
+            {
+                CAN_TX_DATA_BYTE(1,i) = Tx1_BrakeSteer[i];        //transmit each byte for brakes and steering, mailbox 1
+            }
             /* `#END` */
             
             CY_SET_REG32((reg32 *) & CAN_TX[1u].txcmd, CAN_SEND_MESSAGE);
@@ -273,7 +283,9 @@ void CAN_TxCancel(uint8 bufferId)
         else
         {
             /* `#START MESSAGE_2_TRASMITTED` */
-
+            
+            CAN_TX_DATA_BYTE1(2) = Tx2_Error;        //transmit error, mailbox 2; accessing byte 1
+            
             /* `#END` */
             
             CY_SET_REG32((reg32 *) & CAN_TX[2u].txcmd, CAN_SEND_MESSAGE);

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 1
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccXHcRNB.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 1
   22:.\main.c      **** 
   23:.\main.c      **** int main()
   24:.\main.c      **** {
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 2
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccXHcRNB.s 			page 2
 
 
   31              		.loc 1 24 0
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 1
   67 0026 4FF00000 		mov	r0, #0
   68 002a 4FF00001 		mov	r1, #0
   69 002e FFF7FEFF 		bl	LCD_Position
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 3
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccXHcRNB.s 			page 3
 
 
   43:.\main.c      ****     LCD_PrintString("Throttle 1 AVG:");
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 1
   89 0056 B2FBF3F3 		udiv	r3, r2, r3
   90 005a 7B61     		str	r3, [r7, #20]
   50:.\main.c      ****             throttle2 /= buffSize;
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 4
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccXHcRNB.s 			page 4
 
 
   91              		.loc 1 50 0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 1
   63:.\main.c      ****             buffSize = 0;
  135              		.loc 1 63 0
  136 00b8 4FF00003 		mov	r3, #0
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 5
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccXHcRNB.s 			page 5
 
 
  137 00bc FB70     		strb	r3, [r7, #3]
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 1
  184              		.loc 1 75 0
  185 0124 8CE7     		b	.L5
  186              		.cfi_endproc
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 6
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccXHcRNB.s 			page 6
 
 
  187              	.LFE56:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 1
  241 0061 00000000 		.4byte	.LASF6
  242 0065 02       		.uleb128 0x2
  243 0066 08       		.byte	0x8
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 7
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccXHcRNB.s 			page 7
 
 
  244 0067 07       		.byte	0x7
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 1
  298 00d9 07       		.uleb128 0x7
  299 00da 0E010000 		.4byte	.LASF17
  300 00de 01       		.byte	0x1
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 8
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccXHcRNB.s 			page 8
 
 
  301 00df 21       		.byte	0x21
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 1
  355 013d 45000000 		.4byte	0x45
  356 0141 09       		.uleb128 0x9
  357 0142 34000000 		.4byte	.LASF24
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 9
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccXHcRNB.s 			page 9
 
 
  358 0146 01       		.byte	0x1
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 1
  412 002e 24       		.uleb128 0x24
  413 002f 00       		.byte	0
  414 0030 0B       		.uleb128 0xb
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 10
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccXHcRNB.s 			page 10
 
 
  415 0031 0B       		.uleb128 0xb
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 1
  469 0068 08       		.uleb128 0x8
  470 0069 34       		.uleb128 0x34
  471 006a 00       		.byte	0
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 11
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccXHcRNB.s 			page 11
 
 
  472 006b 03       		.uleb128 0x3
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 1
  526 002f 20       		.sleb128 32
  527 0030 00000000 		.4byte	0
  528 0034 00000000 		.4byte	0
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 12
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccXHcRNB.s 			page 12
 
 
  529              		.section	.debug_aranges,"",%progbits
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 1
  563      32303133 
  563      30333132 
  564 0073 616E6368 		.ascii	"anch revision 196615]\000"
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 13
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccXHcRNB.s 			page 13
 
 
  564      20726576 
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 1
  589              	.LASF17:
  590 010e 7468726F 		.ascii	"throttle1\000"
  590      74746C65 
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxKUjah.s 			page 14
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccXHcRNB.s 			page 14
 
 
  590      3100
