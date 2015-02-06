@@ -65,7 +65,7 @@ extern uint8 CAN_initVar;
 /* TX/RX Function Enable */
 #define CAN_TX0_FUNC_ENABLE 1u
 #define CAN_TX1_FUNC_ENABLE 1u
-#define CAN_TX2_FUNC_ENABLE 1u
+#define CAN_TX2_FUNC_ENABLE 0u
 #define CAN_TX3_FUNC_ENABLE 0u
 #define CAN_TX4_FUNC_ENABLE 0u
 #define CAN_TX5_FUNC_ENABLE 0u
@@ -88,7 +88,7 @@ extern uint8 CAN_initVar;
 #define CAN_RX14_FUNC_ENABLE 0u
 #define CAN_RX15_FUNC_ENABLE 0u
 #define CAN_RX_MAILBOX_TYPE	0x1u
-#define CAN_TX_MAILBOX_TYPE	0x7u
+#define CAN_TX_MAILBOX_TYPE	0x3u
 
 
 /***************************************

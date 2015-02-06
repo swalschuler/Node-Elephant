@@ -12,7 +12,14 @@
 
 #include <project.h>
 #include <stdio.h>
+#include <math.h>
 
-void calAll(void);           //calibrate all prototype 
+#define MIN_COUNT 409			// 409 = 0.4993V
+#define MAX_COUNT 3686	        // 3686 = 4.4995V 
+
+void calAll(void);           // calibrate all prototype 
+double torqueImp(uint16 sensor1, uint16 sensor2, volatile uint8_t* errMsg);     // torque implausibility function prototype
+double brakePlaus(uint16 brake1, uint16 brake2, uint16 throttle1, uint16 throttle2, volatile uint8_t* errMsg); // brake plausibility function prototype
+void outOfRange(uint16 throttle1, uint16 throttle2, uint16 brake1, uint16 brake2, uint16 steering, volatile uint8_t* errMsg);       // out of range funciton prototype
 
 /* [] END OF FILE */

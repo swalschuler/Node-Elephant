@@ -9,17 +9,17 @@
     <peripheral>
       <name>Timer</name>
       <description>No description available</description>
-      <baseAddress>0x40006506</baseAddress>
+      <baseAddress>0x0</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0x92</size>
+        <size>0x0</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
         <register>
           <name>Timer_COUNTER</name>
           <description>UDB.A0 - Current Down Counter Value</description>
-          <addressOffset>0x0</addressOffset>
+          <addressOffset>0x40006504</addressOffset>
           <size>16</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -28,7 +28,7 @@
         <register>
           <name>Timer_PERIOD</name>
           <description>UDB.D0 - Assigned Period</description>
-          <addressOffset>0x20</addressOffset>
+          <addressOffset>0x40006524</addressOffset>
           <size>16</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -37,7 +37,7 @@
         <register>
           <name>Timer_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x70</addressOffset>
+          <addressOffset>0x40006575</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -83,7 +83,7 @@
         <register>
           <name>Timer_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x81</addressOffset>
+          <addressOffset>0x40006585</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -122,7 +122,7 @@
         <register>
           <name>Timer_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x91</addressOffset>
+          <addressOffset>0x40006595</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -249,17 +249,17 @@
     <peripheral>
       <name>CAN</name>
       <description>No description available</description>
-      <baseAddress>0x4000A000</baseAddress>
+      <baseAddress>0x0</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0x28D</size>
+        <size>0x0</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
         <register>
           <name>CAN_CSR_INT_SR</name>
           <description>The interrupt status register stores internal interrupt events. Once a bit is set it remains set until                it is cleared by writing a '1' to it. The interrupt enable register has no effect on the interrupt status                register. A pending interrupt occurs when the flag is set to '1'. To acknowledge an interrupt, set the                flag to '1'</description>
-          <addressOffset>0x0</addressOffset>
+          <addressOffset>0x4000A000</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -347,7 +347,7 @@
         <register>
           <name>CAN_CSR_BUF_SR</name>
           <description>These status indicators bundle the respective flags from all RxMessage and TxMessage buffers. Note All               flags are read only. To acknowledge a MsgAv flag, the CPU must write to the respective RxMessage buffer</description>
-          <addressOffset>0x8</addressOffset>
+          <addressOffset>0x4000A008</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -526,7 +526,7 @@
         <register>
           <name>CAN_CSR_ERR_SR</name>
           <description>Status indicators are provided to report the CAN controller error state, receive error count, and                transmit error count. Special flags report error counter values equal to or in excess of 96 errors are                available to indicate heavily disturbed bus situations. The transmitter error counter according to the                CAN standard. When it is greater than 255 Decomal, it is fixed at 255 Decimal.</description>
-          <addressOffset>0xC</addressOffset>
+          <addressOffset>0x4000A00C</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -572,7 +572,7 @@
         <register>
           <name>CAN0_TX0_ID</name>
           <description>CAN Tx Msg Identifier</description>
-          <addressOffset>0x24</addressOffset>
+          <addressOffset>0x4000A024</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -590,7 +590,7 @@
         <register>
           <name>CAN0_TX0_DH</name>
           <description>CAN Tx Msg Upper Data Bytes</description>
-          <addressOffset>0x28</addressOffset>
+          <addressOffset>0x4000A028</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -608,7 +608,7 @@
         <register>
           <name>CAN0_TX0_DL</name>
           <description>CAN Tx Msg Lower Data Bytes</description>
-          <addressOffset>0x2C</addressOffset>
+          <addressOffset>0x4000A02C</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -626,7 +626,7 @@
         <register>
           <name>CAN0_TX1_ID</name>
           <description>CAN Tx Msg Identifier</description>
-          <addressOffset>0x34</addressOffset>
+          <addressOffset>0x4000A034</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -644,7 +644,7 @@
         <register>
           <name>CAN0_TX1_DH</name>
           <description>CAN Tx Msg Upper Data Bytes</description>
-          <addressOffset>0x38</addressOffset>
+          <addressOffset>0x4000A038</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -662,7 +662,7 @@
         <register>
           <name>CAN0_TX1_DL</name>
           <description>CAN Tx Msg Lower Data Bytes</description>
-          <addressOffset>0x3C</addressOffset>
+          <addressOffset>0x4000A03C</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -680,7 +680,7 @@
         <register>
           <name>CAN0_TX2_ID</name>
           <description>CAN Tx Msg Identifier</description>
-          <addressOffset>0x44</addressOffset>
+          <addressOffset>0x4000A044</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -698,7 +698,7 @@
         <register>
           <name>CAN0_TX2_DH</name>
           <description>CAN Tx Msg Upper Data Bytes</description>
-          <addressOffset>0x48</addressOffset>
+          <addressOffset>0x4000A048</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -716,7 +716,7 @@
         <register>
           <name>CAN0_TX2_DL</name>
           <description>CAN Tx Msg Lower Data Bytes</description>
-          <addressOffset>0x4C</addressOffset>
+          <addressOffset>0x4000A04C</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -734,7 +734,7 @@
         <register>
           <name>CAN0_TX3_ID</name>
           <description>CAN Tx Msg Identifier</description>
-          <addressOffset>0x54</addressOffset>
+          <addressOffset>0x4000A054</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -752,7 +752,7 @@
         <register>
           <name>CAN0_TX3_DH</name>
           <description>CAN Tx Msg Upper Data Bytes</description>
-          <addressOffset>0x58</addressOffset>
+          <addressOffset>0x4000A058</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -770,7 +770,7 @@
         <register>
           <name>CAN0_TX3_DL</name>
           <description>CAN Tx Msg Lower Data Bytes</description>
-          <addressOffset>0x5C</addressOffset>
+          <addressOffset>0x4000A05C</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -788,7 +788,7 @@
         <register>
           <name>CAN0_TX4_ID</name>
           <description>CAN Tx Msg Identifier</description>
-          <addressOffset>0x64</addressOffset>
+          <addressOffset>0x4000A064</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -806,7 +806,7 @@
         <register>
           <name>CAN0_TX4_DH</name>
           <description>CAN Tx Msg Upper Data Bytes</description>
-          <addressOffset>0x68</addressOffset>
+          <addressOffset>0x4000A068</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -824,7 +824,7 @@
         <register>
           <name>CAN0_TX4_DL</name>
           <description>CAN Tx Msg Lower Data Bytes</description>
-          <addressOffset>0x6C</addressOffset>
+          <addressOffset>0x4000A06C</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -842,7 +842,7 @@
         <register>
           <name>CAN0_TX5_ID</name>
           <description>CAN Tx Msg Identifier</description>
-          <addressOffset>0x74</addressOffset>
+          <addressOffset>0x4000A074</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -860,7 +860,7 @@
         <register>
           <name>CAN0_TX5_DH</name>
           <description>CAN Tx Msg Upper Data Bytes</description>
-          <addressOffset>0x78</addressOffset>
+          <addressOffset>0x4000A078</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -878,7 +878,7 @@
         <register>
           <name>CAN0_TX5_DL</name>
           <description>CAN Tx Msg Lower Data Bytes</description>
-          <addressOffset>0x7C</addressOffset>
+          <addressOffset>0x4000A07C</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -896,7 +896,7 @@
         <register>
           <name>CAN0_TX6_ID</name>
           <description>CAN Tx Msg Identifier</description>
-          <addressOffset>0x84</addressOffset>
+          <addressOffset>0x4000A084</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -914,7 +914,7 @@
         <register>
           <name>CAN0_TX6_DH</name>
           <description>CAN Tx Msg Upper Data Bytes</description>
-          <addressOffset>0x88</addressOffset>
+          <addressOffset>0x4000A088</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -932,7 +932,7 @@
         <register>
           <name>CAN0_TX6_DL</name>
           <description>CAN Tx Msg Lower Data Bytes</description>
-          <addressOffset>0x8C</addressOffset>
+          <addressOffset>0x4000A08C</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -950,7 +950,7 @@
         <register>
           <name>CAN0_TX7_ID</name>
           <description>CAN Tx Msg Identifier</description>
-          <addressOffset>0x94</addressOffset>
+          <addressOffset>0x4000A094</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -968,7 +968,7 @@
         <register>
           <name>CAN0_TX7_DH</name>
           <description>CAN Tx Msg Upper Data Bytes</description>
-          <addressOffset>0x98</addressOffset>
+          <addressOffset>0x4000A098</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -986,7 +986,7 @@
         <register>
           <name>CAN0_TX7_DL</name>
           <description>CAN Tx Msg Lower Data Bytes</description>
-          <addressOffset>0x9C</addressOffset>
+          <addressOffset>0x4000A09C</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1004,7 +1004,7 @@
         <register>
           <name>CAN0_RX0_ID</name>
           <description>The register contains Rx Msg Identifier</description>
-          <addressOffset>0xA4</addressOffset>
+          <addressOffset>0x4000A0A4</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1029,7 +1029,7 @@
         <register>
           <name>CAN0_RX0_DH</name>
           <description>The register contains the Rx Msg Upper Data Bytes</description>
-          <addressOffset>0xA8</addressOffset>
+          <addressOffset>0x4000A0A8</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1047,7 +1047,7 @@
         <register>
           <name>CAN0_RX0_DL</name>
           <description>The register contains the Rx Msg Lover Data Bytes</description>
-          <addressOffset>0xAC</addressOffset>
+          <addressOffset>0x4000A0AC</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1065,7 +1065,7 @@
         <register>
           <name>CAN0_RX1_ID</name>
           <description>The register contains Rx Msg Identifier</description>
-          <addressOffset>0xC4</addressOffset>
+          <addressOffset>0x4000A0C4</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1090,7 +1090,7 @@
         <register>
           <name>CAN0_RX1_DH</name>
           <description>The register contains the Rx Msg Upper Data Bytes</description>
-          <addressOffset>0xC8</addressOffset>
+          <addressOffset>0x4000A0C8</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1108,7 +1108,7 @@
         <register>
           <name>CAN0_RX1_DL</name>
           <description>The register contains the Rx Msg Lover Data Bytes</description>
-          <addressOffset>0xCC</addressOffset>
+          <addressOffset>0x4000A0CC</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1126,7 +1126,7 @@
         <register>
           <name>CAN0_RX2_ID</name>
           <description>The register contains Rx Msg Identifier</description>
-          <addressOffset>0xE4</addressOffset>
+          <addressOffset>0x4000A0E4</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1151,7 +1151,7 @@
         <register>
           <name>CAN0_RX2_DH</name>
           <description>The register contains the Rx Msg Upper Data Bytes</description>
-          <addressOffset>0xE8</addressOffset>
+          <addressOffset>0x4000A0E8</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1169,7 +1169,7 @@
         <register>
           <name>CAN0_RX2_DL</name>
           <description>The register contains the Rx Msg Lover Data Bytes</description>
-          <addressOffset>0xEC</addressOffset>
+          <addressOffset>0x4000A0EC</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1187,7 +1187,7 @@
         <register>
           <name>CAN0_RX3_ID</name>
           <description>The register contains Rx Msg Identifier</description>
-          <addressOffset>0x104</addressOffset>
+          <addressOffset>0x4000A104</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1212,7 +1212,7 @@
         <register>
           <name>CAN0_RX3_DH</name>
           <description>The register contains the Rx Msg Upper Data Bytes</description>
-          <addressOffset>0x108</addressOffset>
+          <addressOffset>0x4000A108</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1230,7 +1230,7 @@
         <register>
           <name>CAN0_RX3_DL</name>
           <description>The register contains the Rx Msg Lover Data Bytes</description>
-          <addressOffset>0x10C</addressOffset>
+          <addressOffset>0x4000A10C</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1248,7 +1248,7 @@
         <register>
           <name>CAN0_RX4_ID</name>
           <description>The register contains Rx Msg Identifier</description>
-          <addressOffset>0x124</addressOffset>
+          <addressOffset>0x4000A124</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1273,7 +1273,7 @@
         <register>
           <name>CAN0_RX4_DH</name>
           <description>The register contains the Rx Msg Upper Data Bytes</description>
-          <addressOffset>0x128</addressOffset>
+          <addressOffset>0x4000A128</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1291,7 +1291,7 @@
         <register>
           <name>CAN0_RX4_DL</name>
           <description>The register contains the Rx Msg Lover Data Bytes</description>
-          <addressOffset>0x12C</addressOffset>
+          <addressOffset>0x4000A12C</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1309,7 +1309,7 @@
         <register>
           <name>CAN0_RX5_ID</name>
           <description>The register contains Rx Msg Identifier</description>
-          <addressOffset>0x144</addressOffset>
+          <addressOffset>0x4000A144</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1334,7 +1334,7 @@
         <register>
           <name>CAN0_RX5_DH</name>
           <description>The register contains the Rx Msg Upper Data Bytes</description>
-          <addressOffset>0x148</addressOffset>
+          <addressOffset>0x4000A148</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1352,7 +1352,7 @@
         <register>
           <name>CAN0_RX5_DL</name>
           <description>The register contains the Rx Msg Lover Data Bytes</description>
-          <addressOffset>0x14C</addressOffset>
+          <addressOffset>0x4000A14C</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1370,7 +1370,7 @@
         <register>
           <name>CAN0_RX6_ID</name>
           <description>The register contains Rx Msg Identifier</description>
-          <addressOffset>0x164</addressOffset>
+          <addressOffset>0x4000A164</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1395,7 +1395,7 @@
         <register>
           <name>CAN0_RX6_DH</name>
           <description>The register contains the Rx Msg Upper Data Bytes</description>
-          <addressOffset>0x168</addressOffset>
+          <addressOffset>0x4000A168</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1413,7 +1413,7 @@
         <register>
           <name>CAN0_RX6_DL</name>
           <description>The register contains the Rx Msg Lover Data Bytes</description>
-          <addressOffset>0x16C</addressOffset>
+          <addressOffset>0x4000A16C</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1431,7 +1431,7 @@
         <register>
           <name>CAN0_RX7_ID</name>
           <description>The register contains Rx Msg Identifier</description>
-          <addressOffset>0x184</addressOffset>
+          <addressOffset>0x4000A184</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1456,7 +1456,7 @@
         <register>
           <name>CAN0_RX7_DH</name>
           <description>The register contains the Rx Msg Upper Data Bytes</description>
-          <addressOffset>0x188</addressOffset>
+          <addressOffset>0x4000A188</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1474,7 +1474,7 @@
         <register>
           <name>CAN0_RX7_DL</name>
           <description>The register contains the Rx Msg Lover Data Bytes</description>
-          <addressOffset>0x18C</addressOffset>
+          <addressOffset>0x4000A18C</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1492,7 +1492,7 @@
         <register>
           <name>CAN0_RX8_ID</name>
           <description>The register contains Rx Msg Identifier</description>
-          <addressOffset>0x1A4</addressOffset>
+          <addressOffset>0x4000A1A4</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1517,7 +1517,7 @@
         <register>
           <name>CAN0_RX8_DH</name>
           <description>The register contains the Rx Msg Upper Data Bytes</description>
-          <addressOffset>0x1A8</addressOffset>
+          <addressOffset>0x4000A1A8</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1535,7 +1535,7 @@
         <register>
           <name>CAN0_RX8_DL</name>
           <description>The register contains the Rx Msg Lover Data Bytes</description>
-          <addressOffset>0x1AC</addressOffset>
+          <addressOffset>0x4000A1AC</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1553,7 +1553,7 @@
         <register>
           <name>CAN0_RX9_ID</name>
           <description>The register contains Rx Msg Identifier</description>
-          <addressOffset>0x1C4</addressOffset>
+          <addressOffset>0x4000A1C4</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1578,7 +1578,7 @@
         <register>
           <name>CAN0_RX9_DH</name>
           <description>The register contains the Rx Msg Upper Data Bytes</description>
-          <addressOffset>0x1C8</addressOffset>
+          <addressOffset>0x4000A1C8</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1596,7 +1596,7 @@
         <register>
           <name>CAN0_RX9_DL</name>
           <description>The register contains the Rx Msg Lover Data Bytes</description>
-          <addressOffset>0x1CC</addressOffset>
+          <addressOffset>0x4000A1CC</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1614,7 +1614,7 @@
         <register>
           <name>CAN0_RX10_ID</name>
           <description>The register contains Rx Msg Identifier</description>
-          <addressOffset>0x1E4</addressOffset>
+          <addressOffset>0x4000A1E4</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1639,7 +1639,7 @@
         <register>
           <name>CAN0_RX10_DH</name>
           <description>The register contains the Rx Msg Upper Data Bytes</description>
-          <addressOffset>0x1E8</addressOffset>
+          <addressOffset>0x4000A1E8</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1657,7 +1657,7 @@
         <register>
           <name>CAN0_RX10_DL</name>
           <description>The register contains the Rx Msg Lover Data Bytes</description>
-          <addressOffset>0x1EC</addressOffset>
+          <addressOffset>0x4000A1EC</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1675,7 +1675,7 @@
         <register>
           <name>CAN0_RX11_ID</name>
           <description>The register contains Rx Msg Identifier</description>
-          <addressOffset>0x204</addressOffset>
+          <addressOffset>0x4000A204</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1700,7 +1700,7 @@
         <register>
           <name>CAN0_RX11_DH</name>
           <description>The register contains the Rx Msg Upper Data Bytes</description>
-          <addressOffset>0x208</addressOffset>
+          <addressOffset>0x4000A208</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1718,7 +1718,7 @@
         <register>
           <name>CAN0_RX11_DL</name>
           <description>The register contains the Rx Msg Lover Data Bytes</description>
-          <addressOffset>0x20C</addressOffset>
+          <addressOffset>0x4000A20C</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1736,7 +1736,7 @@
         <register>
           <name>CAN0_RX12_ID</name>
           <description>The register contains Rx Msg Identifier</description>
-          <addressOffset>0x224</addressOffset>
+          <addressOffset>0x4000A224</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1761,7 +1761,7 @@
         <register>
           <name>CAN0_RX12_DH</name>
           <description>The register contains the Rx Msg Upper Data Bytes</description>
-          <addressOffset>0x228</addressOffset>
+          <addressOffset>0x4000A228</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1779,7 +1779,7 @@
         <register>
           <name>CAN0_RX12_DL</name>
           <description>The register contains the Rx Msg Lover Data Bytes</description>
-          <addressOffset>0x22C</addressOffset>
+          <addressOffset>0x4000A22C</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1797,7 +1797,7 @@
         <register>
           <name>CAN0_RX13_ID</name>
           <description>The register contains Rx Msg Identifier</description>
-          <addressOffset>0x244</addressOffset>
+          <addressOffset>0x4000A244</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1822,7 +1822,7 @@
         <register>
           <name>CAN0_RX13_DH</name>
           <description>The register contains the Rx Msg Upper Data Bytes</description>
-          <addressOffset>0x248</addressOffset>
+          <addressOffset>0x4000A248</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1840,7 +1840,7 @@
         <register>
           <name>CAN0_RX13_DL</name>
           <description>The register contains the Rx Msg Lover Data Bytes</description>
-          <addressOffset>0x24C</addressOffset>
+          <addressOffset>0x4000A24C</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1858,7 +1858,7 @@
         <register>
           <name>CAN0_RX14_ID</name>
           <description>The register contains Rx Msg Identifier</description>
-          <addressOffset>0x264</addressOffset>
+          <addressOffset>0x4000A264</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1883,7 +1883,7 @@
         <register>
           <name>CAN0_RX14_DH</name>
           <description>The register contains the Rx Msg Upper Data Bytes</description>
-          <addressOffset>0x268</addressOffset>
+          <addressOffset>0x4000A268</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1901,7 +1901,7 @@
         <register>
           <name>CAN0_RX14_DL</name>
           <description>The register contains the Rx Msg Lover Data Bytes</description>
-          <addressOffset>0x26C</addressOffset>
+          <addressOffset>0x4000A26C</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1919,7 +1919,7 @@
         <register>
           <name>CAN0_RX15_ID</name>
           <description>The register contains Rx Msg Identifier</description>
-          <addressOffset>0x284</addressOffset>
+          <addressOffset>0x4000A284</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1944,7 +1944,7 @@
         <register>
           <name>CAN0_RX15_DH</name>
           <description>The register contains the Rx Msg Upper Data Bytes</description>
-          <addressOffset>0x288</addressOffset>
+          <addressOffset>0x4000A288</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1962,7 +1962,7 @@
         <register>
           <name>CAN0_RX15_DL</name>
           <description>The register contains the Rx Msg Lover Data Bytes</description>
-          <addressOffset>0x28C</addressOffset>
+          <addressOffset>0x4000A28C</addressOffset>
           <size>32</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1982,17 +1982,17 @@
     <peripheral>
       <name>ADC_SAR_SAR</name>
       <description>SAR ADC</description>
-      <baseAddress>0x40004616</baseAddress>
+      <baseAddress>0x0</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0x158D</size>
+        <size>0x0</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
         <register>
           <name>SAR_TR0</name>
           <description>SAR trim register</description>
-          <addressOffset>0x0</addressOffset>
+          <addressOffset>0x40004616</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2001,7 +2001,7 @@
         <register>
           <name>SAR_CSR0</name>
           <description>SAR status and control register 0</description>
-          <addressOffset>0x12F2</addressOffset>
+          <addressOffset>0x40005908</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2010,7 +2010,7 @@
         <register>
           <name>SAR_CSR1</name>
           <description>SAR status and control register 1</description>
-          <addressOffset>0x12F3</addressOffset>
+          <addressOffset>0x40005909</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2019,7 +2019,7 @@
         <register>
           <name>SAR_CSR2</name>
           <description>SAR status and control register 2</description>
-          <addressOffset>0x12F4</addressOffset>
+          <addressOffset>0x4000590A</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2028,7 +2028,7 @@
         <register>
           <name>SAR_CSR3</name>
           <description>SAR status and control register 3</description>
-          <addressOffset>0x12F5</addressOffset>
+          <addressOffset>0x4000590B</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2037,7 +2037,7 @@
         <register>
           <name>SAR_CSR4</name>
           <description>SAR status and control register 4</description>
-          <addressOffset>0x12F6</addressOffset>
+          <addressOffset>0x4000590C</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2046,7 +2046,7 @@
         <register>
           <name>SAR_CSR5</name>
           <description>SAR status and control register 5</description>
-          <addressOffset>0x12F7</addressOffset>
+          <addressOffset>0x4000590D</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2055,7 +2055,7 @@
         <register>
           <name>SAR_CSR6</name>
           <description>SAR status and control register 6</description>
-          <addressOffset>0x12F8</addressOffset>
+          <addressOffset>0x4000590E</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2064,7 +2064,7 @@
         <register>
           <name>SAR_SW0</name>
           <description>SAR Analog Routing Register 0</description>
-          <addressOffset>0x1512</addressOffset>
+          <addressOffset>0x40005B28</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2073,7 +2073,7 @@
         <register>
           <name>SAR_SW2</name>
           <description>SAR Analog Routing Register 2</description>
-          <addressOffset>0x1514</addressOffset>
+          <addressOffset>0x40005B2A</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2082,7 +2082,7 @@
         <register>
           <name>SAR_SW3</name>
           <description>SAR Analog Routing Register 3</description>
-          <addressOffset>0x1515</addressOffset>
+          <addressOffset>0x40005B2B</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2091,7 +2091,7 @@
         <register>
           <name>SAR_SW4</name>
           <description>SAR Analog Routing Register 4</description>
-          <addressOffset>0x1516</addressOffset>
+          <addressOffset>0x40005B2C</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2100,7 +2100,7 @@
         <register>
           <name>SAR_SW6</name>
           <description>SAR Analog Routing Register 6</description>
-          <addressOffset>0x1518</addressOffset>
+          <addressOffset>0x40005B2E</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2109,7 +2109,7 @@
         <register>
           <name>SAR_CLK</name>
           <description>SAR Clock Selection Register</description>
-          <addressOffset>0x1519</addressOffset>
+          <addressOffset>0x40005B2F</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2118,7 +2118,7 @@
         <register>
           <name>SAR_WRK</name>
           <description>SAR working register</description>
-          <addressOffset>0x158C</addressOffset>
+          <addressOffset>0x40005BA2</addressOffset>
           <size>16</size>
           <access>read-write</access>
           <resetValue>0</resetValue>

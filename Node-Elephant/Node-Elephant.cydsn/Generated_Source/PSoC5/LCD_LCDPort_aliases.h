@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name: LCD_LCDPort.h  
-* Version 2.0
+* Version 2.10
 *
 * Description:
 *  This file containts Control Register function prototypes and register defines
@@ -25,13 +25,13 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define LCD_LCDPort_0		LCD_LCDPort__0__PC
-#define LCD_LCDPort_1		LCD_LCDPort__1__PC
-#define LCD_LCDPort_2		LCD_LCDPort__2__PC
-#define LCD_LCDPort_3		LCD_LCDPort__3__PC
-#define LCD_LCDPort_4		LCD_LCDPort__4__PC
-#define LCD_LCDPort_5		LCD_LCDPort__5__PC
-#define LCD_LCDPort_6		LCD_LCDPort__6__PC
+#define LCD_LCDPort_0		(LCD_LCDPort__0__PC)
+#define LCD_LCDPort_1		(LCD_LCDPort__1__PC)
+#define LCD_LCDPort_2		(LCD_LCDPort__2__PC)
+#define LCD_LCDPort_3		(LCD_LCDPort__3__PC)
+#define LCD_LCDPort_4		(LCD_LCDPort__4__PC)
+#define LCD_LCDPort_5		(LCD_LCDPort__5__PC)
+#define LCD_LCDPort_6		(LCD_LCDPort__6__PC)
 
 #endif /* End Pins LCD_LCDPort_ALIASES_H */
 

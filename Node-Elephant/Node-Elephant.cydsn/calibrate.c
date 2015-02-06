@@ -1,19 +1,7 @@
-/* ========================================
- *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
- *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
- *
- * ========================================
-*/
-
 #include "calibrate.h"
 
 /*******************************************************************************
-* Function Name: calAll()
+* Function Name: calAll(void)
 ********************************************************************************
 *
 * Summary:
@@ -33,7 +21,7 @@
 *******************************************************************************/
 void calAll(void)           //calibrate all sensors
 {
-    float volts;        //stores voltage conversion value in volts
+    double volts;        //stores voltage conversion value in volts
     uint16 voltCounts;  //stores voltage conversion value in counts
     uint8 i = 0;        //counter for for loop 
     uint8 j = 0;        //counter for for loop
@@ -191,6 +179,136 @@ void calAll(void)           //calibrate all sensors
         LCD_PrintNumber(temp);
         CyDelay(1000);
     }
+}
+
+
+/************************************************************************************
+* Function Name: torqueImp(uint16 sensor1, uint16 sensor2, volatile uint8_t* errMsg)
+*************************************************************************************
+*
+* Summary:
+*  Checks for torque implausibility (EV2.3.6). The percentage difference is
+*  calculated using the voltage read from the two throttle sensors. A percentage
+*  difference of 10% will trigger a error to be sent over CAN. FOR USE WITH
+*  THROTTLE ONLY.
+*
+* Parameters:
+*  sensor1: 1st sensor count value 
+*  sensor2: 2nd sensor count value 
+*  errMsg: Pointer to sensor's error message
+*
+* Return:
+*  percentDiff: percent difference between sensor values
+*
+*
+************************************************************************************/
+
+double torqueImp(uint16 sensor1, uint16 sensor2, volatile uint8_t* errMsg)
+{
+	double percentDiff;
+	percentDiff = (fabs((double)sensor1 - (double)sensor2) / (((double)sensor1 + (double)sensor2) / 2) * 100);		// calculates percentage difference by dividing the difference by the average
+
+	if (percentDiff >= 10.0)		// if percent difference is greater than 10%
+	    *errMsg += 0x0020;			// error msg for torque implausibility
+
+	return percentDiff;
+}
+
+
+/***********************************************************************************************************************
+* Function Name: brakePlaus(uint16 brake1, uint16 brake2, uint16 throttle1, uint16 throttle2, volatile uint8_t* errMsg)
+************************************************************************************************************************
+*
+* Summary:
+*  Checks for brake plausibility (EV2.5). If the brakes are actuated, the
+*  throttle must not experience more than 25% pedal travel. An error message is
+*  sent over CAN if the pedal travel is greater than 25%.
+*
+* Parameters:
+*  brake1: brake 1 sensor value
+*  brake2: brake 2 sensor value
+*  throttle1: throttle 1 sensor value
+*  throttle2: throttle 2 sensor value
+*  errMsg: Pointer to sensor's error message
+*
+* Return:
+*  plauseCheck1: percent pedal travel of sensor 1
+*  plauseCheck2: percent pedal travel of sensor 2
+*
+* Note:
+*  Only one of the two plausCheck will be returned. Must pass variables in that
+*  order.
+*  strPlausMsg should be passed in for errMsg since strPlausMsg contains the
+*  torque implausibility message.
+*
+************************************************************************************************************************/
+
+double brakePlaus(uint16 brake1, uint16 brake2, uint16 throttle1, uint16 throttle2, volatile uint8_t* errMsg)
+{
+	double plauseCheck1 = 0;
+	double plauseCheck2 = 0;
+
+	if (brake1 > MIN_COUNT && brake2 > MIN_COUNT)			// this is eventually change, not sure yet how the brake lines will react
+	{
+		plauseCheck1 = ((double)throttle1 / (double)MAX_COUNT) * 100;			// calculates throttle depression percentage 
+		plauseCheck2 = ((double)throttle2 / (double)MAX_COUNT) * 100;
+	}
+
+	if (plauseCheck1 > 25.0)			// if throttle sensor 1 experiences for than 25% pedal travel 
+	{
+        *errMsg += 0x0040;				// brake plausibility error msg
+		return plauseCheck1;
+	}
+
+	if (plauseCheck2 > 25.0)			// if throttle sensor 2 experiences for than 25% pedal travel 
+	{
+        *errMsg += 0x0040;				// brake plausibility error msg
+		return plauseCheck2;
+	}
+
+	return plauseCheck1 = ((double)throttle1 / (double)MAX_COUNT) * 100;		// return pedal travel even if brakes not depressed
+}
+
+
+/****************************************************************************************************************************************
+* Function Name: outOfRange(uint16 throttle1, uint16 throttle2, uint16 brake1, uint16 brake2, uint16 steering, volatile uint8_t* errMsg)
+*****************************************************************************************************************************************
+*
+* Summary:
+*  Checks for out of range (EV2.3.10, EV2.4.5). Any value between 0.854V and 
+*  0.499V (409-decimal)and above 4.4995V (3686-decimal) will will trigger an error 
+*  to be sent over CAN.
+*
+* Parameters:
+*  throttle1: throttle 1 sensor count value	  
+*  throttle2: throttle 2 sensor count value	 
+*  brake1: brake 1 sensor count value	 
+*  brake2: brake 2 sensor count value	 
+*  errMsg: Pointer to sensor's error message (should be 6th element of Tx1_BSE)
+*
+* Return:
+*  None.
+*
+*
+*******************************************************************************/
+
+void outOfRange(uint16 throttle1, uint16 throttle2, uint16 brake1, uint16 brake2, uint16 steering, volatile uint8_t* errMsg)
+{   
+    if (throttle1 < MIN_COUNT || throttle1 > MAX_COUNT)
+        *errMsg += 0x0001;              // throttle 1 out of range err msg
+    
+    if(throttle2 < MIN_COUNT || throttle2 > MAX_COUNT)
+        *errMsg += 0x0002;              // throttle 2 out of range err msg
+    
+    if (brake1 < MIN_COUNT || brake1 > MAX_COUNT)
+        *errMsg += 0x0004;              // brake 1 out of range err msg
+    
+    if (brake2 < MIN_COUNT || brake2 > MAX_COUNT)
+        *errMsg += 0x0008;              // brake 2 out of range err msg
+    
+    if (steering < MIN_COUNT || steering > MAX_COUNT)
+        *errMsg += 0x0010;              // steering out of range err msg
+    
 }
 
 /* [] END OF FILE */
