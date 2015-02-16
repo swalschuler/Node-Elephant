@@ -206,9 +206,9 @@ void calAll(void)           //calibrate all sensors
 double torqueImp(uint16 sensor1, uint16 sensor2, volatile uint8_t* errMsg)
 {
 	double percentDiff;
-	percentDiff = (fabs((double)sensor1 - (double)sensor2) / (((double)sensor1 + (double)sensor2) / 2) * 100);		// calculates percentage difference by dividing the difference by the average
+	percentDiff = fabs((double)sensor1 - (double)sensor2) / (((double)sensor1 + (double)sensor2) / 2) * 100;		// calculates percentage difference by dividing the difference by the average
 
-	if (percentDiff >= 10.0)		// if percent difference is greater than 10%
+	if (percentDiff > 10.0)		// if percent difference is greater than 10%
 	    *errMsg += 0x0020;			// error msg for torque implausibility
 
 	return percentDiff;

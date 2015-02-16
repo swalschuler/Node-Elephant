@@ -50,7 +50,7 @@ uint8 CAN_Init(void)
     /* Iniital values of CAN RX and TX registers */
     static const CAN_RX_CFG CYCODE CAN_RXConfigStruct[] =
     {
-        { 0u, 0x28u, 0x1FFFF9u, 0x200000u },
+        { 0u, 0x0u, 0x0u, 0x0u },
         { 1u, 0x0u, 0x0u, 0x0u },
         { 2u, 0x0u, 0x0u, 0x0u },
         { 3u, 0x0u, 0x0u, 0x0u },
