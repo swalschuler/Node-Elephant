@@ -22,4 +22,7 @@ double torqueImp(uint16 sensor1, uint16 sensor2, volatile uint8_t* errMsg);     
 double brakePlaus(uint16 brake1, uint16 brake2, uint16 throttle1, uint16 throttle2, volatile uint8_t* errMsg); // brake plausibility function prototype
 void outOfRange(uint16 throttle1, uint16 throttle2, uint16 brake1, uint16 brake2, uint16 steering, volatile uint8_t* errMsg);       // out of range funciton prototype
 
+void setCal(void);          // set calibrated values to variable 
+uint16 concantenate(reg8* regPointer, uint8* byteCount);      //gets sensor value from EEPROM
+
 /* [] END OF FILE */

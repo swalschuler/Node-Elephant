@@ -20,6 +20,7 @@ volatile uint16 buffSize = 0;           //tracks number of conversions
 
 int main()
 {
+//    clock_StopBlock();
     LCD_Start();
     ADC_SAR_Start();
     ADC_SAR_StartConvert();
@@ -29,14 +30,12 @@ int main()
     CAN_Init();
     CAN_Start();
     CyGlobalIntEnable;          //enable global interrupts 
-   
+    setCal();               //set min and max values
+    
     for(;;)
     {
         if(ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))  
-        {
-//            LCD_Position(0,0);
-//            LCD_PrintNumber(ADC_SAR_GetResult16(0));   
-            
+        {            
             throttle1 += ADC_SAR_GetResult16(0);        //get conversion results in terms of counts for throttle 1 (channel 0)  
             throttle2 += ADC_SAR_GetResult16(1);        //get conversion results in terms of counts for throttle 2 (channel 1)  
             brake1 += ADC_SAR_GetResult16(2);        //get conversion results in terms of counts for brake 1 (channel 2)  
@@ -45,8 +44,16 @@ int main()
             
             if(buffSize != 0xffff)
                 buffSize++;
-        }       
-    }
+        }
+        
+        if(Button_Read() == 0)      //press button to run calibration
+        {
+            isr_Disable();          //disable interrupt when calibrating;
+            calAll();
+            isr_ClearPending();
+            isr_Enable();
+        }
+    }   
     
     return 0;
 }

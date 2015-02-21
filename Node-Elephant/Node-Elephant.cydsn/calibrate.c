@@ -1,5 +1,14 @@
 #include "calibrate.h"
 
+uint16 MAX_THROTTLE1;
+uint16 MIN_THROTTLE1;
+uint16 MAX_THROTTLE2;
+uint16 MIN_THROTTLE2;
+uint16 MIN_BRAKE1;
+uint16 MIN_BRAKE2;
+uint16 STEER_LEFT;
+uint16 STEER_RIGHT;
+
 /*******************************************************************************
 * Function Name: calAll(void)
 ********************************************************************************
@@ -32,7 +41,7 @@ void calAll(void)           //calibrate all sensors
     cystatus writeStatus = CYRET_SUCCESS;       //return status of EEPROM_ByteWrite
     uint8 row = 0;              //row of EEPROM to write to (0 = 1st row)
     uint8 byteCount = 0;        //keeps track of which byte in row to write to (0 = 1st byte)
-    uint16 temp = 0;        //holds voltCounts value for printing      
+//    uint16 temp = 0;        //holds voltCounts value for printing      
     
     for(i = 0; i < 8; i++)
     {
@@ -58,9 +67,9 @@ void calAll(void)           //calibrate all sensors
                 break;
             case 3: LCD_PrintString("Throttle 2: High");
                 break;
-            case 4: LCD_PrintString("Break 1: Low");
+            case 4: LCD_PrintString("Brake 1: Low");
                 break;
-            case 5: LCD_PrintString("Break 2: Low");
+            case 5: LCD_PrintString("Brake 2: Low");
                 break;
             case 6: LCD_PrintString("Steering: Left");
                 break;
@@ -81,7 +90,7 @@ void calAll(void)           //calibrate all sensors
             }
             
             if(Button_Read() == 0)      //if button pressed, set to resistive pull up
-            {
+            {//break;
                 if(ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))        //if ADC conversion is done
                 {
                     voltCounts = ADC_SAR_GetResult16(channelNum[i]);
@@ -119,6 +128,7 @@ void calAll(void)           //calibrate all sensors
                 }
             }
         }
+        //break;
     }
     
     LCD_ClearDisplay();
@@ -128,6 +138,7 @@ void calAll(void)           //calibrate all sensors
     LCD_PrintString("Complete");
     CyDelay(2000);
     
+    setCal();
     byteCount = 0;
     row = 0;
  
@@ -138,46 +149,62 @@ void calAll(void)           //calibrate all sensors
         LCD_ClearDisplay();
         LCD_Position(0,0);
         
-        temp = 0;           //reset temp
+//        temp = 0;           //reset temp
         
         switch (i)
         {
             case 0: LCD_PrintString("Throttle 1: Low");
+                    LCD_Position(1,0);
+                    LCD_PrintNumber(MIN_THROTTLE1);
                 break;
             case 1: LCD_PrintString("Throttle 2: Low");
+                    LCD_Position(1,0);
+                    LCD_PrintNumber(MIN_THROTTLE2);
                 break;
             case 2: LCD_PrintString("Throttle 1: High");
+                    LCD_Position(1,0);
+                    LCD_PrintNumber(MAX_THROTTLE1);
                 break;
             case 3: LCD_PrintString("Throttle 2: High");
+                    LCD_Position(1,0);
+                    LCD_PrintNumber(MAX_THROTTLE2);
                 break;
-            case 4: LCD_PrintString("Break 1: Low");
+            case 4: LCD_PrintString("Brake 1: Low");
+                    LCD_Position(1,0);
+                    LCD_PrintNumber(MIN_BRAKE1);
                 break;
-            case 5: LCD_PrintString("Break 2: Low");
+            case 5: LCD_PrintString("Brake 2: Low");
+                    LCD_Position(1,0);
+                    LCD_PrintNumber(MIN_BRAKE2);
                 break;
             case 6: LCD_PrintString("Steering: Left");
+                    LCD_Position(1,0);
+                    LCD_PrintNumber(STEER_LEFT);
                 break;
             case 7: LCD_PrintString("Steering: Right");
+                    LCD_Position(1,0);
+                    LCD_PrintNumber(STEER_RIGHT);
                 break;
             default: LCD_PrintString("Error in loop");
                 break;
         }
         
-        if(byteCount == 16)             //if byteCount = 16 then row one is finished reading from
-        {
-            regPointer = regPointer + byteCount;        //add by 16 to move to next row for reading
-            byteCount = 0;          //reset byteCount
-        }
-        
-        for(j = 0; j < 4; j++)
-        {   
-            temp = temp * 10;
-            temp = temp + regPointer[byteCount];
-            byteCount++;
-        }
-        
-        LCD_Position(1,0);
-        LCD_PrintNumber(temp);
-        CyDelay(1000);
+//        if(byteCount == 16)             //if byteCount = 16 then row one is finished reading from
+//        {
+//            regPointer = regPointer + byteCount;        //add by 16 to move to next row for reading
+//            byteCount = 0;          //reset byteCount
+//        }
+//        
+//        for(j = 0; j < 4; j++)
+//        {   
+//            temp = temp * 10;
+//            temp = temp + regPointer[byteCount];
+//            byteCount++;
+//        }
+//        
+//        LCD_Position(1,0);
+//        LCD_PrintNumber(temp);
+        CyDelay(3000);
     }
 }
 
@@ -248,25 +275,24 @@ double brakePlaus(uint16 brake1, uint16 brake2, uint16 throttle1, uint16 throttl
 	double plauseCheck1 = 0;
 	double plauseCheck2 = 0;
 
-	if (brake1 > MIN_COUNT && brake2 > MIN_COUNT)			// this is eventually change, not sure yet how the brake lines will react
+	if(brake1 > MIN_BRAKE1 && brake2 > MIN_BRAKE2)			
 	{
-		plauseCheck1 = ((double)throttle1 / (double)MAX_COUNT) * 100;			// calculates throttle depression percentage 
-		plauseCheck2 = ((double)throttle2 / (double)MAX_COUNT) * 100;
+		plauseCheck1 = ((double)throttle1 / (double)MAX_THROTTLE1) * 100;			// calculates throttle depression percentage 
+		plauseCheck2 = ((double)throttle2 / (double)MAX_THROTTLE2) * 100;
+        
+        if(plauseCheck1 > 25.0)			// if throttle sensor 1 experiences for than 25% pedal travel 
+	    {
+            *errMsg += 0x0040;				// brake plausibility error msg
+		    return plauseCheck1;
+	    }
+        else if(plauseCheck2 > 25.0)			// if throttle sensor 2 experiences for than 25% pedal travel 
+	    {
+            *errMsg += 0x0040;				// brake plausibility error msg
+	    	return plauseCheck2;
+	    }
 	}
 
-	if (plauseCheck1 > 25.0)			// if throttle sensor 1 experiences for than 25% pedal travel 
-	{
-        *errMsg += 0x0040;				// brake plausibility error msg
-		return plauseCheck1;
-	}
-
-	if (plauseCheck2 > 25.0)			// if throttle sensor 2 experiences for than 25% pedal travel 
-	{
-        *errMsg += 0x0040;				// brake plausibility error msg
-		return plauseCheck2;
-	}
-
-	return plauseCheck1 = ((double)throttle1 / (double)MAX_COUNT) * 100;		// return pedal travel even if brakes not depressed
+	return plauseCheck1 = ((double)throttle1 / (double)MAX_THROTTLE1) * 100;		// return pedal travel even if brakes not depressed
 }
 
 
@@ -294,21 +320,87 @@ double brakePlaus(uint16 brake1, uint16 brake2, uint16 throttle1, uint16 throttl
 
 void outOfRange(uint16 throttle1, uint16 throttle2, uint16 brake1, uint16 brake2, uint16 steering, volatile uint8_t* errMsg)
 {   
-    if (throttle1 < MIN_COUNT || throttle1 > MAX_COUNT)
+    if (throttle1 < MIN_THROTTLE1 || throttle1 > MAX_THROTTLE1)
         *errMsg += 0x0001;              // throttle 1 out of range err msg
     
-    if(throttle2 < MIN_COUNT || throttle2 > MAX_COUNT)
+    if(throttle2 < MIN_THROTTLE2 || throttle2 > MAX_THROTTLE2)
         *errMsg += 0x0002;              // throttle 2 out of range err msg
     
-    if (brake1 < MIN_COUNT || brake1 > MAX_COUNT)
+    if (brake1 < MIN_BRAKE1)
         *errMsg += 0x0004;              // brake 1 out of range err msg
     
-    if (brake2 < MIN_COUNT || brake2 > MAX_COUNT)
+    if (brake2 < MIN_COUNT)
         *errMsg += 0x0008;              // brake 2 out of range err msg
     
-    if (steering < MIN_COUNT || steering > MAX_COUNT)
+    if (steering < STEER_LEFT || steering > STEER_RIGHT)
         *errMsg += 0x0010;              // steering out of range err msg
-    
 }
 
+/*******************************************************************************
+* Function Name: setCal(void)
+********************************************************************************
+*
+* Summary:
+*  Pulls calibrated value from EEPROM and stores in variable for use when
+*  checking for errors.
+*
+* Parameters:
+*  None.
+*
+* Return:
+*  None.
+*
+*******************************************************************************/
+
+void setCal(void)
+{
+    uint8 byteCount = 0;
+    reg8* regPointer = (reg8*)CYDEV_EE_BASE;           //pointer pointing to base of EEPROM (row 1)    
+    
+    MIN_THROTTLE1 = concantenate(regPointer, &byteCount);
+    MIN_THROTTLE2 = concantenate(regPointer, &byteCount);
+    MAX_THROTTLE1 = concantenate(regPointer, &byteCount);
+    MAX_THROTTLE2 = concantenate(regPointer, &byteCount);
+    MIN_BRAKE1 = concantenate(regPointer+16, &byteCount);
+    MIN_BRAKE2 = concantenate(regPointer+16, &byteCount);
+    STEER_LEFT = concantenate(regPointer+16, &byteCount);
+    STEER_RIGHT = concantenate(regPointer+16, &byteCount);
+    
+    byteCount = 0;
+}
+
+/*******************************************************************************
+* Function Name: concantenate(uint8* byteCount)
+********************************************************************************
+*
+* Summary:
+*  Concantenate the calibrated values stored in EEPROM. Each EEPROM cell contains
+*  a digit corresponding to a sensor value depending on its position within EEPROM
+*
+* Parameters:
+*  regPointer: base address of EEPROM
+*  byteCount: pointer to byteCount in setCal; keeps track of position in EEPROM
+*
+* Return:
+*  temp: sensor count value
+*
+*******************************************************************************/
+
+uint16 concantenate(reg8* regPointer, uint8* byteCount)
+{
+    uint8 i;
+    uint16 temp = 0; 
+           
+    if(*byteCount == 16)             //if byteCount = 16 then row one is finished reading from
+        *byteCount = 0;          //reset byteCount 
+    
+    for(i = 0; i < 4; i++)
+    {   
+        temp = temp * 10;
+        temp = temp + regPointer[*byteCount];
+        *byteCount = *byteCount + 1;
+    }
+    
+    return temp;
+}
 /* [] END OF FILE */
