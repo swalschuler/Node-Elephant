@@ -48,10 +48,11 @@ int main()
         
         if(Button_Read() == 0)      //press button to run calibration
         {
-            isr_Disable();          //disable interrupt when calibrating;
+            clock_StopBlock();      //stop clock to disable interrupt 
             calAll();
+            LCD_ClearDisplay();
             isr_ClearPending();
-            isr_Enable();
+            clock_Start();
         }
     }   
     

@@ -90,7 +90,7 @@ void calAll(void)           //calibrate all sensors
             }
             
             if(Button_Read() == 0)      //if button pressed, set to resistive pull up
-            {//break;
+            {break;
                 if(ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))        //if ADC conversion is done
                 {
                     voltCounts = ADC_SAR_GetResult16(channelNum[i]);
@@ -204,8 +204,10 @@ void calAll(void)           //calibrate all sensors
 //        
 //        LCD_Position(1,0);
 //        LCD_PrintNumber(temp);
-        CyDelay(3000);
+        CyDelay(2000);
     }
+    
+    return;
 }
 
 
