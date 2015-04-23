@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
   37 005d 000000   		.align	2
   38              	.LC7:
   39 0060 42726561 		.ascii	"Break 2: Low\000"
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 2
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 2
 
 
   39      6B20323A 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
   73 00de 04       		.byte	4
   74 00df 04       		.byte	4
   75              		.section	.text.calAll,"ax",%progbits
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 3
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 3
 
 
   76              		.align	2
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
   99              	.LCFI2:
  100              		.cfi_def_cfa 7, 104
   32:.\calibrate.c ****     float volts;        //stores voltage conversion value in volts
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 4
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 4
 
 
   33:.\calibrate.c ****     uint16 voltCounts;  //stores voltage conversion value in counts
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  139 0062 4FF00000 		mov	r0, #0
  140 0066 4FF00001 		mov	r1, #0
  141 006a FFF7FEFF 		bl	LCD_Position
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 5
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 5
 
 
   49:.\calibrate.c ****         LCD_PrintString("Wait...");
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  183 00d0 4AD8     		bhi	.L6
  184 00d2 01A2     		adr	r2, .L15
  185 00d4 52F823F0 		ldr	pc, [r2, r3, lsl #2]
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 6
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 6
 
 
  186              		.align	2
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  229              		.loc 1 70 0
  230 013c 1BE0     		b	.L16
  231              	.L12:
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 7
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 7
 
 
   71:.\calibrate.c ****             case 5: LCD_PrintString("Break 2: Low");
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  271 018a 07F15801 		add	r1, r7, #88
  272 018e CB18     		adds	r3, r1, r3
  273 0190 13F8503C 		ldrb	r3, [r3, #-80]	@ zero_extendqisi2
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 8
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 8
 
 
  274 0194 1846     		mov	r0, r3
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  320 020c 00F0B980 		beq	.L17
   94:.\calibrate.c ****                 {
   95:.\calibrate.c ****                     voltCounts = ADC_SAR_GetResult16(channelNum[i]);
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 9
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 9
 
 
  321              		.loc 1 95 0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  101:.\calibrate.c ****                     }
  102:.\calibrate.c ****                     
  103:.\calibrate.c ****                     for(j = 0; j < 4; j++)          //write array getMod into EEPROM
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 10
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 10
 
 
  368              		.loc 1 103 0 is_stmt 1
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  414              	.L24:
  112:.\calibrate.c ****                             
  113:.\calibrate.c ****                             if(writeStatus != CYRET_SUCCESS)            //if error occured during w
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 11
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 11
 
 
  415              		.loc 1 113 0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  103:.\calibrate.c ****                     for(j = 0; j < 4; j++)          //write array getMod into EEPROM
  459              		.loc 1 103 0 is_stmt 0 discriminator 1
  460 0378 97F85430 		ldrb	r3, [r7, #84]	@ zero_extendqisi2
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 12
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 12
 
 
  461 037c 032B     		cmp	r3, #3
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  498 03d6 FFF7FEFF 		bl	LCD_PrintString
  137:.\calibrate.c ****     CyDelay(2000);
  499              		.loc 1 137 0
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 13
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 13
 
 
  500 03da 4FF4FA60 		mov	r0, #2000
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  152:.\calibrate.c ****         {
  153:.\calibrate.c ****             case 0: LCD_PrintString("Throttle 1: Low");
  540              		.loc 1 153 0
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 14
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 14
 
 
  541 0448 40F20000 		movw	r0, #:lower16:.LC2
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  583 049c 40F20000 		movw	r0, #:lower16:.LC8
  584 04a0 C0F20000 		movt	r0, #:upper16:.LC8
  585 04a4 FFF7FEFF 		bl	LCD_PrintString
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 15
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 15
 
 
  166:.\calibrate.c ****                 break;
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  624 04f0 4FEA8202 		lsl	r2, r2, #2
  625 04f4 D318     		adds	r3, r2, r3
  626 04f6 4FEA4303 		lsl	r3, r3, #1
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 16
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 16
 
 
  627 04fa A7F84830 		strh	r3, [r7, #72]	@ movhi
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  670 0566 7FF649AF 		bls	.L45
  189:.\calibrate.c ****     }
  190:.\calibrate.c **** }
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 17
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 17
 
 
  671              		.loc 1 190 0 is_stmt 1
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  725 0059 07       		.byte	0x7
  726 005a 4A000000 		.4byte	.LASF5
  727 005e 02       		.uleb128 0x2
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 18
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 18
 
 
  728 005f 08       		.byte	0x8
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  782 00c8 7A000000 		.4byte	0x7a
  783 00cc D7000000 		.4byte	0xd7
  784 00d0 07       		.uleb128 0x7
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 19
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 19
 
 
  785 00d1 C0000000 		.4byte	0xc0
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  839 0136 85000000 		.4byte	.LASF20
  840 013a 01       		.byte	0x1
  841 013b 24       		.byte	0x24
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 20
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 20
 
 
  842 013c A9010000 		.4byte	0x1a9
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  896 019f 01       		.byte	0x1
  897 01a0 2B       		.byte	0x2b
  898 01a1 85000000 		.4byte	0x85
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 21
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 21
 
 
  899 01a5 02       		.byte	0x2
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  953 001c 03       		.uleb128 0x3
  954 001d 0E       		.uleb128 0xe
  955 001e 00       		.byte	0
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 22
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 22
 
 
  956 001f 00       		.byte	0
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  1010 0055 0C       		.uleb128 0xc
  1011 0056 03       		.uleb128 0x3
  1012 0057 0E       		.uleb128 0xe
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 23
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 23
 
 
  1013 0058 3A       		.uleb128 0x3a
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  1067 008f 13       		.uleb128 0x13
  1068 0090 00       		.byte	0
  1069 0091 00       		.byte	0
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 24
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 24
 
 
  1070 0092 0C       		.uleb128 0xc
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  1124 001c 00000000 		.4byte	0
  1125              		.section	.debug_ranges,"",%progbits
  1126              	.Ldebug_ranges0:
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 25
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 25
 
 
  1127 0000 00000000 		.4byte	.LFB56
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  1155      65642069 
  1155      6E7400
  1156              	.LASF30:
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 26
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 26
 
 
  1157 0074 63616C41 		.ascii	"calAll\000"
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 1
  1182 013a 73697A65 		.ascii	"sizetype\000"
  1182      74797065 
  1182      00
-ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\cckhn8bD.s 			page 27
+ARM GAS  C:\Users\CHAIYA~1\AppData\Local\Temp\ccxxsRMd.s 			page 27
 
 
  1183              	.LASF6:
