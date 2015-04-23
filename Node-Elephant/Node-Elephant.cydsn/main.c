@@ -14,6 +14,7 @@
 #include <project.h>
 #include <stdio.h>
 #include "calibrate.h"
+#include "pedal_state.h"
 
 volatile uint32 throttle1, throttle2, brake1, brake2, steering;            //variables for sending average to can
 volatile uint16 buffSize = 0;           //tracks number of conversions 
@@ -30,7 +31,8 @@ int main()
     CAN_Init();
     CAN_Start();
     CyGlobalIntEnable;          //enable global interrupts 
-    setCal();               //set min and max values
+    restore_calibration_data();               //set min and max values
+    EEPROM_ERROR_LED_Write(0);
     
     for(;;)
     {
@@ -46,10 +48,10 @@ int main()
                 buffSize++;
         }
         
-        if(Button_Read() == 0)      //press button to run calibration
+        if (Button_Read() == 0)      //press button to run calibration
         {
             clock_StopBlock();      //stop clock to disable interrupt 
-            calAll();
+            calibrate();
             LCD_ClearDisplay();
             isr_ClearPending();
             clock_Start();

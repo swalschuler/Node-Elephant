@@ -1,13 +1,18 @@
+#include <stdint.h>
 #include "calibrate.h"
+#include "EEPROM_util.h"
 
-uint16 MAX_THROTTLE1;
-uint16 MIN_THROTTLE1;
-uint16 MAX_THROTTLE2;
-uint16 MIN_THROTTLE2;
-uint16 MIN_BRAKE1;
-uint16 MIN_BRAKE2;
-uint16 STEER_LEFT;
-uint16 STEER_RIGHT;
+#define USED_EEPROM_SECTOR                      (1u)
+#define CALIBRATION_DATA_BASE_ADDRESS          ((USED_EEPROM_SECTOR * CYDEV_EEPROM_SECTOR_SIZE) + 0x00)
+
+int16_t MAX_THROTTLE1;
+int16_t MIN_THROTTLE1;
+int16_t MAX_THROTTLE2;
+int16_t MIN_THROTTLE2;
+int16_t MIN_BRAKE1;
+int16_t MIN_BRAKE2;
+int16_t STEER_LEFT;
+int16_t STEER_RIGHT;
 
 /*******************************************************************************
 * Function Name: calAll(void)
@@ -28,20 +33,32 @@ uint16 STEER_RIGHT;
 *  and code for printing to a terminal will be implemeted
 *
 *******************************************************************************/
-void calAll(void)           //calibrate all sensors
+void calibrate(void)           //calibrate all sensors
 {
     double volts;        //stores voltage conversion value in volts
-    uint16 voltCounts;  //stores voltage conversion value in counts
+    // uint16 voltCounts;  //stores voltage conversion value in counts
     uint8 i = 0;        //counter for for loop 
     uint8 j = 0;        //counter for for loop
     char buff[50];
-    uint8 channelNum[8] = {0,1,0,1,2,3,4,4};    //array of channel numbers
-    uint8 getMod[4];     //temporary array to store mod values
+    uint8_t channelNum[8] = {0, 1, 0, 1, 2, 3, 4, 4};    //array of channel numbers
+    int16_t* calibrated_value[8] = {
+        &MAX_THROTTLE1,
+        &MIN_THROTTLE1,
+        &MAX_THROTTLE2,
+        &MIN_THROTTLE2,
+        &MIN_BRAKE1,
+        &MIN_BRAKE2,
+        &STEER_LEFT,
+        &STEER_RIGHT
+    };
+
+    // uint8 getMod[4];     //temporary array to store mod values
     reg8* regPointer = (reg8*)CYDEV_EE_BASE;           //pointer pointing to base of EEPROM (row 1)
     cystatus writeStatus = CYRET_SUCCESS;       //return status of EEPROM_ByteWrite
-    uint8 row = 0;              //row of EEPROM to write to (0 = 1st row)
-    uint8 byteCount = 0;        //keeps track of which byte in row to write to (0 = 1st byte)
-//    uint16 temp = 0;        //holds voltCounts value for printing      
+    // uint8 row = 0;              //row of EEPROM to write to (0 = 1st row)
+    // uint8 byteCount = 0;        //keeps track of which byte in row to write to (0 = 1st byte)
+//    uint16 temp = 0;        //holds voltCounts value for printing
+
     
     for(i = 0; i < 8; i++)
     {
@@ -51,11 +68,11 @@ void calAll(void)           //calibrate all sensors
         CyDelay(1000);              //Delay because button value resets slower than loop runs
         LCD_ClearDisplay();
         
-        for(j = 0; j < 4; j++)
-            getMod[j] = 0;     //reset temporary array to store mod values
+        // for(j = 0; j < 4; j++)
+        //     getMod[j] = 0;     //reset temporary array to store mod values
         
-        if(i == 4)
-            row = 1;        //changes EEPROM row to write to row 2
+        // if(i == 4)
+        //     row = 1;        //changes EEPROM row to write to row 2
         
         switch (i)
         {
@@ -78,57 +95,28 @@ void calAll(void)           //calibrate all sensors
             default: LCD_PrintString("Error in loop");
                 break;
         }
-            
-        while(i<8)          //while loops prints voltage value to LCD, button press gets conversion in volts
+
+        for (;;)
         {
-            if(ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))
+            int16_t ADC_value = 0;
+            if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))
             {
-                volts = ADC_SAR_CountsTo_Volts(ADC_SAR_GetResult16(channelNum[i]));        //Converts ouput (hex16)from indexed channel to floating point voltage value 
+                ADC_value = ADC_SAR_GetResult16(channelNum[i]);
+                volts = ADC_SAR_CountsTo_Volts(ADC_value);        //Converts ouput (hex16)from indexed channel to floating point voltage value 
                 LCD_Position(1u, 0u);
-                sprintf(buff, "%0.4fv, %d", volts, ADC_SAR_GetResult16(channelNum[i]));            //Makes floating point to acii
-                LCD_PrintString(buff);             //Print ACII voltage value  
+                sprintf(buff, "%0.4fv, %d", volts, ADC_value);            //Makes floating point to acii
+                LCD_PrintString(buff);             //Print ASCII voltage value  
             }
             
-            if(Button_Read() == 0)      //if button pressed, set to resistive pull up
-            {break;
-                if(ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))        //if ADC conversion is done
-                {
-                    voltCounts = ADC_SAR_GetResult16(channelNum[i]);
-                    
-                    for(j = 3; voltCounts != 0; j--)        //seperates voltCounts into individual digits and store into array
-                    {
-                        getMod[j] = voltCounts % 10;        //mod by 10 returns right most digit
-                        voltCounts = voltCounts / 10;             //division by 10 removes right most digit
-                    }
-                    
-                    for(j = 0; j < 4; j++)          //write array getMod into EEPROM
-                    {
-                        if(CySetTemp() == CYRET_SUCCESS)        //if EEPROM die temp okay
-                        {
-                            if(byteCount == 16)         //reset byte count, only 16 bits allowed per row (15 = 16th bit)
-                                byteCount = 0;
-                            
-                            if((regPointer+row*16)[byteCount] != getMod[j])       //checks if byte to write is same as byte stored, does not write if they are equal
-                                writeStatus = EEPROM_ByteWrite(getMod[j], row, byteCount);      //write individual digit of sevconVolts (stored in getMod) to EEPROM  
-                            
-                            if(writeStatus != CYRET_SUCCESS)            //if error occured during write
-                            {
-                                LCD_ClearDisplay();
-                                LCD_Position(0,0);
-                                LCD_PrintString("ERROR:");
-                                sprintf(buff, "%d %d %d", getMod[j], row, byteCount);
-                                LCD_PrintString(buff);
-                            }
-                            
-                            byteCount++;
-                        }
-                    }
-                    
-                    break;      //break from while loop when write is done
-                }
+            //If button is pressed, end calibration for current variable
+            if (Button_Read() == 0)
+            {
+                *(calibrated_value[i]) = ADC_value;
+                EEPROM_set(ADC_value, CALIBRATION_DATA_BASE_ADDRESS, i);
+                break;
             }
+
         }
-        //break;
     }
     
     LCD_ClearDisplay();
@@ -138,13 +126,13 @@ void calAll(void)           //calibrate all sensors
     LCD_PrintString("Complete");
     CyDelay(2000);
     
-    setCal();
-    byteCount = 0;
-    row = 0;
+    // setCal();
+    // byteCount = 0;
+    // row = 0;
  
 //Code below is used for print to LCD for debugging     
         
-    for(i = 0; i < 8; i++)
+    for (i = 0; i < 8; i++)
     {     
         LCD_ClearDisplay();
         LCD_Position(0,0);
@@ -188,22 +176,6 @@ void calAll(void)           //calibrate all sensors
             default: LCD_PrintString("Error in loop");
                 break;
         }
-        
-//        if(byteCount == 16)             //if byteCount = 16 then row one is finished reading from
-//        {
-//            regPointer = regPointer + byteCount;        //add by 16 to move to next row for reading
-//            byteCount = 0;          //reset byteCount
-//        }
-//        
-//        for(j = 0; j < 4; j++)
-//        {   
-//            temp = temp * 10;
-//            temp = temp + regPointer[byteCount];
-//            byteCount++;
-//        }
-//        
-//        LCD_Position(1,0);
-//        LCD_PrintNumber(temp);
         CyDelay(2000);
     }
     
@@ -338,71 +310,19 @@ void outOfRange(uint16 throttle1, uint16 throttle2, uint16 brake1, uint16 brake2
         *errMsg += 0x0010;              // steering out of range err msg
 }
 
-/*******************************************************************************
-* Function Name: setCal(void)
-********************************************************************************
-*
-* Summary:
-*  Pulls calibrated value from EEPROM and stores in variable for use when
-*  checking for errors.
-*
-* Parameters:
-*  None.
-*
-* Return:
-*  None.
-*
-*******************************************************************************/
-
-void setCal(void)
+void restore_calibration_data(void)
 {
     uint8 byteCount = 0;
-    reg8* regPointer = (reg8*)CYDEV_EE_BASE;           //pointer pointing to base of EEPROM (row 1)    
+    // reg8* regPointer = (reg8*)CYDEV_EE_BASE;           //pointer pointing to base of EEPROM (row 1)    
     
-    MIN_THROTTLE1 = concantenate(regPointer, &byteCount);
-    MIN_THROTTLE2 = concantenate(regPointer, &byteCount);
-    MAX_THROTTLE1 = concantenate(regPointer, &byteCount);
-    MAX_THROTTLE2 = concantenate(regPointer, &byteCount);
-    MIN_BRAKE1 = concantenate(regPointer+16, &byteCount);
-    MIN_BRAKE2 = concantenate(regPointer+16, &byteCount);
-    STEER_LEFT = concantenate(regPointer+16, &byteCount);
-    STEER_RIGHT = concantenate(regPointer+16, &byteCount);
-    
-    byteCount = 0;
+    MIN_THROTTLE1 = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 0);
+    MIN_THROTTLE2 = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 1);
+    MAX_THROTTLE1 = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 2);
+    MAX_THROTTLE2 = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 3);
+    MIN_BRAKE1 = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 4);
+    MIN_BRAKE2 = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 5);
+    STEER_LEFT = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 6);
+    STEER_RIGHT = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 7);
 }
 
-/*******************************************************************************
-* Function Name: concantenate(uint8* byteCount)
-********************************************************************************
-*
-* Summary:
-*  Concantenate the calibrated values stored in EEPROM. Each EEPROM cell contains
-*  a digit corresponding to a sensor value depending on its position within EEPROM
-*
-* Parameters:
-*  regPointer: base address of EEPROM
-*  byteCount: pointer to byteCount in setCal; keeps track of position in EEPROM
-*
-* Return:
-*  temp: sensor count value
-*
-*******************************************************************************/
-
-uint16 concantenate(reg8* regPointer, uint8* byteCount)
-{
-    uint8 i;
-    uint16 temp = 0; 
-           
-    if(*byteCount == 16)             //if byteCount = 16 then row one is finished reading from
-        *byteCount = 0;          //reset byteCount 
-    
-    for(i = 0; i < 4; i++)
-    {   
-        temp = temp * 10;
-        temp = temp + regPointer[*byteCount];
-        *byteCount = *byteCount + 1;
-    }
-    
-    return temp;
-}
 /* [] END OF FILE */
