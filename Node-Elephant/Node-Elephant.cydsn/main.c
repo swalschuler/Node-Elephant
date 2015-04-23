@@ -13,15 +13,24 @@
 
 #include <project.h>
 #include <stdio.h>
-#include "calibrate.h"
+#include <stdbool.h>
+#include "pedal_control.h"
 #include "pedal_state.h"
 
-volatile uint32 throttle1, throttle2, brake1, brake2, steering;            //variables for sending average to can
-volatile uint16 buffSize = 0;           //tracks number of conversions 
+//volatile uint32 throttle1, throttle2, brake1, brake2, steering;            //variables for sending average to can
+//volatile uint16 buffSize = 0;           //tracks number of conversions 
+pedal_state pedal_node_state = pedal_state_normal;
+volatile bool should_calibrate = false;
+
+CY_ISR(isr_calibration_handler)
+{
+    should_calibrate = true;
+    Button_ClearInterrupt();
+}
 
 int main()
 {
-//    clock_StopBlock();
+    pedal_node_state = pedal_state_normal;
     LCD_Start();
     ADC_SAR_Start();
     ADC_SAR_StartConvert();
@@ -30,32 +39,102 @@ int main()
     Timer_Start();
     CAN_Init();
     CAN_Start();
+    isr_calibration_StartEx(&isr_calibration_handler);
     CyGlobalIntEnable;          //enable global interrupts 
     pedal_restore_calibration_data();               //set min and max values
     EEPROM_ERROR_LED_Write(0);
+    should_calibrate = false;
     
     for(;;)
     {
-        if(ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))  
-        {            
-            throttle1 += ADC_SAR_GetResult16(0);        //get conversion results in terms of counts for throttle 1 (channel 0)  
-            throttle2 += ADC_SAR_GetResult16(1);        //get conversion results in terms of counts for throttle 2 (channel 1)  
-            brake1 += ADC_SAR_GetResult16(2);        //get conversion results in terms of counts for brake 1 (channel 2)  
-            brake2 += ADC_SAR_GetResult16(3);        //get conversion results in terms of counts for brake 2 (channel 3)  
-            steering += ADC_SAR_GetResult16(4);        //get conversion results in terms of counts for steering (channel 4)  
-            
-            if(buffSize != 0xffff)
-                buffSize++;
+        if (should_calibrate)
+        {
+            should_calibrate = false;
+            pedal_node_state = pedal_state_calibrating;
         }
         
-        if (Button_Read() == 0)      //press button to run calibration
+        uint8_t out_of_range_flag;
+        double brake_percent = 0, throttle_percent = 0;
+        double brake_percent_diff = 0, throttle_percent_diff = 0;
+        uint8_t torque_plausible_flag;
+        uint8_t brake_plausible_flag;
+        switch (pedal_node_state)
         {
-            clock_StopBlock();      //stop clock to disable interrupt 
-            pedal_calibrate();
-            LCD_ClearDisplay();
-            isr_ClearPending();
-            clock_Start();
+            case pedal_state_normal:
+                LCD_ClearDisplay();
+                LCD_Position(0,0);
+                pedal_fetch_data();
+                
+                out_of_range_flag = pedal_get_out_of_range_flag();
+                if (out_of_range_flag != 0)
+                {
+                    pedal_node_state = pedal_state_out_of_range;
+                    break;
+                }
+
+                torque_plausible_flag = pedal_is_torque_plausible(&brake_percent_diff, &throttle_percent_diff);
+                if (torque_plausible_flag != 0)
+                {
+                    pedal_node_state = pedal_state_implausible;
+                    break;
+                }
+
+                brake_plausible_flag = pedal_is_brake_plausible(&brake_percent, &throttle_percent);
+                if (brake_plausible_flag != 0)
+                {
+                    pedal_node_state = pedal_state_implausible;
+                    break;
+                }
+                
+                break;
+
+            case pedal_state_calibrating:
+                clock_StopBlock();      //stop clock to disable interrupt 
+                pedal_calibrate();
+                LCD_ClearDisplay();
+                isr_ClearPending();
+                clock_Start();
+                pedal_node_state = pedal_state_normal;
+                break;
+
+            case pedal_state_out_of_range:
+                LCD_ClearDisplay();
+                LCD_Position(0,0);
+                LCD_PrintString("Pedal out of");
+                LCD_Position(1,0); 
+                LCD_PrintString("range");
+
+                out_of_range_flag = pedal_get_out_of_range_flag();
+                if (out_of_range_flag == 0)
+                {
+                    pedal_node_state = pedal_state_normal;
+                }
+                break;
+
+            case pedal_state_discrepency:
+                LCD_ClearDisplay();
+                LCD_Position(0,0);
+                LCD_PrintString("Pedal discrepency");
+                torque_plausible_flag = pedal_is_torque_plausible(&brake_percent_diff, &throttle_percent_diff);
+                if (torque_plausible_flag == 0)
+                {
+                    pedal_node_state = pedal_state_normal;
+                }
+                break;
+
+            case pedal_state_implausible:
+                LCD_ClearDisplay();
+                LCD_Position(0,0);
+                LCD_PrintString("Pedal implausible");
+                brake_plausible_flag = pedal_is_brake_plausible(&brake_percent, &throttle_percent);
+                if (brake_plausible_flag == 0 && throttle_percent < 0.05)
+                {
+                    pedal_node_state = pedal_state_normal;
+                }
+                break;
         }
+        
+        CyDelay(500);
     }   
     
     return 0;

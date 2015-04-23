@@ -138,7 +138,7 @@ void pedal_calibrate(void)           //calibrate all sensors
  
 //Code below is used for print to LCD for debugging     
         
-    for (i = 0; i < 8; i++)
+    for (i = 0; i < CALIBRATION_COUNT; i++)
     {     
         LCD_ClearDisplay();
         LCD_Position(0,0);
@@ -309,17 +309,18 @@ uint8_t pedal_is_torque_plausible(double* brake_percentage_diff, double* throttl
 
     double percentDiff = fabs((double)(brake1 - brake2)) / brake1;
     bool fault_occurred = false;
+    *brake_percentage_diff = percentDiff;
 
     if (percentDiff > 0.1)
     {
-        *brake_percentage_diff = percentDiff;
         fault_occurred = true;
     }
 
     percentDiff = fabs((double)(throttle1 - throttle2)) / throttle1;
+    *throttle_percentage_diff = percentDiff;
+    
     if (percentDiff > 0.1)
     {
-        *brake_percentage_diff = percentDiff;
         fault_occurred = true;
     }
 
