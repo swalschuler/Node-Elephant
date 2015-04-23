@@ -1,18 +1,24 @@
 #include <stdint.h>
-#include "calibrate.h"
+#include "pedal_control.h"
 #include "EEPROM_util.h"
 
 #define USED_EEPROM_SECTOR                      (1u)
 #define CALIBRATION_DATA_BASE_ADDRESS          ((USED_EEPROM_SECTOR * CYDEV_EEPROM_SECTOR_SIZE) + 0x00)
 
-int16_t MAX_THROTTLE1;
-int16_t MIN_THROTTLE1;
-int16_t MAX_THROTTLE2;
-int16_t MIN_THROTTLE2;
-int16_t MIN_BRAKE1;
-int16_t MIN_BRAKE2;
-int16_t STEER_LEFT;
-int16_t STEER_RIGHT;
+int16_t MAX_THROTTLE1 = 0;
+int16_t MIN_THROTTLE1 = 0;
+int16_t MAX_THROTTLE2 = 0;
+int16_t MIN_THROTTLE2 = 0;
+int16_t MIN_BRAKE1 = 0;
+int16_t MIN_BRAKE2 = 0;
+int16_t STEER_LEFT = 0;
+int16_t STEER_RIGHT = 0;
+
+int16_t throttle1 = 0;
+int16_t throttle2 = 0;
+int16_t brake1 = 0;
+int16_t brake2 = 0;
+int16_t steering = 0;
 
 /*******************************************************************************
 * Function Name: calAll(void)
@@ -38,26 +44,21 @@ void calibrate(void)           //calibrate all sensors
     double volts;        //stores voltage conversion value in volts
     // uint16 voltCounts;  //stores voltage conversion value in counts
     uint8 i = 0;        //counter for for loop 
-    uint8 j = 0;        //counter for for loop
     char buff[50];
     uint8_t channelNum[8] = {0, 1, 0, 1, 2, 3, 4, 4};    //array of channel numbers
     int16_t* calibrated_value[8] = {
-        &MAX_THROTTLE1,
         &MIN_THROTTLE1,
-        &MAX_THROTTLE2,
         &MIN_THROTTLE2,
+        &MAX_THROTTLE1,
+        &MAX_THROTTLE2,
         &MIN_BRAKE1,
         &MIN_BRAKE2,
         &STEER_LEFT,
         &STEER_RIGHT
     };
 
-    // uint8 getMod[4];     //temporary array to store mod values
-    reg8* regPointer = (reg8*)CYDEV_EE_BASE;           //pointer pointing to base of EEPROM (row 1)
-    cystatus writeStatus = CYRET_SUCCESS;       //return status of EEPROM_ByteWrite
-    // uint8 row = 0;              //row of EEPROM to write to (0 = 1st row)
-    // uint8 byteCount = 0;        //keeps track of which byte in row to write to (0 = 1st byte)
-//    uint16 temp = 0;        //holds voltCounts value for printing
+    // reg8* regPointer = (reg8*)CYDEV_EE_BASE;           //pointer pointing to base of EEPROM (row 1)
+    // cystatus writeStatus = CYRET_SUCCESS;       //return status of EEPROM_ByteWrite
 
     
     for(i = 0; i < 8; i++)
@@ -67,13 +68,6 @@ void calibrate(void)           //calibrate all sensors
         LCD_PrintString("Wait...");
         CyDelay(1000);              //Delay because button value resets slower than loop runs
         LCD_ClearDisplay();
-        
-        // for(j = 0; j < 4; j++)
-        //     getMod[j] = 0;     //reset temporary array to store mod values
-        
-        // if(i == 4)
-        //     row = 1;        //changes EEPROM row to write to row 2
-        
         switch (i)
         {
             case 0: LCD_PrintString("Throttle 1: Low");
@@ -125,10 +119,6 @@ void calibrate(void)           //calibrate all sensors
     LCD_Position(1,0);
     LCD_PrintString("Complete");
     CyDelay(2000);
-    
-    // setCal();
-    // byteCount = 0;
-    // row = 0;
  
 //Code below is used for print to LCD for debugging     
         
@@ -136,8 +126,6 @@ void calibrate(void)           //calibrate all sensors
     {     
         LCD_ClearDisplay();
         LCD_Position(0,0);
-        
-//        temp = 0;           //reset temp
         
         switch (i)
         {
@@ -180,6 +168,27 @@ void calibrate(void)           //calibrate all sensors
     }
     
     return;
+}
+
+
+void pedal_fetch_data(void)
+{
+    int8_t* data_list[5] =
+    {
+        &throttle1,
+        &throttle2,
+        &brake1,
+        &brake2,
+        &steering
+    };
+    uint8_t i = 0;
+    for (i = 0; i< 5; i++)
+    {
+        if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))
+        {
+           *(data_list[i]) = ADC_SAR_GetResult16(i); 
+        }
+    }
 }
 
 
@@ -269,45 +278,26 @@ double brakePlaus(uint16 brake1, uint16 brake2, uint16 throttle1, uint16 throttl
 	return plauseCheck1 = ((double)throttle1 / (double)MAX_THROTTLE1) * 100;		// return pedal travel even if brakes not depressed
 }
 
+uint8_t pedal_get_out_of_range_flag(void)
+{
+    uint8_t error_flag = pedal_out_of_range_none;
 
-/****************************************************************************************************************************************
-* Function Name: outOfRange(uint16 throttle1, uint16 throttle2, uint16 brake1, uint16 brake2, uint16 steering, volatile uint8_t* errMsg)
-*****************************************************************************************************************************************
-*
-* Summary:
-*  Checks for out of range (EV2.3.10, EV2.4.5). Any value between 0.854V and 
-*  0.499V (409-decimal)and above 4.4995V (3686-decimal) will will trigger an error 
-*  to be sent over CAN.
-*
-* Parameters:
-*  throttle1: throttle 1 sensor count value	  
-*  throttle2: throttle 2 sensor count value	 
-*  brake1: brake 1 sensor count value	 
-*  brake2: brake 2 sensor count value	 
-*  errMsg: Pointer to sensor's error message (should be 6th element of Tx1_BSE)
-*
-* Return:
-*  None.
-*
-*
-*******************************************************************************/
-
-void outOfRange(uint16 throttle1, uint16 throttle2, uint16 brake1, uint16 brake2, uint16 steering, volatile uint8_t* errMsg)
-{   
     if (throttle1 < MIN_THROTTLE1 || throttle1 > MAX_THROTTLE1)
-        *errMsg += 0x0001;              // throttle 1 out of range err msg
+        error_flag |= pedal_out_of_range_throttle1;
     
     if(throttle2 < MIN_THROTTLE2 || throttle2 > MAX_THROTTLE2)
-        *errMsg += 0x0002;              // throttle 2 out of range err msg
+        error_flag |= pedal_out_of_range_throttle2;
     
     if (brake1 < MIN_BRAKE1)
-        *errMsg += 0x0004;              // brake 1 out of range err msg
+        error_flag |= pedal_out_of_range_brake1;
     
     if (brake2 < MIN_COUNT)
-        *errMsg += 0x0008;              // brake 2 out of range err msg
+        error_flag |= pedal_out_of_range_brake2;
     
     if (steering < STEER_LEFT || steering > STEER_RIGHT)
-        *errMsg += 0x0010;              // steering out of range err msg
+        error_flag |= pedal_out_of_range_steering;
+
+    return error_flag;
 }
 
 void restore_calibration_data(void)

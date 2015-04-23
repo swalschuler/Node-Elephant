@@ -17,10 +17,27 @@
 #define MIN_COUNT 409			// 409 = 0.4993V
 #define MAX_COUNT 3686	        // 3686 = 4.4995V 
 
+typedef enum
+{
+	pedal_out_of_range_none = 		0,
+	pedal_out_of_range_throttle1 =	1 << 0,
+	pedal_out_of_range_throttle2 = 	1 << 1,
+	pedal_out_of_range_brake1 = 	1 << 2,
+	pedal_out_of_range_brake2 = 	1 << 3,
+	pedal_out_of_range_steering = 	1 << 4
+} pedal_out_of_range_flag;
+
+typedef enum
+{
+	pedal_brake_plausible_yes = 0,
+	pedal_brake_plausible_no = 1 << 5
+} pedal_brake_plausiblility;
+
 void calibrate(void);           // calibrate all prototype 
+void pedal_fetch_data(void);
 double torqueImp(uint16 sensor1, uint16 sensor2, volatile uint8_t* errMsg);     // torque implausibility function prototype
 double brakePlaus(uint16 brake1, uint16 brake2, uint16 throttle1, uint16 throttle2, volatile uint8_t* errMsg); // brake plausibility function prototype
-void outOfRange(uint16 throttle1, uint16 throttle2, uint16 brake1, uint16 brake2, uint16 steering, volatile uint8_t* errMsg);       // out of range funciton prototype
+uint8_t pedal_get_out_of_range_flag(void);
 
 void restore_calibration_data(void);          // set calibrated values to variable 
 // uint16 concantenate(reg8* regPointer, uint8* byteCount);      //gets sensor value from EEPROM
