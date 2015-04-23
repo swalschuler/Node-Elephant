@@ -1,16 +1,23 @@
 #include <stdint.h>
+#include <stdbool.h>
 #include "pedal_control.h"
 #include "EEPROM_util.h"
 
 #define USED_EEPROM_SECTOR                      (1u)
 #define CALIBRATION_DATA_BASE_ADDRESS          ((USED_EEPROM_SECTOR * CYDEV_EEPROM_SECTOR_SIZE) + 0x00)
 
-int16_t MAX_THROTTLE1 = 0;
+#define CALIBRATION_COUNT (10)
+
 int16_t MIN_THROTTLE1 = 0;
-int16_t MAX_THROTTLE2 = 0;
 int16_t MIN_THROTTLE2 = 0;
+int16_t MAX_THROTTLE1 = 0;
+int16_t MAX_THROTTLE2 = 0;
+
 int16_t MIN_BRAKE1 = 0;
 int16_t MIN_BRAKE2 = 0;
+int16_t MAX_BRAKE1 = 0;
+int16_t MAX_BRAKE2 = 0;
+
 int16_t STEER_LEFT = 0;
 int16_t STEER_RIGHT = 0;
 
@@ -39,20 +46,24 @@ int16_t steering = 0;
 *  and code for printing to a terminal will be implemeted
 *
 *******************************************************************************/
-void calibrate(void)           //calibrate all sensors
+void pedal_calibrate(void)           //calibrate all sensors
 {
     double volts;        //stores voltage conversion value in volts
     // uint16 voltCounts;  //stores voltage conversion value in counts
     uint8 i = 0;        //counter for for loop 
     char buff[50];
-    uint8_t channelNum[8] = {0, 1, 0, 1, 2, 3, 4, 4};    //array of channel numbers
-    int16_t* calibrated_value[8] = {
+    uint8_t channelNum[CALIBRATION_COUNT] = {0, 1, 0, 1, 2, 3, 2, 3, 4, 4};    //array of channel numbers
+    int16_t* calibrated_value[CALIBRATION_COUNT] = {
         &MIN_THROTTLE1,
         &MIN_THROTTLE2,
         &MAX_THROTTLE1,
         &MAX_THROTTLE2,
+
         &MIN_BRAKE1,
         &MIN_BRAKE2,
+        &MAX_BRAKE1,
+        &MAX_BRAKE2,
+
         &STEER_LEFT,
         &STEER_RIGHT
     };
@@ -61,7 +72,7 @@ void calibrate(void)           //calibrate all sensors
     // cystatus writeStatus = CYRET_SUCCESS;       //return status of EEPROM_ByteWrite
 
     
-    for(i = 0; i < 8; i++)
+    for(i = 0; i < CALIBRATION_COUNT; i++)
     {
         LCD_ClearDisplay();
         LCD_Position(0,0);
@@ -78,13 +89,18 @@ void calibrate(void)           //calibrate all sensors
                 break;
             case 3: LCD_PrintString("Throttle 2: High");
                 break;
+
             case 4: LCD_PrintString("Brake 1: Low");
                 break;
             case 5: LCD_PrintString("Brake 2: Low");
                 break;
-            case 6: LCD_PrintString("Steering: Left");
+            case 6: LCD_PrintString("Brake 1: HIGH");
                 break;
-            case 7: LCD_PrintString("Steering: Right");
+            case 7: LCD_PrintString("Brake 2: HIGH");
+                break;
+            case 8: LCD_PrintString("Steering: Left");
+                break;
+            case 9: LCD_PrintString("Steering: Right");
                 break;
             default: LCD_PrintString("Error in loop");
                 break;
@@ -145,6 +161,7 @@ void calibrate(void)           //calibrate all sensors
                     LCD_Position(1,0);
                     LCD_PrintNumber(MAX_THROTTLE2);
                 break;
+
             case 4: LCD_PrintString("Brake 1: Low");
                     LCD_Position(1,0);
                     LCD_PrintNumber(MIN_BRAKE1);
@@ -153,11 +170,20 @@ void calibrate(void)           //calibrate all sensors
                     LCD_Position(1,0);
                     LCD_PrintNumber(MIN_BRAKE2);
                 break;
-            case 6: LCD_PrintString("Steering: Left");
+            case 6: LCD_PrintString("Brake 1: HIGH");
+                    LCD_Position(1,0);
+                    LCD_PrintNumber(MAX_BRAKE1);
+                break;
+            case 7: LCD_PrintString("Brake 2: HIGH");
+                    LCD_Position(1,0);
+                    LCD_PrintNumber(MAX_BRAKE2);
+                break;
+
+            case 8: LCD_PrintString("Steering: Left");
                     LCD_Position(1,0);
                     LCD_PrintNumber(STEER_LEFT);
                 break;
-            case 7: LCD_PrintString("Steering: Right");
+            case 9: LCD_PrintString("Steering: Right");
                     LCD_Position(1,0);
                     LCD_PrintNumber(STEER_RIGHT);
                 break;
@@ -173,7 +199,7 @@ void calibrate(void)           //calibrate all sensors
 
 void pedal_fetch_data(void)
 {
-    int8_t* data_list[5] =
+    int16_t* data_list[5] =
     {
         &throttle1,
         &throttle2,
@@ -278,6 +304,53 @@ double brakePlaus(uint16 brake1, uint16 brake2, uint16 throttle1, uint16 throttl
 	return plauseCheck1 = ((double)throttle1 / (double)MAX_THROTTLE1) * 100;		// return pedal travel even if brakes not depressed
 }
 
+uint8_t pedal_is_torque_plausible(double* brake_percentage_diff, double* throttle_percentage_diff)
+{
+
+    double percentDiff = fabs((double)(brake1 - brake2)) / brake1;
+    bool fault_occurred = false;
+
+    if (percentDiff > 0.1)
+    {
+        *brake_percentage_diff = percentDiff;
+        fault_occurred = true;
+    }
+
+    percentDiff = fabs((double)(throttle1 - throttle2)) / throttle1;
+    if (percentDiff > 0.1)
+    {
+        *brake_percentage_diff = percentDiff;
+        fault_occurred = true;
+    }
+
+    if (fault_occurred)
+    {
+        return pedal_brake_plausible_torque;
+    }
+    return pedal_brake_plausible_yes;
+}
+
+uint8_t pedal_is_brake_plausible(double* brake_percentage_ptr, double* throttle_percentage_ptr)
+{
+    if (brake1 > MIN_BRAKE1)          
+    {
+        double brake_percentage = (double)(brake1) / (MAX_BRAKE1 - MIN_BRAKE2);
+        double throttle_percentage = (double)(throttle1) / (MAX_THROTTLE1 - MIN_THROTTLE1);
+        *brake_percentage_ptr = brake_percentage;
+        *throttle_percentage_ptr = throttle_percentage;
+        if (brake_percentage > 0.1 && throttle_percentage > 0.25)
+        {
+            return pedal_brake_plausible_brake;
+        }
+        return pedal_brake_plausible_yes;
+    }
+    else
+    {
+        return pedal_brake_plausible_brake;
+    }
+    return pedal_brake_plausible_yes;
+}
+
 uint8_t pedal_get_out_of_range_flag(void)
 {
     uint8_t error_flag = pedal_out_of_range_none;
@@ -300,9 +373,9 @@ uint8_t pedal_get_out_of_range_flag(void)
     return error_flag;
 }
 
-void restore_calibration_data(void)
+void pedal_restore_calibration_data(void)
 {
-    uint8 byteCount = 0;
+    // uint8 byteCount = 0;
     // reg8* regPointer = (reg8*)CYDEV_EE_BASE;           //pointer pointing to base of EEPROM (row 1)    
     
     MIN_THROTTLE1 = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 0);
@@ -311,8 +384,10 @@ void restore_calibration_data(void)
     MAX_THROTTLE2 = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 3);
     MIN_BRAKE1 = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 4);
     MIN_BRAKE2 = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 5);
-    STEER_LEFT = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 6);
-    STEER_RIGHT = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 7);
+    MAX_BRAKE1 = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 6);
+    MAX_BRAKE2 = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 7);
+    STEER_LEFT = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 8);
+    STEER_RIGHT = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 9);
 }
 
 /* [] END OF FILE */

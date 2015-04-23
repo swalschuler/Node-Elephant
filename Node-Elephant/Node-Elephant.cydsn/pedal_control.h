@@ -30,16 +30,34 @@ typedef enum
 typedef enum
 {
 	pedal_brake_plausible_yes = 0,
-	pedal_brake_plausible_no = 1 << 5
-} pedal_brake_plausiblility;
+    pedal_brake_plausible_torque = 1 << 5,
+	pedal_brake_plausible_brake = 1 << 6
+} pedal_brake_plausibility_flag;
 
-void calibrate(void);           // calibrate all prototype 
+/**
+ * @brief Calibrate data for all sensors.
+ * 
+ * @details This function call will override old calibration data.
+ * This call will also synchronize the new calibration data with EEPROM, if a write error occur, the error LED will light up
+ * and the write will abort.
+ */
+void pedal_calibrate(void);
+
+/**
+ * @brief Fetch data from all sensors
+ */
 void pedal_fetch_data(void);
-double torqueImp(uint16 sensor1, uint16 sensor2, volatile uint8_t* errMsg);     // torque implausibility function prototype
-double brakePlaus(uint16 brake1, uint16 brake2, uint16 throttle1, uint16 throttle2, volatile uint8_t* errMsg); // brake plausibility function prototype
+// double torqueImp(uint16 sensor1, uint16 sensor2, volatile uint8_t* errMsg);     // torque implausibility function prototype
+// double brakePlaus(uint16 brake1, uint16 brake2, uint16 throttle1, uint16 throttle2, volatile uint8_t* errMsg); // brake plausibility function prototype
 uint8_t pedal_get_out_of_range_flag(void);
+uint8_t pedal_is_torque_plausible(double* brake_percentage_diff, double* throttle_percentage_diff);
+uint8_t pedal_is_brake_plausible(double* brake_percentage, double* throttle_percentage);
 
-void restore_calibration_data(void);          // set calibrated values to variable 
-// uint16 concantenate(reg8* regPointer, uint8* byteCount);      //gets sensor value from EEPROM
+/**
+ * @brief Read calibration data for sensors from EEPROM.
+ * 
+ * @details This function need to be called when the main program start
+ */
+void pedal_restore_calibration_data(void);
 
 /* [] END OF FILE */

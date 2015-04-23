@@ -31,7 +31,7 @@ int main()
     CAN_Init();
     CAN_Start();
     CyGlobalIntEnable;          //enable global interrupts 
-    restore_calibration_data();               //set min and max values
+    pedal_restore_calibration_data();               //set min and max values
     EEPROM_ERROR_LED_Write(0);
     
     for(;;)
@@ -51,7 +51,7 @@ int main()
         if (Button_Read() == 0)      //press button to run calibration
         {
             clock_StopBlock();      //stop clock to disable interrupt 
-            calibrate();
+            pedal_calibrate();
             LCD_ClearDisplay();
             isr_ClearPending();
             clock_Start();

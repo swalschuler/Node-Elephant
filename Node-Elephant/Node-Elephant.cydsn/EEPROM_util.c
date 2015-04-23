@@ -21,13 +21,6 @@ int16_t EEPROM_get(uint16_t address, uint8_t offset) {
     temp <<= 8;
     temp += EEPROM_ReadByte(address + (offset + 1) * 8);
     
-    // for (i = 0; i < 4; i++)
-    // {   
-    //     temp = temp * 10;
-    //     temp = temp + EEPROM_ReadByte(address + offset);
-    //     offset++;
-    // }
-    
     return temp;
 }
 
