@@ -2,7 +2,7 @@
 --	Conversion of Node-Elephant.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Thu Dec 11 03:52:56 2014
+--	Wed Dec 10 00:23:12 2014
 --
 
 USE cypress.cypress.all;
@@ -601,6 +601,15 @@ SIGNAL Net_714 : bit;
 SIGNAL Net_715 : bit;
 SIGNAL Net_716 : bit;
 SIGNAL \CAN:Net_30\ : bit;
+SIGNAL \Filter:Net_1\ : bit;
+SIGNAL \Filter:Net_4\ : bit;
+SIGNAL \Filter:Net_5\ : bit;
+SIGNAL \Filter:Net_8\ : bit;
+SIGNAL \Filter:Net_9\ : bit;
+SIGNAL Net_1083 : bit;
+SIGNAL Net_1084 : bit;
+SIGNAL Net_1085 : bit;
+SIGNAL Net_1082 : bit;
 SIGNAL \ADC_SAR:AMuxHw_2_Decoder_old_id_5\\D\ : bit;
 SIGNAL \ADC_SAR:AMuxHw_2_Decoder_old_id_4\\D\ : bit;
 SIGNAL \ADC_SAR:AMuxHw_2_Decoder_old_id_3\\D\ : bit;
@@ -1985,6 +1994,25 @@ Tx_1:cy_psoc3_pins_v1_10
 \CAN:isr\:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
 	PORT MAP(int_signal=>Net_715);
+\Filter:DFB\:cy_psoc3_dfb_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(clock=>zero,
+		in_1=>zero,
+		in_2=>zero,
+		out_1=>\Filter:Net_8\,
+		out_2=>\Filter:Net_9\,
+		dmareq_1=>Net_1083,
+		dmareq_2=>Net_1084,
+		interrupt=>Net_1085);
+isr_filter:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>Net_1085);
+DMA:cy_dma_v1_0
+	GENERIC MAP(drq_type=>"10",
+		num_tds=>0)
+	PORT MAP(drq=>Net_925,
+		trq=>zero,
+		nrq=>Net_1082);
 \ADC_SAR:AMuxHw_2_Decoder_old_id_5\:cy_dff
 	PORT MAP(d=>\ADC_SAR:ch_addr_5\,
 		clk=>\ADC_SAR:clock\,
