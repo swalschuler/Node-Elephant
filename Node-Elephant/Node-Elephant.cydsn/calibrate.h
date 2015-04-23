@@ -10,9 +10,6 @@
  * ========================================
 */
 
-#include <project.h>
-#include <stdio.h>
-
 void calAll(void);           //calibrate all prototype 
 
 /* [] END OF FILE */

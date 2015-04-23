@@ -1,6 +1,6 @@
 // ======================================================================
 // Node-Elephant.v generated from TopDesign.cysch
-// 12/10/2014 at 00:23
+// 12/06/2014 at 21:50
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1020,61 +1020,18 @@ module CAN_v2_30_4 (
 
 endmodule
 
-// Filter_v2_20(ChannelEnableA=true, ChannelEnableB=false, ChannelSettingsA=<enabled=true>\r\n<userEntryEnabled=false>\r\n<sampleRate=1000>\r\n<filterGain_dB=0>\r\n<filterGain_Linear=1>\r\n<gainScale=DB>\r\n<width=WIDTH_16>\r\n<signal=INTERRUPT>\r\n<stage_count=1>\r\n<bus_clock=23>\r\n<stage0=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=0.5/0.5/>\r\n    <userTapCount=2>\r\n>\r\n<stage1=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage2=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage3=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage4=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage5=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage6=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n<stage7=\r\n    <design_type=FIR>\r\n    <pass_type=LOW_PASS>\r\n    <window_type=HAMMING>\r\n    <tap_count=16>\r\n    <primary_freq=15>\r\n    <bandwidth=10>\r\n    <UserCoefficient=>\r\n    <userTapCount=1>\r\n>\r\n, ChannelSettingsB="", ChannelTypeA=1, ChannelTypeB=0, CoefficientEntryEnableA=false, CoefficientEntryEnableB=false, DisplaySettingsA=50307, DisplaySettingsB=50307, DmaEnableA=false, DmaEnableB=false, IrqEnableA=true, IrqEnableB=false, MinBusClockVal=23, CY_COMPONENT_NAME=Filter_v2_20, CY_CONTROL_FILE=<:default:>, CY_FITTER_NAME=Filter, CY_INSTANCE_SHORT_NAME=Filter, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=20, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=cydsfit No Version Information Found, INSTANCE_NAME=Filter, )
-module Filter_v2_20_5 (
-    DMA_Req_A,
-    DMA_Req_B,
-    Interrupt);
-    output      DMA_Req_A;
-    output      DMA_Req_B;
-    output      Interrupt;
-
-
-          wire  Net_5;
-          wire  Net_9;
-          wire  Net_8;
-          wire  Net_4;
-          wire  Net_1;
-
-    ZeroTerminal ZeroTerminal_1 (
-        .z(Net_1));
-
-    cy_psoc3_dfb_v1_0 DFB (
-        .in_1(Net_4),
-        .out_1(Net_8),
-        .out_2(Net_9),
-        .interrupt(Interrupt),
-        .in_2(Net_5),
-        .clock(Net_1),
-        .dmareq_1(DMA_Req_A),
-        .dmareq_2(DMA_Req_B));
-
-    ZeroTerminal ZeroTerminal_4 (
-        .z(Net_5));
-
-    ZeroTerminal ZeroTerminal_5 (
-        .z(Net_4));
-
-
-
-endmodule
-
 // top
 module top ;
 
-          wire  Net_1082;
-          wire  Net_1081;
-          wire  Net_1084;
-          wire  Net_1083;
           wire  Net_716;
           wire  Net_715;
           wire  Net_714;
-          wire  Net_1037;
-          wire  Net_1042;
-          wire  Net_1041;
-          wire  Net_1040;
-          wire  Net_1039;
-          wire  Net_1038;
+          wire  Net_655;
+          wire  Net_709;
+          wire  Net_708;
+          wire  Net_707;
+          wire  Net_706;
+          wire  Net_705;
     electrical  Net_1016;
     electrical  Net_1015;
     electrical  Net_1014;
@@ -1167,6 +1124,7 @@ module top ;
     electrical  Net_496;
     electrical  Net_927;
     electrical  Net_926;
+          wire  Net_925;
           wire  Net_924;
           wire  Net_923;
           wire  Net_922;
@@ -1174,13 +1132,11 @@ module top ;
     electrical  Net_491;
     electrical  Net_493;
     electrical  Net_494;
-          wire  Net_1085;
-          wire  Net_925;
-          wire  Net_12;
-          wire  Net_10;
-          wire  Net_684;
           wire  Net_710;
           wire  Net_11;
+          wire  Net_684;
+          wire  Net_12;
+          wire  Net_10;
 
     CharLCD_v2_0_0 LCD ();
 
@@ -1711,8 +1667,8 @@ module top ;
         .enable(1'b1),
         .trigger(1'b1),
         .capture(1'b0),
-        .capture_out(Net_1041),
-        .tc(Net_1042),
+        .capture_out(Net_708),
+        .tc(Net_709),
         .clock(Net_10));
     defparam Timer.CaptureCount = 2;
     defparam Timer.CaptureCounterEnabled = 0;
@@ -1956,27 +1912,6 @@ module top ;
         .tx_en(Net_714),
         .interrupt(Net_715),
         .bclk(Net_716));
-
-    Filter_v2_20_5 Filter (
-        .DMA_Req_A(Net_1083),
-        .DMA_Req_B(Net_1084),
-        .Interrupt(Net_1085));
-
-
-	cy_isr_v1_0
-		#(.int_type(2'b10))
-		isr_filter
-		 (.int_signal(Net_1085));
-
-
-
-	cy_dma_v1_0
-		#(.drq_type(2'b10))
-		DMA
-		 (.drq(Net_925),
-		  .trq(1'b0),
-		  .nrq(Net_1082));
-
 
 
 

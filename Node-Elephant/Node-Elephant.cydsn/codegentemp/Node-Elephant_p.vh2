@@ -1,5 +1,5 @@
 -- Project:   Node-Elephant
--- Generated: 12/10/2014 00:23:21
+-- Generated: 12/06/2014 21:50:52
 -- 
 
 ENTITY \Node-Elephant\ IS
@@ -43,10 +43,6 @@ ARCHITECTURE __DEFAULT__ OF \Node-Elephant\ IS
     SIGNAL LED(0)__PA : bit;
     SIGNAL Net_10 : bit;
     ATTRIBUTE global_signal OF Net_10 : SIGNAL IS true;
-    SIGNAL Net_1082 : bit;
-    SIGNAL Net_1083 : bit;
-    SIGNAL Net_1084 : bit;
-    SIGNAL Net_1085 : bit;
     SIGNAL Net_10_local : bit;
     SIGNAL Net_11 : bit;
     SIGNAL Net_684 : bit;
@@ -169,8 +165,6 @@ ARCHITECTURE __DEFAULT__ OF \Node-Elephant\ IS
     ATTRIBUTE global_signal OF \ADC_SAR:clock\ : SIGNAL IS true;
     SIGNAL \ADC_SAR:clock_local\ : bit;
     SIGNAL \ADC_SAR:nrq\ : bit;
-    SIGNAL \Filter:Net_8\ : bit;
-    SIGNAL \Filter:Net_9\ : bit;
     SIGNAL \\\LCD:LCDPort(0)\\__PA\ : bit;
     SIGNAL \\\LCD:LCDPort(1)\\__PA\ : bit;
     SIGNAL \\\LCD:LCDPort(2)\\__PA\ : bit;
@@ -218,7 +212,6 @@ ARCHITECTURE __DEFAULT__ OF \Node-Elephant\ IS
     ATTRIBUTE Location OF Brake_2(0) : LABEL IS "P3[5]";
     ATTRIBUTE lib_model OF Button(0) : LABEL IS "iocell3";
     ATTRIBUTE Location OF Button(0) : LABEL IS "P6[1]";
-    ATTRIBUTE lib_model OF DMA : LABEL IS "drqcell1";
     ATTRIBUTE lib_model OF LED(0) : LABEL IS "iocell4";
     ATTRIBUTE Location OF LED(0) : LABEL IS "P6[3]";
     ATTRIBUTE lib_model OF Net_925 : LABEL IS "macrocell1";
@@ -300,9 +293,9 @@ ARCHITECTURE __DEFAULT__ OF \Node-Elephant\ IS
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_7\ : LABEL IS "macrocell71";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_8\ : LABEL IS "macrocell72";
     ATTRIBUTE lib_model OF \ADC_SAR:AMuxHw_2_Decoder_one_hot_9\ : LABEL IS "macrocell73";
-    ATTRIBUTE lib_model OF \ADC_SAR:FinalBuf\ : LABEL IS "drqcell2";
+    ATTRIBUTE lib_model OF \ADC_SAR:FinalBuf\ : LABEL IS "drqcell1";
     ATTRIBUTE Location OF \ADC_SAR:SAR:ADC_SAR\ : LABEL IS "F(SAR,1)";
-    ATTRIBUTE lib_model OF \ADC_SAR:TempBuf\ : LABEL IS "drqcell3";
+    ATTRIBUTE lib_model OF \ADC_SAR:TempBuf\ : LABEL IS "drqcell2";
     ATTRIBUTE lib_model OF \ADC_SAR:bSAR_SEQ:CtrlReg\ : LABEL IS "controlcell1";
     ATTRIBUTE lib_model OF \ADC_SAR:bSAR_SEQ:EOCSts\ : LABEL IS "statuscell1";
     ATTRIBUTE lib_model OF \ADC_SAR:bSAR_SEQ:bus_clk_reg\ : LABEL IS "macrocell74";
@@ -1536,16 +1529,6 @@ BEGIN
             dclk_glb_1 => Net_10,
             dclk_1 => Net_10_local,
             clk_bus_glb_ff => \ClockBlock.clk_bus_glb_ff__sig\);
-
-    DMA:drqcell
-        GENERIC MAP(
-            drq_type => "10",
-            num_tds => 0)
-        PORT MAP(
-            dmareq => Net_925,
-            termin => '0',
-            termout => Net_1082,
-            clock => ClockBlock_BUS_CLK);
 
     LED:logicalport
         GENERIC MAP(
@@ -3269,18 +3252,6 @@ BEGIN
             interrupt => Net_715,
             clock => ClockBlock_BUS_CLK);
 
-    \Filter:DFB\:dfbcell
-        GENERIC MAP(
-            cy_registers => "")
-        PORT MAP(
-            in_1 => open,
-            in_2 => open,
-            out_1 => \Filter:Net_8\,
-            out_2 => \Filter:Net_9\,
-            dmareq_1 => Net_1083,
-            dmareq_2 => Net_1084,
-            interrupt => Net_1085);
-
     \LCD:LCDPort(0)\:iocell
         GENERIC MAP(
             in_sync_mode => 0,
@@ -3623,13 +3594,6 @@ BEGIN
             int_type => "10")
         PORT MAP(
             interrupt => Net_684,
-            clock => ClockBlock_BUS_CLK);
-
-    isr_filter:interrupt
-        GENERIC MAP(
-            int_type => "10")
-        PORT MAP(
-            interrupt => Net_1085,
             clock => ClockBlock_BUS_CLK);
 
 END __DEFAULT__;
