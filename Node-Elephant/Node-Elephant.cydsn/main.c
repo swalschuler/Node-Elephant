@@ -41,8 +41,8 @@ int main()
     ADC_SAR_Start();
     ADC_SAR_StartConvert();
     EEPROM_Start();
-    isr_Start();
-    Timer_Start();
+    //isr_Start();
+    //Timer_Start();
     CAN_Init();
     CAN_Start();
     isr_calibration_StartEx(&isr_calibration_handler);
@@ -97,11 +97,11 @@ int main()
                 break;
 
             case pedal_state_calibrating:
-                clock_StopBlock();      //stop clock to disable interrupt 
+                //clock_StopBlock();      //stop clock to disable interrupt 
                 pedal_calibrate();
                 LCD_ClearDisplay();
-                isr_ClearPending();
-                clock_Start();
+                //isr_ClearPending();
+                //clock_Start();
                 pedal_node_state = pedal_state_normal;
                 break;
 

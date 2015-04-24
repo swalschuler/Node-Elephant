@@ -26,7 +26,7 @@ typedef enum {
 #define PEDAL_INCREPENCY_PERCENT						(0.1)
 #define PEDAL_BRAKE_IMPLAUSIBLE_EXIT_THROTTLE_PERCENT	(0.1)
 
-#define PEDAL_MEASURE_TOLERANCE							(0.5)
+#define PEDAL_MEASURE_TOLERANCE							(0.1)
 
 #endif
 
