@@ -19,7 +19,7 @@ CY_ISR(isr_CAN_handler)
     if (state == pedal_state_normal)
     {
     	int16_t scaled_value = 0;
-    	scaled_value = (*throttle_ptr - *throttle_min) * 0x7FFF / (*throttle_max - *throttle_min);
+    	scaled_value = (*throttle_max - *throttle_ptr) * 0x7FFF / (*throttle_max - *throttle_min);
 	    can_buffer[2] = scaled_value & 0xFF;
 	    can_buffer[3] = (scaled_value >> 8) & 0xFF;
     }
