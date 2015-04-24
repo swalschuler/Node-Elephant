@@ -52,7 +52,7 @@ void pedal_fetch_data(void);
 // double torqueImp(uint16 sensor1, uint16 sensor2, volatile uint8_t* errMsg);     // torque implausibility function prototype
 // double brakePlaus(uint16 brake1, uint16 brake2, uint16 throttle1, uint16 throttle2, volatile uint8_t* errMsg); // brake plausibility function prototype
 uint8_t pedal_get_out_of_range_flag(void);
-uint8_t pedal_is_torque_plausible(double* brake_percentage_diff, double* throttle_percentage_diff);
+uint8_t pedal_is_pedal_reading_matched(double* brake_percentage_diff, double* throttle_percentage_diff);
 uint8_t pedal_is_brake_plausible(double* brake_percentage, double* throttle_percentage);
 
 /**

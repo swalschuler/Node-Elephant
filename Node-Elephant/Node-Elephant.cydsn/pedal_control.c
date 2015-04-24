@@ -10,6 +10,10 @@
 
 #define CALIBRATION_COUNT (10)
 
+#define TWELVE_BIT_MAX (0x7FF)
+#define TWELVE_BIT_MIN (0x800)
+
+
 static int16_t MIN_THROTTLE1 = 0;
 static int16_t MIN_THROTTLE2 = 0;
 static int16_t MAX_THROTTLE1 = 0;
@@ -128,7 +132,7 @@ void pedal_calibrate(void)           //calibrate all sensors
         {
             case 0:  //Throttle 1
             {
-                int16_t ADC_low = 0, ADC_high = 0;
+                int16_t ADC_low = TWELVE_BIT_MAX, ADC_high = TWELVE_BIT_MIN;
                 for (;;)
                 {
                     double volts = 0;
@@ -165,7 +169,7 @@ void pedal_calibrate(void)           //calibrate all sensors
             }
             case 1: //Throttle 2
             {
-                int16_t ADC_low = 0, ADC_high = 0;
+                int16_t ADC_low = TWELVE_BIT_MAX, ADC_high = TWELVE_BIT_MIN;
                 for (;;)
                 {
                     double volts = 0;
@@ -202,7 +206,7 @@ void pedal_calibrate(void)           //calibrate all sensors
             }
             case 2: //Brake 1
             {
-                int16_t ADC_low = 0, ADC_high = 0;
+                int16_t ADC_low = TWELVE_BIT_MAX, ADC_high = TWELVE_BIT_MIN;
                 for (;;)
                 {
                     double volts = 0;
@@ -239,7 +243,7 @@ void pedal_calibrate(void)           //calibrate all sensors
             }
             case 3: //Brake 2
             {
-                int16_t ADC_low = 0, ADC_high = 0;
+                int16_t ADC_low = TWELVE_BIT_MAX, ADC_high = TWELVE_BIT_MIN;
                 for (;;)
                 {
                     double volts = 0;
@@ -379,7 +383,7 @@ void pedal_fetch_data(void)
     }
 }
 
-uint8_t pedal_is_torque_plausible(double* brake_percentage_diff, double* throttle_percentage_diff)
+uint8_t pedal_is_pedal_reading_matched(double* brake_percentage_diff, double* throttle_percentage_diff)
 {
 
     float brake1_percent = (float)(brake1_mv - MIN_BRAKE1_MV) / (float)(MAX_BRAKE1_MV - MIN_BRAKE1_MV);

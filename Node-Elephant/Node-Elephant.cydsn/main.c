@@ -80,7 +80,7 @@ int main()
                     break;
                 }
 
-                torque_plausible_flag = pedal_is_torque_plausible(&brake_percent_diff, &throttle_percent_diff);
+                torque_plausible_flag = pedal_is_pedal_reading_matched(&brake_percent_diff, &throttle_percent_diff);
                 if (torque_plausible_flag != 0)
                 {
                     pedal_node_state = pedal_state_discrepency;
@@ -123,7 +123,7 @@ int main()
                 LCD_ClearDisplay();
                 LCD_Position(0,0);
                 LCD_PrintString("Pedal discrepency");
-                torque_plausible_flag = pedal_is_torque_plausible(&brake_percent_diff, &throttle_percent_diff);
+                torque_plausible_flag = pedal_is_pedal_reading_matched(&brake_percent_diff, &throttle_percent_diff);
                 if (torque_plausible_flag == 0)
                 {
                     pedal_node_state = pedal_state_normal;
