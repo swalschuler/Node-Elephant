@@ -16,9 +16,9 @@
 int16_t EEPROM_get(uint16_t address, uint8_t offset) {
     int16_t temp = 0;
 
-    temp = EEPROM_ReadByte(address + offset * 8) & 0xFF;
+    temp = EEPROM_ReadByte(address + offset * 16) & 0xFF;
     temp <<= 8;
-    temp |= EEPROM_ReadByte(address + (offset + 1) * 8) & 0xFF;
+    temp |= EEPROM_ReadByte(address + offset * 16 + 8) & 0xFF;
     
     return temp;
 }
@@ -26,12 +26,12 @@ int16_t EEPROM_get(uint16_t address, uint8_t offset) {
 void EEPROM_set(int16_t value, uint16_t address, uint8_t offset) {
 	uint8_t upper = (value >> 8) & 0xFF;
 	uint8_t lower = value & 0xFF;
-	if (EEPROM_WriteByte(upper, address + offset * 8) != CYRET_SUCCESS)
+	if (EEPROM_WriteByte(upper, address + offset * 16) != CYRET_SUCCESS)
     {
         EEPROM_ERROR_LED_Write(1);
         return;
     }
-	if (EEPROM_WriteByte(lower, address + (offset + 1) * 8) != CYRET_SUCCESS)
+	if (EEPROM_WriteByte(lower, address + offset * 16 + 8) != CYRET_SUCCESS)
     {
         EEPROM_ERROR_LED_Write(1);
         return;
