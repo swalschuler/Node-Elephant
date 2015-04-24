@@ -19,8 +19,8 @@ static int16_t MIN_BRAKE2 = 0;
 static int16_t MAX_BRAKE1 = 0;
 static int16_t MAX_BRAKE2 = 0;
 
-static int16_t STEER_LEFT = 0;
-static int16_t STEER_RIGHT = 0;
+//static int16_t STEER_LEFT = 0;
+//static int16_t STEER_RIGHT = 0;
 
 static int32_t MIN_THROTTLE1_MV = 0;
 static int32_t MIN_THROTTLE2_MV = 0;
@@ -32,34 +32,54 @@ static int32_t MIN_BRAKE2_MV = 0;
 static int32_t MAX_BRAKE1_MV = 0;
 static int32_t MAX_BRAKE2_MV = 0;
 
-static int32_t STEER_LEFT_MV = 0;
-static int32_t STEER_RIGHT_MV = 0;
+//static int32_t STEER_LEFT_MV = 0;
+//static int32_t STEER_RIGHT_MV = 0;
 
 static int16_t throttle1 = 0;
 static int16_t throttle2 = 0;
 static int16_t brake1 = 0;
 static int16_t brake2 = 0;
-static int16_t steering = 0;
+//static int16_t steering = 0;
 
 static int32_t throttle1_mv = 0;
 static int32_t throttle2_mv = 0;
 static int32_t brake1_mv = 0;
 static int32_t brake2_mv = 0;
-static int32_t steering_mv = 0;
+//static int32_t steering_mv = 0;
 
 #define PEDAL_MEASURE_TOLERANCE_THROTTLE_MV_1 ((MAX_THROTTLE1_MV - MIN_THROTTLE1_MV) * PEDAL_MEASURE_TOLERANCE)
 #define PEDAL_MEASURE_TOLERANCE_BRAKE_MV_1 ((MAX_BRAKE1_MV - MIN_BRAKE1_MV) * PEDAL_MEASURE_TOLERANCE)
 #define PEDAL_MEASURE_TOLERANCE_THROTTLE_MV_2 ((MAX_THROTTLE2_MV - MIN_THROTTLE2_MV) * PEDAL_MEASURE_TOLERANCE)
 #define PEDAL_MEASURE_TOLERANCE_BRAKE_MV_2 ((MAX_BRAKE2_MV - MIN_BRAKE2_MV) * PEDAL_MEASURE_TOLERANCE)
 
+typedef enum
+{
+    EEPROM_T1_MIN = 0,
+    EEPROM_T2_MIN = 1,
+    EEPROM_T1_MAX = 2,
+    EEPROM_T2_MAX = 3,
+    EEPROM_B1_MIN = 4,
+    EEPROM_B2_MIN = 5,
+    EEPROM_B1_MAX = 6,
+    EEPROM_B2_MAX = 7
+} EEPROM_INDEX;
+
+typedef enum
+{
+    ADC_CHANNEL_T1 = 0,
+    ADC_CHANNEL_T2 = 1,
+    ADC_CHANNEL_B1 = 2,
+    ADC_CHANNEL_B2 = 3
+} ADC_CHANNEL;
+
 void pedal_calibrate(void)           //calibrate all sensors
 {
-    double volts;        //stores voltage conversion value in volts
+    // double volts;        //stores voltage conversion value in volts
     // uint16 voltCounts;  //stores voltage conversion value in counts
     uint8 i = 0;        //counter for for loop 
     char buff[50];
-    uint8_t channelNum[CALIBRATION_COUNT] = {0, 1, 0, 1, 2, 3, 2, 3, 4, 4};    //array of channel numbers
-    int16_t* calibrated_value[CALIBRATION_COUNT] = {
+    // uint8_t channelNum[CALIBRATION_COUNT] = {0, 1, 0, 1, 2, 3, 2, 3, 4, 4};    //array of channel numbers
+    /*int16_t* calibrated_value[CALIBRATION_COUNT] = {
         &MIN_THROTTLE1,
         &MIN_THROTTLE2,
         &MAX_THROTTLE1,
@@ -68,13 +88,13 @@ void pedal_calibrate(void)           //calibrate all sensors
         &MIN_BRAKE1,
         &MIN_BRAKE2,
         &MAX_BRAKE1,
-        &MAX_BRAKE2,
+        &MAX_BRAKE2//,
 
-        &STEER_LEFT,
-        &STEER_RIGHT
-    };
+        // &STEER_LEFT,
+        // &STEER_RIGHT
+    };*/
 
-    int32_t* converted_calibrated_value[CALIBRATION_COUNT] = {
+   /* int32_t* converted_calibrated_value[CALIBRATION_COUNT] = {
         &MIN_THROTTLE1_MV,
         &MIN_THROTTLE2_MV,
         &MAX_THROTTLE1_MV,
@@ -83,17 +103,14 @@ void pedal_calibrate(void)           //calibrate all sensors
         &MIN_BRAKE1_MV,
         &MIN_BRAKE2_MV,
         &MAX_BRAKE1_MV,
-        &MAX_BRAKE2_MV,
+        &MAX_BRAKE2_MV//,
 
-        &STEER_LEFT_MV,
-        &STEER_RIGHT_MV
-    };
-
-    // reg8* regPointer = (reg8*)CYDEV_EE_BASE;           //pointer pointing to base of EEPROM (row 1)
-    // cystatus writeStatus = CYRET_SUCCESS;       //return status of EEPROM_ByteWrite
+        // &STEER_LEFT_MV,
+        // &STEER_RIGHT_MV
+    };*/
 
     
-    for(i = 0; i < CALIBRATION_COUNT; i++)
+    for (i = 0; i < 4; i++)
     {
         LCD_ClearDisplay();
         LCD_Position(0,0);
@@ -102,53 +119,158 @@ void pedal_calibrate(void)           //calibrate all sensors
         LCD_ClearDisplay();
         switch (i)
         {
-            case 0: LCD_PrintString("Throttle 1: Low");
-                break;
-            case 1: LCD_PrintString("Throttle 2: Low");
-                break;
-            case 2: LCD_PrintString("Throttle 1: High");
-                break;
-            case 3: LCD_PrintString("Throttle 2: High");
-                break;
+            case 0:  //Throttle 1
+            {
+                int16_t ADC_low = 0, ADC_high = 0;
+                for (;;)
+                {
+                    double volts = 0;
+                    int16_t ADC_value = 0;
+                    if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))
+                    {
+                        ADC_value = ADC_SAR_GetResult16(ADC_CHANNEL_T1);
+                        volts = ADC_SAR_CountsTo_Volts(ADC_value);
+                        if (ADC_value < ADC_low)
+                            ADC_low = ADC_value;
+                        if (ADC_value > ADC_high)
+                            ADC_high = ADC_value;
+                        LCD_Position(0,0);
+                        sprintf(buff, "T1: %0.4fv", volts);
+                        LCD_PrintString(buff); 
+                        LCD_Position(1u, 0u);
+                        sprintf(buff, "$%04X$, $%04X$", ADC_low, ADC_high);
+                        LCD_PrintString(buff); 
+                    
+                        if (Button_Read() == 0)
+                        {
+                            MAX_THROTTLE1 = ADC_high;
+                            MIN_THROTTLE1 = ADC_low;
+                            MAX_THROTTLE1_MV = ADC_SAR_CountsTo_mVolts(MAX_THROTTLE1);
+                            MIN_THROTTLE1_MV = ADC_SAR_CountsTo_mVolts(MIN_THROTTLE1);
+                            EEPROM_set(MAX_THROTTLE1, CALIBRATION_DATA_BASE_ADDRESS, EEPROM_T1_MAX);
+                            EEPROM_set(MIN_THROTTLE1, CALIBRATION_DATA_BASE_ADDRESS, EEPROM_T1_MIN);
+                            break;
+                        }
+                    }
 
-            case 4: LCD_PrintString("Brake 1: Low");
+                }
                 break;
-            case 5: LCD_PrintString("Brake 2: Low");
+            }
+            case 1: //Throttle 2
+            {
+                int16_t ADC_low = 0, ADC_high = 0;
+                for (;;)
+                {
+                    double volts = 0;
+                    int16_t ADC_value = 0;
+                    if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))
+                    {
+                        ADC_value = ADC_SAR_GetResult16(ADC_CHANNEL_T2);
+                        volts = ADC_SAR_CountsTo_Volts(ADC_value);
+                        if (ADC_value < ADC_low)
+                            ADC_low = ADC_value;
+                        if (ADC_value > ADC_high)
+                            ADC_high = ADC_value;
+                        LCD_Position(0,0);
+                        sprintf(buff, "T2: %0.4fv", volts);
+                        LCD_PrintString(buff); 
+                        LCD_Position(1u, 0u);
+                        sprintf(buff, "$%04X$, $%04X$", ADC_low, ADC_high);
+                        LCD_PrintString(buff); 
+                    
+                        if (Button_Read() == 0)
+                        {
+                            MAX_THROTTLE2 = ADC_high;
+                            MIN_THROTTLE2 = ADC_low;
+                            MAX_THROTTLE2_MV = ADC_SAR_CountsTo_mVolts(MAX_THROTTLE2);
+                            MIN_THROTTLE2_MV = ADC_SAR_CountsTo_mVolts(MIN_THROTTLE2);
+                            EEPROM_set(MAX_THROTTLE2, CALIBRATION_DATA_BASE_ADDRESS, EEPROM_T2_MAX);
+                            EEPROM_set(MIN_THROTTLE2, CALIBRATION_DATA_BASE_ADDRESS, EEPROM_T2_MIN);
+                            break;
+                        }
+                    }
+
+                }
                 break;
-            case 6: LCD_PrintString("Brake 1: HIGH");
+            }
+            case 2: //Brake 1
+            {
+                int16_t ADC_low = 0, ADC_high = 0;
+                for (;;)
+                {
+                    double volts = 0;
+                    int16_t ADC_value = 0;
+                    if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))
+                    {
+                        ADC_value = ADC_SAR_GetResult16(ADC_CHANNEL_B1);
+                        volts = ADC_SAR_CountsTo_Volts(ADC_value);
+                        if (ADC_value < ADC_low)
+                            ADC_low = ADC_value;
+                        if (ADC_value > ADC_high)
+                            ADC_high = ADC_value;
+                        LCD_Position(0,0);
+                        sprintf(buff, "B1: %0.4fv", volts);
+                        LCD_PrintString(buff); 
+                        LCD_Position(1u, 0u);
+                        sprintf(buff, "$%04X$, $%04X$", ADC_low, ADC_high);
+                        LCD_PrintString(buff); 
+                    
+                        if (Button_Read() == 0)
+                        {
+                            MAX_BRAKE1 = ADC_high;
+                            MIN_BRAKE1 = ADC_low;
+                            MAX_BRAKE1_MV = ADC_SAR_CountsTo_mVolts(MAX_BRAKE1);
+                            MIN_BRAKE1_MV = ADC_SAR_CountsTo_mVolts(MIN_BRAKE1);
+                            EEPROM_set(MAX_BRAKE1, CALIBRATION_DATA_BASE_ADDRESS, EEPROM_B1_MAX);
+                            EEPROM_set(MIN_BRAKE1, CALIBRATION_DATA_BASE_ADDRESS, EEPROM_B1_MIN);
+                            break;
+                        }
+                    }
+
+                }
                 break;
-            case 7: LCD_PrintString("Brake 2: HIGH");
+            }
+            case 3: //Brake 2
+            {
+                int16_t ADC_low = 0, ADC_high = 0;
+                for (;;)
+                {
+                    double volts = 0;
+                    int16_t ADC_value = 0;
+                    if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))
+                    {
+                        ADC_value = ADC_SAR_GetResult16(ADC_CHANNEL_B2);
+                        volts = ADC_SAR_CountsTo_Volts(ADC_value);
+                        if (ADC_value < ADC_low)
+                            ADC_low = ADC_value;
+                        if (ADC_value > ADC_high)
+                            ADC_high = ADC_value;
+                        LCD_Position(0,0);
+                        sprintf(buff, "B2: %0.4fv", volts);
+                        LCD_PrintString(buff); 
+                        LCD_Position(1u, 0u);
+                        sprintf(buff, "$%04X$, $%04X$", ADC_low, ADC_high);
+                        LCD_PrintString(buff); 
+                    
+                        if (Button_Read() == 0)
+                        {
+                            MAX_BRAKE2 = ADC_high;
+                            MIN_BRAKE2 = ADC_low;
+                            MAX_BRAKE2_MV = ADC_SAR_CountsTo_mVolts(MAX_BRAKE2);
+                            MIN_BRAKE2_MV = ADC_SAR_CountsTo_mVolts(MIN_BRAKE2);
+                            EEPROM_set(MAX_BRAKE2, CALIBRATION_DATA_BASE_ADDRESS, EEPROM_B2_MAX);
+                            EEPROM_set(MIN_BRAKE2, CALIBRATION_DATA_BASE_ADDRESS, EEPROM_B2_MIN);
+                            break;
+                        }
+                    }
+
+                }
                 break;
-            case 8: LCD_PrintString("Steering: Left");
-                break;
-            case 9: LCD_PrintString("Steering: Right");
-                break;
+            }
             default: LCD_PrintString("Error in loop");
                 break;
         }
 
-        for (;;)
-        {
-            int16_t ADC_value = 0;
-            if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))
-            {
-                ADC_value = ADC_SAR_GetResult16(channelNum[i]);
-                volts = ADC_SAR_CountsTo_Volts(ADC_value);        //Converts ouput (hex16)from indexed channel to floating point voltage value 
-                LCD_Position(1u, 0u);
-                sprintf(buff, "%0.4fv, $%04X$", volts, ADC_value);            //Makes floating point to acii
-                LCD_PrintString(buff);             //Print ASCII voltage value  
-            
-                //If button is pressed, end calibration for current variable
-                if (Button_Read() == 0)
-                {
-                    *(calibrated_value[i]) = ADC_value;
-                    *(converted_calibrated_value[i]) = ADC_SAR_CountsTo_mVolts(*(calibrated_value[i]));
-                    EEPROM_set(ADC_value, CALIBRATION_DATA_BASE_ADDRESS, i);
-                    break;
-                }
-            }
-
-        }
     }
     
     LCD_ClearDisplay();
@@ -160,7 +282,7 @@ void pedal_calibrate(void)           //calibrate all sensors
  
 //Code below is used for print to LCD for debugging     
         
-    for (i = 0; i < CALIBRATION_COUNT; i++)
+    for (i = 0; i < 8; i++)
     {     
         LCD_ClearDisplay();
         LCD_Position(0,0);
@@ -201,14 +323,14 @@ void pedal_calibrate(void)           //calibrate all sensors
                     LCD_PrintNumber(MAX_BRAKE2);
                 break;
 
-            case 8: LCD_PrintString("Steering: Left");
-                    LCD_Position(1,0);
-                    LCD_PrintNumber(STEER_LEFT);
-                break;
-            case 9: LCD_PrintString("Steering: Right");
-                    LCD_Position(1,0);
-                    LCD_PrintNumber(STEER_RIGHT);
-                break;
+            // case 8: LCD_PrintString("Steering: Left");
+            //         LCD_Position(1,0);
+            //         LCD_PrintNumber(STEER_LEFT);
+            //     break;
+            // case 9: LCD_PrintString("Steering: Right");
+            //         LCD_Position(1,0);
+            //         LCD_PrintNumber(STEER_RIGHT);
+            //     break;
             default: LCD_PrintString("Error in loop");
                 break;
         }
@@ -226,8 +348,8 @@ void pedal_fetch_data(void)
         &throttle1,
         &throttle2,
         &brake1,
-        &brake2,
-        &steering
+        &brake2//,
+        // &steering
     };
 
     int32_t* converted_data_list[5] =
@@ -235,12 +357,12 @@ void pedal_fetch_data(void)
         &throttle1_mv,
         &throttle2_mv,
         &brake1_mv,
-        &brake2_mv,
-        &steering_mv
+        &brake2_mv//,
+        // &steering_mv
     };
     
     uint8_t i = 0;
-    for (i = 0; i< 5; i++)
+    for (i = 0; i< 4; i++)
     {
         if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))
         {
@@ -333,12 +455,6 @@ uint8_t pedal_get_out_of_range_flag(void)
         || brake2_mv > (MAX_BRAKE2_MV + PEDAL_MEASURE_TOLERANCE_BRAKE_MV_2)
         )
         error_flag |= pedal_out_of_range_brake2;
-    
-    // if (
-    //     steering_mv < (STEER_LEFT_MV) 
-    //     || steering_mv > (STEER_RIGHT_MV)
-    //     )
-    //     error_flag |= pedal_out_of_range_steering;
 
     return error_flag;
 }
@@ -353,8 +469,8 @@ void pedal_restore_calibration_data(void)
     MIN_BRAKE2 = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 5);
     MAX_BRAKE1 = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 6);
     MAX_BRAKE2 = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 7);
-    STEER_LEFT = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 8);
-    STEER_RIGHT = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 9);
+    // STEER_LEFT = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 8);
+    // STEER_RIGHT = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 9);
 
     MIN_THROTTLE1_MV = ADC_SAR_CountsTo_mVolts(MIN_THROTTLE1);
     MIN_THROTTLE2_MV = ADC_SAR_CountsTo_mVolts(MIN_THROTTLE2);
@@ -364,8 +480,8 @@ void pedal_restore_calibration_data(void)
     MIN_BRAKE2_MV = ADC_SAR_CountsTo_mVolts(MIN_BRAKE2);
     MAX_BRAKE1_MV = ADC_SAR_CountsTo_mVolts(MAX_BRAKE1);
     MAX_BRAKE2_MV = ADC_SAR_CountsTo_mVolts(MAX_BRAKE2);
-    STEER_LEFT_MV = ADC_SAR_CountsTo_mVolts(STEER_LEFT);
-    STEER_RIGHT_MV = ADC_SAR_CountsTo_mVolts(STEER_RIGHT);
+    // STEER_LEFT_MV = ADC_SAR_CountsTo_mVolts(STEER_LEFT);
+    // STEER_RIGHT_MV = ADC_SAR_CountsTo_mVolts(STEER_RIGHT);
 }
 
 /* [] END OF FILE */
