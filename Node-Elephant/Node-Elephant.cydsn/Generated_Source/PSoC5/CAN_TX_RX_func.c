@@ -24,10 +24,7 @@
 #include "CAN.h"
 
 /* `#START TX_RX_FUNCTION` */
-extern uint8_t Tx0_Throttle[8];       //transmission data for throttle one and two
-extern uint8_t Tx1_BSE[8];     //transmission data for brake 1 and 2 and steering
-extern uint8_t Rx_0;   
-uint8 i;        //for loop 
+extern uint8_t can_buffer[];
 /* `#END` */
 
 
@@ -157,7 +154,7 @@ void CAN_TxCancel(uint8 bufferId)
 
 #if (CAN_TX0_FUNC_ENABLE)
     /*******************************************************************************
-    * FUNCTION NAME:   CAN_SendMsg0
+    * FUNCTION NAME:   CAN_SendMsginvertor
     ********************************************************************************
     *
     * Summary:
@@ -176,7 +173,7 @@ void CAN_TxCancel(uint8 bufferId)
     *    CAN_FAIL              Function failed
     *
     *******************************************************************************/
-    uint8 CAN_SendMsg0(void) 
+    uint8 CAN_SendMsginvertor(void) 
     {
         uint8 result = CYRET_SUCCESS;
         
@@ -187,11 +184,12 @@ void CAN_TxCancel(uint8 bufferId)
         }
         else
         {
-            /* `#START MESSAGE_0_TRASMITTED` */
-            for(i = 0; i < 4; i++)
-            {
-                CAN_TX_DATA_BYTE(0,i) = Tx0_Throttle[i];        //transmit each byte for throttle, mailbox 0
-            }
+            /* `#START MESSAGE_invertor_TRASMITTED` */
+            
+			uint8_t i;
+			for(i = 0; i < 8; i++)
+                CAN_TX_DATA_BYTE(0,i) = can_buffer[i];
+                
             /* `#END` */
             
             CY_SET_REG32((reg32 *) &CAN_TX[0u].txcmd, CAN_SEND_MESSAGE);
@@ -204,7 +202,7 @@ void CAN_TxCancel(uint8 bufferId)
 
 #if (CAN_TX1_FUNC_ENABLE)
     /*******************************************************************************
-    * FUNCTION NAME:   CAN_SendMsg1
+    * FUNCTION NAME:   CAN_SendMsgdummy
     ********************************************************************************
     *
     * Summary:
@@ -223,7 +221,7 @@ void CAN_TxCancel(uint8 bufferId)
     *    CAN_FAIL              Function failed
     *
     *******************************************************************************/
-    uint8 CAN_SendMsg1(void) 
+    uint8 CAN_SendMsgdummy(void) 
     {
         uint8 result = CYRET_SUCCESS;
         
@@ -234,11 +232,11 @@ void CAN_TxCancel(uint8 bufferId)
         }
         else
         {
-            /* `#START MESSAGE_1_TRASMITTED` */
-            for(i = 0; i < 6; i++)
-            {
-                CAN_TX_DATA_BYTE(1,i) = Tx1_BSE[i];        //transmit each byte for brakes and steering, mailbox 1
-            }
+            /* `#START MESSAGE_dummy_TRASMITTED` */
+			uint8_t i;
+			for(i = 0; i < 8; i++)
+                CAN_TX_DATA_BYTE(0,i) = can_buffer[i];
+                
             /* `#END` */
             
             CY_SET_REG32((reg32 *) & CAN_TX[1u].txcmd, CAN_SEND_MESSAGE);
@@ -1060,3 +1058,21 @@ void CAN_ReceiveMsg(uint8 rxMailbox)
 
 
 /* [] END OF FILE */
+#if 0 /* begin disabled code */
+`#start MESSAGE_1_TRASMITTED` -- section removed from template
+            //for(i = 0; i < 6; i++)
+            //{
+                //CAN_TX_DATA_BYTE(1,i) = Tx1_BSE[i];        //transmit each byte for brakes and steering, mailbox 1
+            //}
+`#end`
+
+#endif /* end disabled code */
+#if 0 /* begin disabled code */
+`#start MESSAGE_0_TRASMITTED` -- section removed from template
+            for(i = 0; i < 4; i++)
+            {
+                CAN_TX_DATA_BYTE(0,i) = Tx0_Throttle[i];        //transmit each byte for throttle, mailbox 0
+            }
+`#end`
+
+#endif /* end disabled code */

@@ -16,6 +16,7 @@
 #include <stdbool.h>
 #include "pedal_control.h"
 #include "pedal_state.h"
+#include "CAN_invertor.h"
 
 //volatile uint32 throttle1, throttle2, brake1, brake2, steering;            //variables for sending average to can
 //volatile uint16 buffSize = 0;           //tracks number of conversions 
@@ -36,6 +37,7 @@ int main()
 {
      pedal_node_state = pedal_state_normal;
     LCD_Start();
+    CAN_invertor_init();
     ADC_SAR_Start();
     ADC_SAR_StartConvert();
     EEPROM_Start();
@@ -46,6 +48,7 @@ int main()
     isr_calibration_StartEx(&isr_calibration_handler);
     CyGlobalIntEnable;          //enable global interrupts 
     pedal_restore_calibration_data();               //set min and max values
+    pedal_set_CAN();
     EEPROM_ERROR_LED_Write(0);
     should_calibrate = false;
     

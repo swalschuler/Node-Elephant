@@ -3,6 +3,7 @@
 #include "pedal_control.h"
 #include "EEPROM_util.h"
 #include "pedal_state.h"
+#include "CAN_invertor.h"
 
 #define USED_EEPROM_SECTOR                      (1u)
 #define CALIBRATION_DATA_BASE_ADDRESS          ((USED_EEPROM_SECTOR * CYDEV_EEPROM_SECTOR_SIZE) + 0x00)
@@ -71,6 +72,12 @@ typedef enum
     ADC_CHANNEL_B1 = 2,
     ADC_CHANNEL_B2 = 3
 } ADC_CHANNEL;
+
+
+void pedal_set_CAN()
+{
+    CAN_invertor_set_throttle_ptr(&throttle1, &MIN_THROTTLE1, &MAX_THROTTLE1);
+}
 
 void pedal_calibrate(void)           //calibrate all sensors
 {

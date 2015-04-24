@@ -34,6 +34,8 @@ typedef enum
 	pedal_brake_plausible_brake = 1 << 6
 } pedal_brake_plausibility_flag;
 
+void pedal_set_CAN();
+
 /**
  * @brief Calibrate data for all sensors.
  * 
