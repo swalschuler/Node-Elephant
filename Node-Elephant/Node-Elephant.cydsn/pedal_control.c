@@ -27,25 +27,6 @@ int16_t brake1 = 0;
 int16_t brake2 = 0;
 int16_t steering = 0;
 
-/*******************************************************************************
-* Function Name: calAll(void)
-********************************************************************************
-*
-* Summary:
-*  Calibrates all sensors and then writes the values to EEPROM. Values
-*  are saved in counts not volts. Do (counts/4096)*vref to get voltage. 
-*
-* Parameters:
-*  None.
-*
-* Return:
-*  None.
-*
-* Note: 
-*  There is code that prints to the LCD. This will evntually be removed 
-*  and code for printing to a terminal will be implemeted
-*
-*******************************************************************************/
 void pedal_calibrate(void)           //calibrate all sensors
 {
     double volts;        //stores voltage conversion value in volts
@@ -116,14 +97,14 @@ void pedal_calibrate(void)           //calibrate all sensors
                 LCD_Position(1u, 0u);
                 sprintf(buff, "%0.4fv, %d", volts, ADC_value);            //Makes floating point to acii
                 LCD_PrintString(buff);             //Print ASCII voltage value  
-            }
             
-            //If button is pressed, end calibration for current variable
-            if (Button_Read() == 0)
-            {
-                *(calibrated_value[i]) = ADC_value;
-                EEPROM_set(ADC_value, CALIBRATION_DATA_BASE_ADDRESS, i);
-                break;
+                //If button is pressed, end calibration for current variable
+                if (Button_Read() == 0)
+                {
+                    *(calibrated_value[i]) = ADC_value;
+                    EEPROM_set(ADC_value, CALIBRATION_DATA_BASE_ADDRESS, i);
+                    break;
+                }
             }
 
         }
@@ -190,9 +171,9 @@ void pedal_calibrate(void)           //calibrate all sensors
             default: LCD_PrintString("Error in loop");
                 break;
         }
-        CyDelay(2000);
+        CyDelay(1000);
     }
-    
+    Button_ClearInterrupt();
     return;
 }
 
@@ -248,60 +229,6 @@ double torqueImp(uint16 sensor1, uint16 sensor2, volatile uint8_t* errMsg)
 	    *errMsg += 0x0020;			// error msg for torque implausibility
 
 	return percentDiff;
-}
-
-
-/***********************************************************************************************************************
-* Function Name: brakePlaus(uint16 brake1, uint16 brake2, uint16 throttle1, uint16 throttle2, volatile uint8_t* errMsg)
-************************************************************************************************************************
-*
-* Summary:
-*  Checks for brake plausibility (EV2.5). If the brakes are actuated, the
-*  throttle must not experience more than 25% pedal travel. An error message is
-*  sent over CAN if the pedal travel is greater than 25%.
-*
-* Parameters:
-*  brake1: brake 1 sensor value
-*  brake2: brake 2 sensor value
-*  throttle1: throttle 1 sensor value
-*  throttle2: throttle 2 sensor value
-*  errMsg: Pointer to sensor's error message
-*
-* Return:
-*  plauseCheck1: percent pedal travel of sensor 1
-*  plauseCheck2: percent pedal travel of sensor 2
-*
-* Note:
-*  Only one of the two plausCheck will be returned. Must pass variables in that
-*  order.
-*  strPlausMsg should be passed in for errMsg since strPlausMsg contains the
-*  torque implausibility message.
-*
-************************************************************************************************************************/
-
-double brakePlaus(uint16 brake1, uint16 brake2, uint16 throttle1, uint16 throttle2, volatile uint8_t* errMsg)
-{
-	double plauseCheck1 = 0;
-	double plauseCheck2 = 0;
-
-	if(brake1 > MIN_BRAKE1 && brake2 > MIN_BRAKE2)			
-	{
-		plauseCheck1 = ((double)throttle1 / (double)MAX_THROTTLE1) * 100;			// calculates throttle depression percentage 
-		plauseCheck2 = ((double)throttle2 / (double)MAX_THROTTLE2) * 100;
-        
-        if(plauseCheck1 > 25.0)			// if throttle sensor 1 experiences for than 25% pedal travel 
-	    {
-            *errMsg += 0x0040;				// brake plausibility error msg
-		    return plauseCheck1;
-	    }
-        else if(plauseCheck2 > 25.0)			// if throttle sensor 2 experiences for than 25% pedal travel 
-	    {
-            *errMsg += 0x0040;				// brake plausibility error msg
-	    	return plauseCheck2;
-	    }
-	}
-
-	return plauseCheck1 = ((double)throttle1 / (double)MAX_THROTTLE1) * 100;		// return pedal travel even if brakes not depressed
 }
 
 uint8_t pedal_is_torque_plausible(double* brake_percentage_diff, double* throttle_percentage_diff)
@@ -375,10 +302,7 @@ uint8_t pedal_get_out_of_range_flag(void)
 }
 
 void pedal_restore_calibration_data(void)
-{
-    // uint8 byteCount = 0;
-    // reg8* regPointer = (reg8*)CYDEV_EE_BASE;           //pointer pointing to base of EEPROM (row 1)    
-    
+{   
     MIN_THROTTLE1 = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 0);
     MIN_THROTTLE2 = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 1);
     MAX_THROTTLE1 = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 2);

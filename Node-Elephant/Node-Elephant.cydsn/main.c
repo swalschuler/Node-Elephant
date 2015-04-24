@@ -24,13 +24,17 @@ volatile bool should_calibrate = false;
 
 CY_ISR(isr_calibration_handler)
 {
-    should_calibrate = true;
+    if (pedal_node_state != pedal_state_calibrating)
+    {   
+        should_calibrate = true;
+    }
+    isr_calibration_Disable();
     Button_ClearInterrupt();
 }
 
 int main()
 {
-    pedal_node_state = pedal_state_normal;
+     pedal_node_state = pedal_state_normal;
     LCD_Start();
     ADC_SAR_Start();
     ADC_SAR_StartConvert();
@@ -50,6 +54,7 @@ int main()
         if (should_calibrate)
         {
             should_calibrate = false;
+            isr_calibration_Enable();
             pedal_node_state = pedal_state_calibrating;
         }
         
@@ -58,12 +63,12 @@ int main()
         double brake_percent_diff = 0, throttle_percent_diff = 0;
         uint8_t torque_plausible_flag;
         uint8_t brake_plausible_flag;
+        pedal_fetch_data();
         switch (pedal_node_state)
         {
             case pedal_state_normal:
                 LCD_ClearDisplay();
                 LCD_Position(0,0);
-                pedal_fetch_data();
                 
                 out_of_range_flag = pedal_get_out_of_range_flag();
                 if (out_of_range_flag != 0)

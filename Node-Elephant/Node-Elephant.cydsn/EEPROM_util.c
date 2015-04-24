@@ -14,12 +14,11 @@
 #include <project.h>
 
 int16_t EEPROM_get(uint16_t address, uint8_t offset) {
-    // uint8_t i;
-    uint16_t temp = 0;
+    int16_t temp = 0;
 
-    temp = EEPROM_ReadByte(address + offset * 8);
+    temp = EEPROM_ReadByte(address + offset * 8) & 0xFF;
     temp <<= 8;
-    temp += EEPROM_ReadByte(address + (offset + 1) * 8);
+    temp |= EEPROM_ReadByte(address + (offset + 1) * 8) & 0xFF;
     
     return temp;
 }
