@@ -2,30 +2,55 @@
 #include <stdbool.h>
 #include "pedal_control.h"
 #include "EEPROM_util.h"
+#include "pedal_state.h"
 
 #define USED_EEPROM_SECTOR                      (1u)
 #define CALIBRATION_DATA_BASE_ADDRESS          ((USED_EEPROM_SECTOR * CYDEV_EEPROM_SECTOR_SIZE) + 0x00)
 
 #define CALIBRATION_COUNT (10)
 
-int16_t MIN_THROTTLE1 = 0;
-int16_t MIN_THROTTLE2 = 0;
-int16_t MAX_THROTTLE1 = 0;
-int16_t MAX_THROTTLE2 = 0;
+static int16_t MIN_THROTTLE1 = 0;
+static int16_t MIN_THROTTLE2 = 0;
+static int16_t MAX_THROTTLE1 = 0;
+static int16_t MAX_THROTTLE2 = 0;
 
-int16_t MIN_BRAKE1 = 0;
-int16_t MIN_BRAKE2 = 0;
-int16_t MAX_BRAKE1 = 0;
-int16_t MAX_BRAKE2 = 0;
+static int16_t MIN_BRAKE1 = 0;
+static int16_t MIN_BRAKE2 = 0;
+static int16_t MAX_BRAKE1 = 0;
+static int16_t MAX_BRAKE2 = 0;
 
-int16_t STEER_LEFT = 0;
-int16_t STEER_RIGHT = 0;
+static int16_t STEER_LEFT = 0;
+static int16_t STEER_RIGHT = 0;
 
-int16_t throttle1 = 0;
-int16_t throttle2 = 0;
-int16_t brake1 = 0;
-int16_t brake2 = 0;
-int16_t steering = 0;
+static int32_t MIN_THROTTLE1_MV = 0;
+static int32_t MIN_THROTTLE2_MV = 0;
+static int32_t MAX_THROTTLE1_MV = 0;
+static int32_t MAX_THROTTLE2_MV = 0;
+
+static int32_t MIN_BRAKE1_MV = 0;
+static int32_t MIN_BRAKE2_MV = 0;
+static int32_t MAX_BRAKE1_MV = 0;
+static int32_t MAX_BRAKE2_MV = 0;
+
+static int32_t STEER_LEFT_MV = 0;
+static int32_t STEER_RIGHT_MV = 0;
+
+static int16_t throttle1 = 0;
+static int16_t throttle2 = 0;
+static int16_t brake1 = 0;
+static int16_t brake2 = 0;
+static int16_t steering = 0;
+
+static int32_t throttle1_mv = 0;
+static int32_t throttle2_mv = 0;
+static int32_t brake1_mv = 0;
+static int32_t brake2_mv = 0;
+static int32_t steering_mv = 0;
+
+#define PEDAL_MEASURE_TOLERANCE_THROTTLE_MV_1 ((MAX_THROTTLE1_MV - MIN_THROTTLE1_MV) * PEDAL_MEASURE_TOLERANCE)
+#define PEDAL_MEASURE_TOLERANCE_BRAKE_MV_1 ((MAX_BRAKE1_MV - MIN_BRAKE1_MV) * PEDAL_MEASURE_TOLERANCE)
+#define PEDAL_MEASURE_TOLERANCE_THROTTLE_MV_2 ((MAX_THROTTLE2_MV - MIN_THROTTLE2_MV) * PEDAL_MEASURE_TOLERANCE)
+#define PEDAL_MEASURE_TOLERANCE_BRAKE_MV_2 ((MAX_BRAKE2_MV - MIN_BRAKE2_MV) * PEDAL_MEASURE_TOLERANCE)
 
 void pedal_calibrate(void)           //calibrate all sensors
 {
@@ -47,6 +72,21 @@ void pedal_calibrate(void)           //calibrate all sensors
 
         &STEER_LEFT,
         &STEER_RIGHT
+    };
+
+    int32_t* converted_calibrated_value[CALIBRATION_COUNT] = {
+        &MIN_THROTTLE1_MV,
+        &MIN_THROTTLE2_MV,
+        &MAX_THROTTLE1_MV,
+        &MAX_THROTTLE2_MV,
+
+        &MIN_BRAKE1_MV,
+        &MIN_BRAKE2_MV,
+        &MAX_BRAKE1_MV,
+        &MAX_BRAKE2_MV,
+
+        &STEER_LEFT_MV,
+        &STEER_RIGHT_MV
     };
 
     // reg8* regPointer = (reg8*)CYDEV_EE_BASE;           //pointer pointing to base of EEPROM (row 1)
@@ -95,13 +135,14 @@ void pedal_calibrate(void)           //calibrate all sensors
                 ADC_value = ADC_SAR_GetResult16(channelNum[i]);
                 volts = ADC_SAR_CountsTo_Volts(ADC_value);        //Converts ouput (hex16)from indexed channel to floating point voltage value 
                 LCD_Position(1u, 0u);
-                sprintf(buff, "%0.4fv, %d", volts, ADC_value);            //Makes floating point to acii
+                sprintf(buff, "%0.4fv, $%04X$", volts, ADC_value);            //Makes floating point to acii
                 LCD_PrintString(buff);             //Print ASCII voltage value  
             
                 //If button is pressed, end calibration for current variable
                 if (Button_Read() == 0)
                 {
                     *(calibrated_value[i]) = ADC_value;
+                    *(converted_calibrated_value[i]) = ADC_SAR_CountsTo_mVolts(*(calibrated_value[i]));
                     EEPROM_set(ADC_value, CALIBRATION_DATA_BASE_ADDRESS, i);
                     break;
                 }
@@ -188,65 +229,48 @@ void pedal_fetch_data(void)
         &brake2,
         &steering
     };
+
+    int32_t* converted_data_list[5] =
+    {
+        &throttle1_mv,
+        &throttle2_mv,
+        &brake1_mv,
+        &brake2_mv,
+        &steering_mv
+    };
+    
     uint8_t i = 0;
     for (i = 0; i< 5; i++)
     {
         if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))
         {
            *(data_list[i]) = ADC_SAR_GetResult16(i); 
+           *(converted_data_list[i]) = ADC_SAR_CountsTo_mVolts(*(data_list[i]));
         }
     }
-}
-
-
-/************************************************************************************
-* Function Name: torqueImp(uint16 sensor1, uint16 sensor2, volatile uint8_t* errMsg)
-*************************************************************************************
-*
-* Summary:
-*  Checks for torque implausibility (EV2.3.6). The percentage difference is
-*  calculated using the voltage read from the two throttle sensors. A percentage
-*  difference of 10% will trigger a error to be sent over CAN. FOR USE WITH
-*  THROTTLE ONLY.
-*
-* Parameters:
-*  sensor1: 1st sensor count value 
-*  sensor2: 2nd sensor count value 
-*  errMsg: Pointer to sensor's error message
-*
-* Return:
-*  percentDiff: percent difference between sensor values
-*
-*
-************************************************************************************/
-
-double torqueImp(uint16 sensor1, uint16 sensor2, volatile uint8_t* errMsg)
-{
-	double percentDiff;
-	percentDiff = fabs((double)sensor1 - (double)sensor2) / (((double)sensor1 + (double)sensor2) / 2) * 100;		// calculates percentage difference by dividing the difference by the average
-
-	if (percentDiff > 10.0)		// if percent difference is greater than 10%
-	    *errMsg += 0x0020;			// error msg for torque implausibility
-
-	return percentDiff;
 }
 
 uint8_t pedal_is_torque_plausible(double* brake_percentage_diff, double* throttle_percentage_diff)
 {
 
-    double percentDiff = fabs((double)(brake1 - brake2)) / brake1;
+    float brake1_percent = (float)(brake1_mv - MIN_BRAKE1_MV) / (float)(MAX_BRAKE1_MV - MIN_BRAKE1_MV);
+    float brake2_percent = (float)(brake2_mv - MIN_BRAKE2_MV) / (float)(MAX_BRAKE2_MV - MIN_BRAKE2_MV);
+
+    double percentDiff = fabs(brake1_percent - brake2_percent);
     bool fault_occurred = false;
     *brake_percentage_diff = percentDiff;
 
-    if (percentDiff > 0.1)
+    if (percentDiff > PEDAL_INCREPENCY_PERCENT)
     {
         fault_occurred = true;
     }
 
-    percentDiff = fabs((double)(throttle1 - throttle2)) / throttle1;
+    float throttle1_percent = (float)(throttle1_mv - MIN_THROTTLE1_MV) / (float)(MAX_THROTTLE1_MV - MIN_THROTTLE1_MV);
+    float throttle2_percent = (float)(throttle2_mv - MIN_THROTTLE2_MV) / (float)(MAX_THROTTLE2_MV - MIN_THROTTLE2_MV);
+    percentDiff = fabs(throttle1_percent - throttle2_percent);
     *throttle_percentage_diff = percentDiff;
     
-    if (percentDiff > 0.1)
+    if (percentDiff > PEDAL_INCREPENCY_PERCENT)
     {
         fault_occurred = true;
     }
@@ -260,13 +284,16 @@ uint8_t pedal_is_torque_plausible(double* brake_percentage_diff, double* throttl
 
 uint8_t pedal_is_brake_plausible(double* brake_percentage_ptr, double* throttle_percentage_ptr)
 {
-    if (brake1 > MIN_BRAKE1)          
+    if (brake1_mv >= MIN_BRAKE1_MV && brake1_mv <= MAX_BRAKE1_MV)          
     {
-        double brake_percentage = (double)(brake1) / (MAX_BRAKE1 - MIN_BRAKE2);
-        double throttle_percentage = (double)(throttle1) / (MAX_THROTTLE1 - MIN_THROTTLE1);
+        double brake_percentage = (double)(brake1_mv - MIN_BRAKE1_MV) / (MAX_BRAKE1_MV - MIN_BRAKE1_MV);
+        double throttle_percentage = (double)(throttle1_mv - MIN_THROTTLE1_MV) / (MAX_THROTTLE1_MV - MIN_THROTTLE1_MV);
         *brake_percentage_ptr = brake_percentage;
         *throttle_percentage_ptr = throttle_percentage;
-        if (brake_percentage > 0.1 && throttle_percentage > 0.25)
+        if (
+            brake_percentage > (PEDAL_BRAKE_IMPLAUSIBLE_BRAKE_PERCENT - PEDAL_MEASURE_TOLERANCE) && 
+            throttle_percentage > (PEDAL_BRAKE_IMPLAUSIBLE_THROTTLE_PERCENT + PEDAL_MEASURE_TOLERANCE)
+            )
         {
             return pedal_brake_plausible_brake;
         }
@@ -283,20 +310,35 @@ uint8_t pedal_get_out_of_range_flag(void)
 {
     uint8_t error_flag = pedal_out_of_range_none;
 
-    if (throttle1 < MIN_THROTTLE1 || throttle1 > MAX_THROTTLE1)
+    if (
+        throttle1_mv < (MIN_THROTTLE1_MV - PEDAL_MEASURE_TOLERANCE_THROTTLE_MV_1)
+         || throttle1_mv > (MAX_THROTTLE1_MV + PEDAL_MEASURE_TOLERANCE_THROTTLE_MV_1)
+         )
         error_flag |= pedal_out_of_range_throttle1;
     
-    if(throttle2 < MIN_THROTTLE2 || throttle2 > MAX_THROTTLE2)
+    if (
+        throttle2_mv < (MIN_THROTTLE2_MV - PEDAL_MEASURE_TOLERANCE_THROTTLE_MV_2) 
+        || throttle2_mv > (MAX_THROTTLE2_MV + PEDAL_MEASURE_TOLERANCE_THROTTLE_MV_2)
+        )
         error_flag |= pedal_out_of_range_throttle2;
     
-    if (brake1 < MIN_BRAKE1)
+    if (
+        brake1_mv < (MIN_BRAKE1_MV - PEDAL_MEASURE_TOLERANCE_BRAKE_MV_1) 
+        || brake1_mv > (MAX_BRAKE1_MV + PEDAL_MEASURE_TOLERANCE_BRAKE_MV_1)
+        )
         error_flag |= pedal_out_of_range_brake1;
     
-    if (brake2 < MIN_COUNT)
+    if (
+        brake2_mv < (MIN_BRAKE2_MV - PEDAL_MEASURE_TOLERANCE_BRAKE_MV_2) 
+        || brake2_mv > (MAX_BRAKE2_MV + PEDAL_MEASURE_TOLERANCE_BRAKE_MV_2)
+        )
         error_flag |= pedal_out_of_range_brake2;
     
-    if (steering < STEER_LEFT || steering > STEER_RIGHT)
-        error_flag |= pedal_out_of_range_steering;
+    // if (
+    //     steering_mv < (STEER_LEFT_MV) 
+    //     || steering_mv > (STEER_RIGHT_MV)
+    //     )
+    //     error_flag |= pedal_out_of_range_steering;
 
     return error_flag;
 }
@@ -313,6 +355,17 @@ void pedal_restore_calibration_data(void)
     MAX_BRAKE2 = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 7);
     STEER_LEFT = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 8);
     STEER_RIGHT = EEPROM_get(CALIBRATION_DATA_BASE_ADDRESS, 9);
+
+    MIN_THROTTLE1_MV = ADC_SAR_CountsTo_mVolts(MIN_THROTTLE1);
+    MIN_THROTTLE2_MV = ADC_SAR_CountsTo_mVolts(MIN_THROTTLE2);
+    MAX_THROTTLE1_MV = ADC_SAR_CountsTo_mVolts(MAX_THROTTLE1);
+    MAX_THROTTLE2_MV = ADC_SAR_CountsTo_mVolts(MAX_THROTTLE2);
+    MIN_BRAKE1_MV = ADC_SAR_CountsTo_mVolts(MIN_BRAKE1);
+    MIN_BRAKE2_MV = ADC_SAR_CountsTo_mVolts(MIN_BRAKE2);
+    MAX_BRAKE1_MV = ADC_SAR_CountsTo_mVolts(MAX_BRAKE1);
+    MAX_BRAKE2_MV = ADC_SAR_CountsTo_mVolts(MAX_BRAKE2);
+    STEER_LEFT_MV = ADC_SAR_CountsTo_mVolts(STEER_LEFT);
+    STEER_RIGHT_MV = ADC_SAR_CountsTo_mVolts(STEER_RIGHT);
 }
 
 /* [] END OF FILE */

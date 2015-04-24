@@ -80,7 +80,7 @@ int main()
                 torque_plausible_flag = pedal_is_torque_plausible(&brake_percent_diff, &throttle_percent_diff);
                 if (torque_plausible_flag != 0)
                 {
-                    pedal_node_state = pedal_state_implausible;
+                    pedal_node_state = pedal_state_discrepency;
                     break;
                 }
 
@@ -132,7 +132,7 @@ int main()
                 LCD_Position(0,0);
                 LCD_PrintString("Pedal implausible");
                 brake_plausible_flag = pedal_is_brake_plausible(&brake_percent, &throttle_percent);
-                if (brake_plausible_flag == 0 && throttle_percent < 0.05)
+                if (brake_plausible_flag == 0 && throttle_percent < PEDAL_BRAKE_IMPLAUSIBLE_EXIT_THROTTLE_PERCENT)
                 {
                     pedal_node_state = pedal_state_normal;
                 }
