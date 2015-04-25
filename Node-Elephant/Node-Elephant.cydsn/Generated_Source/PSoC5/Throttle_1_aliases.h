@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name: Throttle_1.h  
-* Version 2.10
+* Version 2.5
 *
 * Description:
 *  This file containts Control Register function prototypes and register defines
@@ -25,7 +25,7 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define Throttle_1_0		(Throttle_1__0__PC)
+#define Throttle_1_0		Throttle_1__0__PC
 
 #endif /* End Pins Throttle_1_ALIASES_H */
 

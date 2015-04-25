@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name: Steering.h  
-* Version 2.10
+* Version 2.5
 *
 * Description:
 *  This file containts Control Register function prototypes and register defines
@@ -25,7 +25,7 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define Steering_0		(Steering__0__PC)
+#define Steering_0		Steering__0__PC
 
 #endif /* End Pins Steering_ALIASES_H */
 

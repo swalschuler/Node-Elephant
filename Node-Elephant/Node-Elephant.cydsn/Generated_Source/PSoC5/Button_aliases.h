@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name: Button.h  
-* Version 2.10
+* Version 2.5
 *
 * Description:
 *  This file containts Control Register function prototypes and register defines
@@ -25,7 +25,7 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define Button_0		(Button__0__PC)
+#define Button_0		Button__0__PC
 
 #endif /* End Pins Button_ALIASES_H */
 

@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name: Brake_1.h  
-* Version 2.10
+* Version 2.5
 *
 * Description:
 *  This file containts Control Register function prototypes and register defines
@@ -25,7 +25,7 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define Brake_1_0		(Brake_1__0__PC)
+#define Brake_1_0		Brake_1__0__PC
 
 #endif /* End Pins Brake_1_ALIASES_H */
 

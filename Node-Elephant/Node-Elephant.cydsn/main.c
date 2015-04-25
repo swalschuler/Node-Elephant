@@ -11,12 +11,19 @@
  * ========================================
 */
 
+//When you program and run this code, the lcd will display what is supposedly being sent over can
+//but I have yet to actually test its correctness. To tun the calibration code, press SW2 on the board
+//and the calibration code should run. Continue to use SW2 to confirm voltages and step through the code.
+//Channel assignments are shown in the TopDesign file near the ADC SAR Seq component. Pinout of these channels
+//are shown in Node-Elephant.cydwr. They can be connected to any pin. The files in the Source and Header folders
+//are what I wrote.
+
 #include <project.h>
 #include <stdio.h>
 #include "calibrate.h"
 
 volatile uint32 throttle1, throttle2, brake1, brake2, steering;            //variables for sending average to can
-volatile uint16 buffSize = 0;           //tracks number of conversions 
+volatile uint16 count = 0;           //tracks number of conversions 
 
 int main()
 {
@@ -42,8 +49,8 @@ int main()
             brake2 += ADC_SAR_GetResult16(3);        //get conversion results in terms of counts for brake 2 (channel 3)  
             steering += ADC_SAR_GetResult16(4);        //get conversion results in terms of counts for steering (channel 4)  
             
-            if(buffSize != 0xffff)
-                buffSize++;
+            if(count != 0xffff)
+                count++;
         }
         
         if(Button_Read() == 0)      //press button to run calibration
@@ -51,8 +58,8 @@ int main()
             clock_StopBlock();      //stop clock to disable interrupt 
             calAll();
             LCD_ClearDisplay();
-            isr_ClearPending();
-            clock_Start();
+            isr_ClearPending();     //clear pending interrupts
+            clock_Start();          //restart the clock
         }
     }   
     

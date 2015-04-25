@@ -1,6 +1,6 @@
 ;-------------------------------------------------------------------------------
 ; FILENAME: CyBootAsmIar.s
-; Version 4.20
+; Version 4.11
 ;
 ;  DESCRIPTION:
 ;    Assembly routines for IAR Embedded Workbench IDE.

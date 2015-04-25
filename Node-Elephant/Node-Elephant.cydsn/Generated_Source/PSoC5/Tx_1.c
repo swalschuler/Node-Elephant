@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name: Tx_1.c  
-* Version 2.10
+* Version 2.5
 *
 * Description:
 *  This file contains API to enable firmware control of a Pins component.

@@ -1,3 +1,5 @@
+//The current code uses switch 2 on the psoc board to comfirm the voltage.  
+
 #include "calibrate.h"
 
 uint16 MAX_THROTTLE1;
@@ -56,7 +58,8 @@ void calAll(void)           //calibrate all sensors
         
         if(i == 4)
             row = 1;        //changes EEPROM row to write to row 2
-        
+
+ // The switch statement is used only for debuggin purposes 
         switch (i)
         {
             case 0: LCD_PrintString("Throttle 1: Low");
@@ -78,7 +81,10 @@ void calAll(void)           //calibrate all sensors
             default: LCD_PrintString("Error in loop");
                 break;
         }
-            
+
+//This while loop is used only to display the voltage on the lcd and is used for debugging, no use for the actual eeprom code.
+//Most of the way the ADC code is written below comes staight from the ADC examples provided in psoc creator
+ 
         while(i<8)          //while loops prints voltage value to LCD, button press gets conversion in volts
         {
             if(ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))
@@ -100,6 +106,9 @@ void calAll(void)           //calibrate all sensors
                         getMod[j] = voltCounts % 10;        //mod by 10 returns right most digit
                         voltCounts = voltCounts / 10;             //division by 10 removes right most digit
                     }
+//For the eeprom write code below, I am writing to each cell of eeprom not each row. One eeprom cell is 1 byte and one row contains 16 cell totaling in 16 bytes
+//What I did was to separate the value obtained from the ADC into individual digits and store each digit in a cell. Although now that I think about it you can just
+//easily store the upper and lower bits into different cells and then concantenate them when reading from eeprom. Code below is probably not the most efficient.
                     
                     for(j = 0; j < 4; j++)          //write array getMod into EEPROM
                     {
@@ -109,6 +118,7 @@ void calAll(void)           //calibrate all sensors
                                 byteCount = 0;
                             
                             if((regPointer+row*16)[byteCount] != getMod[j])       //checks if byte to write is same as byte stored, does not write if they are equal
+                            //not too sure if the psoc automatically checks this before writing so I included it anyways
                                 writeStatus = EEPROM_ByteWrite(getMod[j], row, byteCount);      //write individual digit of sevconVolts (stored in getMod) to EEPROM  
                             
                             if(writeStatus != CYRET_SUCCESS)            //if error occured during write
@@ -188,7 +198,9 @@ void calAll(void)           //calibrate all sensors
             default: LCD_PrintString("Error in loop");
                 break;
         }
-        
+//Code below was used to read values from eeprom directly. No longer in use. 
+//The function setCal defined below is used to read values from eeprom and store them in temp variables for use.
+                
 //        if(byteCount == 16)             //if byteCount = 16 then row one is finished reading from
 //        {
 //            regPointer = regPointer + byteCount;        //add by 16 to move to next row for reading
@@ -378,6 +390,7 @@ void setCal(void)
 * Summary:
 *  Concantenate the calibrated values stored in EEPROM. Each EEPROM cell contains
 *  a digit corresponding to a sensor value depending on its position within EEPROM
+*  Used in setCal. 
 *
 * Parameters:
 *  regPointer: base address of EEPROM

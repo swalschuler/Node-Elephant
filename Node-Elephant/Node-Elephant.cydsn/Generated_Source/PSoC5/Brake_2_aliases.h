@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name: Brake_2.h  
-* Version 2.10
+* Version 2.5
 *
 * Description:
 *  This file containts Control Register function prototypes and register defines
@@ -25,7 +25,7 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define Brake_2_0		(Brake_2__0__PC)
+#define Brake_2_0		Brake_2__0__PC
 
 #endif /* End Pins Brake_2_ALIASES_H */
 
