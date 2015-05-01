@@ -10,6 +10,11 @@
 
 #define CALIBRATION_COUNT (10)
 
+/**
+ * @brief [brief description]
+ * @details We need these two values for ADC because the maximunm and minimum values are 12 bits 2's compliment
+ * stuffed into 16 bit int
+ */
 #define TWELVE_BIT_MAX (0x7FF)
 #define TWELVE_BIT_MIN (0x800)
 
@@ -256,6 +261,7 @@ void pedal_calibrate(void)           //calibrate all sensors
                             ADC_low = ADC_value;
                         if (ADC_value > ADC_high)
                             ADC_high = ADC_value;
+                        LCD_ClearDisplay();
                         LCD_Position(0,0);
                         sprintf(buff, "B2: %0.4fv", volts);
                         LCD_PrintString(buff); 
