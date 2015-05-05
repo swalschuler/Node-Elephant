@@ -7,7 +7,7 @@
  * CONFIDENTIAL AND PROPRIETARY INFORMATION
  * WHICH IS THE PROPERTY OF your company.
  *
- * 
+ *
  * ========================================
 */
 
@@ -19,14 +19,14 @@
 #include "CAN_invertor.h"
 
 //volatile uint32 throttle1, throttle2, brake1, brake2, steering;            //variables for sending average to can
-//volatile uint16 buffSize = 0;           //tracks number of conversions 
+//volatile uint16 buffSize = 0;           //tracks number of conversions
 pedal_state pedal_node_state = pedal_state_normal;
 volatile bool should_calibrate = false;
 
 CY_ISR(isr_calibration_handler)
 {
     if (pedal_node_state != pedal_state_calibrating)
-    {   
+    {
         should_calibrate = true;
     }
     isr_calibration_Disable();
@@ -46,21 +46,28 @@ int main()
     CAN_Init();
     CAN_Start();
     isr_calibration_StartEx(&isr_calibration_handler);
-    CyGlobalIntEnable;          //enable global interrupts 
+    CyGlobalIntEnable;          //enable global interrupts
     pedal_restore_calibration_data();               //set min and max values
     pedal_set_CAN();
     EEPROM_ERROR_LED_Write(0);
     should_calibrate = false;
-    
+
     for(;;)
     {
-        if (should_calibrate)
+        if (pedal_node_state == pedal_state_neutral)
+        {
+            if (should_calibrate)
+            {
+                should_calibrate = false;
+                isr_calibration_Enable();
+                pedal_node_state = pedal_state_calibrating;
+            }
+        }
+        else
         {
             should_calibrate = false;
-            isr_calibration_Enable();
-            pedal_node_state = pedal_state_calibrating;
         }
-        
+
         uint8_t out_of_range_flag;
         double brake_percent = 0, throttle_percent = 0;
         double brake_percent_diff = 0, throttle_percent_diff = 0;
@@ -69,10 +76,12 @@ int main()
         pedal_fetch_data();
         switch (pedal_node_state)
         {
+            case pedal_state_neutral:
+                break;
             case pedal_state_normal:
                 LCD_ClearDisplay();
                 LCD_Position(0,0);
-                
+
                 out_of_range_flag = pedal_get_out_of_range_flag();
                 if (out_of_range_flag != 0)
                 {
@@ -93,11 +102,11 @@ int main()
                     pedal_node_state = pedal_state_implausible;
                     break;
                 }
-                
+
                 break;
 
             case pedal_state_calibrating:
-                //clock_StopBlock();      //stop clock to disable interrupt 
+                //clock_StopBlock();      //stop clock to disable interrupt
                 pedal_calibrate();
                 LCD_ClearDisplay();
                 //isr_ClearPending();
@@ -109,7 +118,7 @@ int main()
                 LCD_ClearDisplay();
                 LCD_Position(0,0);
                 LCD_PrintString("Pedal out of");
-                LCD_Position(1,0); 
+                LCD_Position(1,0);
                 LCD_PrintString("range");
 
                 out_of_range_flag = pedal_get_out_of_range_flag();
@@ -135,16 +144,16 @@ int main()
                 LCD_Position(0,0);
                 LCD_PrintString("Pedal implausible");
                 brake_plausible_flag = pedal_is_brake_plausible(&brake_percent, &throttle_percent);
-                if (brake_plausible_flag == 0 && throttle_percent < PEDAL_BRAKE_IMPLAUSIBLE_EXIT_THROTTLE_PERCENT)
+                if (throttle_percent < PEDAL_BRAKE_IMPLAUSIBLE_EXIT_THROTTLE_PERCENT)
                 {
                     pedal_node_state = pedal_state_normal;
                 }
                 break;
         }
-        
+
         CyDelay(500);
-    }   
-    
+    }
+
     return 0;
 }
 
