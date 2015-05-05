@@ -34,6 +34,11 @@ typedef enum
 	pedal_brake_plausible_brake = 1 << 6
 } pedal_brake_plausibility_flag;
 
+/**
+ * @brief Setup pointers for CAN bus to directly grab data from memory
+ * @details This function will call CAN_invertor_set_throttle_ptr() in CAN_invertor.h. After the pointer is set, when the CAN bus
+ * is trying to send data, it will directly use the value in the pointer.
+ */
 void pedal_set_CAN();
 
 /**
@@ -54,6 +59,8 @@ void pedal_fetch_data(void);
 uint8_t pedal_get_out_of_range_flag(void);
 uint8_t pedal_is_pedal_reading_matched(double* brake_percentage_diff, double* throttle_percentage_diff);
 uint8_t pedal_is_brake_plausible(double* brake_percentage, double* throttle_percentage);
+
+bool pedal_is_brake_pressed();
 
 /**
  * @brief Read calibration data for sensors from EEPROM.

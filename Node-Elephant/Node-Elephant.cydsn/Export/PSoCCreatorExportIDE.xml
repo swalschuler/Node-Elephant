@@ -153,6 +153,11 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\CAN_timer_clock.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_CAN.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_CAN.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_start.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_start.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Start_button_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Start_button.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Start_button.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\Yi\workspace\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\Export\ARM_GCC_Generic">

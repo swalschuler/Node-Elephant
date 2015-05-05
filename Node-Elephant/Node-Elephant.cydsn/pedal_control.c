@@ -83,6 +83,11 @@ typedef enum
 } ADC_CHANNEL;
 
 
+
+CY_ISR(pedal_isr_start_button_handler)
+{
+}
+
 void pedal_set_CAN()
 {
     CAN_invertor_set_throttle_ptr(&throttle1, &MIN_THROTTLE1, &MAX_THROTTLE1);
@@ -90,42 +95,8 @@ void pedal_set_CAN()
 
 void pedal_calibrate(void)           //calibrate all sensors
 {
-    // double volts;        //stores voltage conversion value in volts
-    // uint16 voltCounts;  //stores voltage conversion value in counts
     uint8 i = 0;        //counter for for loop 
     char buff[50];
-    // uint8_t channelNum[CALIBRATION_COUNT] = {0, 1, 0, 1, 2, 3, 2, 3, 4, 4};    //array of channel numbers
-    /*int16_t* calibrated_value[CALIBRATION_COUNT] = {
-        &MIN_THROTTLE1,
-        &MIN_THROTTLE2,
-        &MAX_THROTTLE1,
-        &MAX_THROTTLE2,
-
-        &MIN_BRAKE1,
-        &MIN_BRAKE2,
-        &MAX_BRAKE1,
-        &MAX_BRAKE2//,
-
-        // &STEER_LEFT,
-        // &STEER_RIGHT
-    };*/
-
-   /* int32_t* converted_calibrated_value[CALIBRATION_COUNT] = {
-        &MIN_THROTTLE1_MV,
-        &MIN_THROTTLE2_MV,
-        &MAX_THROTTLE1_MV,
-        &MAX_THROTTLE2_MV,
-
-        &MIN_BRAKE1_MV,
-        &MIN_BRAKE2_MV,
-        &MAX_BRAKE1_MV,
-        &MAX_BRAKE2_MV//,
-
-        // &STEER_LEFT_MV,
-        // &STEER_RIGHT_MV
-    };*/
-
-    
     for (i = 0; i < 4; i++)
     {
         LCD_ClearDisplay();
@@ -261,7 +232,6 @@ void pedal_calibrate(void)           //calibrate all sensors
                             ADC_low = ADC_value;
                         if (ADC_value > ADC_high)
                             ADC_high = ADC_value;
-                        LCD_ClearDisplay();
                         LCD_Position(0,0);
                         sprintf(buff, "B2: %0.4fv", volts);
                         LCD_PrintString(buff); 
@@ -443,6 +413,17 @@ uint8_t pedal_is_brake_plausible(double* brake_percentage_ptr, double* throttle_
         return pedal_brake_plausible_brake;
     }
     return pedal_brake_plausible_yes;
+}
+
+
+bool pedal_is_brake_pressed()
+{
+    double brake_percentage = (double)(brake1_mv - MIN_BRAKE1_MV) / (MAX_BRAKE1_MV - MIN_BRAKE1_MV);
+    if (brake_percentage > PEDAL_CAR_START_BRAKE_PERCENT - PEDAL_MEASURE_TOLERANCE)
+    {
+        return true;
+    }
+    return false;
 }
 
 uint8_t pedal_get_out_of_range_flag(void)

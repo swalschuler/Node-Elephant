@@ -15,7 +15,7 @@
 
 typedef enum {
 	pedal_state_neutral,
-	pedal_state_normal,
+	pedal_state_driving,
 	pedal_state_calibrating,
 	pedal_state_out_of_range,
 	pedal_state_discrepency,
@@ -27,6 +27,9 @@ typedef enum {
 #define PEDAL_INCREPENCY_PERCENT						(0.1)
 #define PEDAL_BRAKE_IMPLAUSIBLE_EXIT_THROTTLE_PERCENT	(0.05)
 
+#define PEDAL_CAR_START_BRAKE_PERCENT					(0.5)
+
+//TODO: tolerance need to be adjusted
 #define PEDAL_MEASURE_TOLERANCE							(0.1)
 
 #endif
