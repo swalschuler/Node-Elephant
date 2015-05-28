@@ -17,6 +17,7 @@
 #include "pedal_control.h"
 #include "pedal_state.h"
 #include "CAN_invertor.h"
+#include "uart-terminal.h"
 
 pedal_state pedal_node_state = pedal_state_driving;
 volatile bool should_calibrate = false;
@@ -59,6 +60,11 @@ CY_ISR(isr_start_handler)
     Start_button_ClearInterrupt();
 }
 
+void newCmdRout() {
+    while(USBUART_CDCIsReady() == 0u);
+    USBUART_PutString("new cmd\n");
+}
+
 int main()
 {
      pedal_node_state = pedal_state_neutral;
@@ -80,6 +86,15 @@ int main()
     EEPROM_ERROR_LED_Write(0);
     should_calibrate = false;
 
+
+    terminal_init();
+    char serialIn[100];
+    uint8_t track = 0;
+
+    terminal_registerCommand("newCmd", &newCmdRout);
+    for (;;) {
+        terminal_echo(serialIn,&track);
+    }
     for(;;)
     {
         if (pedal_node_state == pedal_state_neutral)
