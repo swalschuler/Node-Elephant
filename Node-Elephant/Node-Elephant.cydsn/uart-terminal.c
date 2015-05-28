@@ -20,7 +20,6 @@ static char* terminal_commandTable[TERMINAL_MAX_ROUTINE];
 func_ptr_t terminal_routineTable[TERMINAL_MAX_ROUTINE];
 static uint8_t terminal_currentCommandCount = 0;
 
-// void terminal_pushNewCommand(const char newCommand[]);
 void terminal_helpFunc();
 inline void terminal_printPrompt();
 
@@ -28,11 +27,9 @@ inline void terminal_printPrompt();
 void terminal_init() {
     USBUART_Start(0u, USBUART_3V_OPERATION);
 
-    // terminal_commandTable = (char**)malloc(sizeof(char*));
     char* help = "help\0";
     terminal_commandTable[0] = help;
 
-    // terminal_routineTable = (func_ptr_t*)malloc(sizeof(func_ptr_t));
     terminal_routineTable[0] = &terminal_helpFunc;
 
     terminal_currentCommandCount = 1;
@@ -63,7 +60,6 @@ void terminal_helpFunc() {
         while(USBUART_CDCIsReady() == 0u);
         USBUART_PutString("\n");
     }
-    // USBUART_PutString("help\n");       /* Send data back to PC */
 }
 
 /****************************************************************************
@@ -82,8 +78,11 @@ void terminal_helpFunc() {
 *  None.
 *
 ****************************************************************************/
-void terminal_echo(char serial_in[], uint8* track)
+void terminal_echo()
 {
+    static uint8_t track = 0;
+    static char serial_in[100];
+
     uint8 buffer = 0;
 
     buffer = 0;
@@ -103,23 +102,23 @@ void terminal_echo(char serial_in[], uint8* track)
             buffer = USBUART_GetChar();           /* Read received data and re-enable OUT endpoint */
             if(buffer != 0)
             {
-                serial_in[*track] = (char)buffer;
+                serial_in[track] = (char)buffer;
                 while(USBUART_CDCIsReady() == 0u);    /* Wait till component is ready to send more data to the PC */
                 USBUART_PutChar((char)buffer);       /* Send data back to PC */
 
                 if(buffer == 127)           // checks for backspace = 127
                 {
-                    if((*track) != 0)          // subtract only if not at the front of the array
-                        (*track)--;
+                    if((track) != 0)          // subtract only if not at the front of the array
+                        (track)--;
                 }
                 else
-                    (*track)++;
+                    (track)++;
 
                 if((char)buffer == '\r')        // if enter key was pressed
                 {
-                    serial_in[*track-1] = '\0';
+                    serial_in[track-1] = '\0';
                     terminal_parse(serial_in);
-                    *track = 0;
+                    track = 0;
                 }
             }
         }

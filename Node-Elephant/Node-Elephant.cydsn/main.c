@@ -88,15 +88,11 @@ int main()
 
 
     terminal_init();
-    char serialIn[100];
-    uint8_t track = 0;
 
     terminal_registerCommand("newCmd", &newCmdRout);
-    for (;;) {
-        terminal_echo(serialIn,&track);
-    }
     for(;;)
     {
+        terminal_echo();
         if (pedal_node_state == pedal_state_neutral)
         {
             if (should_calibrate)
@@ -198,7 +194,7 @@ int main()
                 break;
         }
 
-        CyDelay(500);
+        CyDelay(100);
     }
 
     return 0;
