@@ -21,8 +21,7 @@
 typedef void (*func_ptr_t)( void );
 
 void terminal_init();
-void terminal_echo();
-void terminal_parse(char serial_in[]);
+void terminal_run();
 void terminal_registerCommand(char command[], func_ptr_t routine);
 
 #endif

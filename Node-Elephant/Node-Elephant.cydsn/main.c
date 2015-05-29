@@ -61,11 +61,20 @@ CY_ISR(isr_start_handler)
 }
 
 void newCmdRout() {
+    char rtn[2];
+    rtn[0] = 13;
+    rtn[1] = '\0';
     while(USBUART_CDCIsReady() == 0u);
-    USBUART_PutString("new cmd\n");
+    USBUART_PutString("\n");
+    for (;;) {
+        while(USBUART_CDCIsReady() == 0u);
+        USBUART_PutString(rtn);
+        while(USBUART_CDCIsReady() == 0u);
+        USBUART_PutString("new cmd");
+    }
 }
 
-int main()
+int main() 
 {
      pedal_node_state = pedal_state_neutral;
     LCD_Start();
@@ -92,7 +101,7 @@ int main()
     terminal_registerCommand("newCmd", &newCmdRout);
     for(;;)
     {
-        terminal_echo();
+        terminal_run();
         if (pedal_node_state == pedal_state_neutral)
         {
             if (should_calibrate)

@@ -12,6 +12,7 @@
 
 #include "uart-terminal.h"
 #include <stdint.h>
+#include <stdbool.h>
 
 #define TERMINAL_MAX_ROUTINE (10)
 
@@ -19,12 +20,18 @@
 static char* terminal_commandTable[TERMINAL_MAX_ROUTINE];
 func_ptr_t terminal_routineTable[TERMINAL_MAX_ROUTINE];
 static uint8_t terminal_currentCommandCount = 0;
+static bool terminal_inited = false;
 
+void terminal_parse(char serial_in[]);
 void terminal_helpFunc();
 inline void terminal_printPrompt();
 
 
 void terminal_init() {
+    if (terminal_inited) {
+        return;
+    }
+    
     USBUART_Start(0u, USBUART_3V_OPERATION);
 
     char* help = "help\0";
@@ -33,9 +40,13 @@ void terminal_init() {
     terminal_routineTable[0] = &terminal_helpFunc;
 
     terminal_currentCommandCount = 1;
+    terminal_inited = true;
 }
 
 void terminal_registerCommand(char newCommand[], func_ptr_t routine) {
+    if (!terminal_inited) {
+        terminal_init();
+    }
     if (terminal_currentCommandCount >= TERMINAL_MAX_ROUTINE) {
         //Error handling when the vector table is full
         return;
@@ -78,12 +89,13 @@ void terminal_helpFunc() {
 *  None.
 *
 ****************************************************************************/
-void terminal_echo()
+void terminal_run()
 {
     static uint8_t track = 0;
     static char serial_in[100];
 
     uint8 buffer = 0;
+    uint8_t buf[100];
 
     buffer = 0;
 
@@ -99,17 +111,21 @@ void terminal_echo()
     {
         if(USBUART_DataIsReady() != 0u)               /* Check for input data from PC */
         {
-            buffer = USBUART_GetChar();           /* Read received data and re-enable OUT endpoint */
-            if(buffer != 0)
-            {
+            uint16_t count = USBUART_GetAll(buf);
+            uint16_t i = 0;
+            for (i = 0; i < count; i++) {
+                buffer = buf[i];
                 serial_in[track] = (char)buffer;
                 while(USBUART_CDCIsReady() == 0u);    /* Wait till component is ready to send more data to the PC */
                 USBUART_PutChar((char)buffer);       /* Send data back to PC */
 
                 if(buffer == 127)           // checks for backspace = 127
                 {
-                    if((track) != 0)          // subtract only if not at the front of the array
+                    if((track) != 0) {        // subtract only if not at the front of the array
                         (track)--;
+                        while(USBUART_CDCIsReady() == 0u);    /* Wait till component is ready to send more data to the PC */
+                        USBUART_PutString("\b \b");       /* Send data back to PC */
+                    }
                 }
                 else
                     (track)++;
@@ -119,6 +135,7 @@ void terminal_echo()
                     serial_in[track-1] = '\0';
                     terminal_parse(serial_in);
                     track = 0;
+                    break;
                 }
             }
         }
@@ -162,46 +179,11 @@ void terminal_parse(char serial_in[])
         }
     }
 
-    // if(stricmp(serial_in, "help") == 0 || stricmp(serial_in, "1") == 0)
-    // {
-    //     while(USBUART_CDCIsReady() == 0u);    /* Wait till component is ready to send more data to the PC */
-    //     USBUART_PutString(helpString);       /* Send data to PC */
-    // }
-    // else if(stricmp(serial_in, "Print ADC") == 0 || stricmp(serial_in, "2") == 0)
-    // {
-    //     for(;;)     //keep printing conversions
-    //     {
-    //         if(ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))        //if ADC conversion is done
-    //         {
-    //             volts = ADC_SAR_CountsTo_Volts(ADC_SAR_GetResult16(0));
-    //             sprintf(adc_val, "\n\r%0.4fv, %d", volts, ADC_SAR_GetResult16(0));            //Makes floating point to acii
-    //             LCD_Position(0,0);
-    //             LCD_PrintString(adc_val);
-    //             while(USBUART_CDCIsReady() == 0u);    /* Wait till component is ready to send more data to the PC */
-    //             USBUART_PutString(adc_val);       /* Send data back to PC */
-    //         }
-
-    //         if(USBUART_DataIsReady() != 0u)               /* Check for input data from PC */
-    //         {
-    //             buffer = USBUART_GetChar();
-
-    //             if (buffer == 27)               //if escaped pressed then exit printing
-    //             {
-    //                 while(USBUART_CDCIsReady() == 0u);    /* Wait till component is ready to send more data to the PC */
-    //                 USBUART_PutString("\n\rStopped\n\r");       /* Send data back to PC */
-    //                 break;
-    //             }
-    //         }
-    //     }
-    // }
-    // else
-    // {
     if (stricmp(serial_in, "") != 0) {
         while(USBUART_CDCIsReady() == 0u);    /* Wait till component is ready to send more data to the PC */
         USBUART_PutString("Not a recognized command, please use 'help' to see commands.");       /* Send data to PC */
     }
     terminal_printPrompt();
-    // }
 }
 
 inline void terminal_printPrompt() {
