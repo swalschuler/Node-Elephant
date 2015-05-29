@@ -123,8 +123,8 @@ void terminal_run()
                 {
                     if((track) != 0) {        // subtract only if not at the front of the array
                         (track)--;
-                        while(USBUART_CDCIsReady() == 0u);    /* Wait till component is ready to send more data to the PC */
-                        USBUART_PutString("\b \b");       /* Send data back to PC */
+                        while(USBUART_CDCIsReady() == 0u);
+                        USBUART_PutString("\b \b");
                     }
                 }
                 else
