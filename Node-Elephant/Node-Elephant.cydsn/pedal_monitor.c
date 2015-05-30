@@ -31,12 +31,15 @@ bool monitor_showCalibRoutine() {
 	if (currentCalibrationState == monitor_calibrate_done) {
 	    while(USBUART_CDCIsReady() == 0u);
 	    USBUART_PutString("\nCalibration Complete\n");
+		terminal_ringBell();
+		terminal_ringBell();
 	    return false;
 	}
 	char buf[100];
 	buf[0] = '\0';
 	switch (currentCalibrationState) {
 		case monitor_calibrate_waiting:
+			terminal_ringBell();
 			sprintf(buf, "\rWaiting...");
 			break;
 		case monitor_calibrate_printTitle:

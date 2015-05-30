@@ -68,14 +68,14 @@ void terminal_executeCommand(uint8_t routineID) {
     if (routineID >= terminal_currentCommandCount) {
         return;
     }
-    while(USBUART_CDCIsReady() == 0u);
-    USBUART_PutChar('\n');
     if ((*terminal_routineTable[routineID])()) {
         terminal_printPrompt();
     }
 }
 
 bool terminal_helpFunc() {
+    while(USBUART_CDCIsReady() == 0u);
+    USBUART_PutChar('\n');
     uint8_t i = 0;
     for (i = 0; i < terminal_currentCommandCount; i++) {
         while(USBUART_CDCIsReady() == 0u);
@@ -138,10 +138,12 @@ void terminal_run()
 
                 if(buffer == 127)           // checks for backspace = 127
                 {
-                    if((track) != 0) {        // subtract only if not at the front of the array
+                    if ((track) != 0) {        // subtract only if not at the front of the array
                         (track)--;
                         while(USBUART_CDCIsReady() == 0u);
                         USBUART_PutString("\b \b");
+                    } else {
+                        terminal_ringBell();
                     }
                 }
                 else
@@ -159,6 +161,11 @@ void terminal_run()
     }
 }
 
+
+void terminal_ringBell() {
+    while(USBUART_CDCIsReady() == 0u);
+    USBUART_PutChar(BEL); 
+}
 
 /****************************************************************************
 * Function Name: terminal_parse(char serial_in[])

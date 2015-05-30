@@ -33,6 +33,7 @@ void terminal_init();
 void terminal_run();
 uint8_t terminal_registerCommand(char command[], func_ptr_t routine);
 void terminal_executeCommand(uint8_t routineID);
+void terminal_ringBell();
 
 /**
  * Error indication
