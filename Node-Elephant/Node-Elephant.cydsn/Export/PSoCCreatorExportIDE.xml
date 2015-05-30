@@ -40,11 +40,13 @@
           <File BuildType="BUILD" Toolchain="">.\pedal_control.c</File>
           <File BuildType="BUILD" Toolchain="">.\CAN_invertor.c</File>
           <File BuildType="BUILD" Toolchain="">.\uart-terminal.c</File>
+          <File BuildType="BUILD" Toolchain="">.\pedal_monitor.c</File>
           <File BuildType="BUILD" Toolchain="">.\pedal_state.h</File>
           <File BuildType="BUILD" Toolchain="">.\EEPROM_util.h</File>
           <File BuildType="BUILD" Toolchain="">.\pedal_control.h</File>
           <File BuildType="BUILD" Toolchain="">.\CAN_invertor.h</File>
           <File BuildType="BUILD" Toolchain="">.\uart-terminal.h</File>
+          <File BuildType="BUILD" Toolchain="">.\pedal_monitor.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\Yi\workspace\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\Generated_Source\PSoC5">

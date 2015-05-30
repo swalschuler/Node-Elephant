@@ -18,6 +18,7 @@
 #include "pedal_state.h"
 #include "CAN_invertor.h"
 #include "uart-terminal.h"
+#include "pedal_monitor.h"
 
 pedal_state pedal_node_state = pedal_state_driving;
 volatile bool should_calibrate = false;
@@ -78,7 +79,7 @@ int main()
 {
      pedal_node_state = pedal_state_neutral;
     LCD_Start();
-    CAN_invertor_init();
+    //CAN_invertor_init();
     ADC_SAR_Start();
     ADC_SAR_StartConvert();
     EEPROM_Start();
@@ -86,8 +87,8 @@ int main()
     //Timer_Start();
     CAN_Init();
     CAN_Start();
-    isr_calibration_StartEx(&isr_calibration_handler);
     isr_start_StartEx(&isr_start_handler);
+    isr_calibration_StartEx(&isr_calibration_handler);
     
     CyGlobalIntEnable;          //enable global interrupts
     pedal_restore_calibration_data();               //set min and max values
@@ -97,8 +98,9 @@ int main()
 
 
     terminal_init();
+    monitor_init();
 
-    terminal_registerCommand("newCmd", &newCmdRout);
+    // terminal_registerCommand("newCmd", &newCmdRout);
     for(;;)
     {
         terminal_run();

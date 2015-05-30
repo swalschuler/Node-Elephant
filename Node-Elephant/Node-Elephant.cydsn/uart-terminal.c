@@ -11,19 +11,27 @@
 */
 
 #include "uart-terminal.h"
-#include <stdint.h>
-#include <stdbool.h>
+
+ /**
+  * @brief ASCII control code
+  */
+#define BEL (7)
+#define BS (8)
+#define DEL (127)
+#define CR (13)
 
 #define TERMINAL_MAX_ROUTINE (10)
+#define TERMINAL_ERROR_PROP "ERROR!!! "
 
 
 static char* terminal_commandTable[TERMINAL_MAX_ROUTINE];
 func_ptr_t terminal_routineTable[TERMINAL_MAX_ROUTINE];
 static uint8_t terminal_currentCommandCount = 0;
 static bool terminal_inited = false;
+static bool terminal_error_flag = false;
 
 void terminal_parse(char serial_in[]);
-void terminal_helpFunc();
+bool terminal_helpFunc();
 inline void terminal_printPrompt();
 
 
@@ -34,8 +42,8 @@ void terminal_init() {
     
     USBUART_Start(0u, USBUART_3V_OPERATION);
 
-    char* help = "help\0";
-    terminal_commandTable[0] = help;
+    // char* help = "help\0";
+    terminal_commandTable[0] = "help\0";
 
     terminal_routineTable[0] = &terminal_helpFunc;
 
@@ -43,27 +51,33 @@ void terminal_init() {
     terminal_inited = true;
 }
 
-void terminal_registerCommand(char newCommand[], func_ptr_t routine) {
+uint8_t terminal_registerCommand(char newCommand[], func_ptr_t routine) {
     if (!terminal_inited) {
         terminal_init();
     }
     if (terminal_currentCommandCount >= TERMINAL_MAX_ROUTINE) {
         //Error handling when the vector table is full
-        return;
+        return 0;
     }
     terminal_commandTable[terminal_currentCommandCount] = newCommand;
     terminal_routineTable[terminal_currentCommandCount] = routine;
-    terminal_currentCommandCount++;
+    return terminal_currentCommandCount++;
 }
 
-void terminal_helpFunc() {
+void terminal_executeCommand(uint8_t routineID) {
+    if (routineID >= terminal_currentCommandCount) {
+        return;
+    }
+    if ((*terminal_routineTable[routineID])()) {
+        terminal_printPrompt();
+    }
+}
+
+bool terminal_helpFunc() {
     uint8_t i = 0;
     for (i = 0; i < terminal_currentCommandCount; i++) {
-        char iStr[2];
-        iStr[0] = i + '0';
-        iStr[1] = '\0';
         while(USBUART_CDCIsReady() == 0u);
-        USBUART_PutString(iStr);
+        USBUART_PutChar(i + '0');
         while(USBUART_CDCIsReady() == 0u);
         USBUART_PutString(". ");
         while(USBUART_CDCIsReady() == 0u);
@@ -71,6 +85,7 @@ void terminal_helpFunc() {
         while(USBUART_CDCIsReady() == 0u);
         USBUART_PutString("\n");
     }
+    return true;
 }
 
 /****************************************************************************
@@ -173,8 +188,9 @@ void terminal_parse(char serial_in[])
         if (stricmp(serial_in, terminal_commandTable[i]) == 0 ||  stricmp(serial_in, iStr) == 0) {
             while(USBUART_CDCIsReady() == 0u);
             // USBUART_PutString("helping\n");
-            (*terminal_routineTable[i])();
-            terminal_printPrompt();
+            if ((*terminal_routineTable[i])()) {
+                terminal_printPrompt();
+            }
             return; 
         }
     }
@@ -189,10 +205,23 @@ void terminal_parse(char serial_in[])
 inline void terminal_printPrompt() {
     while(USBUART_CDCIsReady() == 0u);
     USBUART_PutString("\n");
+    if (terminal_error_flag) {
+        while(USBUART_CDCIsReady() == 0u);
+        USBUART_PutString(TERMINAL_ERROR_PROP);
+    }
     while(USBUART_CDCIsReady() == 0u);
     USBUART_PutString(TERMINAL_NODE_NAME);
     while(USBUART_CDCIsReady() == 0u);
     USBUART_PutString("> ");
+}
+
+
+void terminal_setErrorFlag() {
+    terminal_error_flag = true;
+}
+
+void terminal_clearErrorFlag() {
+    terminal_error_flag = false;
 }
 
 /* [] END OF FILE */

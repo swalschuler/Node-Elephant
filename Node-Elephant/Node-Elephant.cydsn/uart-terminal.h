@@ -14,15 +14,31 @@
 
 #include <project.h>
 #include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
 
 #define BUFFER_LEN 64
 #define TERMINAL_NODE_NAME "Pedal-Node"
 
-typedef void (*func_ptr_t)( void );
+/**
+ * @brief R
+ * @details return true to print a prompt, return false otherwise
+ * 
+ * @param t [description]
+ * @return [description]
+ */
+typedef bool (*func_ptr_t)( void );
 
 void terminal_init();
 void terminal_run();
-void terminal_registerCommand(char command[], func_ptr_t routine);
+uint8_t terminal_registerCommand(char command[], func_ptr_t routine);
+void terminal_executeCommand(uint8_t routineID);
+
+/**
+ * Error indication
+ */
+void terminal_setErrorFlag();
+void terminal_clearErrorFlag();
 
 #endif
 
