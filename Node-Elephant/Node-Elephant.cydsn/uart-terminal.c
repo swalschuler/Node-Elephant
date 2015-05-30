@@ -68,6 +68,8 @@ void terminal_executeCommand(uint8_t routineID) {
     if (routineID >= terminal_currentCommandCount) {
         return;
     }
+    while(USBUART_CDCIsReady() == 0u);
+    USBUART_PutChar('\n');
     if ((*terminal_routineTable[routineID])()) {
         terminal_printPrompt();
     }
@@ -187,7 +189,7 @@ void terminal_parse(char serial_in[])
         iStr[1] = '\0';
         if (stricmp(serial_in, terminal_commandTable[i]) == 0 ||  stricmp(serial_in, iStr) == 0) {
             while(USBUART_CDCIsReady() == 0u);
-            // USBUART_PutString("helping\n");
+            USBUART_PutChar('\n');
             if ((*terminal_routineTable[i])()) {
                 terminal_printPrompt();
             }
@@ -196,8 +198,12 @@ void terminal_parse(char serial_in[])
     }
 
     if (stricmp(serial_in, "") != 0) {
+        while (USBUART_CDCIsReady() == 0u);
+        USBUART_PutString("$");
+        while (USBUART_CDCIsReady() == 0u);
+        USBUART_PutString(serial_in);
         while(USBUART_CDCIsReady() == 0u);    /* Wait till component is ready to send more data to the PC */
-        USBUART_PutString("Not a recognized command, please use 'help' to see commands.");       /* Send data to PC */
+        USBUART_PutString("$ is not a recognized command, please use 'help' to see commands.");       /* Send data to PC */
     }
     terminal_printPrompt();
 }
