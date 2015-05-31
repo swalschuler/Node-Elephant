@@ -19,6 +19,7 @@
 #include "CAN_invertor.h"
 #include "uart-terminal.h"
 #include "pedal_monitor.h"
+#include "pedal_monitor_state.h"
 
 pedal_state pedal_node_state = pedal_state_driving;
 volatile bool should_calibrate = false;
@@ -30,8 +31,9 @@ CY_ISR(isr_calibration_handler)
         should_calibrate = true;
     }
     isr_calibration_Disable();
-    isr_start_Disable();
     Button_ClearInterrupt();
+    CyDelay(100);
+    isr_calibration_Enable();
 }
 
 CY_ISR(isr_start_handler)
@@ -46,9 +48,10 @@ CY_ISR(isr_start_handler)
         else
         {
             //If brake is not pressed, simply return
-            isr_start_Disable();
-            Start_button_ClearInterrupt();
-            isr_start_Enable();
+            // isr_start_Disable();
+            // Start_button_ClearInterrupt();
+            // isr_start_Enable();
+            Start_Reset_Write(1);
             return;
         }
     }
@@ -56,9 +59,11 @@ CY_ISR(isr_start_handler)
     {
         pedal_node_state = pedal_state_neutral;
     }
-    isr_calibration_Disable();
-    isr_start_Disable();
-    Start_button_ClearInterrupt();
+    // isr_start_Disable();
+    // Start_button_ClearInterrupt();
+    // CyDelay(100);
+    // isr_start_Enable();
+    Start_Reset_Write(1);
 }
 
 void newCmdRout() {
@@ -88,6 +93,9 @@ int main()
     CAN_Init();
     CAN_Start();
     isr_start_StartEx(&isr_start_handler);
+   	Start_Reset_Write(1); /* source of interrupt (reset) */
+    isr_start_ClearPending();
+    
     isr_calibration_StartEx(&isr_calibration_handler);
     
     CyGlobalIntEnable;          //enable global interrupts
@@ -123,12 +131,14 @@ int main()
         uint8_t torque_plausible_flag;
         uint8_t brake_plausible_flag;
         pedal_fetch_data();
+        monitor_update_vechicle_state(pedal_node_state);
         switch (pedal_node_state)
         {
             case pedal_state_neutral:
                 LCD_ClearDisplay();
                 LCD_Position(0,0);
                 LCD_PrintString("NEUTRAL");
+
                 break;
             case pedal_state_driving:
                 LCD_ClearDisplay();
@@ -163,8 +173,7 @@ int main()
                 LCD_ClearDisplay();
                 //isr_ClearPending();
                 //clock_Start();
-                isr_calibration_Enable();
-                isr_start_Enable();
+                // isr_calibration_Enable();
                 pedal_node_state = pedal_state_neutral;
                 break;
 
