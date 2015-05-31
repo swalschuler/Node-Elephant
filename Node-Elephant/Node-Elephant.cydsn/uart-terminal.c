@@ -65,11 +65,26 @@ uint8_t terminal_registerCommand(char newCommand[], func_ptr_t routine) {
 }
 
 void terminal_executeCommand(uint8_t routineID) {
-    if (routineID >= terminal_currentCommandCount) {
-        return;
+    if(USBUART_IsConfigurationChanged() != 0u) /* Host could send double SET_INTERFACE request */
+    {
+        if(USBUART_GetConfiguration() != 0u)   /* Init IN endpoints when device configured */
+        {
+            /* Enumeration is done, enable OUT endpoint for receive data from Host */
+            USBUART_CDC_Init();
+        }
     }
-    if ((*terminal_routineTable[routineID])()) {
-        terminal_printPrompt();
+
+    if(USBUART_GetConfiguration() != 0u)    /* Service USB CDC when device configured */
+    {
+        if(USBUART_DataIsReady() != 0u)               /* Check for input data from PC */
+        {
+            if (routineID >= terminal_currentCommandCount) {
+                return;
+            }
+            if ((*terminal_routineTable[routineID])()) {
+                terminal_printPrompt();
+            }
+        }
     }
 }
 
