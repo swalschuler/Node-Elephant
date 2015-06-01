@@ -22,6 +22,13 @@ typedef enum {
 	pedal_state_implausible
 } pedal_state;
 
+extern char* lit_neutral;
+extern char* lit_driving;
+extern char* lit_calibrating;
+extern char* lit_out_of_range;
+extern char* lit_discrepency;
+extern char* lit_implausible;
+
 #define PEDAL_BRAKE_IMPLAUSIBLE_BRAKE_PERCENT			(0.1)
 #define PEDAL_BRAKE_IMPLAUSIBLE_THROTTLE_PERCENT 		(0.25)
 #define PEDAL_INCREPENCY_PERCENT						(0.1)

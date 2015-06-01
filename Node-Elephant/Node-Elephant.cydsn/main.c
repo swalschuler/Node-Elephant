@@ -20,6 +20,7 @@
 #include "uart-terminal.h"
 #include "pedal_monitor.h"
 #include "pedal_monitor_state.h"
+#include "pedal_monitor_status.h"
 
 pedal_state pedal_node_state = pedal_state_driving;
 volatile bool should_calibrate = false;
@@ -48,9 +49,6 @@ CY_ISR(isr_start_handler)
         else
         {
             //If brake is not pressed, simply return
-            // isr_start_Disable();
-            // Start_button_ClearInterrupt();
-            // isr_start_Enable();
             Start_Reset_Write(1);
             return;
         }
@@ -59,25 +57,7 @@ CY_ISR(isr_start_handler)
     {
         pedal_node_state = pedal_state_neutral;
     }
-    // isr_start_Disable();
-    // Start_button_ClearInterrupt();
-    // CyDelay(100);
-    // isr_start_Enable();
     Start_Reset_Write(1);
-}
-
-void newCmdRout() {
-    char rtn[2];
-    rtn[0] = 13;
-    rtn[1] = '\0';
-    while(USBUART_CDCIsReady() == 0u);
-    USBUART_PutString("\n");
-    for (;;) {
-        while(USBUART_CDCIsReady() == 0u);
-        USBUART_PutString(rtn);
-        while(USBUART_CDCIsReady() == 0u);
-        USBUART_PutString("new cmd");
-    }
 }
 
 int main() 
@@ -92,6 +72,7 @@ int main()
     //Timer_Start();
     CAN_Init();
     CAN_Start();
+
     isr_start_StartEx(&isr_start_handler);
    	Start_Reset_Write(1); /* source of interrupt (reset) */
     isr_start_ClearPending();
@@ -99,19 +80,23 @@ int main()
     isr_calibration_StartEx(&isr_calibration_handler);
     
     CyGlobalIntEnable;          //enable global interrupts
-    pedal_restore_calibration_data();               //set min and max values
-    pedal_set_CAN();
-    EEPROM_ERROR_LED_Write(0);
-    should_calibrate = false;
 
-
+    //Initialize terminal
     terminal_init();
     monitor_init();
+
+    pedal_restore_calibration_data();               //set min and max values
+    pedal_set_CAN(); //Setup tunnel from pedal control to CAN
+    pedal_set_monitor(); //Setup tunnel from pedal control to USB Monitor
+
+    // Initialize global variables
+    EEPROM_ERROR_LED_Write(0);
+    should_calibrate = false;
 
     // terminal_registerCommand("newCmd", &newCmdRout);
     for(;;)
     {
-        terminal_run();
+        terminal_run(); // Refresh terminal
         if (pedal_node_state == pedal_state_neutral)
         {
             if (should_calibrate)
@@ -130,8 +115,9 @@ int main()
         double brake_percent_diff = 0, throttle_percent_diff = 0;
         uint8_t torque_plausible_flag;
         uint8_t brake_plausible_flag;
-        pedal_fetch_data();
-        monitor_update_vechicle_state(pedal_node_state);
+        pedal_fetch_data(); //Update ADC readings
+        monitor_update_vechicle_state(pedal_node_state); //Update vecicle state
+        monitor_status_update_vehicle_state(pedal_node_state);
         switch (pedal_node_state)
         {
             case pedal_state_neutral:

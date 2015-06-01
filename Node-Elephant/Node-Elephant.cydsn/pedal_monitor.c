@@ -1,10 +1,14 @@
 #include "pedal_monitor.h"
 #include "pedal_monitor_state.h"
+#include "pedal_monitor_status.h"
 
 #define ROUTINE_NAME "calibrationData"
 static uint8_t calibrationID = 0;
 static uint8_t stateID = 0;
+static uint8_t statusID = 0;
+
 static monitor_calibrate_item currentCalibrationState = monitor_calibrate_notCalibrating;
+
 static double current_volts = 0.0;
 static int16_t t1_low = 0;
 static int16_t t2_low = 0;
@@ -20,6 +24,7 @@ bool monitor_showCalibRoutine();
 void monitor_init() {
 	calibrationID = terminal_registerCommand(ROUTINE_NAME, &monitor_showCalibRoutine);
 	stateID = terminal_registerCommand(MONITOR_STATE_ROUTINE, &monitor_state_routine);
+	statusID = terminal_registerCommand(MONITOR_STATUS_ROUTINE, &monitor_checkStatus_routine);
 }
 
 bool monitor_showCalibRoutine() {

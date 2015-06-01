@@ -1,41 +1,37 @@
 #include "pedal_monitor_state.h"
+#include <project.h>
 
 static pedal_state currentState = pedal_state_neutral;
-static char* lit_neutral = "NEUTRAL\0";
-static char* lit_driving = "DRIVING\0";
-static char* lit_calibrating = "calibrating\0";
-static char* lit_out_of_range = "OUT OF RANGE\0";
-static char* lit_discrepency = "DISCREPENCY\0";
-static char* lit_implausible = "IMPLAUSIBLE\0";
-
 
 bool monitor_state_routine() {
+    while(USBUART_CDCIsReady() == 0u);
+    USBUART_PutString("\r");
 	char* ptr = "\0";
 	switch (currentState) {
 		case pedal_state_neutral:
-			ptr = lit_neutral;
+			ptr = (char*)lit_neutral;
 			break;
 		case pedal_state_driving:
-			ptr = lit_driving;
+			ptr = (char*)lit_driving;
 			break;
 		case pedal_state_calibrating:
-			ptr = lit_calibrating;
+			ptr = (char*)lit_calibrating;
 			break;
 		case pedal_state_out_of_range:
-			ptr = lit_out_of_range;
+			ptr = (char*)lit_out_of_range;
 			break;
 		case pedal_state_discrepency:
-			ptr = lit_discrepency;
+			ptr = (char*)lit_discrepency;
 			break;
 		case pedal_state_implausible:
-			ptr = lit_implausible;
+			ptr = (char*)lit_implausible;
 			break;
 		default:
 			break;
 	}
     while(USBUART_CDCIsReady() == 0u);
     USBUART_PutString(ptr);
-	return true;
+	return terminal_detectESC();
 }
 
 void monitor_update_vechicle_state(pedal_state state) {

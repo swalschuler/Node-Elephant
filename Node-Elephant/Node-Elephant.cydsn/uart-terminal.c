@@ -19,6 +19,7 @@
 #define BS (8)
 #define DEL (127)
 #define CR (13)
+#define ESC (27)
 
 #define TERMINAL_MAX_ROUTINE (10)
 #define TERMINAL_ERROR_PROP "ERROR!!! "
@@ -29,6 +30,7 @@ func_ptr_t terminal_routineTable[TERMINAL_MAX_ROUTINE];
 static uint8_t terminal_currentCommandCount = 0;
 static bool terminal_inited = false;
 static bool terminal_error_flag = false;
+static func_ptr_t currentFunc = NULL;
 
 void terminal_parse(char serial_in[]);
 bool terminal_helpFunc();
@@ -82,9 +84,14 @@ void terminal_executeCommand(uint8_t routineID) {
                 return;
             }
             if ((*terminal_routineTable[routineID])()) {
+                currentFunc = NULL;
                 terminal_printPrompt();
+            } else {
+                currentFunc = terminal_routineTable[routineID];
             }
         }
+    } else {
+        currentFunc = NULL;
     }
 }
 
@@ -141,6 +148,13 @@ void terminal_run()
     }
     if(USBUART_GetConfiguration() != 0u)    /* Service USB CDC when device configured */
     {
+        if (currentFunc != NULL) {
+            if ((*currentFunc)()) {
+                terminal_printPrompt();
+                currentFunc = NULL;
+            }
+            return;
+        }
         if(USBUART_DataIsReady() != 0u)               /* Check for input data from PC */
         {
             uint16_t count = USBUART_GetAll(buf);
@@ -173,6 +187,8 @@ void terminal_run()
                 }
             }
         }
+    } else {
+        currentFunc = NULL;
     }
 }
 
@@ -180,6 +196,30 @@ void terminal_run()
 void terminal_ringBell() {
     while(USBUART_CDCIsReady() == 0u);
     USBUART_PutChar(BEL); 
+}
+
+bool terminal_detectESC() {
+    if(USBUART_IsConfigurationChanged() != 0u) /* Host could send double SET_INTERFACE request */
+    {
+        if(USBUART_GetConfiguration() != 0u)   /* Init IN endpoints when device configured */
+        {
+            return true;
+        }
+    }
+    static uint8_t buf[100];
+    if (USBUART_GetConfiguration() != 0u) {
+        if (USBUART_DataIsReady() != 0u) {
+            uint16_t count = USBUART_GetAll(buf);
+            uint16_t i = 0;
+            for (i = 0; i < count; i++) {
+                if (buf[i] == ESC) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    return true;
 }
 
 /****************************************************************************
@@ -199,11 +239,6 @@ void terminal_ringBell() {
 ****************************************************************************/
 void terminal_parse(char serial_in[])
 {
-    // char* helpString = "\r\n1. Help\r\n2. Print ADC\r\n        Press ESC to stop conversions\r\n3. Something3\n\r";         //menu
-    // double volts;           //used to store adc value
-    // char adc_val[BUFFER_LEN];       //used to print adc value
-    // uint8 buffer;
-
     uint8_t i = 0;
     for (i = 0; i < terminal_currentCommandCount; i++) {
         char iStr[2];
@@ -213,7 +248,10 @@ void terminal_parse(char serial_in[])
             while(USBUART_CDCIsReady() == 0u);
             USBUART_PutChar('\n');
             if ((*terminal_routineTable[i])()) {
+                currentFunc = NULL;
                 terminal_printPrompt();
+            } else {
+                currentFunc = terminal_routineTable[i];
             }
             return; 
         }

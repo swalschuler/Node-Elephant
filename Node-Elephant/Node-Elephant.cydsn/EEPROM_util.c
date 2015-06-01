@@ -12,6 +12,7 @@
 
 #include <stdint.h>
 #include <project.h>
+#include "pedal_monitor_status.h"
 
 int16_t EEPROM_get(uint16_t address, uint8_t offset) {
     int16_t temp = 0;
@@ -29,13 +30,16 @@ void EEPROM_set(int16_t value, uint16_t address, uint8_t offset) {
 	if (EEPROM_WriteByte(upper, address + offset * 16) != CYRET_SUCCESS)
     {
         EEPROM_ERROR_LED_Write(1);
+        monitor_setEEPROMStatus(false);
         return;
     }
-	if (EEPROM_WriteByte(lower, address + offset * 16 + 8) != CYRET_SUCCESS)
+    if (EEPROM_WriteByte(lower, address + offset * 16 + 8) != CYRET_SUCCESS)
     {
         EEPROM_ERROR_LED_Write(1);
+        monitor_setEEPROMStatus(false);
         return;
     }
+    monitor_setEEPROMStatus(true);
 }
 
 /* [] END OF FILE */

@@ -5,6 +5,7 @@
 #include "pedal_state.h"
 #include "CAN_invertor.h"
 #include "pedal_monitor.h"
+#include "pedal_monitor_status.h"
 
 #define USED_EEPROM_SECTOR                      (1u)
 #define CALIBRATION_DATA_BASE_ADDRESS          ((USED_EEPROM_SECTOR * CYDEV_EEPROM_SECTOR_SIZE) + 0x00)
@@ -17,7 +18,7 @@
  * stuffed into 16 bit int
  */
 #define TWELVE_BIT_MAX (0x7FF)
-#define TWELVE_BIT_MIN (0x800)
+#define TWELVE_BIT_MIN (0x000)
 
 
 static int16_t MIN_THROTTLE1 = 0;
@@ -86,6 +87,22 @@ typedef enum
 void pedal_set_CAN()
 {
     CAN_invertor_set_throttle_ptr(&throttle1, &MIN_THROTTLE1, &MAX_THROTTLE1);
+}
+
+
+void pedal_set_monitor() {
+monitor_setT1Ptrs(
+    &MIN_THROTTLE1, &MAX_THROTTLE1,
+    &MIN_THROTTLE1_MV, &MAX_THROTTLE1_MV,
+    &throttle1, &throttle1_mv);
+monitor_setT2Ptrs(
+    &MIN_THROTTLE2, &MAX_THROTTLE2,
+    &MIN_THROTTLE2_MV, &MAX_THROTTLE2_MV,
+    &throttle2, &throttle2_mv);
+monitor_setB1Ptrs(
+    &MIN_BRAKE1, &MAX_BRAKE1,
+    &MIN_BRAKE1_MV, &MAX_BRAKE1_MV,
+    &brake1, &brake1_mv);
 }
 
 void pedal_calibrate(void)           //calibrate all sensors
@@ -269,63 +286,6 @@ void pedal_calibrate(void)           //calibrate all sensors
     monitor_calibrate_update(monitor_calibrate_done, 0, 0, 0);
     CyDelay(2000);
     monitor_calibrate_update(monitor_calibrate_notCalibrating, 0, 0, 0);
- 
-//Code below is used for print to LCD for debugging     
-        
-    // for (i = 0; i < 8; i++)
-    // {     
-    //     LCD_ClearDisplay();
-    //     LCD_Position(0,0);
-        
-    //     switch (i)
-    //     {
-    //         case 0: LCD_PrintString("Throttle 1: Low");
-    //                 LCD_Position(1,0);
-    //                 LCD_PrintNumber(MIN_THROTTLE1);
-    //             break;
-    //         case 1: LCD_PrintString("Throttle 2: Low");
-    //                 LCD_Position(1,0);
-    //                 LCD_PrintNumber(MIN_THROTTLE2);
-    //             break;
-    //         case 2: LCD_PrintString("Throttle 1: High");
-    //                 LCD_Position(1,0);
-    //                 LCD_PrintNumber(MAX_THROTTLE1);
-    //             break;
-    //         case 3: LCD_PrintString("Throttle 2: High");
-    //                 LCD_Position(1,0);
-    //                 LCD_PrintNumber(MAX_THROTTLE2);
-    //             break;
-
-    //         case 4: LCD_PrintString("Brake 1: Low");
-    //                 LCD_Position(1,0);
-    //                 LCD_PrintNumber(MIN_BRAKE1);
-    //             break;
-    //         case 5: LCD_PrintString("Brake 2: Low");
-    //                 LCD_Position(1,0);
-    //                 LCD_PrintNumber(MIN_BRAKE2);
-    //             break;
-    //         case 6: LCD_PrintString("Brake 1: HIGH");
-    //                 LCD_Position(1,0);
-    //                 LCD_PrintNumber(MAX_BRAKE1);
-    //             break;
-    //         case 7: LCD_PrintString("Brake 2: HIGH");
-    //                 LCD_Position(1,0);
-    //                 LCD_PrintNumber(MAX_BRAKE2);
-    //             break;
-
-    //         // case 8: LCD_PrintString("Steering: Left");
-    //         //         LCD_Position(1,0);
-    //         //         LCD_PrintNumber(STEER_LEFT);
-    //         //     break;
-    //         // case 9: LCD_PrintString("Steering: Right");
-    //         //         LCD_Position(1,0);
-    //         //         LCD_PrintNumber(STEER_RIGHT);
-    //         //     break;
-    //         default: LCD_PrintString("Error in loop");
-    //             break;
-    //     }
-    //     CyDelay(1000);
-    // }
     Button_ClearInterrupt();
     return;
 }

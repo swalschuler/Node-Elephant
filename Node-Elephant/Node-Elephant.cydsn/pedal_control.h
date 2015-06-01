@@ -41,6 +41,8 @@ typedef enum
  */
 void pedal_set_CAN();
 
+void pedal_set_monitor();
+
 /**
  * @brief Calibrate data for all sensors.
  * 

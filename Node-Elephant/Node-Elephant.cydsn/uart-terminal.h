@@ -22,7 +22,7 @@
 
 /**
  * @brief R
- * @details return true to print a prompt, return false otherwise
+ * @details return true to end execution print a prompt, return false to keep running the current routing in the next frame
  * 
  * @param t [description]
  * @return [description]
@@ -34,6 +34,7 @@ void terminal_run();
 uint8_t terminal_registerCommand(char command[], func_ptr_t routine);
 void terminal_executeCommand(uint8_t routineID);
 void terminal_ringBell();
+bool terminal_detectESC();
 
 /**
  * Error indication
