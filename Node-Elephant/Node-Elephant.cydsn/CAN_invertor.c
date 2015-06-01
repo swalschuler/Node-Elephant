@@ -12,39 +12,42 @@ char LCDBuffer[50];
 
 CY_ISR(isr_CAN_handler)
 {
-    can_buffer[0] = 0;
-    can_buffer[1] = 0;
-
-    can_buffer[4] = 0;
-    can_buffer[5] = 0;
-    can_buffer[6] = 0;
-    can_buffer[7] = 0;
     if (state == pedal_state_driving)
     {
+        can_buffer[0] = 0;
+        can_buffer[1] = 0;
+
+        can_buffer[4] = 0;
+        can_buffer[5] = 0;
+        can_buffer[6] = 0;
+        can_buffer[7] = 0;
     	int16_t scaled_value = 0;
     	scaled_value = (*throttle_max - *throttle_ptr) * 0x7FFF / (*throttle_max - *throttle_min);
 	    can_buffer[2] = scaled_value & 0xFF;
 	    can_buffer[3] = (scaled_value >> 8) & 0xFF;
-        LCD_Position(0,0);
-        LCD_PrintString("Throttle value:");
-        LCD_Position(1,0);
-        sprintf(LCDBuffer, "$%04X$, $%04X$", *throttle_ptr, scaled_value);
-        LCD_PrintString(LCDBuffer);
+        CAN_SendMsginvertor();
     }
-    else
-    {
-	    can_buffer[2] = 0;
-	    can_buffer[3] = 0;
-    }
-    CAN_SendMsginvertor();
 
 }
 
 void CAN_invertor_init(void)
 {
-    isr_CAN_StartEx(isr_CAN_handler);
     CAN_timer_Start();
+    isr_CAN_StartEx(isr_CAN_handler);
     LCDBuffer[0] = '\0';
+}
+
+
+void CAN_invertor_pause() {
+    // CAN_timer_Stop();
+    can_buffer[0] = 'a';
+    CAN_SendMsginv_stop();
+}
+
+void CAN_invertor_resume() {
+    can_buffer[0] = 'a';
+    CAN_SendMsginv_start();
+    // CAN_timer_Enable();
 }
 
 void CAN_invertor_set_throttle_ptr(int16_t* _throttle_ptr, int16_t* _throttle_min, int16_t* _throttle_max)

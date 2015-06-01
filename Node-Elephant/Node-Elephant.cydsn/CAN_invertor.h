@@ -8,4 +8,7 @@ void CAN_invertor_init(void);
 void CAN_invertor_set_throttle_ptr(int16_t* throttle_ptr, int16_t* throttle_min, int16_t* throttle_max);
 void CAN_invertor_update_pedal_state(pedal_state state);
 
+void CAN_invertor_pause();
+void CAN_invertor_resume();
+
 #endif

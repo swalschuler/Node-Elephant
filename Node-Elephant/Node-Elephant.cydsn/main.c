@@ -24,6 +24,8 @@
 
 pedal_state pedal_node_state = pedal_state_driving;
 volatile bool should_calibrate = false;
+volatile bool should_turn_to_drive = false;
+volatile bool should_turn_to_neutral = false;
 
 CY_ISR(isr_calibration_handler)
 {
@@ -44,7 +46,8 @@ CY_ISR(isr_start_handler)
         pedal_fetch_data();
         if (pedal_is_brake_pressed())
         {
-            pedal_node_state = pedal_state_driving;
+            should_turn_to_drive = true;
+            // pedal_node_state = pedal_state_driving;
         }
         else
         {
@@ -55,7 +58,8 @@ CY_ISR(isr_start_handler)
     }
     else if (pedal_node_state == pedal_state_driving)
     {
-        pedal_node_state = pedal_state_neutral;
+        should_turn_to_neutral = true;
+        // pedal_node_state = pedal_state_neutral;
     }
     Start_Reset_Write(1);
 }
@@ -64,7 +68,7 @@ int main()
 {
      pedal_node_state = pedal_state_neutral;
     LCD_Start();
-    //CAN_invertor_init();
+    CAN_invertor_init();
     ADC_SAR_Start();
     ADC_SAR_StartConvert();
     EEPROM_Start();
@@ -101,14 +105,24 @@ int main()
         {
             if (should_calibrate)
             {
-                should_calibrate = false;
                 pedal_node_state = pedal_state_calibrating;
+
+            } else if (should_turn_to_drive) {
+                pedal_node_state = pedal_state_driving;
+                //Start sending can message for invertor
+                CAN_invertor_resume();
+            }
+        } else if (pedal_node_state == pedal_state_driving) {
+            if (should_turn_to_neutral) {
+                pedal_node_state = pedal_state_neutral;
+                //Stop sending messages for invertor
+                CAN_invertor_pause();
             }
         }
-        else
-        {
-            should_calibrate = false;
-        }
+        //Clear all flags after handling
+        should_calibrate = false;
+        should_turn_to_drive = false;
+        should_turn_to_neutral = false;
 
         uint8_t out_of_range_flag;
         double brake_percent = 0, throttle_percent = 0;
@@ -116,6 +130,7 @@ int main()
         uint8_t torque_plausible_flag;
         uint8_t brake_plausible_flag;
         pedal_fetch_data(); //Update ADC readings
+        CAN_invertor_update_pedal_state(pedal_node_state);
         monitor_update_vechicle_state(pedal_node_state); //Update vecicle state
         monitor_status_update_vehicle_state(pedal_node_state);
         switch (pedal_node_state)
@@ -129,7 +144,7 @@ int main()
             case pedal_state_driving:
                 LCD_ClearDisplay();
                 LCD_Position(0,0);
-
+                LCD_PrintString("DRIVING");
                 out_of_range_flag = pedal_get_out_of_range_flag();
                 if (out_of_range_flag != 0)
                 {

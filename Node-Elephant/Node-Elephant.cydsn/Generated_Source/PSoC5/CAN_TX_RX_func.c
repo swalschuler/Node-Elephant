@@ -203,7 +203,7 @@ void CAN_TxCancel(uint8 bufferId)
 
 #if (CAN_TX1_FUNC_ENABLE)
     /*******************************************************************************
-    * FUNCTION NAME:   CAN_SendMsg1
+    * FUNCTION NAME:   CAN_SendMsginv_start
     ********************************************************************************
     *
     * Summary:
@@ -222,7 +222,7 @@ void CAN_TxCancel(uint8 bufferId)
     *    CAN_FAIL              Function failed
     *
     *******************************************************************************/
-    uint8 CAN_SendMsg1(void) 
+    uint8 CAN_SendMsginv_start(void) 
     {
         uint8 result = CYRET_SUCCESS;
         
@@ -233,11 +233,8 @@ void CAN_TxCancel(uint8 bufferId)
         }
         else
         {
-            /* `#START MESSAGE_1_TRASMITTED` */
-            //for(i = 0; i < 6; i++)
-            //{
-                //CAN_TX_DATA_BYTE(1,i) = Tx1_BSE[i];        //transmit each byte for brakes and steering, mailbox 1
-            //}
+            /* `#START MESSAGE_inv_start_TRASMITTED` */
+
             /* `#END` */
             
             CY_SET_REG32((reg32 *) & CAN_TX[1u].txcmd, CAN_SEND_MESSAGE);
@@ -250,7 +247,7 @@ void CAN_TxCancel(uint8 bufferId)
 
 #if (CAN_TX2_FUNC_ENABLE)
     /*******************************************************************************
-    * FUNCTION NAME:   CAN_SendMsg2
+    * FUNCTION NAME:   CAN_SendMsginv_stop
     ********************************************************************************
     *
     * Summary:
@@ -269,7 +266,7 @@ void CAN_TxCancel(uint8 bufferId)
     *    CAN_FAIL              Function failed
     *
     *******************************************************************************/
-    uint8 CAN_SendMsg2(void) 
+    uint8 CAN_SendMsginv_stop(void) 
     {
         uint8 result = CYRET_SUCCESS;
         
@@ -280,10 +277,8 @@ void CAN_TxCancel(uint8 bufferId)
         }
         else
         {
-            /* `#START MESSAGE_2_TRASMITTED` */
-            
-            CAN_TX_DATA_BYTE1(2) = Tx2_Error;        //transmit error, mailbox 2; accessing byte 1
-            
+            /* `#START MESSAGE_inv_stop_TRASMITTED` */
+
             /* `#END` */
             
             CY_SET_REG32((reg32 *) & CAN_TX[2u].txcmd, CAN_SEND_MESSAGE);
@@ -1059,6 +1054,23 @@ void CAN_ReceiveMsg(uint8 rxMailbox)
 
 
 /* [] END OF FILE */
+#if 0 /* begin disabled code */
+`#start MESSAGE_1_TRASMITTED` -- section removed from template
+            //for(i = 0; i < 6; i++)
+            //{
+                //CAN_TX_DATA_BYTE(1,i) = Tx1_BSE[i];        //transmit each byte for brakes and steering, mailbox 1
+            //}
+`#end`
+
+#endif /* end disabled code */
+#if 0 /* begin disabled code */
+`#start MESSAGE_2_TRASMITTED` -- section removed from template
+            
+            CAN_TX_DATA_BYTE1(2) = Tx2_Error;        //transmit error, mailbox 2; accessing byte 1
+            
+`#end`
+
+#endif /* end disabled code */
 #if 0 /* begin disabled code */
 `#start MESSAGE_dummy_TRASMITTED` -- section removed from template
 			uint8_t i;
