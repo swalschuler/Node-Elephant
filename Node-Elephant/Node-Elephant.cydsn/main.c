@@ -22,6 +22,10 @@
 #include "pedal_monitor_state.h"
 #include "pedal_monitor_status.h"
 
+
+#include "inverter_state.h"
+#include "CAN_invertor.h"
+
 pedal_state pedal_node_state = pedal_state_driving;
 volatile bool should_calibrate = false;
 volatile bool should_turn_to_drive = false;
@@ -56,12 +60,14 @@ CY_ISR(isr_start_handler)
             return;
         }
     }
-    else if (pedal_node_state == pedal_state_driving)
-    {
-        should_turn_to_neutral = true;
-        // pedal_node_state = pedal_state_neutral;
-    }
     Start_Reset_Write(1);
+}
+
+CY_ISR(isr_neutral_handler) {
+    if (pedal_node_state == pedal_state_driving) {
+        should_turn_to_neutral = true;
+    }
+    Neutral_Reset_Write(1);
 }
 
 int main() 
@@ -80,6 +86,10 @@ int main()
     isr_start_StartEx(&isr_start_handler);
    	Start_Reset_Write(1); /* source of interrupt (reset) */
     isr_start_ClearPending();
+
+    isr_neutral_StartEx(&isr_neutral_handler);
+    Neutral_Reset_Write(1);
+    isr_neutral_ClearPending();
     
     isr_calibration_StartEx(&isr_calibration_handler);
     
@@ -98,8 +108,12 @@ int main()
     should_calibrate = false;
 
     // terminal_registerCommand("newCmd", &newCmdRout);
+    sendNMT(NMT_command_startRemoteNode);
+    CyDelay(1000);
     for(;;)
     {
+        CyDelay(50);
+
         terminal_run(); // Refresh terminal
         if (pedal_node_state == pedal_state_neutral)
         {
@@ -215,7 +229,7 @@ int main()
                 break;
         }
 
-        CyDelay(100);
+        // CyDelay(100);
     }
 
     return 0;

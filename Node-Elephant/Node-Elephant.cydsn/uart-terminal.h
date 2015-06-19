@@ -18,7 +18,7 @@
 #include <stdbool.h>
 
 #define BUFFER_LEN 64
-#define TERMINAL_NODE_NAME "Pedal-Node"
+#define TERMINAL_NODE_NAME "BMS-Node"
 
 /**
  * @brief R

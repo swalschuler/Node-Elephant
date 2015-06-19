@@ -243,7 +243,7 @@ void pedal_calibrate(void)           //calibrate all sensors
                     int16_t ADC_value = 0;
                     if (ADC_SAR_IsEndConversion(ADC_SAR_WAIT_FOR_RESULT))
                     {
-                        ADC_value = ADC_SAR_GetResult16(ADC_CHANNEL_B2);
+                        ADC_value = ADC_SAR_GetResult16(ADC_CHANNEL_B1);
                         volts = ADC_SAR_CountsTo_Volts(ADC_value);
                         if (ADC_value < ADC_low)
                             ADC_low = ADC_value;
