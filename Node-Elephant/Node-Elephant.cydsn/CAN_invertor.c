@@ -29,7 +29,7 @@ CY_ISR(isr_CAN_handler)
         //*********************************************************************************
         //TODO: MAKE SURE this doesn't overflow!!!!!!
     	uint16_t scaled_value = 0;
-    	scaled_value = (*throttle_max - *throttle_ptr) * 0x7FFF / (*throttle_max - *throttle_min) + 0x7FFF;
+    	scaled_value = (*throttle_ptr - *throttle_min) * 0x7FFF / (*throttle_max - *throttle_min) + 0x7FFF;
 	    can_buffer[2] = scaled_value & 0xFF;
 	    can_buffer[3] = (scaled_value >> 8) & 0xFF;
         CAN_SendMsgPDO1();

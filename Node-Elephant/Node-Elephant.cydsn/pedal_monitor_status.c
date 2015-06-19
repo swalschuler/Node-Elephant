@@ -148,7 +148,7 @@ void monitor_status_printThrottle1() {
     //TODO: Throttle percent is inverted, this is subject to change
     sprintf(statusBuf, "min: $%04X$, %dmv, max: $%04X$, %dmv, current: $%04X$, %dmv, at %0.2f%%\n",
     	(int)*MIN_THROTTLE1, (int)*MIN_THROTTLE1_MV, (int)*MAX_THROTTLE1, (int)*MAX_THROTTLE1_MV, (int)*throttle1, (int)*throttle1_mv, 
-    	(1.0f - (float)(*throttle1_mv - *MIN_THROTTLE1_MV) / (*MAX_THROTTLE1_MV - *MIN_THROTTLE1_MV)) * 100);
+    	((float)(*throttle1_mv - *MIN_THROTTLE1_MV) / (*MAX_THROTTLE1_MV - *MIN_THROTTLE1_MV)) * 100);
     while (USBUART_CDCIsReady() == 0u);
     USBUART_PutString(statusBuf);
 }
@@ -159,14 +159,14 @@ void monitor_status_printThrottle2() {
     //TODO: Throttle percent is inverted, this is subject to change
     sprintf(statusBuf, "min: $%04X$, %dmv, max: $%04X$, %dmv, current: $%04X$, %dmv, at %0.2f%%\n",
     	(int)*MIN_THROTTLE2, (int)*MIN_THROTTLE2_MV, (int)*MAX_THROTTLE2, (int)*MAX_THROTTLE2_MV, (int)*throttle2, (int)*throttle2_mv, 
-    	(1.0f - (float)(*throttle2_mv - *MIN_THROTTLE2_MV) / (*MAX_THROTTLE2_MV - *MIN_THROTTLE2_MV)) * 100);
+    	((float)(*throttle2_mv - *MIN_THROTTLE2_MV) / (*MAX_THROTTLE2_MV - *MIN_THROTTLE2_MV)) * 100);
     while (USBUART_CDCIsReady() == 0u);
     USBUART_PutString(statusBuf);
 }
 
 void monitor_status_printThrottleOffValue() {
-	float t1 = 1.0f - (float)(*throttle1_mv - *MIN_THROTTLE1_MV) / (*MAX_THROTTLE1_MV - *MIN_THROTTLE1_MV);
-	float t2 = 1.0f - (float)(*throttle2_mv - *MIN_THROTTLE2_MV) / (*MAX_THROTTLE2_MV - *MIN_THROTTLE2_MV);
+	float t1 = (float)(*throttle1_mv - *MIN_THROTTLE1_MV) / (*MAX_THROTTLE1_MV - *MIN_THROTTLE1_MV);
+	float t2 = (float)(*throttle2_mv - *MIN_THROTTLE2_MV) / (*MAX_THROTTLE2_MV - *MIN_THROTTLE2_MV);
 	sprintf(statusBuf, "T1 and T2 is now off by %0.2f%%\n", (t1 - t2) * 100);
     while (USBUART_CDCIsReady() == 0u);
     USBUART_PutString(statusBuf);

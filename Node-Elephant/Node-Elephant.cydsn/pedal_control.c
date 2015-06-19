@@ -359,7 +359,7 @@ uint8_t pedal_is_brake_plausible(double* brake_percentage_ptr, double* throttle_
     if (brake1_mv >= MIN_BRAKE1_MV && brake1_mv <= MAX_BRAKE1_MV)          
     {
         double brake_percentage = (double)(brake1_mv - MIN_BRAKE1_MV) / (MAX_BRAKE1_MV - MIN_BRAKE1_MV);
-        double throttle_percentage = 1.0 - (double)(throttle1_mv - MIN_THROTTLE1_MV) / (MAX_THROTTLE1_MV - MIN_THROTTLE1_MV);
+        double throttle_percentage = (double)(throttle1_mv - MIN_THROTTLE1_MV) / (MAX_THROTTLE1_MV - MIN_THROTTLE1_MV);
         *brake_percentage_ptr = brake_percentage;
         *throttle_percentage_ptr = throttle_percentage;
         if (
