@@ -100,7 +100,13 @@ CY_ISR(isr_CAN_Handler){
     }
     
     
-
+    //send throttle
+    if(temp_throttle>=0x7fff){
+        temp_throttle = 0x7fff;
+    }
+    if(temp_throttle<0){
+        temp_throttle = 0;
+    }
     
     can_buffer[0]= DIFF_FAULT_BIT;
     can_buffer[1]= (uint16)(temp_throttle)>>8 & 0xff;
