@@ -9,7 +9,7 @@
     <peripheral>
       <name>Start_Reset</name>
       <description>No description available</description>
-      <baseAddress>0x40006475</baseAddress>
+      <baseAddress>0x40006476</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -322,7 +322,7 @@
     <peripheral>
       <name>Neutral_Reset</name>
       <description>No description available</description>
-      <baseAddress>0x40006470</baseAddress>
+      <baseAddress>0x40006474</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>

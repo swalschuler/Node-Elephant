@@ -93,6 +93,13 @@ CY_ISR(isr_CAN_Handler){
         temp_throttle = 0;
     }
     
+    // If brake is below threshold
+    if (ADC_SAR_CountsTo_Volts(brake) < .4)
+    {
+        force_stop = true;   
+        temp_throttle = 0;
+    }
+    
 
     
     if (force_stop){
