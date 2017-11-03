@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name: LCD_PM.c
-* Version 2.10
+* Version 2.20
 *
 * Description:
 *  This file provides the API source code for the Static Segment LCD component.

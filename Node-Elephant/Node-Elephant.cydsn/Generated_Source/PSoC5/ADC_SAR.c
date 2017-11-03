@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name: ADC_SAR.c
-* Version 2.0
+* Version 2.10
 *
 * Description:
 *  This file provides the API functionality of the ADC SAR Sequencer Component
@@ -222,10 +222,9 @@ void ADC_SAR_Start(void)
         ADC_SAR_initVar = 1u;
     }
 
-    ADC_SAR_Enable();
     ADC_SAR_SAR_Start();
+    ADC_SAR_Enable();
     (void) CY_GET_REG8(ADC_SAR_STATUS_PTR);
-
 }
 
 

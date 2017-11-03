@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name: LCD.h
-* Version 2.10
+* Version 2.20
 *
 * Description:
 *  This header file contains registers and constants associated with the

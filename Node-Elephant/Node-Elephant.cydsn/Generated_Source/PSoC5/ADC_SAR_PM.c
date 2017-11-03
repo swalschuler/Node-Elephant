@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name: ADC_SAR_PM.c
-* Version 2.0
+* Version 2.10
 *
 * Description:
 *  This file contains the setup, control and status commands to support

@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name: LCD.c
-* Version 2.10
+* Version 2.20
 *
 * Description:
 *  This file provides source code for the Character LCD component's API.

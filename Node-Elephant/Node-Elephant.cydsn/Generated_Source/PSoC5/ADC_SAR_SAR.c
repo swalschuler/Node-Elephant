@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name: ADC_SAR_SAR.c
-* Version 3.0
+* Version 3.10
 *
 * Description:
 *  This file provides the source code to the API for the Successive
@@ -804,7 +804,7 @@ int32 ADC_SAR_SAR_CountsTo_uVolts(int16 adcCounts)
     */
     uVolts = (( (int64)adcCounts * ADC_SAR_SAR_10UV_COUNTS ) / countsPer10Volt);
 
-    return( uVolts );
+    return((int32) uVolts );
 }
 
 
