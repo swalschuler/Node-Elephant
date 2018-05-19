@@ -1,3 +1,18 @@
+/* 
+WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+
+RUNNING THIS CODE IS POTENTIALLY DANGEROUS. IT WILL SEND AN 
+INTERLOCK REQUEST WITHOUT ANY REQUEST FROM THE DRIVER.
+IT WILL START PRECHARGE, AND IF HV IS ENABLED, IT WILL
+START THE CAR AS IF IT IT IS READY TO DRIVE. 
+
+THIS IS DANGEROUS.
+
+WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+*/
+
 /* ========================================
  *
  * Copyright YOUR COMPANY, THE YEAR
@@ -114,13 +129,16 @@ CY_ISR(isr_CAN_Handler){
     if(temp_throttle<0){
         temp_throttle = 0;
     }
-    
-    can_buffer[0]= DIFF_FAULT_BIT;
+    /* 
+        This is very dangerous. Set's the motor controller 
+        to the drive state without any driver interaction.
+    */
+    can_buffer[0]= 1;
     can_buffer[1]= (uint16)(temp_throttle)>>8 & 0xff;
     can_buffer[2]= (uint16)(temp_throttle) & 0xff;
     can_buffer[3]= 0x00;
-    can_buffer[4]= (uint8)(per_throttle1) & 0xff;
-    can_buffer[5]= (uint8)(per_throttle2) & 0xff;
+    can_buffer[4]= 0x00; //(uint8)(per_throttle1) & 0xff;
+    can_buffer[5]= 0x00; //(uint8)(per_throttle2) & 0xff;
     can_buffer[6]= 0x00;
     can_buffer[7]= 0x00;
     CAN_SendMsgPDO1();
