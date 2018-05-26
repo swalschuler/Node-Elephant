@@ -69,7 +69,7 @@ uint8 CAN_RxTxBuffersConfig(void)
 
     static const CAN_TX_CFG CYCODE CAN_TXConfigStruct[] =
     {
-        { 0u, 0x80004u, 0x40000000u },
+        { 0u, 0x80004u, 0xECC00000u },
         { 1u, 0x20004u, 0x200000u },
         { 2u, 0x80004u, 0x40200000u },
         { 3u, 0x0u, 0x0u },

@@ -1,91 +1,10 @@
---------------- Build Started: 05/19/2018 12:41:08 Project: Node-Elephant, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
-cydsfit.exe -.appdatapath "C:\Users\Schuyler\AppData\Local\Cypress Semiconductor\PSoC Creator\4.2" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p "C:\Users\Schuyler\Documents\PSoC Creator\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\Node-Elephant.cyprj" -d CY8C5868AXI-LP035 -s "C:\Users\Schuyler\Documents\PSoC Creator\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\Generated_Source\PSoC5" -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
-Elaborating Design...
-ADD: sdb.M0065: information: Analog terminal "vdac_ref" on ADC_SAR_SEQ_v2_10 is unconnected.
- * C:\Users\Schuyler\Documents\PSoC Creator\4.1\Downloads ( 4.1).cylib\ADC_SAR_SEQ_v2_10\PSoC5\ADC_SAR_SEQ_v2_10.cysch (Signal: vdac_ref)
- * C:\Users\Schuyler\Documents\PSoC Creator\4.1\Downloads ( 4.1).cylib\ADC_SAR_SEQ_v2_10\PSoC5\ADC_SAR_SEQ_v2_10.cysch (Shape_798)
- * C:\Users\Schuyler\Documents\PSoC Creator\4.1\Downloads ( 4.1).cylib\ADC_SAR_SEQ_v2_10\PSoC5\ADC_SAR_SEQ_v2_10.cysch (Shape_885)
-HDL Generation...
-Synthesis...
-Tech Mapping...
-ADD: pft.M0040: information: The following 8 pin(s) will be assigned a location by the fitter: \LCD:LCDPort(0)\, \LCD:LCDPort(1)\, \LCD:LCDPort(2)\, \LCD:LCDPort(3)\, \LCD:LCDPort(4)\, \LCD:LCDPort(5)\, \LCD:LCDPort(6)\, \USBUART:Dm(0)\
-Analog Placement...
-Info: apr.M0002: Analog signal "Net_929" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_930" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_932" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_934" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_935" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_937" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_939" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_940" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_942" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_944" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_945" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_947" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_949" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_950" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_952" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_954" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_955" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_957" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_959" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_960" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_962" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_964" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_965" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_967" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_969" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_970" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_972" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_974" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_975" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_977" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_979" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_980" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_982" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_984" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_985" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_987" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_989" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_990" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_992" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_994" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_995" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_997" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_999" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1000" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1001" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1002" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1003" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1004" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1005" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1006" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1007" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1008" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1009" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1010" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1011" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1012" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1013" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1014" is connected to one terminal only. (App=cydsfit)
-Info: apr.M0002: Analog signal "Net_1015" is connected to one terminal only. (App=cydsfit)
-Log: apr.M0058: The analog placement iterative improvement is 46% done. (App=cydsfit)
-Analog Routing...
-Analog Code Generation...
-Digital Placement...
-Digital Routing...
-Bitstream Generation...
-Bitstream Verification...
-Static timing analysis...
-API Generation...
-Dependency Generation...
-Cleanup...
+--------------- Build Started: 05/24/2018 14:30:36 Project: Node-Elephant, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+The code generation step is up to date.
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/main.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c main.c -o .\CortexM3\ARM_GCC_541\Debug\main.o
 main.c: In function 'check_differential':
 main.c:190:9: warning: implicit declaration of function 'abs' [-Wimplicit-function-declaration]
      if (abs(per_throttle1-per_throttle2)>3){
          ^
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/CAN.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC5\CAN.c -o .\CortexM3\ARM_GCC_541\Debug\CAN.o
 arm-none-eabi-ar.exe -rs .\CortexM3\ARM_GCC_541\Debug\Node-Elephant.a .\CortexM3\ARM_GCC_541\Debug\EEPROM.o .\CortexM3\ARM_GCC_541\Debug\LCD.o .\CortexM3\ARM_GCC_541\Debug\LCD_PM.o .\CortexM3\ARM_GCC_541\Debug\ADC_SAR.o .\CortexM3\ARM_GCC_541\Debug\ADC_SAR_PM.o .\CortexM3\ARM_GCC_541\Debug\ADC_SAR_INT.o .\CortexM3\ARM_GCC_541\Debug\LCD_LCDPort.o .\CortexM3\ARM_GCC_541\Debug\ADC_SAR_SAR.o .\CortexM3\ARM_GCC_541\Debug\ADC_SAR_SAR_INT.o .\CortexM3\ARM_GCC_541\Debug\ADC_SAR_SAR_PM.o .\CortexM3\ARM_GCC_541\Debug\ADC_SAR_IntClock.o .\CortexM3\ARM_GCC_541\Debug\ADC_SAR_TempBuf_dma.o .\CortexM3\ARM_GCC_541\Debug\ADC_SAR_FinalBuf_dma.o .\CortexM3\ARM_GCC_541\Debug\ADC_SAR_IRQ.o .\CortexM3\ARM_GCC_541\Debug\CyDmac.o .\CortexM3\ARM_GCC_541\Debug\CyFlash.o .\CortexM3\ARM_GCC_541\Debug\CyLib.o .\CortexM3\ARM_GCC_541\Debug\cyPm.o .\CortexM3\ARM_GCC_541\Debug\CySpc.o .\CortexM3\ARM_GCC_541\Debug\cyutils.o .\CortexM3\ARM_GCC_541\Debug\Brake_2.o .\CortexM3\ARM_GCC_541\Debug\Brake_1.o .\CortexM3\ARM_GCC_541\Debug\Throttle_2.o .\CortexM3\ARM_GCC_541\Debug\Throttle_1.o .\CortexM3\ARM_GCC_541\Debug\Steering.o .\CortexM3\ARM_GCC_541\Debug\Button.o .\CortexM3\ARM_GCC_541\Debug\LED.o .\CortexM3\ARM_GCC_541\Debug\Rx_1.o .\CortexM3\ARM_GCC_541\Debug\Tx_1.o .\CortexM3\ARM_GCC_541\Debug\CAN.o .\CortexM3\ARM_GCC_541\Debug\CAN_INT.o .\CortexM3\ARM_GCC_541\Debug\CAN_PM.o .\CortexM3\ARM_GCC_541\Debug\CAN_TX_RX_func.o .\CortexM3\ARM_GCC_541\Debug\EEPROM_ERROR_LED.o .\CortexM3\ARM_GCC_541\Debug\isr_calibration.o .\CortexM3\ARM_GCC_541\Debug\CAN_timer.o .\CortexM3\ARM_GCC_541\Debug\CAN_timer_PM.o .\CortexM3\ARM_GCC_541\Debug\CAN_timer_clock.o .\CortexM3\ARM_GCC_541\Debug\isr_CAN.o .\CortexM3\ARM_GCC_541\Debug\isr_start.o .\CortexM3\ARM_GCC_541\Debug\Start_button.o .\CortexM3\ARM_GCC_541\Debug\USBUART.o .\CortexM3\ARM_GCC_541\Debug\USBUART_audio.o .\CortexM3\ARM_GCC_541\Debug\USBUART_boot.o .\CortexM3\ARM_GCC_541\Debug\USBUART_cdc.o .\CortexM3\ARM_GCC_541\Debug\USBUART_cls.o .\CortexM3\ARM_GCC_541\Debug\USBUART_descr.o .\CortexM3\ARM_GCC_541\Debug\USBUART_drv.o .\CortexM3\ARM_GCC_541\Debug\USBUART_episr.o .\CortexM3\ARM_GCC_541\Debug\USBUART_hid.o .\CortexM3\ARM_GCC_541\Debug\USBUART_pm.o .\CortexM3\ARM_GCC_541\Debug\USBUART_std.o .\CortexM3\ARM_GCC_541\Debug\USBUART_vnd.o .\CortexM3\ARM_GCC_541\Debug\USBUART_midi.o .\CortexM3\ARM_GCC_541\Debug\USBUART_msc.o .\CortexM3\ARM_GCC_541\Debug\USBUART_Dm.o .\CortexM3\ARM_GCC_541\Debug\USBUART_Dp.o .\CortexM3\ARM_GCC_541\Debug\SwClk.o .\CortexM3\ARM_GCC_541\Debug\Start_Reset.o .\CortexM3\ARM_GCC_541\Debug\Start_Reset_PM.o .\CortexM3\ARM_GCC_541\Debug\Neutral_button.o .\CortexM3\ARM_GCC_541\Debug\isr_neutral.o .\CortexM3\ARM_GCC_541\Debug\SwClk_1.o .\CortexM3\ARM_GCC_541\Debug\Neutral_Reset.o .\CortexM3\ARM_GCC_541\Debug\Neutral_Reset_PM.o .\CortexM3\ARM_GCC_541\Debug\timer_clock.o .\CortexM3\ARM_GCC_541\Debug\cali_timer.o .\CortexM3\ARM_GCC_541\Debug\cali_timer_PM.o .\CortexM3\ARM_GCC_541\Debug\isr_cali_done.o .\CortexM3\ARM_GCC_541\Debug\cy_em_eeprom.o .\CortexM3\ARM_GCC_541\Debug\CyBootAsmGnu.o
 arm-none-eabi-ar.exe: creating .\CortexM3\ARM_GCC_541\Debug\Node-Elephant.a
 arm-none-eabi-gcc.exe -Wl,--start-group -o "C:\Users\Schuyler\Documents\PSoC Creator\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\CortexM3\ARM_GCC_541\Debug\Node-Elephant.elf" .\CortexM3\ARM_GCC_541\Debug\EEPROM_util.o .\CortexM3\ARM_GCC_541\Debug\main.o .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o .\CortexM3\ARM_GCC_541\Debug\cymetadata.o .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o .\CortexM3\ARM_GCC_541\Debug\Node-Elephant.a "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -L Generated_Source\PSoC5 -Wl,-Map,.\CortexM3\ARM_GCC_541\Debug/Node-Elephant.map -T Generated_Source\PSoC5\cm3gcc.ld -Wl,--gc-sections -g -ffunction-sections -O0 -ffat-lto-objects -Wl,--end-group
@@ -94,6 +13,6 @@ No ELF section .cychecksum found, creating one
 Application checksum calculated and stored in ELF section .cychecksum
 Checksum calculated and stored in ELF section .cymeta
 cyelftool.exe -S "C:\Users\Schuyler\Documents\PSoC Creator\Node-Elephant\Node-Elephant\Node-Elephant.cydsn\CortexM3\ARM_GCC_541\Debug\Node-Elephant.elf"
-Flash used: 16416 of 262144 bytes (6.3%).
+Flash used: 16424 of 262144 bytes (6.3%).
 SRAM used: 21917 of 65536 bytes (33.4%). Stack: 16384 bytes. Heap: 4096 bytes.
---------------- Build Succeeded: 05/19/2018 12:41:49 ---------------
+--------------- Build Succeeded: 05/24/2018 14:30:38 ---------------

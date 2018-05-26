@@ -133,7 +133,7 @@ CY_ISR(isr_CAN_Handler){
         This is very dangerous. Set's the motor controller 
         to the drive state without any driver interaction.
     */
-    can_buffer[0]= 1;
+    can_buffer[0]= 1; // Set to 1 to activate danger mode
     can_buffer[1]= (uint16)(temp_throttle)>>8 & 0xff;
     can_buffer[2]= (uint16)(temp_throttle) & 0xff;
     can_buffer[3]= 0x00;
@@ -254,6 +254,7 @@ void update_ADC_SAR(){
 }
 
 int main(){
+    CyDelay(5000);
     ADC_SAR_Start();
     ADC_SAR_StartConvert();
     EEPROM_Start();
