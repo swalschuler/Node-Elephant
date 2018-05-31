@@ -59,7 +59,7 @@ CY_ISR(isr_CAN_Handler){
     
     //send PDO1 (throttle)
     // subract dead zone 5%
-    temp_throttle = throttle1 - ((throttle1Max-throttle1Min)/16);
+    temp_throttle = throttle1 - 0;//((throttle1Max-throttle1Min)/20);
 
     if (temp_throttle>throttle1Max){
         temp_throttle=throttle1Max;
@@ -67,7 +67,7 @@ CY_ISR(isr_CAN_Handler){
     if (temp_throttle<throttle1Min){
         temp_throttle=throttle1Min;
     }
-    temp_throttle = (int32)(temp_throttle-throttle1Min)*0x7FFF / (throttle1Max-throttle1Min-((throttle1Max-throttle1Min)/16));
+    temp_throttle = (int32)(temp_throttle-throttle1Min)*0x7FFF / (throttle1Max-throttle1Min);//((throttle1Max-throttle1Min)/16));
     
     // subtract dead zone 15%
     temp_brake = brake -((brakeMax-brakeMin)/6);
